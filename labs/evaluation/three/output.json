@@ -1,0 +1,1234 @@
+{
+  "boxTypeChoiceGoalUsed": "lowest-cost",
+  "boxes": [
+    {
+      "box": {
+        "boxType": {
+          "centerOfMass": {
+            "x": 0,
+            "y": 0,
+            "z": 0
+          },
+          "dimensions": {
+            "x": 8.75,
+            "y": 13.5,
+            "z": 21
+          },
+          "itemsInlineOverhang": {
+            "x": -1,
+            "y": -1,
+            "z": -1
+          },
+          "name": "3PBO",
+          "price": 0,
+          "rateTable": {
+            "basePrice": 0,
+            "carrier": "FedEx",
+            "dimFactor": 139,
+            "priceIncreaseRate": 0,
+            "rates": [
+              8.23,
+              9.48,
+              9.89,
+              10.05,
+              10.41,
+              10.69,
+              10.95,
+              11.24,
+              11.4,
+              11.51,
+              11.77,
+              12.26,
+              12.56,
+              12.77,
+              13.18,
+              13.43,
+              13.84,
+              13.89,
+              14.49,
+              14.75,
+              15.18,
+              15.47,
+              15.77,
+              16.41,
+              16.59,
+              17.16,
+              17.57,
+              17.99,
+              18.34,
+              18.61,
+              18.98,
+              19.03,
+              19.45,
+              19.89,
+              20.74,
+              20.75,
+              21.22,
+              21.55,
+              21.97,
+              22.05,
+              22.79,
+              23.3,
+              23.42,
+              23.87,
+              24.01,
+              24.02,
+              24.33,
+              24.56,
+              24.57,
+              24.58,
+              24.59,
+              24.6,
+              24.61,
+              24.63,
+              24.64,
+              24.84,
+              25,
+              25.01,
+              25.27,
+              25.75,
+              26.33,
+              27.66,
+              27.67,
+              28.48,
+              28.74,
+              29.25,
+              29.27,
+              30.09,
+              30.1,
+              30.15,
+              30.47,
+              30.52,
+              30.53,
+              30.55,
+              31.14,
+              32.56,
+              33.35,
+              34.28,
+              35.37,
+              36.38,
+              37.03,
+              37.86,
+              38.29,
+              39.55,
+              39.82,
+              41.64,
+              41.65,
+              43,
+              43.79,
+              44.87,
+              45.26,
+              46.11,
+              47,
+              47.79,
+              48.66,
+              48.99,
+              50.42,
+              50.75,
+              51.56,
+              52.4,
+              52.41,
+              52.7,
+              54.03,
+              54.3,
+              55.1,
+              55.93,
+              56.77,
+              57.58,
+              58.38,
+              59.23,
+              59.89,
+              61.13,
+              61.18,
+              62.45,
+              63.16,
+              63.4,
+              64.07,
+              65.38,
+              65.45,
+              67.03,
+              67.04,
+              67.68,
+              67.75,
+              69.07,
+              69.08,
+              70.42,
+              70.45,
+              70.97,
+              72.56,
+              72.57,
+              73.03,
+              74.45,
+              74.56,
+              75.14,
+              76.62,
+              77.53,
+              77.54,
+              78.77,
+              79.56,
+              79.79,
+              80.31,
+              81.06,
+              81.8,
+              83.34,
+              84.97,
+              84.98,
+              85,
+              85.63,
+              86.38,
+              87.16
+            ],
+            "service": "Ground",
+            "weights": [
+              1,
+              2,
+              3,
+              4,
+              5,
+              6,
+              7,
+              8,
+              9,
+              10,
+              11,
+              12,
+              13,
+              14,
+              15,
+              16,
+              17,
+              18,
+              19,
+              20,
+              21,
+              22,
+              23,
+              24,
+              25,
+              26,
+              27,
+              28,
+              29,
+              30,
+              31,
+              32,
+              33,
+              34,
+              35,
+              36,
+              37,
+              38,
+              39,
+              40,
+              41,
+              42,
+              43,
+              44,
+              45,
+              46,
+              47,
+              48,
+              49,
+              50,
+              51,
+              52,
+              53,
+              54,
+              55,
+              56,
+              57,
+              58,
+              59,
+              60,
+              61,
+              62,
+              63,
+              64,
+              65,
+              66,
+              67,
+              68,
+              69,
+              70,
+              71,
+              72,
+              73,
+              74,
+              75,
+              76,
+              77,
+              78,
+              79,
+              80,
+              81,
+              82,
+              83,
+              84,
+              85,
+              86,
+              87,
+              88,
+              89,
+              90,
+              91,
+              92,
+              93,
+              94,
+              95,
+              96,
+              97,
+              98,
+              99,
+              100,
+              101,
+              102,
+              103,
+              104,
+              105,
+              106,
+              107,
+              108,
+              109,
+              110,
+              111,
+              112,
+              113,
+              114,
+              115,
+              116,
+              117,
+              118,
+              119,
+              120,
+              121,
+              122,
+              123,
+              124,
+              125,
+              126,
+              127,
+              128,
+              129,
+              130,
+              131,
+              132,
+              133,
+              134,
+              135,
+              136,
+              137,
+              138,
+              139,
+              140,
+              141,
+              142,
+              143,
+              144,
+              145,
+              146,
+              147,
+              148,
+              149,
+              150
+            ],
+            "zone": "3"
+          },
+          "refId": 0,
+          "reservedSpace": null,
+          "weightMax": 65,
+          "weightTare": 0
+        },
+        "centerOfMass": {
+          "x": 3.7959008,
+          "y": 5.9406419,
+          "z": 10.05925
+        },
+        "centerOfMassString": "[3.79590076 5.94064186 10.05925027]",
+        "depthOrder": [
+          1,
+          2,
+          3,
+          4,
+          5,
+          6,
+          7,
+          8,
+          9,
+          10,
+          11,
+          12,
+          13,
+          14,
+          15,
+          16,
+          17,
+          18,
+          19,
+          20,
+          21,
+          22,
+          23,
+          24
+        ],
+        "depthOrderString": "[1 2 3 4 5 6 7 8 9 10 11 12 13 14 15 16 17 18 19 20 21 22 23 24]",
+        "dimensionalWeight": 17.846223,
+        "dimensionalWeightUsed": false,
+        "dimensions": {
+          "x": 8.75,
+          "y": 13.5,
+          "z": 21
+        },
+        "id": 0,
+        "items": [
+          {
+            "item": {
+              "centerOfMass": {
+                "x": 0.95,
+                "y": 2.7,
+                "z": 3.8
+              },
+              "color": "mediumturquoise",
+              "deltaCost": 1389,
+              "dimensions": {
+                "x": 1.9,
+                "y": 5.4,
+                "z": 7.6
+              },
+              "globalId": 16,
+              "index": 1,
+              "message": "packed #0 in 14.433419ms at 20.829568ms in Box(name:3PBO dimensions:[8.75,13.5,21] weight:65 index:0)",
+              "name": "Junior",
+              "origin": {
+                "x": 0,
+                "y": 0,
+                "z": 0
+              },
+              "packedIndex": 0,
+              "properties": null,
+              "quantity": 1,
+              "refId": 7154901,
+              "sequence": "",
+              "uniqueId": "7154901-0",
+              "virtual": false,
+              "weight": 1.54
+            }
+          },
+          {
+            "item": {
+              "centerOfMass": {
+                "x": 0.95,
+                "y": 2.7,
+                "z": 11.4
+              },
+              "color": "mediumturquoise",
+              "deltaCost": 0,
+              "dimensions": {
+                "x": 1.9,
+                "y": 5.4,
+                "z": 7.6
+              },
+              "globalId": 17,
+              "index": 2,
+              "message": "packed #1 in 14.31µs at 20.868508ms in Box(name:3PBO dimensions:[8.75,13.5,21] weight:65 index:0)",
+              "name": "Junior",
+              "origin": {
+                "x": 0,
+                "y": 0,
+                "z": 7.6
+              },
+              "packedIndex": 1,
+              "properties": null,
+              "quantity": 1,
+              "refId": 7154901,
+              "sequence": "",
+              "uniqueId": "7154901-1",
+              "virtual": false,
+              "weight": 1.54
+            }
+          },
+          {
+            "item": {
+              "centerOfMass": {
+                "x": 0.95,
+                "y": 8.1,
+                "z": 3.8
+              },
+              "color": "mediumturquoise",
+              "deltaCost": 0,
+              "dimensions": {
+                "x": 1.9,
+                "y": 5.4,
+                "z": 7.6
+              },
+              "globalId": 18,
+              "index": 3,
+              "message": "packed #2 in 4.52µs at 20.874528ms in Box(name:3PBO dimensions:[8.75,13.5,21] weight:65 index:0)",
+              "name": "Junior",
+              "origin": {
+                "x": 0,
+                "y": 5.4,
+                "z": 0
+              },
+              "packedIndex": 2,
+              "properties": null,
+              "quantity": 1,
+              "refId": 7154901,
+              "sequence": "",
+              "uniqueId": "7154901-2",
+              "virtual": false,
+              "weight": 1.54
+            }
+          },
+          {
+            "item": {
+              "centerOfMass": {
+                "x": 0.95,
+                "y": 8.1,
+                "z": 11.4
+              },
+              "color": "mediumturquoise",
+              "deltaCost": 0,
+              "dimensions": {
+                "x": 1.9,
+                "y": 5.4,
+                "z": 7.6
+              },
+              "globalId": 19,
+              "index": 4,
+              "message": "packed #3 in 14.08µs at 20.889718ms in Box(name:3PBO dimensions:[8.75,13.5,21] weight:65 index:0)",
+              "name": "Junior",
+              "origin": {
+                "x": 0,
+                "y": 5.4,
+                "z": 7.6
+              },
+              "packedIndex": 3,
+              "properties": null,
+              "quantity": 1,
+              "refId": 7154901,
+              "sequence": "",
+              "uniqueId": "7154901-3",
+              "virtual": false,
+              "weight": 1.54
+            }
+          },
+          {
+            "item": {
+              "centerOfMass": {
+                "x": 2.85,
+                "y": 2.7,
+                "z": 3.8
+              },
+              "color": "mediumturquoise",
+              "deltaCost": 0,
+              "dimensions": {
+                "x": 1.9,
+                "y": 5.4,
+                "z": 7.6
+              },
+              "globalId": 20,
+              "index": 5,
+              "message": "packed #4 in 9.08µs at 20.899748ms in Box(name:3PBO dimensions:[8.75,13.5,21] weight:65 index:0)",
+              "name": "Junior",
+              "origin": {
+                "x": 1.9,
+                "y": 0,
+                "z": 0
+              },
+              "packedIndex": 4,
+              "properties": null,
+              "quantity": 1,
+              "refId": 7154901,
+              "sequence": "",
+              "uniqueId": "7154901-4",
+              "virtual": false,
+              "weight": 1.54
+            }
+          },
+          {
+            "item": {
+              "centerOfMass": {
+                "x": 2.85,
+                "y": 2.7,
+                "z": 11.4
+              },
+              "color": "mediumturquoise",
+              "deltaCost": 0,
+              "dimensions": {
+                "x": 1.9,
+                "y": 5.4,
+                "z": 7.6
+              },
+              "globalId": 21,
+              "index": 6,
+              "message": "packed #5 in 16.65µs at 20.917358ms in Box(name:3PBO dimensions:[8.75,13.5,21] weight:65 index:0)",
+              "name": "Junior",
+              "origin": {
+                "x": 1.9,
+                "y": 0,
+                "z": 7.6
+              },
+              "packedIndex": 5,
+              "properties": null,
+              "quantity": 1,
+              "refId": 7154901,
+              "sequence": "",
+              "uniqueId": "7154901-5",
+              "virtual": false,
+              "weight": 1.54
+            }
+          },
+          {
+            "item": {
+              "centerOfMass": {
+                "x": 2.85,
+                "y": 8.1,
+                "z": 3.8
+              },
+              "color": "mediumturquoise",
+              "deltaCost": 0,
+              "dimensions": {
+                "x": 1.9,
+                "y": 5.4,
+                "z": 7.6
+              },
+              "globalId": 22,
+              "index": 7,
+              "message": "packed #6 in 13.97µs at 20.932218ms in Box(name:3PBO dimensions:[8.75,13.5,21] weight:65 index:0)",
+              "name": "Junior",
+              "origin": {
+                "x": 1.9,
+                "y": 5.4,
+                "z": 0
+              },
+              "packedIndex": 6,
+              "properties": null,
+              "quantity": 1,
+              "refId": 7154901,
+              "sequence": "",
+              "uniqueId": "7154901-6",
+              "virtual": false,
+              "weight": 1.54
+            }
+          },
+          {
+            "item": {
+              "centerOfMass": {
+                "x": 2.85,
+                "y": 8.1,
+                "z": 11.4
+              },
+              "color": "mediumturquoise",
+              "deltaCost": 0,
+              "dimensions": {
+                "x": 1.9,
+                "y": 5.4,
+                "z": 7.6
+              },
+              "globalId": 23,
+              "index": 8,
+              "message": "packed #7 in 16.83µs at 20.990878ms in Box(name:3PBO dimensions:[8.75,13.5,21] weight:65 index:0)",
+              "name": "Junior",
+              "origin": {
+                "x": 1.9,
+                "y": 5.4,
+                "z": 7.6
+              },
+              "packedIndex": 7,
+              "properties": null,
+              "quantity": 1,
+              "refId": 7154901,
+              "sequence": "",
+              "uniqueId": "7154901-7",
+              "virtual": false,
+              "weight": 1.54
+            }
+          },
+          {
+            "item": {
+              "centerOfMass": {
+                "x": 4.75,
+                "y": 2.7,
+                "z": 3.8
+              },
+              "color": "deepskyblue",
+              "deltaCost": 0,
+              "dimensions": {
+                "x": 1.9,
+                "y": 5.4,
+                "z": 7.6
+              },
+              "globalId": 7,
+              "index": 9,
+              "message": "packed #8 in 29.28µs at 21.021148ms in Box(name:3PBO dimensions:[8.75,13.5,21] weight:65 index:0)",
+              "name": "Tour Response",
+              "origin": {
+                "x": 3.8,
+                "y": 0,
+                "z": 0
+              },
+              "packedIndex": 8,
+              "properties": null,
+              "quantity": 1,
+              "refId": 7175201,
+              "sequence": "",
+              "uniqueId": "7175201-0",
+              "virtual": false,
+              "weight": 1.53
+            }
+          },
+          {
+            "item": {
+              "centerOfMass": {
+                "x": 4.75,
+                "y": 2.7,
+                "z": 11.4
+              },
+              "color": "deepskyblue",
+              "deltaCost": 0,
+              "dimensions": {
+                "x": 1.9,
+                "y": 5.4,
+                "z": 7.6
+              },
+              "globalId": 8,
+              "index": 10,
+              "message": "packed #9 in 23.2µs at 21.045288ms in Box(name:3PBO dimensions:[8.75,13.5,21] weight:65 index:0)",
+              "name": "Tour Response",
+              "origin": {
+                "x": 3.8,
+                "y": 0,
+                "z": 7.6
+              },
+              "packedIndex": 9,
+              "properties": null,
+              "quantity": 1,
+              "refId": 7175201,
+              "sequence": "",
+              "uniqueId": "7175201-1",
+              "virtual": false,
+              "weight": 1.53
+            }
+          },
+          {
+            "item": {
+              "centerOfMass": {
+                "x": 4.75,
+                "y": 8.1,
+                "z": 3.8
+              },
+              "color": "deepskyblue",
+              "deltaCost": 60,
+              "dimensions": {
+                "x": 1.9,
+                "y": 5.4,
+                "z": 7.6
+              },
+              "globalId": 9,
+              "index": 11,
+              "message": "packed #10 in 24.6µs at 21.070768ms in Box(name:3PBO dimensions:[8.75,13.5,21] weight:65 index:0)",
+              "name": "Tour Response",
+              "origin": {
+                "x": 3.8,
+                "y": 5.4,
+                "z": 0
+              },
+              "packedIndex": 10,
+              "properties": null,
+              "quantity": 1,
+              "refId": 7175201,
+              "sequence": "",
+              "uniqueId": "7175201-2",
+              "virtual": false,
+              "weight": 1.53
+            }
+          },
+          {
+            "item": {
+              "centerOfMass": {
+                "x": 4.75,
+                "y": 8.1,
+                "z": 11.4
+              },
+              "color": "deepskyblue",
+              "deltaCost": 26,
+              "dimensions": {
+                "x": 1.9,
+                "y": 5.4,
+                "z": 7.6
+              },
+              "globalId": 10,
+              "index": 12,
+              "message": "packed #11 in 22.99µs at 21.094668ms in Box(name:3PBO dimensions:[8.75,13.5,21] weight:65 index:0)",
+              "name": "Tour Response",
+              "origin": {
+                "x": 3.8,
+                "y": 5.4,
+                "z": 7.6
+              },
+              "packedIndex": 11,
+              "properties": null,
+              "quantity": 1,
+              "refId": 7175201,
+              "sequence": "",
+              "uniqueId": "7175201-3",
+              "virtual": false,
+              "weight": 1.53
+            }
+          },
+          {
+            "item": {
+              "centerOfMass": {
+                "x": 6.65,
+                "y": 2.7,
+                "z": 3.8
+              },
+              "color": "deepskyblue",
+              "deltaCost": 72,
+              "dimensions": {
+                "x": 1.9,
+                "y": 5.4,
+                "z": 7.6
+              },
+              "globalId": 11,
+              "index": 13,
+              "message": "packed #12 in 21.74µs at 21.117378ms in Box(name:3PBO dimensions:[8.75,13.5,21] weight:65 index:0)",
+              "name": "Tour Response",
+              "origin": {
+                "x": 5.7,
+                "y": 0,
+                "z": 0
+              },
+              "packedIndex": 12,
+              "properties": null,
+              "quantity": 1,
+              "refId": 7175201,
+              "sequence": "",
+              "uniqueId": "7175201-4",
+              "virtual": false,
+              "weight": 1.53
+            }
+          },
+          {
+            "item": {
+              "centerOfMass": {
+                "x": 6.65,
+                "y": 2.7,
+                "z": 11.4
+              },
+              "color": "deepskyblue",
+              "deltaCost": 94,
+              "dimensions": {
+                "x": 1.9,
+                "y": 5.4,
+                "z": 7.6
+              },
+              "globalId": 12,
+              "index": 14,
+              "message": "packed #13 in 25.2µs at 21.143438ms in Box(name:3PBO dimensions:[8.75,13.5,21] weight:65 index:0)",
+              "name": "Tour Response",
+              "origin": {
+                "x": 5.7,
+                "y": 0,
+                "z": 7.6
+              },
+              "packedIndex": 13,
+              "properties": null,
+              "quantity": 1,
+              "refId": 7175201,
+              "sequence": "",
+              "uniqueId": "7175201-5",
+              "virtual": false,
+              "weight": 1.53
+            }
+          },
+          {
+            "item": {
+              "centerOfMass": {
+                "x": 6.65,
+                "y": 8.1,
+                "z": 3.8
+              },
+              "color": "deepskyblue",
+              "deltaCost": 18,
+              "dimensions": {
+                "x": 1.9,
+                "y": 5.4,
+                "z": 7.6
+              },
+              "globalId": 13,
+              "index": 15,
+              "message": "packed #14 in 30.08µs at 21.174398ms in Box(name:3PBO dimensions:[8.75,13.5,21] weight:65 index:0)",
+              "name": "Tour Response",
+              "origin": {
+                "x": 5.7,
+                "y": 5.4,
+                "z": 0
+              },
+              "packedIndex": 14,
+              "properties": null,
+              "quantity": 1,
+              "refId": 7175201,
+              "sequence": "",
+              "uniqueId": "7175201-6",
+              "virtual": false,
+              "weight": 1.53
+            }
+          },
+          {
+            "item": {
+              "centerOfMass": {
+                "x": 6.65,
+                "y": 8.1,
+                "z": 11.4
+              },
+              "color": "deepskyblue",
+              "deltaCost": 98,
+              "dimensions": {
+                "x": 1.9,
+                "y": 5.4,
+                "z": 7.6
+              },
+              "globalId": 14,
+              "index": 16,
+              "message": "packed #15 in 37.42µs at 21.212618ms in Box(name:3PBO dimensions:[8.75,13.5,21] weight:65 index:0)",
+              "name": "Tour Response",
+              "origin": {
+                "x": 5.7,
+                "y": 5.4,
+                "z": 7.6
+              },
+              "packedIndex": 15,
+              "properties": null,
+              "quantity": 1,
+              "refId": 7175201,
+              "sequence": "",
+              "uniqueId": "7175201-7",
+              "virtual": false,
+              "weight": 1.53
+            }
+          },
+          {
+            "item": {
+              "centerOfMass": {
+                "x": 3.8,
+                "y": 2.7,
+                "z": 16.15
+              },
+              "color": "deepskyblue",
+              "deltaCost": 42,
+              "dimensions": {
+                "x": 7.6,
+                "y": 5.4,
+                "z": 1.9
+              },
+              "globalId": 15,
+              "index": 17,
+              "message": "packed #16 in 41.86µs at 21.263068ms in Box(name:3PBO dimensions:[8.75,13.5,21] weight:65 index:0)",
+              "name": "Tour Response",
+              "origin": {
+                "x": 0,
+                "y": 0,
+                "z": 15.2
+              },
+              "packedIndex": 16,
+              "properties": null,
+              "quantity": 1,
+              "refId": 7175201,
+              "sequence": "",
+              "uniqueId": "7175201-8",
+              "virtual": false,
+              "weight": 1.53
+            }
+          },
+          {
+            "item": {
+              "centerOfMass": {
+                "x": 3.8,
+                "y": 2.7,
+                "z": 18.05
+              },
+              "color": "darkmagenta",
+              "deltaCost": 62,
+              "dimensions": {
+                "x": 7.6,
+                "y": 5.4,
+                "z": 1.9
+              },
+              "globalId": 0,
+              "index": 18,
+              "message": "packed #17 in 42.38µs at 21.306318ms in Box(name:3PBO dimensions:[8.75,13.5,21] weight:65 index:0)",
+              "name": "Practice",
+              "origin": {
+                "x": 0,
+                "y": 0,
+                "z": 17.1
+              },
+              "packedIndex": 17,
+              "properties": null,
+              "quantity": 1,
+              "refId": 7187701,
+              "sequence": "",
+              "uniqueId": "7187701-0",
+              "virtual": false,
+              "weight": 1.57
+            }
+          },
+          {
+            "item": {
+              "centerOfMass": {
+                "x": 3.8,
+                "y": 2.7,
+                "z": 19.95
+              },
+              "color": "darkmagenta",
+              "deltaCost": 37,
+              "dimensions": {
+                "x": 7.6,
+                "y": 5.4,
+                "z": 1.9
+              },
+              "globalId": 1,
+              "index": 19,
+              "message": "packed #18 in 87.26µs at 21.394448ms in Box(name:3PBO dimensions:[8.75,13.5,21] weight:65 index:0)",
+              "name": "Practice",
+              "origin": {
+                "x": 0,
+                "y": 0,
+                "z": 19
+              },
+              "packedIndex": 18,
+              "properties": null,
+              "quantity": 1,
+              "refId": 7187701,
+              "sequence": "",
+              "uniqueId": "7187701-1",
+              "virtual": false,
+              "weight": 1.57
+            }
+          },
+          {
+            "item": {
+              "centerOfMass": {
+                "x": 3.8,
+                "y": 8.1,
+                "z": 16.15
+              },
+              "color": "darkmagenta",
+              "deltaCost": 47,
+              "dimensions": {
+                "x": 7.6,
+                "y": 5.4,
+                "z": 1.9
+              },
+              "globalId": 2,
+              "index": 20,
+              "message": "packed #19 in 46.62µs at 21.441978ms in Box(name:3PBO dimensions:[8.75,13.5,21] weight:65 index:0)",
+              "name": "Practice",
+              "origin": {
+                "x": 0,
+                "y": 5.4,
+                "z": 15.2
+              },
+              "packedIndex": 19,
+              "properties": null,
+              "quantity": 1,
+              "refId": 7187701,
+              "sequence": "",
+              "uniqueId": "7187701-2",
+              "virtual": false,
+              "weight": 1.57
+            }
+          },
+          {
+            "item": {
+              "centerOfMass": {
+                "x": 3.8,
+                "y": 8.1,
+                "z": 18.05
+              },
+              "color": "darkmagenta",
+              "deltaCost": 44,
+              "dimensions": {
+                "x": 7.6,
+                "y": 5.4,
+                "z": 1.9
+              },
+              "globalId": 3,
+              "index": 21,
+              "message": "packed #20 in 54.9µs at 21.497798ms in Box(name:3PBO dimensions:[8.75,13.5,21] weight:65 index:0)",
+              "name": "Practice",
+              "origin": {
+                "x": 0,
+                "y": 5.4,
+                "z": 17.1
+              },
+              "packedIndex": 20,
+              "properties": null,
+              "quantity": 1,
+              "refId": 7187701,
+              "sequence": "",
+              "uniqueId": "7187701-3",
+              "virtual": false,
+              "weight": 1.57
+            }
+          },
+          {
+            "item": {
+              "centerOfMass": {
+                "x": 3.8,
+                "y": 8.1,
+                "z": 19.95
+              },
+              "color": "darkmagenta",
+              "deltaCost": 86,
+              "dimensions": {
+                "x": 7.6,
+                "y": 5.4,
+                "z": 1.9
+              },
+              "globalId": 4,
+              "index": 22,
+              "message": "packed #21 in 49.02µs at 21.547808ms in Box(name:3PBO dimensions:[8.75,13.5,21] weight:65 index:0)",
+              "name": "Practice",
+              "origin": {
+                "x": 0,
+                "y": 5.4,
+                "z": 19
+              },
+              "packedIndex": 21,
+              "properties": null,
+              "quantity": 1,
+              "refId": 7187701,
+              "sequence": "",
+              "uniqueId": "7187701-4",
+              "virtual": false,
+              "weight": 1.57
+            }
+          },
+          {
+            "item": {
+              "centerOfMass": {
+                "x": 3.8,
+                "y": 11.75,
+                "z": 2.7
+              },
+              "color": "darkmagenta",
+              "deltaCost": 80,
+              "dimensions": {
+                "x": 7.6,
+                "y": 1.9,
+                "z": 5.4
+              },
+              "globalId": 5,
+              "index": 23,
+              "message": "packed #22 in 73.63µs at 21.622518ms in Box(name:3PBO dimensions:[8.75,13.5,21] weight:65 index:0)",
+              "name": "Practice",
+              "origin": {
+                "x": 0,
+                "y": 10.8,
+                "z": 0
+              },
+              "packedIndex": 22,
+              "properties": null,
+              "quantity": 1,
+              "refId": 7187701,
+              "sequence": "",
+              "uniqueId": "7187701-5",
+              "virtual": false,
+              "weight": 1.57
+            }
+          },
+          {
+            "item": {
+              "centerOfMass": {
+                "x": 3.8,
+                "y": 11.75,
+                "z": 8.1
+              },
+              "color": "darkmagenta",
+              "deltaCost": 42,
+              "dimensions": {
+                "x": 7.6,
+                "y": 1.9,
+                "z": 5.4
+              },
+              "globalId": 6,
+              "index": 24,
+              "message": "packed #23 in 57.76µs at 21.681258ms in Box(name:3PBO dimensions:[8.75,13.5,21] weight:65 index:0)",
+              "name": "Practice",
+              "origin": {
+                "x": 0,
+                "y": 10.8,
+                "z": 5.4
+              },
+              "packedIndex": 23,
+              "properties": null,
+              "quantity": 1,
+              "refId": 7187701,
+              "sequence": "",
+              "uniqueId": "7187701-6",
+              "virtual": false,
+              "weight": 1.57
+            }
+          }
+        ],
+        "lenItems": 24,
+        "lenUnits": 24,
+        "name": "3PBO",
+        "origin": {
+          "x": 0,
+          "y": 0,
+          "z": 0
+        },
+        "price": 2155,
+        "properties": null,
+        "propertyConstraints": null,
+        "refId": 0,
+        "subspace": null,
+        "volumeMax": 2480.625,
+        "volumeNet": 1871.424,
+        "volumeRemaining": 609.201,
+        "volumeReserved": 0,
+        "volumeUsed": 1871.424,
+        "volumeUtilization": 0.75441633,
+        "weightMax": 65,
+        "weightNet": 37.080000000000005,
+        "weightRemaining": 27.92,
+        "weightTare": 0,
+        "weightUsed": 37.08,
+        "weightUtilization": 0.57046154
+      }
+    }
+  ],
+  "built": "2026-10-01T04:57:10.585668047Z",
+  "host": "api.prod.paccurate.io",
+  "imageScaleStyleUsed": "fill",
+  "itemSortReverseUsed": false,
+  "itemSortUsed": "default",
+  "leftovers": [],
+  "lenBoxes": 1,
+  "lenItems": 24,
+  "lenLeftovers": 0,
+  "lenUnits": 24,
+  "orderId": "9172381",
+  "packTime": 0.021685588,
+  "packUuid": "01a0ff03-392c-766a-8b0b-7ea6cf1e19b2",
+  "renderTime": 0.065622576,
+  "requestFingerprint": "631c81f389067b82b22c69408f8ceeaab1c2d1679ab5c812223267e21fccbd95cf1845d7a2f7de72718ba99d6dd001647c230511778828caefa2bef08d5e032b",
+  "responseFingerprint": "528782a70be7ebcaa554e6ff0671628ca22fe458dc965890cebb3503c5b1aabc6d225fd8aab39bac6010145c7139484f9215ed55d5ec179f41b3b4ade305d316",
+  "startedAt": "2026-10-02T23:46:36.460627381Z",
+  "svgs": [
+    "<figure class='box-figure' data-box-index=0><svg viewBox='-94.824269,-64.804314,304.9398,265.36139'> [<line data-volume-index='0' class='volume-line' x1='24.5' y1='24.5' x2='24.5' y2='24.5'/>\n <line data-volume-index='0' class='volume-line' x1='24.5' y1='24.5' x2='24.5' y2='24.5'/>\n <line data-volume-index='0' class='volume-line' x1='24.5' y1='24.5' x2='24.5' y2='24.5'/>\n <line data-volume-index='0' class='volume-line' x1='24.5' y1='24.5' x2='210.11553' y2='131.66518'/>\n <line data-volume-index='0' class='volume-line' x1='24.5' y1='24.5' x2='-94.824269' y2='93.391899'/>\n <line data-volume-index='0' class='volume-line' x1='24.5' y1='24.5' x2='24.5' y2='-64.804314'/>\n] <polygon vector-effect='non-scaling-stroke' data-item-ref-id='7154901' data-volume-index='1' data-side='[1.9 5.4 7.6] [1 0 0]' data-direction='0 [1.9 5.4 7.6] [1 0 0] [] [] [1,0,0]' data-max-depth='5.6672849' data-min-depth='1.9145082' class='volume-line' points='43.945436,71.448553 91.675144,43.891794 24.5,5.1082062 -23.229708,32.664966' style='fill:mediumturquoise;' />\n<polygon vector-effect='non-scaling-stroke' data-item-ref-id='7154901' data-volume-index='1' data-side='[1.9 5.4 7.6] [0 1 0]' data-direction='1 [1.9 5.4 7.6] [0 1 0] [] [] [0,1,0]' data-max-depth='5.6672849' data-min-depth='2.9248711' class='volume-line' points='43.945436,90.840347 43.945436,71.448553 -23.229708,32.664966 -23.229708,52.05676' style='fill:mediumturquoise;' />\n<polygon vector-effect='non-scaling-stroke' data-item-ref-id='7154901' data-volume-index='1' data-side='[1.9 5.4 7.6] [0 0 1]' data-direction='2 [1.9 5.4 7.6] [0 0 1] [] [] [0,0,1]' data-max-depth='5.6672849' data-min-depth='3.5599564' class='volume-line' points='91.675144,63.283588 91.675144,43.891794 43.945436,71.448553 43.945436,90.840347' style='fill:mediumturquoise;' />\n<polygon vector-effect='non-scaling-stroke' data-item-ref-id='7154901' data-volume-index='2' data-side='[1.9 5.4 15.2] [1 0 0]' data-direction='3 [1.9 5.4 15.2] [1 0 0] [] [] [1,0,0]' data-max-depth='7.8612159' data-min-depth='4.1084392' class='volume-line' points='111.12058,110.23214 158.85029,82.675381 91.675144,43.891794 43.945436,71.448553' style='fill:mediumturquoise;' />\n<polygon vector-effect='non-scaling-stroke' data-item-ref-id='7154901' data-volume-index='2' data-side='[1.9 5.4 15.2] [0 1 0]' data-direction='4 [1.9 5.4 15.2] [0 1 0] [] [] [0,1,0]' data-max-depth='7.8612159' data-min-depth='5.1188022' class='volume-line' points='111.12058,129.62393 111.12058,110.23214 43.945436,71.448553 43.945436,90.840347' style='fill:mediumturquoise;' />\n<polygon vector-effect='non-scaling-stroke' data-item-ref-id='7154901' data-volume-index='2' data-side='[1.9 5.4 15.2] [0 0 1]' data-direction='5 [1.9 5.4 15.2] [0 0 1] [] [] [0,0,1]' data-max-depth='7.8612159' data-min-depth='5.7538875' class='volume-line' points='158.85029,102.06718 158.85029,82.675381 111.12058,110.23214 111.12058,129.62393' style='fill:mediumturquoise;' />\n<polygon vector-effect='non-scaling-stroke' data-item-ref-id='7154901' data-volume-index='3' data-side='[1.9 10.8 7.6] [1 0 0]' data-direction='6 [1.9 10.8 7.6] [1 0 0] [] [] [1,0,0]' data-max-depth='7.2261306' data-min-depth='3.4733539' class='volume-line' points='-3.7842712,99.005313 43.945436,71.448553 -23.229708,32.664966 -70.959415,60.221725' style='fill:mediumturquoise;' />\n<polygon vector-effect='non-scaling-stroke' data-item-ref-id='7154901' data-volume-index='3' data-side='[1.9 10.8 7.6] [0 1 0]' data-direction='7 [1.9 10.8 7.6] [0 1 0] [] [] [0,1,0]' data-max-depth='7.2261306' data-min-depth='4.4837169' class='volume-line' points='-3.7842712,118.39711 -3.7842712,99.005313 -70.959415,60.221725 -70.959415,79.613519' style='fill:mediumturquoise;' />\n<polygon vector-effect='non-scaling-stroke' data-item-ref-id='7154901' data-volume-index='3' data-side='[1.9 10.8 7.6] [0 0 1]' data-direction='8 [1.9 10.8 7.6] [0 0 1] [] [] [0,0,1]' data-max-depth='7.2261306' data-min-depth='5.1188022' class='volume-line' points='43.945436,90.840347 43.945436,71.448553 -3.7842712,99.005313 -3.7842712,118.39711' style='fill:mediumturquoise;' />\n<polygon vector-effect='non-scaling-stroke' data-item-ref-id='7154901' data-volume-index='4' data-side='[1.9 10.8 15.2] [1 0 0]' data-direction='9 [1.9 10.8 15.2] [1 0 0] [] [] [1,0,0]' data-max-depth='9.4200617' data-min-depth='5.6672849' class='volume-line' points='63.390873,137.7889 111.12058,110.23214 43.945436,71.448553 -3.7842712,99.005313' style='fill:mediumturquoise;' />\n<polygon vector-effect='non-scaling-stroke' data-item-ref-id='7154901' data-volume-index='4' data-side='[1.9 10.8 15.2] [0 1 0]' data-direction='10 [1.9 10.8 15.2] [0 1 0] [] [] [0,1,0]' data-max-depth='9.4200617' data-min-depth='6.6776479' class='volume-line' points='63.390873,157.18069 63.390873,137.7889 -3.7842712,99.005313 -3.7842712,118.39711' style='fill:mediumturquoise;' />\n<polygon vector-effect='non-scaling-stroke' data-item-ref-id='7154901' data-volume-index='4' data-side='[1.9 10.8 15.2] [0 0 1]' data-direction='11 [1.9 10.8 15.2] [0 0 1] [] [] [0,0,1]' data-max-depth='9.4200617' data-min-depth='7.3127332' class='volume-line' points='111.12058,129.62393 111.12058,110.23214 63.390873,137.7889 63.390873,157.18069' style='fill:mediumturquoise;' />\n<polygon vector-effect='non-scaling-stroke' data-item-ref-id='7154901' data-volume-index='5' data-side='[3.8 5.4 7.6] [1 0 0]' data-direction='12 [3.8 5.4 7.6] [1 0 0] [] [] [1,0,0]' data-max-depth='6.2157677' data-min-depth='2.4629909' class='volume-line' points='43.945436,52.05676 91.675144,24.5 24.5,-14.283588 -23.229708,13.273172' style='fill:mediumturquoise;' />\n<polygon vector-effect='non-scaling-stroke' data-item-ref-id='7154901' data-volume-index='5' data-side='[3.8 5.4 7.6] [0 1 0]' data-direction='13 [3.8 5.4 7.6] [0 1 0] [] [] [0,1,0]' data-max-depth='6.2157677' data-min-depth='3.4733539' class='volume-line' points='43.945436,71.448553 43.945436,52.05676 -23.229708,13.273172 -23.229708,32.664966' style='fill:mediumturquoise;' />\n<polygon vector-effect='non-scaling-stroke' data-item-ref-id='7154901' data-volume-index='5' data-side='[3.8 5.4 7.6] [0 0 1]' data-direction='14 [3.8 5.4 7.6] [0 0 1] [] [] [0,0,1]' data-max-depth='6.2157677' data-min-depth='4.1084392' class='volume-line' points='91.675144,43.891794 91.675144,24.5 43.945436,52.05676 43.945436,71.448553' style='fill:mediumturquoise;' />\n<polygon vector-effect='non-scaling-stroke' data-item-ref-id='7154901' data-volume-index='6' data-side='[3.8 5.4 15.2] [1 0 0]' data-direction='15 [3.8 5.4 15.2] [1 0 0] [] [] [1,0,0]' data-max-depth='8.4096987' data-min-depth='4.6569219' class='volume-line' points='111.12058,90.840347 158.85029,63.283588 91.675144,24.5 43.945436,52.05676' style='fill:mediumturquoise;' />\n<polygon vector-effect='non-scaling-stroke' data-item-ref-id='7154901' data-volume-index='6' data-side='[3.8 5.4 15.2] [0 1 0]' data-direction='16 [3.8 5.4 15.2] [0 1 0] [] [] [0,1,0]' data-max-depth='8.4096987' data-min-depth='5.6672849' class='volume-line' points='111.12058,110.23214 111.12058,90.840347 43.945436,52.05676 43.945436,71.448553' style='fill:mediumturquoise;' />\n<polygon vector-effect='non-scaling-stroke' data-item-ref-id='7154901' data-volume-index='6' data-side='[3.8 5.4 15.2] [0 0 1]' data-direction='17 [3.8 5.4 15.2] [0 0 1] [] [] [0,0,1]' data-max-depth='8.4096987' data-min-depth='6.3023702' class='volume-line' points='158.85029,82.675381 158.85029,63.283588 111.12058,90.840347 111.12058,110.23214' style='fill:mediumturquoise;' />\n<polygon vector-effect='non-scaling-stroke' data-item-ref-id='7154901' data-volume-index='7' data-side='[3.8 10.8 7.6] [1 0 0]' data-direction='18 [3.8 10.8 7.6] [1 0 0] [] [] [1,0,0]' data-max-depth='7.7746134' data-min-depth='4.0218366' class='volume-line' points='-3.7842712,79.613519 43.945436,52.05676 -23.229708,13.273172 -70.959415,40.829932' style='fill:mediumturquoise;' />\n<polygon vector-effect='non-scaling-stroke' data-item-ref-id='7154901' data-volume-index='7' data-side='[3.8 10.8 7.6] [0 1 0]' data-direction='19 [3.8 10.8 7.6] [0 1 0] [] [] [0,1,0]' data-max-depth='7.7746134' data-min-depth='5.0321996' class='volume-line' points='-3.7842712,99.005313 -3.7842712,79.613519 -70.959415,40.829932 -70.959415,60.221725' style='fill:mediumturquoise;' />\n<polygon vector-effect='non-scaling-stroke' data-item-ref-id='7154901' data-volume-index='7' data-side='[3.8 10.8 7.6] [0 0 1]' data-direction='20 [3.8 10.8 7.6] [0 0 1] [] [] [0,0,1]' data-max-depth='7.7746134' data-min-depth='5.6672849' class='volume-line' points='43.945436,71.448553 43.945436,52.05676 -3.7842712,79.613519 -3.7842712,99.005313' style='fill:mediumturquoise;' />\n<polygon vector-effect='non-scaling-stroke' data-item-ref-id='7154901' data-volume-index='8' data-side='[3.8 10.8 15.2] [1 0 0]' data-direction='21 [3.8 10.8 15.2] [1 0 0] [] [] [1,0,0]' data-max-depth='9.9685444' data-min-depth='6.2157677' class='volume-line' points='63.390873,118.39711 111.12058,90.840347 43.945436,52.05676 -3.7842712,79.613519' style='fill:mediumturquoise;' />\n<polygon vector-effect='non-scaling-stroke' data-item-ref-id='7154901' data-volume-index='8' data-side='[3.8 10.8 15.2] [0 1 0]' data-direction='22 [3.8 10.8 15.2] [0 1 0] [] [] [0,1,0]' data-max-depth='9.9685444' data-min-depth='7.2261306' class='volume-line' points='63.390873,137.7889 63.390873,118.39711 -3.7842712,79.613519 -3.7842712,99.005313' style='fill:mediumturquoise;' />\n<polygon vector-effect='non-scaling-stroke' data-item-ref-id='7154901' data-volume-index='8' data-side='[3.8 10.8 15.2] [0 0 1]' data-direction='23 [3.8 10.8 15.2] [0 0 1] [] [] [0,0,1]' data-max-depth='9.9685444' data-min-depth='7.8612159' class='volume-line' points='111.12058,110.23214 111.12058,90.840347 63.390873,118.39711 63.390873,137.7889' style='fill:mediumturquoise;' />\n<polygon vector-effect='non-scaling-stroke' data-item-ref-id='7175201' data-volume-index='9' data-side='[5.699999999999999 5.4 7.6] [1 0 0]' data-direction='24 [5.699999999999999 5.4 7.6] [1 0 0] [] [] [1,0,0]' data-max-depth='6.7642504' data-min-depth='3.0114737' class='volume-line' points='43.945436,32.664966 91.675144,5.1082062 24.5,-33.675381 -23.229708,-6.1186218' style='fill:deepskyblue;' />\n<polygon vector-effect='non-scaling-stroke' data-item-ref-id='7175201' data-volume-index='9' data-side='[5.699999999999999 5.4 7.6] [0 1 0]' data-direction='25 [5.699999999999999 5.4 7.6] [0 1 0] [] [] [0,1,0]' data-max-depth='6.7642504' data-min-depth='4.0218366' class='volume-line' points='43.945436,52.05676 43.945436,32.664966 -23.229708,-6.1186218 -23.229708,13.273172' style='fill:deepskyblue;' />\n<polygon vector-effect='non-scaling-stroke' data-item-ref-id='7175201' data-volume-index='9' data-side='[5.699999999999999 5.4 7.6] [0 0 1]' data-direction='26 [5.699999999999999 5.4 7.6] [0 0 1] [] [] [0,0,1]' data-max-depth='6.7642504' data-min-depth='4.6569219' class='volume-line' points='91.675144,24.5 91.675144,5.1082062 43.945436,32.664966 43.945436,52.05676' style='fill:deepskyblue;' />\n<polygon vector-effect='non-scaling-stroke' data-item-ref-id='7175201' data-volume-index='10' data-side='[5.699999999999999 5.4 15.2] [1 0 0]' data-direction='27 [5.699999999999999 5.4 15.2] [1 0 0] [] [] [1,0,0]' data-max-depth='8.9581814' data-min-depth='5.2054047' class='volume-line' points='111.12058,71.448553 158.85029,43.891794 91.675144,5.1082062 43.945436,32.664966' style='fill:deepskyblue;' />\n<polygon vector-effect='non-scaling-stroke' data-item-ref-id='7175201' data-volume-index='10' data-side='[5.699999999999999 5.4 15.2] [0 1 0]' data-direction='28 [5.699999999999999 5.4 15.2] [0 1 0] [] [] [0,1,0]' data-max-depth='8.9581814' data-min-depth='6.2157677' class='volume-line' points='111.12058,90.840347 111.12058,71.448553 43.945436,32.664966 43.945436,52.05676' style='fill:deepskyblue;' />\n<polygon vector-effect='non-scaling-stroke' data-item-ref-id='7175201' data-volume-index='10' data-side='[5.699999999999999 5.4 15.2] [0 0 1]' data-direction='29 [5.699999999999999 5.4 15.2] [0 0 1] [] [] [0,0,1]' data-max-depth='8.9581814' data-min-depth='6.850853' class='volume-line' points='158.85029,63.283588 158.85029,43.891794 111.12058,71.448553 111.12058,90.840347' style='fill:deepskyblue;' />\n<polygon vector-effect='non-scaling-stroke' data-item-ref-id='7175201' data-volume-index='11' data-side='[5.699999999999999 10.8 7.6] [1 0 0]' data-direction='30 [5.699999999999999 10.8 7.6] [1 0 0] [] [] [1,0,0]' data-max-depth='8.3230961' data-min-depth='4.5703194' class='volume-line' points='-3.7842712,60.221725 43.945436,32.664966 -23.229708,-6.1186218 -70.959415,21.438138' style='fill:deepskyblue;' />\n<polygon vector-effect='non-scaling-stroke' data-item-ref-id='7175201' data-volume-index='11' data-side='[5.699999999999999 10.8 7.6] [0 1 0]' data-direction='31 [5.699999999999999 10.8 7.6] [0 1 0] [] [] [0,1,0]' data-max-depth='8.3230961' data-min-depth='5.5806824' class='volume-line' points='-3.7842712,79.613519 -3.7842712,60.221725 -70.959415,21.438138 -70.959415,40.829932' style='fill:deepskyblue;' />\n<polygon vector-effect='non-scaling-stroke' data-item-ref-id='7175201' data-volume-index='11' data-side='[5.699999999999999 10.8 7.6] [0 0 1]' data-direction='32 [5.699999999999999 10.8 7.6] [0 0 1] [] [] [0,0,1]' data-max-depth='8.3230961' data-min-depth='6.2157677' class='volume-line' points='43.945436,52.05676 43.945436,32.664966 -3.7842712,60.221725 -3.7842712,79.613519' style='fill:deepskyblue;' />\n<polygon vector-effect='non-scaling-stroke' data-item-ref-id='7175201' data-volume-index='12' data-side='[5.699999999999999 10.8 15.2] [1 0 0]' data-direction='33 [5.699999999999999 10.8 15.2] [1 0 0] [] [] [1,0,0]' data-max-depth='10.517027' data-min-depth='6.7642504' class='volume-line' points='63.390873,99.005313 111.12058,71.448553 43.945436,32.664966 -3.7842712,60.221725' style='fill:deepskyblue;' />\n<polygon vector-effect='non-scaling-stroke' data-item-ref-id='7175201' data-volume-index='12' data-side='[5.699999999999999 10.8 15.2] [0 1 0]' data-direction='34 [5.699999999999999 10.8 15.2] [0 1 0] [] [] [0,1,0]' data-max-depth='10.517027' data-min-depth='7.7746134' class='volume-line' points='63.390873,118.39711 63.390873,99.005313 -3.7842712,60.221725 -3.7842712,79.613519' style='fill:deepskyblue;' />\n<polygon vector-effect='non-scaling-stroke' data-item-ref-id='7175201' data-volume-index='12' data-side='[5.699999999999999 10.8 15.2] [0 0 1]' data-direction='35 [5.699999999999999 10.8 15.2] [0 0 1] [] [] [0,0,1]' data-max-depth='10.517027' data-min-depth='8.4096987' class='volume-line' points='111.12058,90.840347 111.12058,71.448553 63.390873,99.005313 63.390873,118.39711' style='fill:deepskyblue;' />\n<polygon vector-effect='non-scaling-stroke' data-item-ref-id='7175201' data-volume-index='13' data-side='[7.6 5.4 7.6] [1 0 0]' data-direction='36 [7.6 5.4 7.6] [1 0 0] [] [] [1,0,0]' data-max-depth='7.3127332' data-min-depth='3.5599564' class='volume-line' points='43.945436,13.273172 91.675144,-14.283588 24.5,-53.067175 -23.229708,-25.510416' style='fill:deepskyblue;' />\n<polygon vector-effect='non-scaling-stroke' data-item-ref-id='7175201' data-volume-index='13' data-side='[7.6 5.4 7.6] [0 1 0]' data-direction='37 [7.6 5.4 7.6] [0 1 0] [] [] [0,1,0]' data-max-depth='7.3127332' data-min-depth='4.5703194' class='volume-line' points='43.945436,32.664966 43.945436,13.273172 -23.229708,-25.510416 -23.229708,-6.1186218' style='fill:deepskyblue;' />\n<polygon vector-effect='non-scaling-stroke' data-item-ref-id='7175201' data-volume-index='13' data-side='[7.6 5.4 7.6] [0 0 1]' data-direction='38 [7.6 5.4 7.6] [0 0 1] [] [] [0,0,1]' data-max-depth='7.3127332' data-min-depth='5.2054047' class='volume-line' points='91.675144,5.1082062 91.675144,-14.283588 43.945436,13.273172 43.945436,32.664966' style='fill:deepskyblue;' />\n<polygon vector-effect='non-scaling-stroke' data-item-ref-id='7175201' data-volume-index='14' data-side='[7.6 5.4 15.2] [1 0 0]' data-direction='39 [7.6 5.4 15.2] [1 0 0] [] [] [1,0,0]' data-max-depth='9.5066642' data-min-depth='5.7538875' class='volume-line' points='111.12058,52.05676 158.85029,24.5 91.675144,-14.283588 43.945436,13.273172' style='fill:deepskyblue;' />\n<polygon vector-effect='non-scaling-stroke' data-item-ref-id='7175201' data-volume-index='14' data-side='[7.6 5.4 15.2] [0 1 0]' data-direction='40 [7.6 5.4 15.2] [0 1 0] [] [] [0,1,0]' data-max-depth='9.5066642' data-min-depth='6.7642504' class='volume-line' points='111.12058,71.448553 111.12058,52.05676 43.945436,13.273172 43.945436,32.664966' style='fill:deepskyblue;' />\n<polygon vector-effect='non-scaling-stroke' data-item-ref-id='7175201' data-volume-index='14' data-side='[7.6 5.4 15.2] [0 0 1]' data-direction='41 [7.6 5.4 15.2] [0 0 1] [] [] [0,0,1]' data-max-depth='9.5066642' data-min-depth='7.3993357' class='volume-line' points='158.85029,43.891794 158.85029,24.5 111.12058,52.05676 111.12058,71.448553' style='fill:deepskyblue;' />\n<polygon vector-effect='non-scaling-stroke' data-item-ref-id='7175201' data-volume-index='15' data-side='[7.6 10.8 7.6] [1 0 0]' data-direction='42 [7.6 10.8 7.6] [1 0 0] [] [] [1,0,0]' data-max-depth='8.8715789' data-min-depth='5.1188022' class='volume-line' points='-3.7842712,40.829932 43.945436,13.273172 -23.229708,-25.510416 -70.959415,2.046344' style='fill:deepskyblue;' />\n<polygon vector-effect='non-scaling-stroke' data-item-ref-id='7175201' data-volume-index='15' data-side='[7.6 10.8 7.6] [0 1 0]' data-direction='43 [7.6 10.8 7.6] [0 1 0] [] [] [0,1,0]' data-max-depth='8.8715789' data-min-depth='6.1291651' class='volume-line' points='-3.7842712,60.221725 -3.7842712,40.829932 -70.959415,2.046344 -70.959415,21.438138' style='fill:deepskyblue;' />\n<polygon vector-effect='non-scaling-stroke' data-item-ref-id='7175201' data-volume-index='15' data-side='[7.6 10.8 7.6] [0 0 1]' data-direction='44 [7.6 10.8 7.6] [0 0 1] [] [] [0,0,1]' data-max-depth='8.8715789' data-min-depth='6.7642504' class='volume-line' points='43.945436,32.664966 43.945436,13.273172 -3.7842712,40.829932 -3.7842712,60.221725' style='fill:deepskyblue;' />\n<polygon vector-effect='non-scaling-stroke' data-item-ref-id='7175201' data-volume-index='16' data-side='[7.6 10.8 15.2] [1 0 0]' data-direction='45 [7.6 10.8 15.2] [1 0 0] [] [] [1,0,0]' data-max-depth='11.06551' data-min-depth='7.3127332' class='volume-line' points='63.390873,79.613519 111.12058,52.05676 43.945436,13.273172 -3.7842712,40.829932' style='fill:deepskyblue;' />\n<polygon vector-effect='non-scaling-stroke' data-item-ref-id='7175201' data-volume-index='16' data-side='[7.6 10.8 15.2] [0 1 0]' data-direction='46 [7.6 10.8 15.2] [0 1 0] [] [] [0,1,0]' data-max-depth='11.06551' data-min-depth='8.3230961' class='volume-line' points='63.390873,99.005313 63.390873,79.613519 -3.7842712,40.829932 -3.7842712,60.221725' style='fill:deepskyblue;' />\n<polygon vector-effect='non-scaling-stroke' data-item-ref-id='7175201' data-volume-index='16' data-side='[7.6 10.8 15.2] [0 0 1]' data-direction='47 [7.6 10.8 15.2] [0 0 1] [] [] [0,0,1]' data-max-depth='11.06551' data-min-depth='8.9581814' class='volume-line' points='111.12058,71.448553 111.12058,52.05676 63.390873,79.613519 63.390873,99.005313' style='fill:deepskyblue;' />\n<polygon vector-effect='non-scaling-stroke' data-item-ref-id='7175201' data-volume-index='17' data-side='[7.6 5.4 17.099999999999998] [1 0 0]' data-direction='48 [7.6 5.4 17.099999999999998] [1 0 0] [] [] [1,0,0]' data-max-depth='10.055147' data-min-depth='7.9478185' class='volume-line' points='175.64407,34.195897 158.85029,24.5 111.12058,52.05676 127.91437,61.752657' style='fill:deepskyblue;' />\n<polygon vector-effect='non-scaling-stroke' data-item-ref-id='7175201' data-volume-index='17' data-side='[7.6 5.4 17.099999999999998] [0 1 0]' data-direction='49 [7.6 5.4 17.099999999999998] [0 1 0] [] [] [0,1,0]' data-max-depth='10.055147' data-min-depth='7.3127332' class='volume-line' points='127.91437,139.31983 127.91437,61.752657 111.12058,52.05676 111.12058,129.62393' style='fill:deepskyblue;' />\n<polygon vector-effect='non-scaling-stroke' data-item-ref-id='7175201' data-volume-index='17' data-side='[7.6 5.4 17.099999999999998] [0 0 1]' data-direction='50 [7.6 5.4 17.099999999999998] [0 0 1] [] [] [0,0,1]' data-max-depth='10.055147' data-min-depth='6.3023702' class='volume-line' points='175.64407,111.76307 175.64407,34.195897 127.91437,61.752657 127.91437,139.31983' style='fill:deepskyblue;' />\n<polygon vector-effect='non-scaling-stroke' data-item-ref-id='7187701' data-volume-index='18' data-side='[7.6 5.4 18.999999999999996] [1 0 0]' data-direction='51 [7.6 5.4 18.999999999999996] [1 0 0] [] [] [1,0,0]' data-max-depth='10.60363' data-min-depth='8.4963012' class='volume-line' points='192.43786,43.891794 175.64407,34.195897 127.91437,61.752657 144.70815,71.448553' style='fill:darkmagenta;' />\n<polygon vector-effect='non-scaling-stroke' data-item-ref-id='7187701' data-volume-index='18' data-side='[7.6 5.4 18.999999999999996] [0 1 0]' data-direction='52 [7.6 5.4 18.999999999999996] [0 1 0] [] [] [0,1,0]' data-max-depth='10.60363' data-min-depth='7.8612159' class='volume-line' points='144.70815,149.01573 144.70815,71.448553 127.91437,61.752657 127.91437,139.31983' style='fill:darkmagenta;' />\n<polygon vector-effect='non-scaling-stroke' data-item-ref-id='7187701' data-volume-index='18' data-side='[7.6 5.4 18.999999999999996] [0 0 1]' data-direction='53 [7.6 5.4 18.999999999999996] [0 0 1] [] [] [0,0,1]' data-max-depth='10.60363' data-min-depth='6.850853' class='volume-line' points='192.43786,121.45897 192.43786,43.891794 144.70815,71.448553 144.70815,149.01573' style='fill:darkmagenta;' />\n<polygon vector-effect='non-scaling-stroke' data-item-ref-id='7187701' data-volume-index='19' data-side='[7.6 5.4 20.899999999999995] [1 0 0]' data-direction='54 [7.6 5.4 20.899999999999995] [1 0 0] [] [] [1,0,0]' data-max-depth='11.152112' data-min-depth='9.044784' class='volume-line' points='209.23165,53.587691 192.43786,43.891794 144.70815,71.448553 161.50194,81.14445' style='fill:darkmagenta;' />\n<polygon vector-effect='non-scaling-stroke' data-item-ref-id='7187701' data-volume-index='19' data-side='[7.6 5.4 20.899999999999995] [0 1 0]' data-direction='55 [7.6 5.4 20.899999999999995] [0 1 0] [] [] [0,1,0]' data-max-depth='11.152112' data-min-depth='8.4096987' class='volume-line' points='161.50194,158.71163 161.50194,81.14445 144.70815,71.448553 144.70815,149.01573' style='fill:darkmagenta;' />\n<polygon vector-effect='non-scaling-stroke' data-item-ref-id='7187701' data-volume-index='19' data-side='[7.6 5.4 20.899999999999995] [0 0 1]' data-direction='56 [7.6 5.4 20.899999999999995] [0 0 1] [] [] [0,0,1]' data-max-depth='11.152112' data-min-depth='7.3993357' class='volume-line' points='209.23165,131.15487 209.23165,53.587691 161.50194,81.14445 161.50194,158.71163' style='fill:darkmagenta;' />\n<polygon vector-effect='non-scaling-stroke' data-item-ref-id='7187701' data-volume-index='20' data-side='[7.6 10.8 17.099999999999998] [1 0 0]' data-direction='57 [7.6 10.8 17.099999999999998] [1 0 0] [] [] [1,0,0]' data-max-depth='11.613993' data-min-depth='9.5066642' class='volume-line' points='127.91437,61.752657 111.12058,52.05676 63.390873,79.613519 80.184659,89.309416' style='fill:darkmagenta;' />\n<polygon vector-effect='non-scaling-stroke' data-item-ref-id='7187701' data-volume-index='20' data-side='[7.6 10.8 17.099999999999998] [0 1 0]' data-direction='58 [7.6 10.8 17.099999999999998] [0 1 0] [] [] [0,1,0]' data-max-depth='11.613993' data-min-depth='8.8715789' class='volume-line' points='80.184659,166.87659 80.184659,89.309416 63.390873,79.613519 63.390873,157.18069' style='fill:darkmagenta;' />\n<polygon vector-effect='non-scaling-stroke' data-item-ref-id='7187701' data-volume-index='20' data-side='[7.6 10.8 17.099999999999998] [0 0 1]' data-direction='59 [7.6 10.8 17.099999999999998] [0 0 1] [] [] [0,0,1]' data-max-depth='11.613993' data-min-depth='7.8612159' class='volume-line' points='127.91437,139.31983 127.91437,61.752657 80.184659,89.309416 80.184659,166.87659' style='fill:darkmagenta;' />\n<polygon vector-effect='non-scaling-stroke' data-item-ref-id='7187701' data-volume-index='21' data-side='[7.6 10.8 18.999999999999996] [1 0 0]' data-direction='60 [7.6 10.8 18.999999999999996] [1 0 0] [] [] [1,0,0]' data-max-depth='12.162475' data-min-depth='10.055147' class='volume-line' points='144.70815,71.448553 127.91437,61.752657 80.184659,89.309416 96.978445,99.005313' style='fill:darkmagenta;' />\n<polygon vector-effect='non-scaling-stroke' data-item-ref-id='7187701' data-volume-index='21' data-side='[7.6 10.8 18.999999999999996] [0 1 0]' data-direction='61 [7.6 10.8 18.999999999999996] [0 1 0] [] [] [0,1,0]' data-max-depth='12.162475' data-min-depth='9.4200617' class='volume-line' points='96.978445,176.57249 96.978445,99.005313 80.184659,89.309416 80.184659,166.87659' style='fill:darkmagenta;' />\n<polygon vector-effect='non-scaling-stroke' data-item-ref-id='7187701' data-volume-index='21' data-side='[7.6 10.8 18.999999999999996] [0 0 1]' data-direction='62 [7.6 10.8 18.999999999999996] [0 0 1] [] [] [0,0,1]' data-max-depth='12.162475' data-min-depth='8.4096987' class='volume-line' points='144.70815,149.01573 144.70815,71.448553 96.978445,99.005313 96.978445,176.57249' style='fill:darkmagenta;' />\n<polygon vector-effect='non-scaling-stroke' data-item-ref-id='7187701' data-volume-index='22' data-side='[7.6 10.8 20.899999999999995] [1 0 0]' data-direction='63 [7.6 10.8 20.899999999999995] [1 0 0] [] [] [1,0,0]' data-max-depth='12.710958' data-min-depth='10.60363' class='volume-line' points='161.50194,81.14445 144.70815,71.448553 96.978445,99.005313 113.77223,108.70121' style='fill:darkmagenta;' />\n<polygon vector-effect='non-scaling-stroke' data-item-ref-id='7187701' data-volume-index='22' data-side='[7.6 10.8 20.899999999999995] [0 1 0]' data-direction='64 [7.6 10.8 20.899999999999995] [0 1 0] [] [] [0,1,0]' data-max-depth='12.710958' data-min-depth='9.9685444' class='volume-line' points='113.77223,186.26839 113.77223,108.70121 96.978445,99.005313 96.978445,176.57249' style='fill:darkmagenta;' />\n<polygon vector-effect='non-scaling-stroke' data-item-ref-id='7187701' data-volume-index='22' data-side='[7.6 10.8 20.899999999999995] [0 0 1]' data-direction='65 [7.6 10.8 20.899999999999995] [0 0 1] [] [] [0,0,1]' data-max-depth='12.710958' data-min-depth='8.9581814' class='volume-line' points='161.50194,158.71163 161.50194,81.14445 113.77223,108.70121 113.77223,186.26839' style='fill:darkmagenta;' />\n<polygon vector-effect='non-scaling-stroke' data-item-ref-id='7187701' data-volume-index='23' data-side='[7.6 12.700000000000001 5.4] [1 0 0]' data-direction='66 [7.6 12.700000000000001 5.4] [1 0 0] [] [] [1,0,0]' data-max-depth='8.7849764' data-min-depth='6.6776479' class='volume-line' points='-40.023494,39.299001 -23.229708,29.603104 -70.959415,2.046344 -87.753202,11.742241' style='fill:darkmagenta;' />\n<polygon vector-effect='non-scaling-stroke' data-item-ref-id='7187701' data-volume-index='23' data-side='[7.6 12.700000000000001 5.4] [0 1 0]' data-direction='67 [7.6 12.700000000000001 5.4] [0 1 0] [] [] [0,1,0]' data-max-depth='8.7849764' data-min-depth='5.0321996' class='volume-line' points='-40.023494,116.86618 -40.023494,39.299001 -87.753202,11.742241 -87.753202,89.309416' style='fill:darkmagenta;' />\n<polygon vector-effect='non-scaling-stroke' data-item-ref-id='7187701' data-volume-index='23' data-side='[7.6 12.700000000000001 5.4] [0 0 1]' data-direction='68 [7.6 12.700000000000001 5.4] [0 0 1] [] [] [0,0,1]' data-max-depth='8.7849764' data-min-depth='6.0425626' class='volume-line' points='-23.229708,107.17028 -23.229708,29.603104 -40.023494,39.299001 -40.023494,116.86618' style='fill:darkmagenta;' />\n<polygon vector-effect='non-scaling-stroke' data-item-ref-id='7187701' data-volume-index='24' data-side='[7.6 12.700000000000001 10.8] [1 0 0]' data-direction='69 [7.6 12.700000000000001 10.8] [1 0 0] [] [] [1,0,0]' data-max-depth='10.343822' data-min-depth='8.2364936' class='volume-line' points='7.7062139,66.85576 24.5,57.159863 -23.229708,29.603104 -40.023494,39.299001' style='fill:darkmagenta;' />\n<polygon vector-effect='non-scaling-stroke' data-item-ref-id='7187701' data-volume-index='24' data-side='[7.6 12.700000000000001 10.8] [0 1 0]' data-direction='70 [7.6 12.700000000000001 10.8] [0 1 0] [] [] [0,1,0]' data-max-depth='10.343822' data-min-depth='6.5910453' class='volume-line' points='7.7062139,144.42294 7.7062139,66.85576 -40.023494,39.299001 -40.023494,116.86618' style='fill:darkmagenta;' />\n<polygon vector-effect='non-scaling-stroke' data-item-ref-id='7187701' data-volume-index='24' data-side='[7.6 12.700000000000001 10.8] [0 0 1]' data-direction='71 [7.6 12.700000000000001 10.8] [0 0 1] [] [] [0,0,1]' data-max-depth='10.343822' data-min-depth='7.6014083' class='volume-line' points='24.5,134.72704 24.5,57.159863 7.7062139,66.85576 7.7062139,144.42294' style='fill:darkmagenta;' />\n [<line data-volume-index='0' class='volume-line' x1='210.11553' y1='131.66518' x2='90.791261' y2='200.55708'/>\n <line data-volume-index='0' class='volume-line' x1='210.11553' y1='131.66518' x2='210.11553' y2='42.360863'/>\n <line data-volume-index='0' class='volume-line' x1='90.791261' y1='200.55708' x2='-94.824269' y2='93.391899'/>\n <line data-volume-index='0' class='volume-line' x1='90.791261' y1='200.55708' x2='90.791261' y2='111.25276'/>\n <line data-volume-index='0' class='volume-line' x1='-94.824269' y1='93.391899' x2='-94.824269' y2='4.0875855'/>\n <line data-volume-index='0' class='volume-line' x1='-94.824269' y1='4.0875855' x2='24.5' y2='-64.804314'/>\n <line data-volume-index='0' class='volume-line' x1='-94.824269' y1='4.0875855' x2='90.791261' y2='111.25276'/>\n <line data-volume-index='0' class='volume-line' x1='24.5' y1='-64.804314' x2='210.11553' y2='42.360863'/>\n <line data-volume-index='0' class='volume-line' x1='210.11553' y1='42.360863' x2='90.791261' y2='111.25276'/>\n]</svg><figcaption><b>3PBO</b><br>\n                          packed: 24<br>\n                          weight: \n  37.08 <br>\n                          price:2155</figcaption></figure>"
+  ],
+  "title": "Default",
+  "totalCost": 2155,
+  "totalTime": 0.087308164,
+  "totalVolume": 2480.625,
+  "totalVolumeNet": 1871.424,
+  "totalVolumeUsed": 1871.424,
+  "totalVolumeUtilization": 0.75441633,
+  "totalWeight": 37.08,
+  "usedKeyStem": "REEFkYZGoR",
+  "version": "1.9.2"
+}

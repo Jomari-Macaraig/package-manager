@@ -1,0 +1,288 @@
+{
+  "boxTypeChoiceGoalUsed": "lowest-cost",
+  "boxes": [
+    {
+      "box": {
+        "boxType": {
+          "centerOfMass": {
+            "x": 0,
+            "y": 0,
+            "z": 0
+          },
+          "dimensions": {
+            "x": 5,
+            "y": 6,
+            "z": 8
+          },
+          "itemsInlineOverhang": {
+            "x": -1,
+            "y": -1,
+            "z": -1
+          },
+          "name": "5x6x8",
+          "price": 0,
+          "rateTable": {
+            "basePrice": 0,
+            "carrier": "",
+            "dimFactor": 0,
+            "priceIncreaseRate": 0,
+            "rates": null,
+            "service": "",
+            "weights": null,
+            "zone": ""
+          },
+          "refId": 0,
+          "reservedSpace": null,
+          "weightMax": 150,
+          "weightTare": 0
+        },
+        "centerOfMass": {
+          "x": 1.5,
+          "y": 3,
+          "z": 5.2
+        },
+        "centerOfMassString": "[1.5 3 5.2]",
+        "depthOrder": [
+          1,
+          2,
+          3,
+          4,
+          5
+        ],
+        "depthOrderString": "[1 2 3 4 5]",
+        "dimensionalWeight": 0,
+        "dimensionalWeightUsed": false,
+        "dimensions": {
+          "x": 5,
+          "y": 6,
+          "z": 8
+        },
+        "id": 0,
+        "items": [
+          {
+            "item": {
+              "centerOfMass": {
+                "x": 2.5,
+                "y": 3,
+                "z": 2
+              },
+              "color": "tomato",
+              "deltaCost": 240,
+              "dimensions": {
+                "x": 5,
+                "y": 6,
+                "z": 4
+              },
+              "globalId": 0,
+              "index": 1,
+              "message": "packed #0 in 302.58µs at 1.03357ms in Box(name:5x6x8 dimensions:[5,6,8] weight:150 index:0)",
+              "name": "",
+              "origin": {
+                "x": 0,
+                "y": 0,
+                "z": 0
+              },
+              "packedIndex": 0,
+              "properties": null,
+              "quantity": 1,
+              "refId": 0,
+              "sequence": "",
+              "uniqueId": "0-0",
+              "virtual": false,
+              "weight": 2
+            }
+          },
+          {
+            "item": {
+              "centerOfMass": {
+                "x": 1.25,
+                "y": 1.5,
+                "z": 5
+              },
+              "color": "cornflowerblue",
+              "deltaCost": 0,
+              "dimensions": {
+                "x": 2.5,
+                "y": 3,
+                "z": 2
+              },
+              "globalId": 1,
+              "index": 2,
+              "message": "packed #1 in 7.42µs at 1.05513ms in Box(name:5x6x8 dimensions:[5,6,8] weight:150 index:0)",
+              "name": "",
+              "origin": {
+                "x": 0,
+                "y": 0,
+                "z": 4
+              },
+              "packedIndex": 1,
+              "properties": null,
+              "quantity": 1,
+              "refId": 1,
+              "sequence": "",
+              "uniqueId": "1-0",
+              "virtual": false,
+              "weight": 2
+            }
+          },
+          {
+            "item": {
+              "centerOfMass": {
+                "x": 1.25,
+                "y": 1.5,
+                "z": 7
+              },
+              "color": "cornflowerblue",
+              "deltaCost": 0,
+              "dimensions": {
+                "x": 2.5,
+                "y": 3,
+                "z": 2
+              },
+              "globalId": 2,
+              "index": 3,
+              "message": "packed #2 in 3.96µs at 1.06113ms in Box(name:5x6x8 dimensions:[5,6,8] weight:150 index:0)",
+              "name": "",
+              "origin": {
+                "x": 0,
+                "y": 0,
+                "z": 6
+              },
+              "packedIndex": 2,
+              "properties": null,
+              "quantity": 1,
+              "refId": 1,
+              "sequence": "",
+              "uniqueId": "1-1",
+              "virtual": false,
+              "weight": 2
+            }
+          },
+          {
+            "item": {
+              "centerOfMass": {
+                "x": 1.25,
+                "y": 4.5,
+                "z": 5
+              },
+              "color": "cornflowerblue",
+              "deltaCost": 0,
+              "dimensions": {
+                "x": 2.5,
+                "y": 3,
+                "z": 2
+              },
+              "globalId": 3,
+              "index": 4,
+              "message": "packed #3 in 12.25µs at 1.07473ms in Box(name:5x6x8 dimensions:[5,6,8] weight:150 index:0)",
+              "name": "",
+              "origin": {
+                "x": 0,
+                "y": 3,
+                "z": 4
+              },
+              "packedIndex": 3,
+              "properties": null,
+              "quantity": 1,
+              "refId": 1,
+              "sequence": "",
+              "uniqueId": "1-2",
+              "virtual": false,
+              "weight": 2
+            }
+          },
+          {
+            "item": {
+              "centerOfMass": {
+                "x": 1.25,
+                "y": 4.5,
+                "z": 7
+              },
+              "color": "cornflowerblue",
+              "deltaCost": 0,
+              "dimensions": {
+                "x": 2.5,
+                "y": 3,
+                "z": 2
+              },
+              "globalId": 4,
+              "index": 5,
+              "message": "packed #4 in 6.55µs at 1.0823ms in Box(name:5x6x8 dimensions:[5,6,8] weight:150 index:0)",
+              "name": "",
+              "origin": {
+                "x": 0,
+                "y": 3,
+                "z": 6
+              },
+              "packedIndex": 4,
+              "properties": null,
+              "quantity": 1,
+              "refId": 1,
+              "sequence": "",
+              "uniqueId": "1-3",
+              "virtual": false,
+              "weight": 2
+            }
+          }
+        ],
+        "lenItems": 5,
+        "lenUnits": 5,
+        "name": "5x6x8",
+        "origin": {
+          "x": 0,
+          "y": 0,
+          "z": 0
+        },
+        "price": 240,
+        "properties": null,
+        "propertyConstraints": null,
+        "refId": 0,
+        "subspace": null,
+        "volumeMax": 240,
+        "volumeNet": 180,
+        "volumeRemaining": 60,
+        "volumeReserved": 0,
+        "volumeUsed": 180,
+        "volumeUtilization": 0.75,
+        "weightMax": 150,
+        "weightNet": 10,
+        "weightRemaining": 140,
+        "weightTare": 0,
+        "weightUsed": 10,
+        "weightUtilization": 0.066666667
+      }
+    }
+  ],
+  "built": "2026-10-01T04:57:10.585668047Z",
+  "host": "api.prod.paccurate.io",
+  "imageScaleStyleUsed": "fill",
+  "itemSortReverseUsed": false,
+  "itemSortUsed": "default",
+  "leftovers": [],
+  "lenBoxes": 1,
+  "lenItems": 5,
+  "lenLeftovers": 0,
+  "lenUnits": 5,
+  "packTime": 0.00108687,
+  "packUuid": "01a0ff07-18d0-73fe-a8b7-7253d8381ffc",
+  "renderTime": 0.00245546,
+  "requestFingerprint": "604e2251081d6e6bc02e9d85694d2fba80ac17278948a81b29aef0243014c884b3bd61d842fd0014ad0eb848d34fb04e905913d4609befdd0d042b436bd67d1a",
+  "responseFingerprint": "2b39cae0a2b8b3f462fad0b42114a085cccc002af9f7b19bf1877149da56ccc8ccb6cc6fb1554da263e42af4bd06a88895ab22ec6f02e852d81916a066fb5c18",
+  "startedAt": "2026-10-02T23:50:50.320427829Z",
+  "svgs": [
+    "<figure class='box-figure' data-box-index=0><svg viewBox='-28.533009,-26.531036,123.74369,122.47449'> [<line data-volume-index='0' class='volume-line' x1='24.5' y1='24.5' x2='24.5' y2='24.5'/>\n <line data-volume-index='0' class='volume-line' x1='24.5' y1='24.5' x2='24.5' y2='24.5'/>\n <line data-volume-index='0' class='volume-line' x1='24.5' y1='24.5' x2='24.5' y2='24.5'/>\n <line data-volume-index='0' class='volume-line' x1='24.5' y1='24.5' x2='95.210678' y2='65.324829'/>\n <line data-volume-index='0' class='volume-line' x1='24.5' y1='24.5' x2='-28.533009' y2='55.118622'/>\n <line data-volume-index='0' class='volume-line' x1='24.5' y1='24.5' x2='24.5' y2='-26.531036'/>\n] <polygon vector-effect='non-scaling-stroke' data-item-ref-id='0' data-volume-index='1' data-side='[5 6 4] [1 0 0]' data-direction='0 [5 6 4] [1 0 0] [] [] [1,0,0]' data-max-depth='5.6961524' data-min-depth='2.8094011' class='volume-line' points='59.855339,-6.1186218 24.5,-26.531036 -28.533009,4.0875855 6.8223305,24.5' style='fill:tomato;' />\n<polygon vector-effect='non-scaling-stroke' data-item-ref-id='0' data-volume-index='1' data-side='[5 6 4] [0 1 0]' data-direction='1 [5 6 4] [0 1 0] [] [] [0,1,0]' data-max-depth='5.6961524' data-min-depth='3.0980762' class='volume-line' points='6.8223305,75.531036 6.8223305,24.5 -28.533009,4.0875855 -28.533009,55.118622' style='fill:tomato;' />\n<polygon vector-effect='non-scaling-stroke' data-item-ref-id='0' data-volume-index='1' data-side='[5 6 4] [0 0 1]' data-direction='2 [5 6 4] [0 0 1] [] [] [0,0,1]' data-max-depth='5.6961524' data-min-depth='2.5207259' class='volume-line' points='59.855339,44.912415 59.855339,-6.1186218 6.8223305,24.5 6.8223305,75.531036' style='fill:tomato;' />\n<polygon vector-effect='non-scaling-stroke' data-item-ref-id='1' data-volume-index='2' data-side='[2.5 3 6] [1 0 0]' data-direction='3 [2.5 3 6] [1 0 0] [] [] [1,0,0]' data-max-depth='4.6857895' data-min-depth='3.2424138' class='volume-line' points='77.533009,29.603104 59.855339,19.396896 33.338835,34.706207 51.016504,44.912415' style='fill:cornflowerblue;' />\n<polygon vector-effect='non-scaling-stroke' data-item-ref-id='1' data-volume-index='2' data-side='[2.5 3 6] [0 1 0]' data-direction='4 [2.5 3 6] [0 1 0] [] [] [0,1,0]' data-max-depth='4.6857895' data-min-depth='3.3867513' class='volume-line' points='51.016504,70.427933 51.016504,44.912415 33.338835,34.706207 33.338835,60.221725' style='fill:cornflowerblue;' />\n<polygon vector-effect='non-scaling-stroke' data-item-ref-id='1' data-volume-index='2' data-side='[2.5 3 6] [0 0 1]' data-direction='5 [2.5 3 6] [0 0 1] [] [] [0,0,1]' data-max-depth='4.6857895' data-min-depth='3.0980762' class='volume-line' points='77.533009,55.118622 77.533009,29.603104 51.016504,44.912415 51.016504,70.427933' style='fill:cornflowerblue;' />\n<polygon vector-effect='non-scaling-stroke' data-item-ref-id='1' data-volume-index='3' data-side='[2.5 3 8] [1 0 0]' data-direction='6 [2.5 3 8] [1 0 0] [] [] [1,0,0]' data-max-depth='5.2631397' data-min-depth='3.819764' class='volume-line' points='95.210678,39.809311 77.533009,29.603104 51.016504,44.912415 68.694174,55.118622' style='fill:cornflowerblue;' />\n<polygon vector-effect='non-scaling-stroke' data-item-ref-id='1' data-volume-index='3' data-side='[2.5 3 8] [0 1 0]' data-direction='7 [2.5 3 8] [0 1 0] [] [] [0,1,0]' data-max-depth='5.2631397' data-min-depth='3.9641016' class='volume-line' points='68.694174,80.63414 68.694174,55.118622 51.016504,44.912415 51.016504,70.427933' style='fill:cornflowerblue;' />\n<polygon vector-effect='non-scaling-stroke' data-item-ref-id='1' data-volume-index='3' data-side='[2.5 3 8] [0 0 1]' data-direction='8 [2.5 3 8] [0 0 1] [] [] [0,0,1]' data-max-depth='5.2631397' data-min-depth='3.6754265' class='volume-line' points='95.210678,65.324829 95.210678,39.809311 68.694174,55.118622 68.694174,80.63414' style='fill:cornflowerblue;' />\n<polygon vector-effect='non-scaling-stroke' data-item-ref-id='1' data-volume-index='4' data-side='[2.5 6 6] [1 0 0]' data-direction='9 [2.5 6 6] [1 0 0] [] [] [1,0,0]' data-max-depth='5.5518149' data-min-depth='4.1084392' class='volume-line' points='51.016504,44.912415 33.338835,34.706207 6.8223305,50.015518 24.5,60.221725' style='fill:cornflowerblue;' />\n<polygon vector-effect='non-scaling-stroke' data-item-ref-id='1' data-volume-index='4' data-side='[2.5 6 6] [0 1 0]' data-direction='10 [2.5 6 6] [0 1 0] [] [] [0,1,0]' data-max-depth='5.5518149' data-min-depth='4.2527768' class='volume-line' points='24.5,85.737244 24.5,60.221725 6.8223305,50.015518 6.8223305,75.531036' style='fill:cornflowerblue;' />\n<polygon vector-effect='non-scaling-stroke' data-item-ref-id='1' data-volume-index='4' data-side='[2.5 6 6] [0 0 1]' data-direction='11 [2.5 6 6] [0 0 1] [] [] [0,0,1]' data-max-depth='5.5518149' data-min-depth='3.9641016' class='volume-line' points='51.016504,70.427933 51.016504,44.912415 24.5,60.221725 24.5,85.737244' style='fill:cornflowerblue;' />\n<polygon vector-effect='non-scaling-stroke' data-item-ref-id='1' data-volume-index='5' data-side='[2.5 6 8] [1 0 0]' data-direction='12 [2.5 6 8] [1 0 0] [] [] [1,0,0]' data-max-depth='6.1291651' data-min-depth='4.6857895' class='volume-line' points='68.694174,55.118622 51.016504,44.912415 24.5,60.221725 42.17767,70.427933' style='fill:cornflowerblue;' />\n<polygon vector-effect='non-scaling-stroke' data-item-ref-id='1' data-volume-index='5' data-side='[2.5 6 8] [0 1 0]' data-direction='13 [2.5 6 8] [0 1 0] [] [] [0,1,0]' data-max-depth='6.1291651' data-min-depth='4.830127' class='volume-line' points='42.17767,95.943451 42.17767,70.427933 24.5,60.221725 24.5,85.737244' style='fill:cornflowerblue;' />\n<polygon vector-effect='non-scaling-stroke' data-item-ref-id='1' data-volume-index='5' data-side='[2.5 6 8] [0 0 1]' data-direction='14 [2.5 6 8] [0 0 1] [] [] [0,0,1]' data-max-depth='6.1291651' data-min-depth='4.5414519' class='volume-line' points='68.694174,80.63414 68.694174,55.118622 42.17767,70.427933 42.17767,95.943451' style='fill:cornflowerblue;' />\n [<line data-volume-index='0' class='volume-line' x1='95.210678' y1='65.324829' x2='42.17767' y2='95.943451'/>\n <line data-volume-index='0' class='volume-line' x1='95.210678' y1='65.324829' x2='95.210678' y2='14.293793'/>\n <line data-volume-index='0' class='volume-line' x1='42.17767' y1='95.943451' x2='-28.533009' y2='55.118622'/>\n <line data-volume-index='0' class='volume-line' x1='42.17767' y1='95.943451' x2='42.17767' y2='44.912415'/>\n <line data-volume-index='0' class='volume-line' x1='-28.533009' y1='55.118622' x2='-28.533009' y2='4.0875855'/>\n <line data-volume-index='0' class='volume-line' x1='-28.533009' y1='4.0875855' x2='24.5' y2='-26.531036'/>\n <line data-volume-index='0' class='volume-line' x1='-28.533009' y1='4.0875855' x2='42.17767' y2='44.912415'/>\n <line data-volume-index='0' class='volume-line' x1='24.5' y1='-26.531036' x2='95.210678' y2='14.293793'/>\n <line data-volume-index='0' class='volume-line' x1='95.210678' y1='14.293793' x2='42.17767' y2='44.912415'/>\n]</svg><figcaption><b>5x6x8</b><br>\n                          packed: 5<br>\n                          weight: \n  10.00 <br>\n                          price:240</figcaption></figure>"
+  ],
+  "title": "Default",
+  "totalCost": 240,
+  "totalTime": 0.00354233,
+  "totalVolume": 240,
+  "totalVolumeNet": 180,
+  "totalVolumeUsed": 180,
+  "totalVolumeUtilization": 0.75,
+  "totalWeight": 10,
+  "usedKeyStem": "REEFkYZGoR",
+  "version": "1.9.2",
+  "warnings": [
+    "Include orderId and/or requestId in your request for enhanced diagnostics."
+  ]
+}

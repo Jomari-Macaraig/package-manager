@@ -1,0 +1,963 @@
+{
+  "boxTypeChoiceGoalUsed": "most-items",
+  "boxes": [
+    {
+      "box": {
+        "boxType": {
+          "centerOfMass": {
+            "x": 0,
+            "y": 0,
+            "z": 0
+          },
+          "dimensions": {
+            "x": 10.8,
+            "y": 14.7,
+            "z": 15.6
+          },
+          "itemsInlineOverhang": {
+            "x": -1,
+            "y": -1,
+            "z": -1
+          },
+          "name": "generated-12-24-16",
+          "price": 5,
+          "rateTable": {
+            "basePrice": 0,
+            "carrier": "",
+            "dimFactor": 0,
+            "priceIncreaseRate": 0,
+            "rates": null,
+            "service": "",
+            "weights": null,
+            "zone": ""
+          },
+          "refId": 100,
+          "reservedSpace": null,
+          "weightMax": 50,
+          "weightTare": 0
+        },
+        "centerOfMass": {
+          "x": 4.25,
+          "y": 7.25,
+          "z": 6.5
+        },
+        "centerOfMassString": "[4.25 7.25 6.5]",
+        "depthOrder": [
+          1,
+          2
+        ],
+        "depthOrderString": "[1 2]",
+        "dimensionalWeight": 0,
+        "dimensionalWeightUsed": false,
+        "dimensions": {
+          "x": 8.5,
+          "y": 14.5,
+          "z": 13
+        },
+        "id": 0,
+        "items": [
+          {
+            "item": {
+              "centerOfMass": {
+                "x": 4.25,
+                "y": 3.625,
+                "z": 6.5
+              },
+              "color": "#31724d",
+              "deltaCost": 5,
+              "dimensions": {
+                "x": 8.5,
+                "y": 7.25,
+                "z": 13
+              },
+              "globalId": 8,
+              "index": 1,
+              "message": "packed #0 in 1.95957ms at 130.004162ms in Box(name:generated-12-24-16 dimensions:[10.8,14.7,15.6] weight:50 index:0)",
+              "name": "Awesome Metal Tuna",
+              "origin": {
+                "x": 0,
+                "y": 0,
+                "z": 0
+              },
+              "packedIndex": 0,
+              "properties": null,
+              "quantity": 1,
+              "refId": 3,
+              "sequence": "",
+              "uniqueId": "3-0",
+              "virtual": false,
+              "weight": 3
+            }
+          },
+          {
+            "item": {
+              "centerOfMass": {
+                "x": 4.25,
+                "y": 10.875,
+                "z": 6.5
+              },
+              "color": "#31724d",
+              "deltaCost": 0,
+              "dimensions": {
+                "x": 8.5,
+                "y": 7.25,
+                "z": 13
+              },
+              "globalId": 9,
+              "index": 2,
+              "message": "packed #1 in 4.21µs at 130.017382ms in Box(name:generated-12-24-16 dimensions:[10.8,14.7,15.6] weight:50 index:0)",
+              "name": "Awesome Metal Tuna",
+              "origin": {
+                "x": 0,
+                "y": 7.25,
+                "z": 0
+              },
+              "packedIndex": 1,
+              "properties": null,
+              "quantity": 1,
+              "refId": 3,
+              "sequence": "",
+              "uniqueId": "3-1",
+              "virtual": false,
+              "weight": 3
+            }
+          }
+        ],
+        "lenItems": 2,
+        "lenUnits": 2,
+        "name": "generated-12-24-16",
+        "origin": {
+          "x": 0,
+          "y": 0,
+          "z": 0
+        },
+        "price": 2,
+        "properties": null,
+        "propertyConstraints": null,
+        "refId": 100,
+        "subspace": null,
+        "volumeMax": 1602.25,
+        "volumeNet": 1602.25,
+        "volumeRemaining": 0,
+        "volumeReserved": 0,
+        "volumeUsed": 1602.25,
+        "volumeUtilization": 1,
+        "weightMax": 50,
+        "weightNet": 6,
+        "weightRemaining": 44,
+        "weightTare": 0,
+        "weightUsed": 6,
+        "weightUtilization": 0.12
+      }
+    },
+    {
+      "box": {
+        "boxType": {
+          "centerOfMass": {
+            "x": 0,
+            "y": 0,
+            "z": 0
+          },
+          "dimensions": {
+            "x": 12,
+            "y": 24,
+            "z": 15.6
+          },
+          "itemsInlineOverhang": {
+            "x": -1,
+            "y": -1,
+            "z": -1
+          },
+          "name": "generated-12-24-16",
+          "price": 5,
+          "rateTable": {
+            "basePrice": 0,
+            "carrier": "",
+            "dimFactor": 0,
+            "priceIncreaseRate": 0,
+            "rates": null,
+            "service": "",
+            "weights": null,
+            "zone": ""
+          },
+          "refId": 100,
+          "reservedSpace": null,
+          "weightMax": 50,
+          "weightTare": 0
+        },
+        "centerOfMass": {
+          "x": 5.0972222,
+          "y": 11.25,
+          "z": 9.0138889
+        },
+        "centerOfMassString": "[5.09722222 11.25 9.01388889]",
+        "depthOrder": [
+          4,
+          5,
+          6,
+          7,
+          8,
+          9,
+          10
+        ],
+        "depthOrderString": "[4 5 6 7 8 9 10]",
+        "dimensionalWeight": 0,
+        "dimensionalWeightUsed": false,
+        "dimensions": {
+          "x": 10.8,
+          "y": 22.5,
+          "z": 14
+        },
+        "id": 1,
+        "items": [
+          {
+            "item": {
+              "centerOfMass": {
+                "x": 5.375,
+                "y": 5.625,
+                "z": 5.125
+              },
+              "color": "#7a1632",
+              "deltaCost": 5,
+              "dimensions": {
+                "x": 10.75,
+                "y": 11.25,
+                "z": 10.25
+              },
+              "globalId": 0,
+              "index": 4,
+              "message": "packed #2 in 999.05µs at 131.018152ms in Box(name:generated-12-24-16 dimensions:[12,24,15.6] weight:50 index:1)",
+              "name": "Handcrafted Soft Sausages",
+              "origin": {
+                "x": 0,
+                "y": 0,
+                "z": 0
+              },
+              "packedIndex": 2,
+              "properties": null,
+              "quantity": 1,
+              "refId": 1,
+              "sequence": "",
+              "uniqueId": "1-0",
+              "virtual": false,
+              "weight": 4
+            }
+          },
+          {
+            "item": {
+              "centerOfMass": {
+                "x": 5.375,
+                "y": 16.875,
+                "z": 5.125
+              },
+              "color": "#7a1632",
+              "deltaCost": 0,
+              "dimensions": {
+                "x": 10.75,
+                "y": 11.25,
+                "z": 10.25
+              },
+              "globalId": 1,
+              "index": 5,
+              "message": "packed #3 in 3.95µs at 131.025892ms in Box(name:generated-12-24-16 dimensions:[12,24,15.6] weight:50 index:1)",
+              "name": "Handcrafted Soft Sausages",
+              "origin": {
+                "x": 0,
+                "y": 11.25,
+                "z": 0
+              },
+              "packedIndex": 3,
+              "properties": null,
+              "quantity": 1,
+              "refId": 1,
+              "sequence": "",
+              "uniqueId": "1-1",
+              "virtual": false,
+              "weight": 4
+            }
+          },
+          {
+            "item": {
+              "centerOfMass": {
+                "x": 4.875,
+                "y": 2.25,
+                "z": 12.125
+              },
+              "color": "#382675",
+              "deltaCost": 0,
+              "dimensions": {
+                "x": 9.75,
+                "y": 4.5,
+                "z": 3.75
+              },
+              "globalId": 11,
+              "index": 6,
+              "message": "packed #6 in 16.01µs at 132.201712ms in Box(name:generated-12-24-16 dimensions:[12,24,15.6] weight:50 index:1)",
+              "name": "Rustic Soft Bike",
+              "origin": {
+                "x": 0,
+                "y": 0,
+                "z": 10.25
+              },
+              "packedIndex": 6,
+              "properties": null,
+              "quantity": 1,
+              "refId": 4,
+              "sequence": "",
+              "uniqueId": "4-0",
+              "virtual": false,
+              "weight": 2
+            }
+          },
+          {
+            "item": {
+              "centerOfMass": {
+                "x": 4.875,
+                "y": 6.75,
+                "z": 12.125
+              },
+              "color": "#382675",
+              "deltaCost": 0,
+              "dimensions": {
+                "x": 9.75,
+                "y": 4.5,
+                "z": 3.75
+              },
+              "globalId": 12,
+              "index": 7,
+              "message": "packed #7 in 11.89µs at 132.214352ms in Box(name:generated-12-24-16 dimensions:[12,24,15.6] weight:50 index:1)",
+              "name": "Rustic Soft Bike",
+              "origin": {
+                "x": 0,
+                "y": 4.5,
+                "z": 10.25
+              },
+              "packedIndex": 7,
+              "properties": null,
+              "quantity": 1,
+              "refId": 4,
+              "sequence": "",
+              "uniqueId": "4-1",
+              "virtual": false,
+              "weight": 2
+            }
+          },
+          {
+            "item": {
+              "centerOfMass": {
+                "x": 4.875,
+                "y": 11.25,
+                "z": 12.125
+              },
+              "color": "#382675",
+              "deltaCost": 0,
+              "dimensions": {
+                "x": 9.75,
+                "y": 4.5,
+                "z": 3.75
+              },
+              "globalId": 13,
+              "index": 8,
+              "message": "packed #8 in 6.02µs at 132.221082ms in Box(name:generated-12-24-16 dimensions:[12,24,15.6] weight:50 index:1)",
+              "name": "Rustic Soft Bike",
+              "origin": {
+                "x": 0,
+                "y": 9,
+                "z": 10.25
+              },
+              "packedIndex": 8,
+              "properties": null,
+              "quantity": 1,
+              "refId": 4,
+              "sequence": "",
+              "uniqueId": "4-2",
+              "virtual": false,
+              "weight": 2
+            }
+          },
+          {
+            "item": {
+              "centerOfMass": {
+                "x": 4.875,
+                "y": 15.75,
+                "z": 12.125
+              },
+              "color": "#382675",
+              "deltaCost": 0,
+              "dimensions": {
+                "x": 9.75,
+                "y": 4.5,
+                "z": 3.75
+              },
+              "globalId": 14,
+              "index": 9,
+              "message": "packed #9 in 5.78µs at 132.227622ms in Box(name:generated-12-24-16 dimensions:[12,24,15.6] weight:50 index:1)",
+              "name": "Rustic Soft Bike",
+              "origin": {
+                "x": 0,
+                "y": 13.5,
+                "z": 10.25
+              },
+              "packedIndex": 9,
+              "properties": null,
+              "quantity": 1,
+              "refId": 4,
+              "sequence": "",
+              "uniqueId": "4-3",
+              "virtual": false,
+              "weight": 2
+            }
+          },
+          {
+            "item": {
+              "centerOfMass": {
+                "x": 4.875,
+                "y": 20.25,
+                "z": 12.125
+              },
+              "color": "#382675",
+              "deltaCost": 0,
+              "dimensions": {
+                "x": 9.75,
+                "y": 4.5,
+                "z": 3.75
+              },
+              "globalId": 15,
+              "index": 10,
+              "message": "packed #10 in 5.71µs at 132.234102ms in Box(name:generated-12-24-16 dimensions:[12,24,15.6] weight:50 index:1)",
+              "name": "Rustic Soft Bike",
+              "origin": {
+                "x": 0,
+                "y": 18,
+                "z": 10.25
+              },
+              "packedIndex": 10,
+              "properties": null,
+              "quantity": 1,
+              "refId": 4,
+              "sequence": "",
+              "uniqueId": "4-4",
+              "virtual": false,
+              "weight": 2
+            }
+          }
+        ],
+        "lenItems": 7,
+        "lenUnits": 7,
+        "name": "generated-12-24-16",
+        "origin": {
+          "x": 0,
+          "y": 0,
+          "z": 0
+        },
+        "price": 5,
+        "properties": null,
+        "propertyConstraints": null,
+        "refId": 100,
+        "subspace": null,
+        "volumeMax": 3402,
+        "volumeNet": 3301.875,
+        "volumeRemaining": 100.125,
+        "volumeReserved": 0,
+        "volumeUsed": 3301.875,
+        "volumeUtilization": 0.97056878,
+        "weightMax": 50,
+        "weightNet": 18,
+        "weightRemaining": 32,
+        "weightTare": 0,
+        "weightUsed": 18,
+        "weightUtilization": 0.36
+      }
+    },
+    {
+      "box": {
+        "boxType": {
+          "centerOfMass": {
+            "x": 0,
+            "y": 0,
+            "z": 0
+          },
+          "dimensions": {
+            "x": 12,
+            "y": 24,
+            "z": 15.6
+          },
+          "itemsInlineOverhang": {
+            "x": -1,
+            "y": -1,
+            "z": -1
+          },
+          "name": "generated-12-24-16",
+          "price": 5,
+          "rateTable": {
+            "basePrice": 0,
+            "carrier": "",
+            "dimFactor": 0,
+            "priceIncreaseRate": 0,
+            "rates": null,
+            "service": "",
+            "weights": null,
+            "zone": ""
+          },
+          "refId": 100,
+          "reservedSpace": null,
+          "weightMax": 50,
+          "weightTare": 0
+        },
+        "centerOfMass": {
+          "x": 4.49,
+          "y": 14.925,
+          "z": 8.58
+        },
+        "centerOfMassString": "[4.49 14.925 8.58]",
+        "depthOrder": [
+          12,
+          15,
+          13,
+          14,
+          16,
+          17,
+          18,
+          19,
+          20,
+          21,
+          22
+        ],
+        "depthOrderString": "[12 15 13 14 16 17 18 19 20 21 22]",
+        "dimensionalWeight": 0,
+        "dimensionalWeightUsed": false,
+        "dimensions": {
+          "x": 10.8,
+          "y": 23,
+          "z": 15.5
+        },
+        "id": 2,
+        "items": [
+          {
+            "item": {
+              "centerOfMass": {
+                "x": 5.375,
+                "y": 5.625,
+                "z": 5.125
+              },
+              "color": "#7a1632",
+              "deltaCost": 5,
+              "dimensions": {
+                "x": 10.75,
+                "y": 11.25,
+                "z": 10.25
+              },
+              "globalId": 2,
+              "index": 12,
+              "message": "packed #4 in 1.12392ms at 132.150772ms in Box(name:generated-12-24-16 dimensions:[12,24,15.6] weight:50 index:2)",
+              "name": "Handcrafted Soft Sausages",
+              "origin": {
+                "x": 0,
+                "y": 0,
+                "z": 0
+              },
+              "packedIndex": 4,
+              "properties": null,
+              "quantity": 1,
+              "refId": 1,
+              "sequence": "",
+              "uniqueId": "1-2",
+              "virtual": false,
+              "weight": 4
+            }
+          },
+          {
+            "item": {
+              "centerOfMass": {
+                "x": 4.25,
+                "y": 14.875,
+                "z": 6.5
+              },
+              "color": "#31724d",
+              "deltaCost": 0,
+              "dimensions": {
+                "x": 8.5,
+                "y": 7.25,
+                "z": 13
+              },
+              "globalId": 10,
+              "index": 13,
+              "message": "packed #5 in 31.02µs at 132.184712ms in Box(name:generated-12-24-16 dimensions:[12,24,15.6] weight:50 index:2)",
+              "name": "Awesome Metal Tuna",
+              "origin": {
+                "x": 0,
+                "y": 11.25,
+                "z": 0
+              },
+              "packedIndex": 5,
+              "properties": null,
+              "quantity": 1,
+              "refId": 3,
+              "sequence": "",
+              "uniqueId": "3-2",
+              "virtual": false,
+              "weight": 3
+            }
+          },
+          {
+            "item": {
+              "centerOfMass": {
+                "x": 4.875,
+                "y": 2.25,
+                "z": 12.125
+              },
+              "color": "#382675",
+              "deltaCost": 0,
+              "dimensions": {
+                "x": 9.75,
+                "y": 4.5,
+                "z": 3.75
+              },
+              "globalId": 16,
+              "index": 14,
+              "message": "packed #11 in 42.8µs at 132.277872ms in Box(name:generated-12-24-16 dimensions:[12,24,15.6] weight:50 index:2)",
+              "name": "Rustic Soft Bike",
+              "origin": {
+                "x": 0,
+                "y": 0,
+                "z": 10.25
+              },
+              "packedIndex": 11,
+              "properties": null,
+              "quantity": 1,
+              "refId": 4,
+              "sequence": "",
+              "uniqueId": "4-5",
+              "virtual": false,
+              "weight": 2
+            }
+          },
+          {
+            "item": {
+              "centerOfMass": {
+                "x": 4.875,
+                "y": 6.75,
+                "z": 12.125
+              },
+              "color": "#382675",
+              "deltaCost": 0,
+              "dimensions": {
+                "x": 9.75,
+                "y": 4.5,
+                "z": 3.75
+              },
+              "globalId": 17,
+              "index": 15,
+              "message": "packed #12 in 6.09µs at 132.284702ms in Box(name:generated-12-24-16 dimensions:[12,24,15.6] weight:50 index:2)",
+              "name": "Rustic Soft Bike",
+              "origin": {
+                "x": 0,
+                "y": 4.5,
+                "z": 10.25
+              },
+              "packedIndex": 12,
+              "properties": null,
+              "quantity": 1,
+              "refId": 4,
+              "sequence": "",
+              "uniqueId": "4-6",
+              "virtual": false,
+              "weight": 2
+            }
+          },
+          {
+            "item": {
+              "centerOfMass": {
+                "x": 4.875,
+                "y": 20.75,
+                "z": 1.875
+              },
+              "color": "#382675",
+              "deltaCost": 0,
+              "dimensions": {
+                "x": 9.75,
+                "y": 4.5,
+                "z": 3.75
+              },
+              "globalId": 18,
+              "index": 16,
+              "message": "packed #13 in 5.17µs at 132.290612ms in Box(name:generated-12-24-16 dimensions:[12,24,15.6] weight:50 index:2)",
+              "name": "Rustic Soft Bike",
+              "origin": {
+                "x": 0,
+                "y": 18.5,
+                "z": 0
+              },
+              "packedIndex": 13,
+              "properties": null,
+              "quantity": 1,
+              "refId": 4,
+              "sequence": "",
+              "uniqueId": "4-7",
+              "virtual": false,
+              "weight": 2
+            }
+          },
+          {
+            "item": {
+              "centerOfMass": {
+                "x": 4.875,
+                "y": 20.75,
+                "z": 5.625
+              },
+              "color": "#382675",
+              "deltaCost": 0,
+              "dimensions": {
+                "x": 9.75,
+                "y": 4.5,
+                "z": 3.75
+              },
+              "globalId": 19,
+              "index": 17,
+              "message": "packed #14 in 8.22µs at 132.299492ms in Box(name:generated-12-24-16 dimensions:[12,24,15.6] weight:50 index:2)",
+              "name": "Rustic Soft Bike",
+              "origin": {
+                "x": 0,
+                "y": 18.5,
+                "z": 3.75
+              },
+              "packedIndex": 14,
+              "properties": null,
+              "quantity": 1,
+              "refId": 4,
+              "sequence": "",
+              "uniqueId": "4-8",
+              "virtual": false,
+              "weight": 2
+            }
+          },
+          {
+            "item": {
+              "centerOfMass": {
+                "x": 1.5,
+                "y": 20.5,
+                "z": 9.5
+              },
+              "color": "#7c3c74",
+              "deltaCost": 0,
+              "dimensions": {
+                "x": 3,
+                "y": 4,
+                "z": 4
+              },
+              "globalId": 3,
+              "index": 18,
+              "message": "packed #15 in 42.63µs at 132.342752ms in Box(name:generated-12-24-16 dimensions:[12,24,15.6] weight:50 index:2)",
+              "name": "Generic Wooden Bacon",
+              "origin": {
+                "x": 0,
+                "y": 18.5,
+                "z": 7.5
+              },
+              "packedIndex": 15,
+              "properties": null,
+              "quantity": 1,
+              "refId": 2,
+              "sequence": "",
+              "uniqueId": "2-0",
+              "virtual": false,
+              "weight": 2
+            }
+          },
+          {
+            "item": {
+              "centerOfMass": {
+                "x": 1.5,
+                "y": 20.5,
+                "z": 13.5
+              },
+              "color": "#7c3c74",
+              "deltaCost": 0,
+              "dimensions": {
+                "x": 3,
+                "y": 4,
+                "z": 4
+              },
+              "globalId": 4,
+              "index": 19,
+              "message": "packed #16 in 6.59µs at 132.349972ms in Box(name:generated-12-24-16 dimensions:[12,24,15.6] weight:50 index:2)",
+              "name": "Generic Wooden Bacon",
+              "origin": {
+                "x": 0,
+                "y": 18.5,
+                "z": 11.5
+              },
+              "packedIndex": 16,
+              "properties": null,
+              "quantity": 1,
+              "refId": 2,
+              "sequence": "",
+              "uniqueId": "2-1",
+              "virtual": false,
+              "weight": 2
+            }
+          },
+          {
+            "item": {
+              "centerOfMass": {
+                "x": 4.5,
+                "y": 20.5,
+                "z": 9.5
+              },
+              "color": "#7c3c74",
+              "deltaCost": 0,
+              "dimensions": {
+                "x": 3,
+                "y": 4,
+                "z": 4
+              },
+              "globalId": 5,
+              "index": 20,
+              "message": "packed #17 in 10.97µs at 132.361682ms in Box(name:generated-12-24-16 dimensions:[12,24,15.6] weight:50 index:2)",
+              "name": "Generic Wooden Bacon",
+              "origin": {
+                "x": 3,
+                "y": 18.5,
+                "z": 7.5
+              },
+              "packedIndex": 17,
+              "properties": null,
+              "quantity": 1,
+              "refId": 2,
+              "sequence": "",
+              "uniqueId": "2-2",
+              "virtual": false,
+              "weight": 2
+            }
+          },
+          {
+            "item": {
+              "centerOfMass": {
+                "x": 4.5,
+                "y": 20.5,
+                "z": 13.5
+              },
+              "color": "#7c3c74",
+              "deltaCost": 0,
+              "dimensions": {
+                "x": 3,
+                "y": 4,
+                "z": 4
+              },
+              "globalId": 6,
+              "index": 21,
+              "message": "packed #18 in 8.35µs at 132.370832ms in Box(name:generated-12-24-16 dimensions:[12,24,15.6] weight:50 index:2)",
+              "name": "Generic Wooden Bacon",
+              "origin": {
+                "x": 3,
+                "y": 18.5,
+                "z": 11.5
+              },
+              "packedIndex": 18,
+              "properties": null,
+              "quantity": 1,
+              "refId": 2,
+              "sequence": "",
+              "uniqueId": "2-3",
+              "virtual": false,
+              "weight": 2
+            }
+          },
+          {
+            "item": {
+              "centerOfMass": {
+                "x": 7.5,
+                "y": 20.5,
+                "z": 9.5
+              },
+              "color": "#7c3c74",
+              "deltaCost": 0,
+              "dimensions": {
+                "x": 3,
+                "y": 4,
+                "z": 4
+              },
+              "globalId": 7,
+              "index": 22,
+              "message": "packed #19 in 8.44µs at 132.379862ms in Box(name:generated-12-24-16 dimensions:[12,24,15.6] weight:50 index:2)",
+              "name": "Generic Wooden Bacon",
+              "origin": {
+                "x": 6,
+                "y": 18.5,
+                "z": 7.5
+              },
+              "packedIndex": 19,
+              "properties": null,
+              "quantity": 1,
+              "refId": 2,
+              "sequence": "",
+              "uniqueId": "2-4",
+              "virtual": false,
+              "weight": 2
+            }
+          }
+        ],
+        "lenItems": 11,
+        "lenUnits": 11,
+        "name": "generated-12-24-16",
+        "origin": {
+          "x": 0,
+          "y": 0,
+          "z": 0
+        },
+        "price": 5,
+        "properties": null,
+        "propertyConstraints": null,
+        "refId": 100,
+        "subspace": null,
+        "volumeMax": 3850.2,
+        "volumeNet": 2938.8594,
+        "volumeRemaining": 911.34063,
+        "volumeReserved": 0,
+        "volumeUsed": 2938.8594,
+        "volumeUtilization": 0.76330045,
+        "weightMax": 50,
+        "weightNet": 25,
+        "weightRemaining": 25,
+        "weightTare": 0,
+        "weightUsed": 25,
+        "weightUtilization": 0.5
+      }
+    }
+  ],
+  "built": "2026-10-01T04:57:10.585668047Z",
+  "host": "api.prod.paccurate.io",
+  "imageScaleStyleUsed": "fill",
+  "itemSortReverseUsed": false,
+  "itemSortUsed": "largest-box-needed",
+  "leftovers": [],
+  "lenBoxes": 3,
+  "lenItems": 20,
+  "lenLeftovers": 0,
+  "lenUnits": 20,
+  "packTime": 0.13239037,
+  "packUuid": "01a0ff02-0b1c-7585-b93e-83922476d30e",
+  "renderTime": 0.00405683,
+  "requestFingerprint": "099ad722ceccd98393b8267411e9a34142706cb700a35d93c2f315a9dc6b46fbafe53fc8d7e5a68158c6149fead295d00ba7c13e71e301d6feb4ded759b4d572",
+  "responseFingerprint": "e29a0416dbce1b630cdf1242e337209aa60c9000a59ebb8b1b16dce0494b0be40d43668f5cbf7c900c71a18be21cce57f1c16a55e54aa3359ca18bedfe148b3e",
+  "startedAt": "2026-10-02T23:45:19.13248428Z",
+  "svgs": [
+    "<figure class='box-figure' data-box-index=0><svg viewBox='-103.6631,-62.252762,243.06795,227.08811'> [<line data-volume-index='0' class='volume-line' x1='24.5' y1='24.5' x2='24.5' y2='24.5'/>\n <line data-volume-index='0' class='volume-line' x1='24.5' y1='24.5' x2='24.5' y2='24.5'/>\n <line data-volume-index='0' class='volume-line' x1='24.5' y1='24.5' x2='24.5' y2='24.5'/>\n <line data-volume-index='0' class='volume-line' x1='24.5' y1='24.5' x2='139.40485' y2='90.840347'/>\n <line data-volume-index='0' class='volume-line' x1='24.5' y1='24.5' x2='-103.6631' y2='98.495003'/>\n <line data-volume-index='0' class='volume-line' x1='24.5' y1='24.5' x2='24.5' y2='-62.252762'/>\n] <polygon vector-effect='non-scaling-stroke' data-item-ref-id='3' data-volume-index='1' data-side='[8.5 7.25 13] [1 0 0]' data-direction='0 [8.5 7.25 13] [1 0 0] [] [] [1,0,0]' data-max-depth='9.6654355' data-min-depth='3.819764' class='volume-line' points='75.3233,41.085087 139.40485,4.0875855 24.5,-62.252762 -39.581552,-25.25526' style='fill:#31724d;' />\n<polygon vector-effect='non-scaling-stroke' data-item-ref-id='3' data-volume-index='1' data-side='[8.5 7.25 13] [0 1 0]' data-direction='1 [8.5 7.25 13] [0 1 0] [] [] [0,1,0]' data-max-depth='9.6654355' data-min-depth='3.4589201' class='volume-line' points='75.3233,127.83785 75.3233,41.085087 -39.581552,-25.25526 -39.581552,61.497501' style='fill:#31724d;' />\n<polygon vector-effect='non-scaling-stroke' data-item-ref-id='3' data-volume-index='1' data-side='[8.5 7.25 13] [0 0 1]' data-direction='2 [8.5 7.25 13] [0 0 1] [] [] [0,0,1]' data-max-depth='9.6654355' data-min-depth='5.1188022' class='volume-line' points='139.40485,90.840347 139.40485,4.0875855 75.3233,41.085087 75.3233,127.83785' style='fill:#31724d;' />\n<polygon vector-effect='non-scaling-stroke' data-item-ref-id='3' data-volume-index='2' data-side='[8.5 14.5 13] [1 0 0]' data-direction='3 [8.5 14.5 13] [1 0 0] [] [] [1,0,0]' data-max-depth='11.75833' data-min-depth='5.9126588' class='volume-line' points='11.241748,78.082588 75.3233,41.085087 -39.581552,-25.25526 -103.6631,11.742241' style='fill:#31724d;' />\n<polygon vector-effect='non-scaling-stroke' data-item-ref-id='3' data-volume-index='2' data-side='[8.5 14.5 13] [0 1 0]' data-direction='4 [8.5 14.5 13] [0 1 0] [] [] [0,1,0]' data-max-depth='11.75833' data-min-depth='5.5518149' class='volume-line' points='11.241748,164.83535 11.241748,78.082588 -103.6631,11.742241 -103.6631,98.495003' style='fill:#31724d;' />\n<polygon vector-effect='non-scaling-stroke' data-item-ref-id='3' data-volume-index='2' data-side='[8.5 14.5 13] [0 0 1]' data-direction='5 [8.5 14.5 13] [0 0 1] [] [] [0,0,1]' data-max-depth='11.75833' data-min-depth='7.2116969' class='volume-line' points='75.3233,127.83785 75.3233,41.085087 11.241748,78.082588 11.241748,164.83535' style='fill:#31724d;' />\n [<line data-volume-index='0' class='volume-line' x1='139.40485' y1='90.840347' x2='11.241748' y2='164.83535'/>\n <line data-volume-index='0' class='volume-line' x1='139.40485' y1='90.840347' x2='139.40485' y2='4.0875855'/>\n <line data-volume-index='0' class='volume-line' x1='11.241748' y1='164.83535' x2='-103.6631' y2='98.495003'/>\n <line data-volume-index='0' class='volume-line' x1='11.241748' y1='164.83535' x2='11.241748' y2='78.082588'/>\n <line data-volume-index='0' class='volume-line' x1='-103.6631' y1='98.495003' x2='-103.6631' y2='11.742241'/>\n <line data-volume-index='0' class='volume-line' x1='-103.6631' y1='11.742241' x2='24.5' y2='-62.252762'/>\n <line data-volume-index='0' class='volume-line' x1='-103.6631' y1='11.742241' x2='11.241748' y2='78.082588'/>\n <line data-volume-index='0' class='volume-line' x1='24.5' y1='-62.252762' x2='139.40485' y2='4.0875855'/>\n <line data-volume-index='0' class='volume-line' x1='139.40485' y1='4.0875855' x2='11.241748' y2='78.082588'/>\n]</svg><figcaption><b>generated-12-24-16</b><br>\n                          packed: 2<br>\n                          weight: \n  6.00 <br>\n                          price:2</figcaption></figure>",
+    "<figure class='box-figure' data-box-index=1><svg viewBox='-174.37378,-85.727038,322.61747,296.49032'> [<line data-volume-index='3' class='volume-line' x1='24.5' y1='24.5' x2='24.5' y2='24.5'/>\n <line data-volume-index='3' class='volume-line' x1='24.5' y1='24.5' x2='24.5' y2='24.5'/>\n <line data-volume-index='3' class='volume-line' x1='24.5' y1='24.5' x2='24.5' y2='24.5'/>\n <line data-volume-index='3' class='volume-line' x1='24.5' y1='24.5' x2='148.24369' y2='95.943451'/>\n <line data-volume-index='3' class='volume-line' x1='24.5' y1='24.5' x2='-174.37378' y2='139.31983'/>\n <line data-volume-index='3' class='volume-line' x1='24.5' y1='24.5' x2='24.5' y2='-85.727038'/>\n] <polygon vector-effect='non-scaling-stroke' data-item-ref-id='1' data-volume-index='4' data-side='[10.75 11.25 10.25] [1 0 0]' data-direction='0 [10.75 11.25 10.25] [1 0 0] [] [] [1,0,0]' data-max-depth='10.675798' data-min-depth='4.4692831' class='volume-line' points='115.09806,-32.909916 24.5,-85.216728 -74.936891,-27.806812 15.661165,24.5' style='fill:#7a1632;' />\n<polygon vector-effect='non-scaling-stroke' data-item-ref-id='1' data-volume-index='4' data-side='[10.75 11.25 10.25] [0 1 0]' data-direction='1 [10.75 11.25 10.25] [0 1 0] [] [] [0,1,0]' data-max-depth='10.675798' data-min-depth='4.6136207' class='volume-line' points='15.661165,134.21673 15.661165,24.5 -74.936891,-27.806812 -74.936891,81.909916' style='fill:#7a1632;' />\n<polygon vector-effect='non-scaling-stroke' data-item-ref-id='1' data-volume-index='4' data-side='[10.75 11.25 10.25] [0 0 1]' data-direction='2 [10.75 11.25 10.25] [0 0 1] [] [] [0,0,1]' data-max-depth='10.675798' data-min-depth='4.3249455' class='volume-line' points='115.09806,76.806812 115.09806,-32.909916 15.661165,24.5 15.661165,134.21673' style='fill:#7a1632;' />\n<polygon vector-effect='non-scaling-stroke' data-item-ref-id='1' data-volume-index='5' data-side='[10.75 22.5 10.25] [1 0 0]' data-direction='3 [10.75 22.5 10.25] [1 0 0] [] [] [1,0,0]' data-max-depth='13.923394' data-min-depth='7.7168784' class='volume-line' points='15.661165,24.5 -74.936891,-27.806812 -174.37378,29.603104 -83.775726,81.909916' style='fill:#7a1632;' />\n<polygon vector-effect='non-scaling-stroke' data-item-ref-id='1' data-volume-index='5' data-side='[10.75 22.5 10.25] [0 1 0]' data-direction='4 [10.75 22.5 10.25] [0 1 0] [] [] [0,1,0]' data-max-depth='13.923394' data-min-depth='7.8612159' class='volume-line' points='-83.775726,191.62664 -83.775726,81.909916 -174.37378,29.603104 -174.37378,139.31983' style='fill:#7a1632;' />\n<polygon vector-effect='non-scaling-stroke' data-item-ref-id='1' data-volume-index='5' data-side='[10.75 22.5 10.25] [0 0 1]' data-direction='5 [10.75 22.5 10.25] [0 0 1] [] [] [0,0,1]' data-max-depth='13.923394' data-min-depth='7.5725408' class='volume-line' points='15.661165,134.21673 15.661165,24.5 -83.775726,81.909916 -83.775726,191.62664' style='fill:#7a1632;' />\n<polygon vector-effect='non-scaling-stroke' data-item-ref-id='4' data-volume-index='6' data-side='[9.75 4.5 14] [1 0 0]' data-direction='6 [9.75 4.5 14] [1 0 0] [] [] [1,0,0]' data-max-depth='9.521098' data-min-depth='7.1395281' class='volume-line' points='148.24369,-3.56707 115.09806,-22.703709 75.3233,0.26025775 108.46893,19.396896' style='fill:#382675;' />\n<polygon vector-effect='non-scaling-stroke' data-item-ref-id='4' data-volume-index='6' data-side='[9.75 4.5 14] [0 1 0]' data-direction='7 [9.75 4.5 14] [0 1 0] [] [] [0,1,0]' data-max-depth='9.521098' data-min-depth='5.6239836' class='volume-line' points='108.46893,118.90742 108.46893,19.396896 75.3233,0.26025775 75.3233,99.770779' style='fill:#382675;' />\n<polygon vector-effect='non-scaling-stroke' data-item-ref-id='4' data-volume-index='6' data-side='[9.75 4.5 14] [0 0 1]' data-direction='8 [9.75 4.5 14] [0 0 1] [] [] [0,0,1]' data-max-depth='9.521098' data-min-depth='5.4074773' class='volume-line' points='148.24369,95.943451 148.24369,-3.56707 108.46893,19.396896 108.46893,118.90742' style='fill:#382675;' />\n<polygon vector-effect='non-scaling-stroke' data-item-ref-id='4' data-volume-index='7' data-side='[9.75 9 14] [1 0 0]' data-direction='9 [9.75 9 14] [1 0 0] [] [] [1,0,0]' data-max-depth='10.820136' data-min-depth='8.4385662' class='volume-line' points='108.46893,19.396896 75.3233,0.26025775 35.548543,23.224224 68.694174,42.360863' style='fill:#382675;' />\n<polygon vector-effect='non-scaling-stroke' data-item-ref-id='4' data-volume-index='7' data-side='[9.75 9 14] [0 1 0]' data-direction='10 [9.75 9 14] [0 1 0] [] [] [0,1,0]' data-max-depth='10.820136' data-min-depth='6.9230217' class='volume-line' points='68.694174,141.87138 68.694174,42.360863 35.548543,23.224224 35.548543,122.73474' style='fill:#382675;' />\n<polygon vector-effect='non-scaling-stroke' data-item-ref-id='4' data-volume-index='7' data-side='[9.75 9 14] [0 0 1]' data-direction='11 [9.75 9 14] [0 0 1] [] [] [0,0,1]' data-max-depth='10.820136' data-min-depth='6.7065154' class='volume-line' points='108.46893,118.90742 108.46893,19.396896 68.694174,42.360863 68.694174,141.87138' style='fill:#382675;' />\n<polygon vector-effect='non-scaling-stroke' data-item-ref-id='4' data-volume-index='8' data-side='[9.75 13.5 14] [1 0 0]' data-direction='12 [9.75 13.5 14] [1 0 0] [] [] [1,0,0]' data-max-depth='12.119174' data-min-depth='9.7376043' class='volume-line' points='68.694174,42.360863 35.548543,23.224224 -4.226213,46.18819 28.919417,65.324829' style='fill:#382675;' />\n<polygon vector-effect='non-scaling-stroke' data-item-ref-id='4' data-volume-index='8' data-side='[9.75 13.5 14] [0 1 0]' data-direction='13 [9.75 13.5 14] [0 1 0] [] [] [0,1,0]' data-max-depth='12.119174' data-min-depth='8.2220599' class='volume-line' points='28.919417,164.83535 28.919417,65.324829 -4.226213,46.18819 -4.226213,145.69871' style='fill:#382675;' />\n<polygon vector-effect='non-scaling-stroke' data-item-ref-id='4' data-volume-index='8' data-side='[9.75 13.5 14] [0 0 1]' data-direction='14 [9.75 13.5 14] [0 0 1] [] [] [0,0,1]' data-max-depth='12.119174' data-min-depth='8.0055535' class='volume-line' points='68.694174,141.87138 68.694174,42.360863 28.919417,65.324829 28.919417,164.83535' style='fill:#382675;' />\n<polygon vector-effect='non-scaling-stroke' data-item-ref-id='4' data-volume-index='9' data-side='[9.75 18 14] [1 0 0]' data-direction='15 [9.75 18 14] [1 0 0] [] [] [1,0,0]' data-max-depth='13.418212' data-min-depth='11.036642' class='volume-line' points='28.919417,65.324829 -4.226213,46.18819 -44.000969,69.152157 -10.855339,88.288795' style='fill:#382675;' />\n<polygon vector-effect='non-scaling-stroke' data-item-ref-id='4' data-volume-index='9' data-side='[9.75 18 14] [0 1 0]' data-direction='16 [9.75 18 14] [0 1 0] [] [] [0,1,0]' data-max-depth='13.418212' data-min-depth='9.521098' class='volume-line' points='-10.855339,187.79932 -10.855339,88.288795 -44.000969,69.152157 -44.000969,168.66268' style='fill:#382675;' />\n<polygon vector-effect='non-scaling-stroke' data-item-ref-id='4' data-volume-index='9' data-side='[9.75 18 14] [0 0 1]' data-direction='17 [9.75 18 14] [0 0 1] [] [] [0,0,1]' data-max-depth='13.418212' data-min-depth='9.3045916' class='volume-line' points='28.919417,164.83535 28.919417,65.324829 -10.855339,88.288795 -10.855339,187.79932' style='fill:#382675;' />\n<polygon vector-effect='non-scaling-stroke' data-item-ref-id='4' data-volume-index='10' data-side='[9.75 22.5 14] [1 0 0]' data-direction='18 [9.75 22.5 14] [1 0 0] [] [] [1,0,0]' data-max-depth='14.71725' data-min-depth='12.335681' class='volume-line' points='-10.855339,88.288795 -44.000969,69.152157 -83.775726,92.116123 -50.630096,111.25276' style='fill:#382675;' />\n<polygon vector-effect='non-scaling-stroke' data-item-ref-id='4' data-volume-index='10' data-side='[9.75 22.5 14] [0 1 0]' data-direction='19 [9.75 22.5 14] [0 1 0] [] [] [0,1,0]' data-max-depth='14.71725' data-min-depth='10.820136' class='volume-line' points='-50.630096,210.76328 -50.630096,111.25276 -83.775726,92.116123 -83.775726,191.62664' style='fill:#382675;' />\n<polygon vector-effect='non-scaling-stroke' data-item-ref-id='4' data-volume-index='10' data-side='[9.75 22.5 14] [0 0 1]' data-direction='20 [9.75 22.5 14] [0 0 1] [] [] [0,0,1]' data-max-depth='14.71725' data-min-depth='10.60363' class='volume-line' points='-10.855339,187.79932 -10.855339,88.288795 -50.630096,111.25276 -50.630096,210.76328' style='fill:#382675;' />\n [<line data-volume-index='3' class='volume-line' x1='148.24369' y1='95.943451' x2='-50.630096' y2='210.76328'/>\n <line data-volume-index='3' class='volume-line' x1='148.24369' y1='95.943451' x2='148.24369' y2='-14.283588'/>\n <line data-volume-index='3' class='volume-line' x1='-50.630096' y1='210.76328' x2='-174.37378' y2='139.31983'/>\n <line data-volume-index='3' class='volume-line' x1='-50.630096' y1='210.76328' x2='-50.630096' y2='100.53624'/>\n <line data-volume-index='3' class='volume-line' x1='-174.37378' y1='139.31983' x2='-174.37378' y2='29.092793'/>\n <line data-volume-index='3' class='volume-line' x1='-174.37378' y1='29.092793' x2='24.5' y2='-85.727038'/>\n <line data-volume-index='3' class='volume-line' x1='-174.37378' y1='29.092793' x2='-50.630096' y2='100.53624'/>\n <line data-volume-index='3' class='volume-line' x1='24.5' y1='-85.727038' x2='148.24369' y2='-14.283588'/>\n <line data-volume-index='3' class='volume-line' x1='148.24369' y1='-14.283588' x2='-50.630096' y2='100.53624'/>\n]</svg><figcaption><b>generated-12-24-16</b><br>\n                          packed: 7<br>\n                          weight: \n  18.00 <br>\n                          price:5</figcaption></figure>",
+    "<figure class='box-figure' data-box-index=2><svg viewBox='-178.7932,-85.727038,340.29514,306.69653'> [<line data-volume-index='11' class='volume-line' x1='24.5' y1='24.5' x2='24.5' y2='24.5'/>\n <line data-volume-index='11' class='volume-line' x1='24.5' y1='24.5' x2='24.5' y2='24.5'/>\n <line data-volume-index='11' class='volume-line' x1='24.5' y1='24.5' x2='24.5' y2='24.5'/>\n <line data-volume-index='11' class='volume-line' x1='24.5' y1='24.5' x2='161.50194' y2='103.59811'/>\n <line data-volume-index='11' class='volume-line' x1='24.5' y1='24.5' x2='-178.7932' y2='141.87138'/>\n <line data-volume-index='11' class='volume-line' x1='24.5' y1='24.5' x2='24.5' y2='-85.727038'/>\n] <polygon vector-effect='non-scaling-stroke' data-item-ref-id='1' data-volume-index='12' data-side='[10.75 11.25 10.25] [1 0 0]' data-direction='0 [10.75 11.25 10.25] [1 0 0] [] [] [1,0,0]' data-max-depth='10.675798' data-min-depth='4.4692831' class='volume-line' points='115.09806,-32.909916 24.5,-85.216728 -74.936891,-27.806812 15.661165,24.5' style='fill:#7a1632;' />\n<polygon vector-effect='non-scaling-stroke' data-item-ref-id='1' data-volume-index='12' data-side='[10.75 11.25 10.25] [0 1 0]' data-direction='1 [10.75 11.25 10.25] [0 1 0] [] [] [0,1,0]' data-max-depth='10.675798' data-min-depth='4.6136207' class='volume-line' points='15.661165,134.21673 15.661165,24.5 -74.936891,-27.806812 -74.936891,81.909916' style='fill:#7a1632;' />\n<polygon vector-effect='non-scaling-stroke' data-item-ref-id='1' data-volume-index='12' data-side='[10.75 11.25 10.25] [0 0 1]' data-direction='2 [10.75 11.25 10.25] [0 0 1] [] [] [0,0,1]' data-max-depth='10.675798' data-min-depth='4.3249455' class='volume-line' points='115.09806,76.806812 115.09806,-32.909916 15.661165,24.5 15.661165,134.21673' style='fill:#7a1632;' />\n<polygon vector-effect='non-scaling-stroke' data-item-ref-id='4' data-volume-index='15' data-side='[9.75 9 14] [0 1 0]' data-direction='3 [9.75 9 14] [0 1 0] [] [] [0,1,0]' data-max-depth='10.820136' data-min-depth='6.9230217' class='volume-line' points='68.694174,141.87138 68.694174,42.360863 35.548543,23.224224 35.548543,122.73474' style='fill:#382675;' />\n<polygon vector-effect='non-scaling-stroke' data-item-ref-id='3' data-volume-index='13' data-side='[8.5 18.5 13] [1 0 0]' data-direction='4 [8.5 18.5 13] [1 0 0] [] [] [1,0,0]' data-max-depth='12.913031' data-min-depth='7.0673593' class='volume-line' points='-24.113591,98.495003 39.967961,61.497501 -74.936891,-4.8428459 -139.01844,32.154655' style='fill:#31724d;' />\n<polygon vector-effect='non-scaling-stroke' data-item-ref-id='3' data-volume-index='13' data-side='[8.5 18.5 13] [0 1 0]' data-direction='5 [8.5 18.5 13] [0 1 0] [] [] [0,1,0]' data-max-depth='12.913031' data-min-depth='6.7065154' class='volume-line' points='-24.113591,185.24776 -24.113591,98.495003 -139.01844,32.154655 -139.01844,118.90742' style='fill:#31724d;' />\n<polygon vector-effect='non-scaling-stroke' data-item-ref-id='3' data-volume-index='13' data-side='[8.5 18.5 13] [0 0 1]' data-direction='6 [8.5 18.5 13] [0 0 1] [] [] [0,0,1]' data-max-depth='12.913031' data-min-depth='8.3663974' class='volume-line' points='39.967961,148.25026 39.967961,61.497501 -24.113591,98.495003 -24.113591,185.24776' style='fill:#31724d;' />\n<polygon vector-effect='non-scaling-stroke' data-item-ref-id='4' data-volume-index='14' data-side='[9.75 4.5 14] [1 0 0]' data-direction='7 [9.75 4.5 14] [1 0 0] [] [] [1,0,0]' data-max-depth='9.521098' data-min-depth='7.1395281' class='volume-line' points='148.24369,-3.56707 115.09806,-22.703709 75.3233,0.26025775 108.46893,19.396896' style='fill:#382675;' />\n<polygon vector-effect='non-scaling-stroke' data-item-ref-id='4' data-volume-index='14' data-side='[9.75 4.5 14] [0 1 0]' data-direction='8 [9.75 4.5 14] [0 1 0] [] [] [0,1,0]' data-max-depth='9.521098' data-min-depth='5.6239836' class='volume-line' points='108.46893,118.90742 108.46893,19.396896 75.3233,0.26025775 75.3233,99.770779' style='fill:#382675;' />\n<polygon vector-effect='non-scaling-stroke' data-item-ref-id='4' data-volume-index='14' data-side='[9.75 4.5 14] [0 0 1]' data-direction='9 [9.75 4.5 14] [0 0 1] [] [] [0,0,1]' data-max-depth='9.521098' data-min-depth='5.4074773' class='volume-line' points='148.24369,95.943451 148.24369,-3.56707 108.46893,19.396896 108.46893,118.90742' style='fill:#382675;' />\n<polygon vector-effect='non-scaling-stroke' data-item-ref-id='4' data-volume-index='15' data-side='[9.75 9 14] [1 0 0]' data-direction='10 [9.75 9 14] [1 0 0] [] [] [1,0,0]' data-max-depth='10.820136' data-min-depth='8.4385662' class='volume-line' points='108.46893,19.396896 75.3233,0.26025775 35.548543,23.224224 68.694174,42.360863' style='fill:#382675;' />\n<polygon vector-effect='non-scaling-stroke' data-item-ref-id='4' data-volume-index='15' data-side='[9.75 9 14] [0 0 1]' data-direction='11 [9.75 9 14] [0 0 1] [] [] [0,0,1]' data-max-depth='10.820136' data-min-depth='6.7065154' class='volume-line' points='108.46893,118.90742 108.46893,19.396896 68.694174,42.360863 68.694174,141.87138' style='fill:#382675;' />\n<polygon vector-effect='non-scaling-stroke' data-item-ref-id='4' data-volume-index='16' data-side='[9.75 23 3.75] [1 0 0]' data-direction='12 [9.75 23 3.75] [1 0 0] [] [] [1,0,0]' data-max-depth='11.902668' data-min-depth='9.521098' class='volume-line' points='-105.87281,38.533535 -139.01844,19.396896 -178.7932,42.360863 -145.64757,61.497501' style='fill:#382675;' />\n<polygon vector-effect='non-scaling-stroke' data-item-ref-id='4' data-volume-index='16' data-side='[9.75 23 3.75] [0 1 0]' data-direction='13 [9.75 23 3.75] [0 1 0] [] [] [0,1,0]' data-max-depth='11.902668' data-min-depth='8.0055535' class='volume-line' points='-145.64757,161.00802 -145.64757,61.497501 -178.7932,42.360863 -178.7932,141.87138' style='fill:#382675;' />\n<polygon vector-effect='non-scaling-stroke' data-item-ref-id='4' data-volume-index='16' data-side='[9.75 23 3.75] [0 0 1]' data-direction='14 [9.75 23 3.75] [0 0 1] [] [] [0,0,1]' data-max-depth='11.902668' data-min-depth='7.7890471' class='volume-line' points='-105.87281,138.04406 -105.87281,38.533535 -145.64757,61.497501 -145.64757,161.00802' style='fill:#382675;' />\n<polygon vector-effect='non-scaling-stroke' data-item-ref-id='4' data-volume-index='17' data-side='[9.75 23 7.5] [1 0 0]' data-direction='15 [9.75 23 7.5] [1 0 0] [] [] [1,0,0]' data-max-depth='12.9852' data-min-depth='10.60363' class='volume-line' points='-72.727182,57.670174 -105.87281,38.533535 -145.64757,61.497501 -112.50194,80.63414' style='fill:#382675;' />\n<polygon vector-effect='non-scaling-stroke' data-item-ref-id='4' data-volume-index='17' data-side='[9.75 23 7.5] [0 1 0]' data-direction='16 [9.75 23 7.5] [0 1 0] [] [] [0,1,0]' data-max-depth='12.9852' data-min-depth='9.0880853' class='volume-line' points='-112.50194,180.14466 -112.50194,80.63414 -145.64757,61.497501 -145.64757,161.00802' style='fill:#382675;' />\n<polygon vector-effect='non-scaling-stroke' data-item-ref-id='4' data-volume-index='17' data-side='[9.75 23 7.5] [0 0 1]' data-direction='17 [9.75 23 7.5] [0 0 1] [] [] [0,0,1]' data-max-depth='12.9852' data-min-depth='8.8715789' class='volume-line' points='-72.727182,157.18069 -72.727182,57.670174 -112.50194,80.63414 -112.50194,180.14466' style='fill:#382675;' />\n<polygon vector-effect='non-scaling-stroke' data-item-ref-id='2' data-volume-index='18' data-side='[3 22.5 11.5] [1 0 0]' data-direction='18 [3 22.5 11.5] [1 0 0] [] [] [1,0,0]' data-max-depth='12.047005' data-min-depth='9.7376043' class='volume-line' points='-72.727182,167.3869 -37.371843,146.97449 -72.727182,126.56207 -108.08252,146.97449' style='fill:#7c3c74;' />\n<polygon vector-effect='non-scaling-stroke' data-item-ref-id='2' data-volume-index='18' data-side='[3 22.5 11.5] [0 1 0]' data-direction='19 [3 22.5 11.5] [0 1 0] [] [] [0,1,0]' data-max-depth='12.047005' data-min-depth='10.026279' class='volume-line' points='-72.727182,198.00552 -72.727182,167.3869 -108.08252,146.97449 -108.08252,177.59311' style='fill:#7c3c74;' />\n<polygon vector-effect='non-scaling-stroke' data-item-ref-id='2' data-volume-index='18' data-side='[3 22.5 11.5] [0 0 1]' data-direction='20 [3 22.5 11.5] [0 0 1] [] [] [0,0,1]' data-max-depth='12.047005' data-min-depth='10.026279' class='volume-line' points='-37.371843,177.59311 -37.371843,146.97449 -72.727182,167.3869 -72.727182,198.00552' style='fill:#7c3c74;' />\n<polygon vector-effect='non-scaling-stroke' data-item-ref-id='2' data-volume-index='19' data-side='[3 22.5 15.5] [1 0 0]' data-direction='21 [3 22.5 15.5] [1 0 0] [] [] [1,0,0]' data-max-depth='13.201706' data-min-depth='10.892305' class='volume-line' points='-37.371843,187.79932 -2.0165043,167.3869 -37.371843,146.97449 -72.727182,167.3869' style='fill:#7c3c74;' />\n<polygon vector-effect='non-scaling-stroke' data-item-ref-id='2' data-volume-index='19' data-side='[3 22.5 15.5] [0 1 0]' data-direction='22 [3 22.5 15.5] [0 1 0] [] [] [0,1,0]' data-max-depth='13.201706' data-min-depth='11.18098' class='volume-line' points='-37.371843,218.41794 -37.371843,187.79932 -72.727182,167.3869 -72.727182,198.00552' style='fill:#7c3c74;' />\n<polygon vector-effect='non-scaling-stroke' data-item-ref-id='2' data-volume-index='19' data-side='[3 22.5 15.5] [0 0 1]' data-direction='23 [3 22.5 15.5] [0 0 1] [] [] [0,0,1]' data-max-depth='13.201706' data-min-depth='11.18098' class='volume-line' points='-2.0165043,198.00552 -2.0165043,167.3869 -37.371843,187.79932 -37.371843,218.41794' style='fill:#7c3c74;' />\n<polygon vector-effect='non-scaling-stroke' data-item-ref-id='2' data-volume-index='20' data-side='[6 22.5 11.5] [1 0 0]' data-direction='24 [6 22.5 11.5] [1 0 0] [] [] [1,0,0]' data-max-depth='12.913031' data-min-depth='10.60363' class='volume-line' points='-72.727182,136.76828 -37.371843,116.35587 -72.727182,95.943451 -108.08252,116.35587' style='fill:#7c3c74;' />\n<polygon vector-effect='non-scaling-stroke' data-item-ref-id='2' data-volume-index='20' data-side='[6 22.5 11.5] [0 1 0]' data-direction='25 [6 22.5 11.5] [0 1 0] [] [] [0,1,0]' data-max-depth='12.913031' data-min-depth='10.892305' class='volume-line' points='-72.727182,167.3869 -72.727182,136.76828 -108.08252,116.35587 -108.08252,146.97449' style='fill:#7c3c74;' />\n<polygon vector-effect='non-scaling-stroke' data-item-ref-id='2' data-volume-index='20' data-side='[6 22.5 11.5] [0 0 1]' data-direction='26 [6 22.5 11.5] [0 0 1] [] [] [0,0,1]' data-max-depth='12.913031' data-min-depth='10.892305' class='volume-line' points='-37.371843,146.97449 -37.371843,116.35587 -72.727182,136.76828 -72.727182,167.3869' style='fill:#7c3c74;' />\n<polygon vector-effect='non-scaling-stroke' data-item-ref-id='2' data-volume-index='21' data-side='[6 22.5 15.5] [1 0 0]' data-direction='27 [6 22.5 15.5] [1 0 0] [] [] [1,0,0]' data-max-depth='14.067731' data-min-depth='11.75833' class='volume-line' points='-37.371843,157.18069 -2.0165043,136.76828 -37.371843,116.35587 -72.727182,136.76828' style='fill:#7c3c74;' />\n<polygon vector-effect='non-scaling-stroke' data-item-ref-id='2' data-volume-index='21' data-side='[6 22.5 15.5] [0 1 0]' data-direction='28 [6 22.5 15.5] [0 1 0] [] [] [0,1,0]' data-max-depth='14.067731' data-min-depth='12.047005' class='volume-line' points='-37.371843,187.79932 -37.371843,157.18069 -72.727182,136.76828 -72.727182,167.3869' style='fill:#7c3c74;' />\n<polygon vector-effect='non-scaling-stroke' data-item-ref-id='2' data-volume-index='21' data-side='[6 22.5 15.5] [0 0 1]' data-direction='29 [6 22.5 15.5] [0 0 1] [] [] [0,0,1]' data-max-depth='14.067731' data-min-depth='12.047005' class='volume-line' points='-2.0165043,167.3869 -2.0165043,136.76828 -37.371843,157.18069 -37.371843,187.79932' style='fill:#7c3c74;' />\n<polygon vector-effect='non-scaling-stroke' data-item-ref-id='2' data-volume-index='22' data-side='[9 22.5 11.5] [1 0 0]' data-direction='30 [9 22.5 11.5] [1 0 0] [] [] [1,0,0]' data-max-depth='13.779056' data-min-depth='11.469655' class='volume-line' points='-72.727182,106.14966 -37.371843,85.737244 -72.727182,65.324829 -108.08252,85.737244' style='fill:#7c3c74;' />\n<polygon vector-effect='non-scaling-stroke' data-item-ref-id='2' data-volume-index='22' data-side='[9 22.5 11.5] [0 1 0]' data-direction='31 [9 22.5 11.5] [0 1 0] [] [] [0,1,0]' data-max-depth='13.779056' data-min-depth='11.75833' class='volume-line' points='-72.727182,136.76828 -72.727182,106.14966 -108.08252,85.737244 -108.08252,116.35587' style='fill:#7c3c74;' />\n<polygon vector-effect='non-scaling-stroke' data-item-ref-id='2' data-volume-index='22' data-side='[9 22.5 11.5] [0 0 1]' data-direction='32 [9 22.5 11.5] [0 0 1] [] [] [0,0,1]' data-max-depth='13.779056' data-min-depth='11.75833' class='volume-line' points='-37.371843,116.35587 -37.371843,85.737244 -72.727182,106.14966 -72.727182,136.76828' style='fill:#7c3c74;' />\n [<line data-volume-index='11' class='volume-line' x1='161.50194' y1='103.59811' x2='-41.791261' y2='220.96949'/>\n <line data-volume-index='11' class='volume-line' x1='161.50194' y1='103.59811' x2='161.50194' y2='-6.6289321'/>\n <line data-volume-index='11' class='volume-line' x1='-41.791261' y1='220.96949' x2='-178.7932' y2='141.87138'/>\n <line data-volume-index='11' class='volume-line' x1='-41.791261' y1='220.96949' x2='-41.791261' y2='110.74245'/>\n <line data-volume-index='11' class='volume-line' x1='-178.7932' y1='141.87138' x2='-178.7932' y2='31.644345'/>\n <line data-volume-index='11' class='volume-line' x1='-178.7932' y1='31.644345' x2='24.5' y2='-85.727038'/>\n <line data-volume-index='11' class='volume-line' x1='-178.7932' y1='31.644345' x2='-41.791261' y2='110.74245'/>\n <line data-volume-index='11' class='volume-line' x1='24.5' y1='-85.727038' x2='161.50194' y2='-6.6289321'/>\n <line data-volume-index='11' class='volume-line' x1='161.50194' y1='-6.6289321' x2='-41.791261' y2='110.74245'/>\n]</svg><figcaption><b>generated-12-24-16</b><br>\n                          packed: 11<br>\n                          weight: \n  25.00 <br>\n                          price:5</figcaption></figure>"
+  ],
+  "title": "Default",
+  "totalCost": 12,
+  "totalTime": 0.1364472,
+  "totalVolume": 8854.45,
+  "totalVolumeNet": 7842.9844,
+  "totalVolumeUsed": 7842.9844,
+  "totalVolumeUtilization": 0.88576754,
+  "totalWeight": 49,
+  "usedKeyStem": "REEFkYZGoR",
+  "version": "1.9.2",
+  "warnings": [
+    "Include orderId and/or requestId in your request for enhanced diagnostics.",
+    "Try including rateTable on boxTypes, boxTypeDefaults, or boxTypeGenerators, or including price in boxType"
+  ]
+}

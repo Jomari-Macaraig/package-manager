@@ -1,0 +1,1580 @@
+{
+  "boxTypeChoiceGoalUsed": "lowest-cost",
+  "boxes": [
+    {
+      "box": {
+        "boxType": {
+          "centerOfMass": {
+            "x": 0,
+            "y": 0,
+            "z": 0
+          },
+          "dimensions": {
+            "x": 23.5,
+            "y": 23.9,
+            "z": 58.9
+          },
+          "itemsInlineOverhang": {
+            "x": -1,
+            "y": -1,
+            "z": -1
+          },
+          "name": "ISO 20' (decimeter - pound)",
+          "price": 0,
+          "rateTable": {
+            "basePrice": 0,
+            "carrier": "",
+            "dimFactor": 0,
+            "priceIncreaseRate": 0,
+            "rates": null,
+            "service": "",
+            "weights": null,
+            "zone": ""
+          },
+          "refId": 0,
+          "reservedSpace": null,
+          "weightMax": 55000,
+          "weightTare": 5000
+        },
+        "centerOfMass": {
+          "x": 10.63872,
+          "y": 11.815549,
+          "z": 34.708841
+        },
+        "centerOfMassString": "[10.63871951 11.81554878 34.70884146]",
+        "depthOrder": [
+          1,
+          2,
+          3,
+          4,
+          5,
+          6,
+          7,
+          8,
+          9,
+          10,
+          11,
+          12,
+          13,
+          14,
+          15,
+          16,
+          17,
+          18,
+          19,
+          20,
+          21,
+          22,
+          23,
+          24,
+          25,
+          28,
+          30,
+          32,
+          34,
+          36,
+          38,
+          29,
+          31,
+          33,
+          35,
+          37,
+          39,
+          40,
+          41,
+          42,
+          43,
+          26,
+          27
+        ],
+        "depthOrderString": "[1 2 3 4 5 6 7 8 9 10 11 12 13 14 15 16 17 18 19 20 21 22 23 24 25 28 30 32 34 36 38 29 31 33 35 37 39 40 41 42 43 26 27]",
+        "dimensionalWeight": 0,
+        "dimensionalWeightUsed": false,
+        "dimensions": {
+          "x": 23.5,
+          "y": 23.9,
+          "z": 58.9
+        },
+        "id": 0,
+        "items": [
+          {
+            "item": {
+              "centerOfMass": {
+                "x": 5,
+                "y": 11,
+                "z": 5
+              },
+              "color": "purple",
+              "deltaCost": 33081,
+              "dimensions": {
+                "x": 10,
+                "y": 22,
+                "z": 10
+              },
+              "globalId": 17,
+              "index": 1,
+              "message": "packed #0 in 1.31246ms at 2.82982ms in Box(name:ISO 20' (decimeter - pound) dimensions:[23.5,23.9,58.9] weight:55000 index:0)",
+              "name": "",
+              "origin": {
+                "x": 0,
+                "y": 0,
+                "z": 0
+              },
+              "packedIndex": 0,
+              "properties": null,
+              "quantity": 1,
+              "refId": 2,
+              "sequence": "",
+              "uniqueId": "2-0",
+              "virtual": false,
+              "weight": 1600
+            }
+          },
+          {
+            "item": {
+              "centerOfMass": {
+                "x": 5,
+                "y": 11,
+                "z": 15
+              },
+              "color": "purple",
+              "deltaCost": 0,
+              "dimensions": {
+                "x": 10,
+                "y": 22,
+                "z": 10
+              },
+              "globalId": 18,
+              "index": 2,
+              "message": "packed #1 in 6.85µs at 2.86037ms in Box(name:ISO 20' (decimeter - pound) dimensions:[23.5,23.9,58.9] weight:55000 index:0)",
+              "name": "",
+              "origin": {
+                "x": 0,
+                "y": 0,
+                "z": 10
+              },
+              "packedIndex": 1,
+              "properties": null,
+              "quantity": 1,
+              "refId": 2,
+              "sequence": "",
+              "uniqueId": "2-1",
+              "virtual": false,
+              "weight": 1600
+            }
+          },
+          {
+            "item": {
+              "centerOfMass": {
+                "x": 5,
+                "y": 11,
+                "z": 25
+              },
+              "color": "purple",
+              "deltaCost": 0,
+              "dimensions": {
+                "x": 10,
+                "y": 22,
+                "z": 10
+              },
+              "globalId": 19,
+              "index": 3,
+              "message": "packed #2 in 10.65µs at 2.8733ms in Box(name:ISO 20' (decimeter - pound) dimensions:[23.5,23.9,58.9] weight:55000 index:0)",
+              "name": "",
+              "origin": {
+                "x": 0,
+                "y": 0,
+                "z": 20
+              },
+              "packedIndex": 2,
+              "properties": null,
+              "quantity": 1,
+              "refId": 2,
+              "sequence": "",
+              "uniqueId": "2-2",
+              "virtual": false,
+              "weight": 1600
+            }
+          },
+          {
+            "item": {
+              "centerOfMass": {
+                "x": 5,
+                "y": 11,
+                "z": 35
+              },
+              "color": "purple",
+              "deltaCost": 0,
+              "dimensions": {
+                "x": 10,
+                "y": 22,
+                "z": 10
+              },
+              "globalId": 20,
+              "index": 4,
+              "message": "packed #3 in 7.6µs at 2.88211ms in Box(name:ISO 20' (decimeter - pound) dimensions:[23.5,23.9,58.9] weight:55000 index:0)",
+              "name": "",
+              "origin": {
+                "x": 0,
+                "y": 0,
+                "z": 30
+              },
+              "packedIndex": 3,
+              "properties": null,
+              "quantity": 1,
+              "refId": 2,
+              "sequence": "",
+              "uniqueId": "2-3",
+              "virtual": false,
+              "weight": 1600
+            }
+          },
+          {
+            "item": {
+              "centerOfMass": {
+                "x": 5,
+                "y": 11,
+                "z": 45
+              },
+              "color": "purple",
+              "deltaCost": 0,
+              "dimensions": {
+                "x": 10,
+                "y": 22,
+                "z": 10
+              },
+              "globalId": 21,
+              "index": 5,
+              "message": "packed #4 in 10.05µs at 2.89323ms in Box(name:ISO 20' (decimeter - pound) dimensions:[23.5,23.9,58.9] weight:55000 index:0)",
+              "name": "",
+              "origin": {
+                "x": 0,
+                "y": 0,
+                "z": 40
+              },
+              "packedIndex": 4,
+              "properties": null,
+              "quantity": 1,
+              "refId": 2,
+              "sequence": "",
+              "uniqueId": "2-4",
+              "virtual": false,
+              "weight": 1600
+            }
+          },
+          {
+            "item": {
+              "centerOfMass": {
+                "x": 15,
+                "y": 5,
+                "z": 5
+              },
+              "color": "limegreen",
+              "deltaCost": 0,
+              "dimensions": {
+                "x": 10,
+                "y": 10,
+                "z": 10
+              },
+              "globalId": 38,
+              "index": 6,
+              "message": "packed #5 in 13.27µs at 2.90738ms in Box(name:ISO 20' (decimeter - pound) dimensions:[23.5,23.9,58.9] weight:55000 index:0)",
+              "name": "",
+              "origin": {
+                "x": 10,
+                "y": 0,
+                "z": 0
+              },
+              "packedIndex": 5,
+              "properties": null,
+              "quantity": 1,
+              "refId": 4,
+              "sequence": "",
+              "uniqueId": "4-0",
+              "virtual": false,
+              "weight": 500
+            }
+          },
+          {
+            "item": {
+              "centerOfMass": {
+                "x": 15,
+                "y": 5,
+                "z": 15
+              },
+              "color": "limegreen",
+              "deltaCost": 0,
+              "dimensions": {
+                "x": 10,
+                "y": 10,
+                "z": 10
+              },
+              "globalId": 39,
+              "index": 7,
+              "message": "packed #6 in 20.09µs at 2.92843ms in Box(name:ISO 20' (decimeter - pound) dimensions:[23.5,23.9,58.9] weight:55000 index:0)",
+              "name": "",
+              "origin": {
+                "x": 10,
+                "y": 0,
+                "z": 10
+              },
+              "packedIndex": 6,
+              "properties": null,
+              "quantity": 1,
+              "refId": 4,
+              "sequence": "",
+              "uniqueId": "4-1",
+              "virtual": false,
+              "weight": 500
+            }
+          },
+          {
+            "item": {
+              "centerOfMass": {
+                "x": 15,
+                "y": 5,
+                "z": 25
+              },
+              "color": "limegreen",
+              "deltaCost": 0,
+              "dimensions": {
+                "x": 10,
+                "y": 10,
+                "z": 10
+              },
+              "globalId": 40,
+              "index": 8,
+              "message": "packed #7 in 18.14µs at 2.94754ms in Box(name:ISO 20' (decimeter - pound) dimensions:[23.5,23.9,58.9] weight:55000 index:0)",
+              "name": "",
+              "origin": {
+                "x": 10,
+                "y": 0,
+                "z": 20
+              },
+              "packedIndex": 7,
+              "properties": null,
+              "quantity": 1,
+              "refId": 4,
+              "sequence": "",
+              "uniqueId": "4-2",
+              "virtual": false,
+              "weight": 500
+            }
+          },
+          {
+            "item": {
+              "centerOfMass": {
+                "x": 15,
+                "y": 5,
+                "z": 35
+              },
+              "color": "limegreen",
+              "deltaCost": 0,
+              "dimensions": {
+                "x": 10,
+                "y": 10,
+                "z": 10
+              },
+              "globalId": 41,
+              "index": 9,
+              "message": "packed #8 in 56.13µs at 3.00548ms in Box(name:ISO 20' (decimeter - pound) dimensions:[23.5,23.9,58.9] weight:55000 index:0)",
+              "name": "",
+              "origin": {
+                "x": 10,
+                "y": 0,
+                "z": 30
+              },
+              "packedIndex": 8,
+              "properties": null,
+              "quantity": 1,
+              "refId": 4,
+              "sequence": "",
+              "uniqueId": "4-3",
+              "virtual": false,
+              "weight": 500
+            }
+          },
+          {
+            "item": {
+              "centerOfMass": {
+                "x": 15,
+                "y": 5,
+                "z": 45
+              },
+              "color": "limegreen",
+              "deltaCost": 0,
+              "dimensions": {
+                "x": 10,
+                "y": 10,
+                "z": 10
+              },
+              "globalId": 42,
+              "index": 10,
+              "message": "packed #9 in 46.22µs at 3.05566ms in Box(name:ISO 20' (decimeter - pound) dimensions:[23.5,23.9,58.9] weight:55000 index:0)",
+              "name": "",
+              "origin": {
+                "x": 10,
+                "y": 0,
+                "z": 40
+              },
+              "packedIndex": 9,
+              "properties": null,
+              "quantity": 1,
+              "refId": 4,
+              "sequence": "",
+              "uniqueId": "4-4",
+              "virtual": false,
+              "weight": 500
+            }
+          },
+          {
+            "item": {
+              "centerOfMass": {
+                "x": 11,
+                "y": 13,
+                "z": 19
+              },
+              "color": "tomato",
+              "deltaCost": 0,
+              "dimensions": {
+                "x": 2,
+                "y": 6,
+                "z": 38
+              },
+              "globalId": 0,
+              "index": 11,
+              "message": "packed #10 in 29.63µs at 3.08633ms in Box(name:ISO 20' (decimeter - pound) dimensions:[23.5,23.9,58.9] weight:55000 index:0)",
+              "name": "",
+              "origin": {
+                "x": 10,
+                "y": 10,
+                "z": 0
+              },
+              "packedIndex": 10,
+              "properties": null,
+              "quantity": 1,
+              "refId": 0,
+              "sequence": "",
+              "uniqueId": "0-0",
+              "virtual": false,
+              "weight": 500
+            }
+          },
+          {
+            "item": {
+              "centerOfMass": {
+                "x": 11,
+                "y": 19,
+                "z": 19
+              },
+              "color": "tomato",
+              "deltaCost": 0,
+              "dimensions": {
+                "x": 2,
+                "y": 6,
+                "z": 38
+              },
+              "globalId": 1,
+              "index": 12,
+              "message": "packed #11 in 14.08µs at 3.10155ms in Box(name:ISO 20' (decimeter - pound) dimensions:[23.5,23.9,58.9] weight:55000 index:0)",
+              "name": "",
+              "origin": {
+                "x": 10,
+                "y": 16,
+                "z": 0
+              },
+              "packedIndex": 11,
+              "properties": null,
+              "quantity": 1,
+              "refId": 0,
+              "sequence": "",
+              "uniqueId": "0-1",
+              "virtual": false,
+              "weight": 500
+            }
+          },
+          {
+            "item": {
+              "centerOfMass": {
+                "x": 13,
+                "y": 13,
+                "z": 19
+              },
+              "color": "tomato",
+              "deltaCost": 0,
+              "dimensions": {
+                "x": 2,
+                "y": 6,
+                "z": 38
+              },
+              "globalId": 2,
+              "index": 13,
+              "message": "packed #12 in 28.34µs at 3.13099ms in Box(name:ISO 20' (decimeter - pound) dimensions:[23.5,23.9,58.9] weight:55000 index:0)",
+              "name": "",
+              "origin": {
+                "x": 12,
+                "y": 10,
+                "z": 0
+              },
+              "packedIndex": 12,
+              "properties": null,
+              "quantity": 1,
+              "refId": 0,
+              "sequence": "",
+              "uniqueId": "0-2",
+              "virtual": false,
+              "weight": 500
+            }
+          },
+          {
+            "item": {
+              "centerOfMass": {
+                "x": 13,
+                "y": 19,
+                "z": 19
+              },
+              "color": "tomato",
+              "deltaCost": 0,
+              "dimensions": {
+                "x": 2,
+                "y": 6,
+                "z": 38
+              },
+              "globalId": 3,
+              "index": 14,
+              "message": "packed #13 in 15.74µs at 3.1478ms in Box(name:ISO 20' (decimeter - pound) dimensions:[23.5,23.9,58.9] weight:55000 index:0)",
+              "name": "",
+              "origin": {
+                "x": 12,
+                "y": 16,
+                "z": 0
+              },
+              "packedIndex": 13,
+              "properties": null,
+              "quantity": 1,
+              "refId": 0,
+              "sequence": "",
+              "uniqueId": "0-3",
+              "virtual": false,
+              "weight": 500
+            }
+          },
+          {
+            "item": {
+              "centerOfMass": {
+                "x": 15,
+                "y": 13,
+                "z": 19
+              },
+              "color": "tomato",
+              "deltaCost": 0,
+              "dimensions": {
+                "x": 2,
+                "y": 6,
+                "z": 38
+              },
+              "globalId": 4,
+              "index": 15,
+              "message": "packed #14 in 22.88µs at 3.17163ms in Box(name:ISO 20' (decimeter - pound) dimensions:[23.5,23.9,58.9] weight:55000 index:0)",
+              "name": "",
+              "origin": {
+                "x": 14,
+                "y": 10,
+                "z": 0
+              },
+              "packedIndex": 14,
+              "properties": null,
+              "quantity": 1,
+              "refId": 0,
+              "sequence": "",
+              "uniqueId": "0-4",
+              "virtual": false,
+              "weight": 500
+            }
+          },
+          {
+            "item": {
+              "centerOfMass": {
+                "x": 15,
+                "y": 19,
+                "z": 19
+              },
+              "color": "tomato",
+              "deltaCost": 0,
+              "dimensions": {
+                "x": 2,
+                "y": 6,
+                "z": 38
+              },
+              "globalId": 5,
+              "index": 16,
+              "message": "packed #15 in 16.38µs at 3.18896ms in Box(name:ISO 20' (decimeter - pound) dimensions:[23.5,23.9,58.9] weight:55000 index:0)",
+              "name": "",
+              "origin": {
+                "x": 14,
+                "y": 16,
+                "z": 0
+              },
+              "packedIndex": 15,
+              "properties": null,
+              "quantity": 1,
+              "refId": 0,
+              "sequence": "",
+              "uniqueId": "0-5",
+              "virtual": false,
+              "weight": 500
+            }
+          },
+          {
+            "item": {
+              "centerOfMass": {
+                "x": 17,
+                "y": 13,
+                "z": 19
+              },
+              "color": "tomato",
+              "deltaCost": 0,
+              "dimensions": {
+                "x": 2,
+                "y": 6,
+                "z": 38
+              },
+              "globalId": 6,
+              "index": 17,
+              "message": "packed #16 in 61.17µs at 3.25118ms in Box(name:ISO 20' (decimeter - pound) dimensions:[23.5,23.9,58.9] weight:55000 index:0)",
+              "name": "",
+              "origin": {
+                "x": 16,
+                "y": 10,
+                "z": 0
+              },
+              "packedIndex": 16,
+              "properties": null,
+              "quantity": 1,
+              "refId": 0,
+              "sequence": "",
+              "uniqueId": "0-6",
+              "virtual": false,
+              "weight": 500
+            }
+          },
+          {
+            "item": {
+              "centerOfMass": {
+                "x": 17,
+                "y": 19,
+                "z": 19
+              },
+              "color": "tomato",
+              "deltaCost": 0,
+              "dimensions": {
+                "x": 2,
+                "y": 6,
+                "z": 38
+              },
+              "globalId": 7,
+              "index": 18,
+              "message": "packed #17 in 17.4µs at 3.26957ms in Box(name:ISO 20' (decimeter - pound) dimensions:[23.5,23.9,58.9] weight:55000 index:0)",
+              "name": "",
+              "origin": {
+                "x": 16,
+                "y": 16,
+                "z": 0
+              },
+              "packedIndex": 17,
+              "properties": null,
+              "quantity": 1,
+              "refId": 0,
+              "sequence": "",
+              "uniqueId": "0-7",
+              "virtual": false,
+              "weight": 500
+            }
+          },
+          {
+            "item": {
+              "centerOfMass": {
+                "x": 19,
+                "y": 13,
+                "z": 19
+              },
+              "color": "tomato",
+              "deltaCost": 0,
+              "dimensions": {
+                "x": 2,
+                "y": 6,
+                "z": 38
+              },
+              "globalId": 8,
+              "index": 19,
+              "message": "packed #18 in 19µs at 3.28957ms in Box(name:ISO 20' (decimeter - pound) dimensions:[23.5,23.9,58.9] weight:55000 index:0)",
+              "name": "",
+              "origin": {
+                "x": 18,
+                "y": 10,
+                "z": 0
+              },
+              "packedIndex": 18,
+              "properties": null,
+              "quantity": 1,
+              "refId": 0,
+              "sequence": "",
+              "uniqueId": "0-8",
+              "virtual": false,
+              "weight": 500
+            }
+          },
+          {
+            "item": {
+              "centerOfMass": {
+                "x": 5,
+                "y": 5,
+                "z": 52
+              },
+              "color": "cornflowerblue",
+              "deltaCost": 0,
+              "dimensions": {
+                "x": 10,
+                "y": 10,
+                "z": 4
+              },
+              "globalId": 9,
+              "index": 20,
+              "message": "packed #19 in 17.62µs at 3.3083ms in Box(name:ISO 20' (decimeter - pound) dimensions:[23.5,23.9,58.9] weight:55000 index:0)",
+              "name": "",
+              "origin": {
+                "x": 0,
+                "y": 0,
+                "z": 50
+              },
+              "packedIndex": 19,
+              "properties": null,
+              "quantity": 1,
+              "refId": 1,
+              "sequence": "",
+              "uniqueId": "1-0",
+              "virtual": false,
+              "weight": 1000
+            }
+          },
+          {
+            "item": {
+              "centerOfMass": {
+                "x": 5,
+                "y": 5,
+                "z": 56
+              },
+              "color": "cornflowerblue",
+              "deltaCost": 0,
+              "dimensions": {
+                "x": 10,
+                "y": 10,
+                "z": 4
+              },
+              "globalId": 10,
+              "index": 21,
+              "message": "packed #20 in 17.8µs at 3.32713ms in Box(name:ISO 20' (decimeter - pound) dimensions:[23.5,23.9,58.9] weight:55000 index:0)",
+              "name": "",
+              "origin": {
+                "x": 0,
+                "y": 0,
+                "z": 54
+              },
+              "packedIndex": 20,
+              "properties": null,
+              "quantity": 1,
+              "refId": 1,
+              "sequence": "",
+              "uniqueId": "1-1",
+              "virtual": false,
+              "weight": 1000
+            }
+          },
+          {
+            "item": {
+              "centerOfMass": {
+                "x": 5,
+                "y": 15,
+                "z": 52
+              },
+              "color": "cornflowerblue",
+              "deltaCost": 0,
+              "dimensions": {
+                "x": 10,
+                "y": 10,
+                "z": 4
+              },
+              "globalId": 11,
+              "index": 22,
+              "message": "packed #21 in 21.23µs at 3.34936ms in Box(name:ISO 20' (decimeter - pound) dimensions:[23.5,23.9,58.9] weight:55000 index:0)",
+              "name": "",
+              "origin": {
+                "x": 0,
+                "y": 10,
+                "z": 50
+              },
+              "packedIndex": 21,
+              "properties": null,
+              "quantity": 1,
+              "refId": 1,
+              "sequence": "",
+              "uniqueId": "1-2",
+              "virtual": false,
+              "weight": 1000
+            }
+          },
+          {
+            "item": {
+              "centerOfMass": {
+                "x": 5,
+                "y": 15,
+                "z": 56
+              },
+              "color": "cornflowerblue",
+              "deltaCost": 0,
+              "dimensions": {
+                "x": 10,
+                "y": 10,
+                "z": 4
+              },
+              "globalId": 12,
+              "index": 23,
+              "message": "packed #22 in 31.88µs at 3.3822ms in Box(name:ISO 20' (decimeter - pound) dimensions:[23.5,23.9,58.9] weight:55000 index:0)",
+              "name": "",
+              "origin": {
+                "x": 0,
+                "y": 10,
+                "z": 54
+              },
+              "packedIndex": 22,
+              "properties": null,
+              "quantity": 1,
+              "refId": 1,
+              "sequence": "",
+              "uniqueId": "1-3",
+              "virtual": false,
+              "weight": 1000
+            }
+          },
+          {
+            "item": {
+              "centerOfMass": {
+                "x": 15,
+                "y": 5,
+                "z": 52
+              },
+              "color": "cornflowerblue",
+              "deltaCost": 0,
+              "dimensions": {
+                "x": 10,
+                "y": 10,
+                "z": 4
+              },
+              "globalId": 13,
+              "index": 24,
+              "message": "packed #23 in 100.18µs at 3.48338ms in Box(name:ISO 20' (decimeter - pound) dimensions:[23.5,23.9,58.9] weight:55000 index:0)",
+              "name": "",
+              "origin": {
+                "x": 10,
+                "y": 0,
+                "z": 50
+              },
+              "packedIndex": 23,
+              "properties": null,
+              "quantity": 1,
+              "refId": 1,
+              "sequence": "",
+              "uniqueId": "1-4",
+              "virtual": false,
+              "weight": 1000
+            }
+          },
+          {
+            "item": {
+              "centerOfMass": {
+                "x": 15,
+                "y": 5,
+                "z": 56
+              },
+              "color": "cornflowerblue",
+              "deltaCost": 0,
+              "dimensions": {
+                "x": 10,
+                "y": 10,
+                "z": 4
+              },
+              "globalId": 14,
+              "index": 25,
+              "message": "packed #24 in 22.25µs at 3.50677ms in Box(name:ISO 20' (decimeter - pound) dimensions:[23.5,23.9,58.9] weight:55000 index:0)",
+              "name": "",
+              "origin": {
+                "x": 10,
+                "y": 0,
+                "z": 54
+              },
+              "packedIndex": 24,
+              "properties": null,
+              "quantity": 1,
+              "refId": 1,
+              "sequence": "",
+              "uniqueId": "1-5",
+              "virtual": false,
+              "weight": 1000
+            }
+          },
+          {
+            "item": {
+              "centerOfMass": {
+                "x": 15,
+                "y": 15,
+                "z": 52
+              },
+              "color": "cornflowerblue",
+              "deltaCost": 0,
+              "dimensions": {
+                "x": 10,
+                "y": 10,
+                "z": 4
+              },
+              "globalId": 15,
+              "index": 26,
+              "message": "packed #25 in 25.2µs at 3.53313ms in Box(name:ISO 20' (decimeter - pound) dimensions:[23.5,23.9,58.9] weight:55000 index:0)",
+              "name": "",
+              "origin": {
+                "x": 10,
+                "y": 10,
+                "z": 50
+              },
+              "packedIndex": 25,
+              "properties": null,
+              "quantity": 1,
+              "refId": 1,
+              "sequence": "",
+              "uniqueId": "1-6",
+              "virtual": false,
+              "weight": 1000
+            }
+          },
+          {
+            "item": {
+              "centerOfMass": {
+                "x": 15,
+                "y": 15,
+                "z": 56
+              },
+              "color": "cornflowerblue",
+              "deltaCost": 0,
+              "dimensions": {
+                "x": 10,
+                "y": 10,
+                "z": 4
+              },
+              "globalId": 16,
+              "index": 27,
+              "message": "packed #26 in 22.72µs at 3.55679ms in Box(name:ISO 20' (decimeter - pound) dimensions:[23.5,23.9,58.9] weight:55000 index:0)",
+              "name": "",
+              "origin": {
+                "x": 10,
+                "y": 10,
+                "z": 54
+              },
+              "packedIndex": 26,
+              "properties": null,
+              "quantity": 1,
+              "refId": 1,
+              "sequence": "",
+              "uniqueId": "1-7",
+              "virtual": false,
+              "weight": 1000
+            }
+          },
+          {
+            "item": {
+              "centerOfMass": {
+                "x": 10.5,
+                "y": 13,
+                "z": 44
+              },
+              "color": "darkorange",
+              "deltaCost": 0,
+              "dimensions": {
+                "x": 1,
+                "y": 6,
+                "z": 12
+              },
+              "globalId": 22,
+              "index": 28,
+              "message": "packed #27 in 37.71µs at 3.59555ms in Box(name:ISO 20' (decimeter - pound) dimensions:[23.5,23.9,58.9] weight:55000 index:0)",
+              "name": "",
+              "origin": {
+                "x": 10,
+                "y": 10,
+                "z": 38
+              },
+              "packedIndex": 27,
+              "properties": null,
+              "quantity": 1,
+              "refId": 3,
+              "sequence": "",
+              "uniqueId": "3-0",
+              "virtual": false,
+              "weight": 300
+            }
+          },
+          {
+            "item": {
+              "centerOfMass": {
+                "x": 10.5,
+                "y": 19,
+                "z": 44
+              },
+              "color": "darkorange",
+              "deltaCost": 0,
+              "dimensions": {
+                "x": 1,
+                "y": 6,
+                "z": 12
+              },
+              "globalId": 23,
+              "index": 29,
+              "message": "packed #28 in 29.45µs at 3.62631ms in Box(name:ISO 20' (decimeter - pound) dimensions:[23.5,23.9,58.9] weight:55000 index:0)",
+              "name": "",
+              "origin": {
+                "x": 10,
+                "y": 16,
+                "z": 38
+              },
+              "packedIndex": 28,
+              "properties": null,
+              "quantity": 1,
+              "refId": 3,
+              "sequence": "",
+              "uniqueId": "3-1",
+              "virtual": false,
+              "weight": 300
+            }
+          },
+          {
+            "item": {
+              "centerOfMass": {
+                "x": 11.5,
+                "y": 13,
+                "z": 44
+              },
+              "color": "darkorange",
+              "deltaCost": 0,
+              "dimensions": {
+                "x": 1,
+                "y": 6,
+                "z": 12
+              },
+              "globalId": 24,
+              "index": 30,
+              "message": "packed #29 in 24.08µs at 3.65131ms in Box(name:ISO 20' (decimeter - pound) dimensions:[23.5,23.9,58.9] weight:55000 index:0)",
+              "name": "",
+              "origin": {
+                "x": 11,
+                "y": 10,
+                "z": 38
+              },
+              "packedIndex": 29,
+              "properties": null,
+              "quantity": 1,
+              "refId": 3,
+              "sequence": "",
+              "uniqueId": "3-2",
+              "virtual": false,
+              "weight": 300
+            }
+          },
+          {
+            "item": {
+              "centerOfMass": {
+                "x": 11.5,
+                "y": 19,
+                "z": 44
+              },
+              "color": "darkorange",
+              "deltaCost": 0,
+              "dimensions": {
+                "x": 1,
+                "y": 6,
+                "z": 12
+              },
+              "globalId": 25,
+              "index": 31,
+              "message": "packed #30 in 21.34µs at 3.67359ms in Box(name:ISO 20' (decimeter - pound) dimensions:[23.5,23.9,58.9] weight:55000 index:0)",
+              "name": "",
+              "origin": {
+                "x": 11,
+                "y": 16,
+                "z": 38
+              },
+              "packedIndex": 30,
+              "properties": null,
+              "quantity": 1,
+              "refId": 3,
+              "sequence": "",
+              "uniqueId": "3-3",
+              "virtual": false,
+              "weight": 300
+            }
+          },
+          {
+            "item": {
+              "centerOfMass": {
+                "x": 12.5,
+                "y": 13,
+                "z": 44
+              },
+              "color": "darkorange",
+              "deltaCost": 0,
+              "dimensions": {
+                "x": 1,
+                "y": 6,
+                "z": 12
+              },
+              "globalId": 26,
+              "index": 32,
+              "message": "packed #31 in 24.04µs at 3.69864ms in Box(name:ISO 20' (decimeter - pound) dimensions:[23.5,23.9,58.9] weight:55000 index:0)",
+              "name": "",
+              "origin": {
+                "x": 12,
+                "y": 10,
+                "z": 38
+              },
+              "packedIndex": 31,
+              "properties": null,
+              "quantity": 1,
+              "refId": 3,
+              "sequence": "",
+              "uniqueId": "3-4",
+              "virtual": false,
+              "weight": 300
+            }
+          },
+          {
+            "item": {
+              "centerOfMass": {
+                "x": 12.5,
+                "y": 19,
+                "z": 44
+              },
+              "color": "darkorange",
+              "deltaCost": 0,
+              "dimensions": {
+                "x": 1,
+                "y": 6,
+                "z": 12
+              },
+              "globalId": 27,
+              "index": 33,
+              "message": "packed #32 in 118.16µs at 3.81771ms in Box(name:ISO 20' (decimeter - pound) dimensions:[23.5,23.9,58.9] weight:55000 index:0)",
+              "name": "",
+              "origin": {
+                "x": 12,
+                "y": 16,
+                "z": 38
+              },
+              "packedIndex": 32,
+              "properties": null,
+              "quantity": 1,
+              "refId": 3,
+              "sequence": "",
+              "uniqueId": "3-5",
+              "virtual": false,
+              "weight": 300
+            }
+          },
+          {
+            "item": {
+              "centerOfMass": {
+                "x": 13.5,
+                "y": 13,
+                "z": 44
+              },
+              "color": "darkorange",
+              "deltaCost": 0,
+              "dimensions": {
+                "x": 1,
+                "y": 6,
+                "z": 12
+              },
+              "globalId": 28,
+              "index": 34,
+              "message": "packed #33 in 26.12µs at 3.84497ms in Box(name:ISO 20' (decimeter - pound) dimensions:[23.5,23.9,58.9] weight:55000 index:0)",
+              "name": "",
+              "origin": {
+                "x": 13,
+                "y": 10,
+                "z": 38
+              },
+              "packedIndex": 33,
+              "properties": null,
+              "quantity": 1,
+              "refId": 3,
+              "sequence": "",
+              "uniqueId": "3-6",
+              "virtual": false,
+              "weight": 300
+            }
+          },
+          {
+            "item": {
+              "centerOfMass": {
+                "x": 13.5,
+                "y": 19,
+                "z": 44
+              },
+              "color": "darkorange",
+              "deltaCost": 0,
+              "dimensions": {
+                "x": 1,
+                "y": 6,
+                "z": 12
+              },
+              "globalId": 29,
+              "index": 35,
+              "message": "packed #34 in 23.48µs at 3.8695ms in Box(name:ISO 20' (decimeter - pound) dimensions:[23.5,23.9,58.9] weight:55000 index:0)",
+              "name": "",
+              "origin": {
+                "x": 13,
+                "y": 16,
+                "z": 38
+              },
+              "packedIndex": 34,
+              "properties": null,
+              "quantity": 1,
+              "refId": 3,
+              "sequence": "",
+              "uniqueId": "3-7",
+              "virtual": false,
+              "weight": 300
+            }
+          },
+          {
+            "item": {
+              "centerOfMass": {
+                "x": 14.5,
+                "y": 13,
+                "z": 44
+              },
+              "color": "darkorange",
+              "deltaCost": 0,
+              "dimensions": {
+                "x": 1,
+                "y": 6,
+                "z": 12
+              },
+              "globalId": 30,
+              "index": 36,
+              "message": "packed #35 in 11.287829ms at 15.158309ms in Box(name:ISO 20' (decimeter - pound) dimensions:[23.5,23.9,58.9] weight:55000 index:0)",
+              "name": "",
+              "origin": {
+                "x": 14,
+                "y": 10,
+                "z": 38
+              },
+              "packedIndex": 35,
+              "properties": null,
+              "quantity": 1,
+              "refId": 3,
+              "sequence": "",
+              "uniqueId": "3-8",
+              "virtual": false,
+              "weight": 300
+            }
+          },
+          {
+            "item": {
+              "centerOfMass": {
+                "x": 14.5,
+                "y": 19,
+                "z": 44
+              },
+              "color": "darkorange",
+              "deltaCost": 0,
+              "dimensions": {
+                "x": 1,
+                "y": 6,
+                "z": 12
+              },
+              "globalId": 31,
+              "index": 37,
+              "message": "packed #36 in 192.54µs at 15.354099ms in Box(name:ISO 20' (decimeter - pound) dimensions:[23.5,23.9,58.9] weight:55000 index:0)",
+              "name": "",
+              "origin": {
+                "x": 14,
+                "y": 16,
+                "z": 38
+              },
+              "packedIndex": 36,
+              "properties": null,
+              "quantity": 1,
+              "refId": 3,
+              "sequence": "",
+              "uniqueId": "3-9",
+              "virtual": false,
+              "weight": 300
+            }
+          },
+          {
+            "item": {
+              "centerOfMass": {
+                "x": 15.5,
+                "y": 13,
+                "z": 44
+              },
+              "color": "darkorange",
+              "deltaCost": 0,
+              "dimensions": {
+                "x": 1,
+                "y": 6,
+                "z": 12
+              },
+              "globalId": 32,
+              "index": 38,
+              "message": "packed #37 in 57µs at 15.413519ms in Box(name:ISO 20' (decimeter - pound) dimensions:[23.5,23.9,58.9] weight:55000 index:0)",
+              "name": "",
+              "origin": {
+                "x": 15,
+                "y": 10,
+                "z": 38
+              },
+              "packedIndex": 37,
+              "properties": null,
+              "quantity": 1,
+              "refId": 3,
+              "sequence": "",
+              "uniqueId": "3-10",
+              "virtual": false,
+              "weight": 300
+            }
+          },
+          {
+            "item": {
+              "centerOfMass": {
+                "x": 15.5,
+                "y": 19,
+                "z": 44
+              },
+              "color": "darkorange",
+              "deltaCost": 0,
+              "dimensions": {
+                "x": 1,
+                "y": 6,
+                "z": 12
+              },
+              "globalId": 33,
+              "index": 39,
+              "message": "packed #38 in 37.93µs at 15.452669ms in Box(name:ISO 20' (decimeter - pound) dimensions:[23.5,23.9,58.9] weight:55000 index:0)",
+              "name": "",
+              "origin": {
+                "x": 15,
+                "y": 16,
+                "z": 38
+              },
+              "packedIndex": 38,
+              "properties": null,
+              "quantity": 1,
+              "refId": 3,
+              "sequence": "",
+              "uniqueId": "3-11",
+              "virtual": false,
+              "weight": 300
+            }
+          },
+          {
+            "item": {
+              "centerOfMass": {
+                "x": 16.5,
+                "y": 13,
+                "z": 44
+              },
+              "color": "darkorange",
+              "deltaCost": 0,
+              "dimensions": {
+                "x": 1,
+                "y": 6,
+                "z": 12
+              },
+              "globalId": 34,
+              "index": 40,
+              "message": "packed #39 in 33.85µs at 15.488079ms in Box(name:ISO 20' (decimeter - pound) dimensions:[23.5,23.9,58.9] weight:55000 index:0)",
+              "name": "",
+              "origin": {
+                "x": 16,
+                "y": 10,
+                "z": 38
+              },
+              "packedIndex": 39,
+              "properties": null,
+              "quantity": 1,
+              "refId": 3,
+              "sequence": "",
+              "uniqueId": "3-12",
+              "virtual": false,
+              "weight": 300
+            }
+          },
+          {
+            "item": {
+              "centerOfMass": {
+                "x": 16.5,
+                "y": 19,
+                "z": 44
+              },
+              "color": "darkorange",
+              "deltaCost": 0,
+              "dimensions": {
+                "x": 1,
+                "y": 6,
+                "z": 12
+              },
+              "globalId": 35,
+              "index": 41,
+              "message": "packed #40 in 29.37µs at 15.518439ms in Box(name:ISO 20' (decimeter - pound) dimensions:[23.5,23.9,58.9] weight:55000 index:0)",
+              "name": "",
+              "origin": {
+                "x": 16,
+                "y": 16,
+                "z": 38
+              },
+              "packedIndex": 40,
+              "properties": null,
+              "quantity": 1,
+              "refId": 3,
+              "sequence": "",
+              "uniqueId": "3-13",
+              "virtual": false,
+              "weight": 300
+            }
+          },
+          {
+            "item": {
+              "centerOfMass": {
+                "x": 17.5,
+                "y": 13,
+                "z": 44
+              },
+              "color": "darkorange",
+              "deltaCost": 0,
+              "dimensions": {
+                "x": 1,
+                "y": 6,
+                "z": 12
+              },
+              "globalId": 36,
+              "index": 42,
+              "message": "packed #41 in 30.11µs at 15.549389ms in Box(name:ISO 20' (decimeter - pound) dimensions:[23.5,23.9,58.9] weight:55000 index:0)",
+              "name": "",
+              "origin": {
+                "x": 17,
+                "y": 10,
+                "z": 38
+              },
+              "packedIndex": 41,
+              "properties": null,
+              "quantity": 1,
+              "refId": 3,
+              "sequence": "",
+              "uniqueId": "3-14",
+              "virtual": false,
+              "weight": 300
+            }
+          },
+          {
+            "item": {
+              "centerOfMass": {
+                "x": 17.5,
+                "y": 19,
+                "z": 44
+              },
+              "color": "darkorange",
+              "deltaCost": 0,
+              "dimensions": {
+                "x": 1,
+                "y": 6,
+                "z": 12
+              },
+              "globalId": 37,
+              "index": 43,
+              "message": "packed #42 in 33.57µs at 15.584339ms in Box(name:ISO 20' (decimeter - pound) dimensions:[23.5,23.9,58.9] weight:55000 index:0)",
+              "name": "",
+              "origin": {
+                "x": 17,
+                "y": 16,
+                "z": 38
+              },
+              "packedIndex": 42,
+              "properties": null,
+              "quantity": 1,
+              "refId": 3,
+              "sequence": "",
+              "uniqueId": "3-15",
+              "virtual": false,
+              "weight": 300
+            }
+          }
+        ],
+        "lenItems": 43,
+        "lenUnits": 43,
+        "name": "ISO 20' (decimeter - pound)",
+        "origin": {
+          "x": 0,
+          "y": 0,
+          "z": 0
+        },
+        "price": 33081,
+        "properties": null,
+        "propertyConstraints": null,
+        "refId": 0,
+        "subspace": null,
+        "volumeMax": 33081.185,
+        "volumeNet": 24456,
+        "volumeRemaining": 8625.185,
+        "volumeReserved": 0,
+        "volumeUsed": 24456,
+        "volumeUtilization": 0.73927219,
+        "weightMax": 55000,
+        "weightNet": 27800,
+        "weightRemaining": 22200,
+        "weightTare": 5000,
+        "weightUsed": 32800,
+        "weightUtilization": 0.59636364
+      }
+    }
+  ],
+  "built": "2026-10-01T04:57:10.585668047Z",
+  "host": "api.prod.paccurate.io",
+  "imageScaleStyleUsed": "fill",
+  "itemSortReverseUsed": false,
+  "itemSortUsed": "default",
+  "leftovers": [],
+  "lenBoxes": 1,
+  "lenItems": 43,
+  "lenLeftovers": 0,
+  "lenUnits": 43,
+  "packTime": 0.015589459,
+  "packUuid": "01a0fefc-7212-7aa8-94b1-1fa5390414d0",
+  "renderTime": 0.026151609,
+  "requestFingerprint": "301a9bac174a9460878c114b3eb1f2aec9d75a5c72d0a7b1e9b66651e2e57b6c5932bc0113f17799a1cc030892fc05da3c84701f5b09efa2de1b382853d51f0f",
+  "responseFingerprint": "c6adad160ccd5d747351442256f84c22e9b115cb95703ea51def5a4a37dbb1d33aaf52be32674131ba9f03244540c966f5a03e096c97f37797bd3d0098d091c2",
+  "startedAt": "2026-10-02T23:39:12.274814236Z",
+  "svgs": [
+    "<figure class='box-figure' data-box-index=0><svg viewBox='-186.74815,-215.34587,731.85552,662.38285'> [<line data-volume-index='0' class='volume-line' x1='24.5' y1='24.5' x2='24.5' y2='24.5'/>\n <line data-volume-index='0' class='volume-line' x1='24.5' y1='24.5' x2='24.5' y2='24.5'/>\n <line data-volume-index='0' class='volume-line' x1='24.5' y1='24.5' x2='24.5' y2='24.5'/>\n <line data-volume-index='0' class='volume-line' x1='24.5' y1='24.5' x2='545.10737' y2='325.0728'/>\n <line data-volume-index='0' class='volume-line' x1='24.5' y1='24.5' x2='-186.74815' y2='146.46418'/>\n <line data-volume-index='0' class='volume-line' x1='24.5' y1='24.5' x2='24.5' y2='-215.34587'/>\n] <polygon vector-effect='non-scaling-stroke' data-item-ref-id='2' data-volume-index='1' data-side='[10 22 10] [1 0 0]' data-direction='0 [10 22 10] [1 0 0] [] [] [1,0,0]' data-max-depth='13.490381' data-min-depth='4.2527768' class='volume-line' points='112.88835,-26.531036 24.5,-77.562073 -169.95436,34.706207 -81.566017,85.737244' style='fill:purple;' />\n<polygon vector-effect='non-scaling-stroke' data-item-ref-id='2' data-volume-index='1' data-side='[10 22 10] [0 1 0]' data-direction='1 [10 22 10] [0 1 0] [] [] [0,1,0]' data-max-depth='13.490381' data-min-depth='7.7168784' class='volume-line' points='-81.566017,187.79932 -81.566017,85.737244 -169.95436,34.706207 -169.95436,136.76828' style='fill:purple;' />\n<polygon vector-effect='non-scaling-stroke' data-item-ref-id='2' data-volume-index='1' data-side='[10 22 10] [0 0 1]' data-direction='2 [10 22 10] [0 0 1] [] [] [0,0,1]' data-max-depth='13.490381' data-min-depth='4.2527768' class='volume-line' points='112.88835,75.531036 112.88835,-26.531036 -81.566017,85.737244 -81.566017,187.79932' style='fill:purple;' />\n<polygon vector-effect='non-scaling-stroke' data-item-ref-id='2' data-volume-index='2' data-side='[10 22 20] [1 0 0]' data-direction='3 [10 22 20] [1 0 0] [] [] [1,0,0]' data-max-depth='16.377132' data-min-depth='7.1395281' class='volume-line' points='201.2767,24.5 112.88835,-26.531036 -81.566017,85.737244 6.8223305,136.76828' style='fill:purple;' />\n<polygon vector-effect='non-scaling-stroke' data-item-ref-id='2' data-volume-index='2' data-side='[10 22 20] [0 1 0]' data-direction='4 [10 22 20] [0 1 0] [] [] [0,1,0]' data-max-depth='16.377132' data-min-depth='10.60363' class='volume-line' points='6.8223305,238.83035 6.8223305,136.76828 -81.566017,85.737244 -81.566017,187.79932' style='fill:purple;' />\n<polygon vector-effect='non-scaling-stroke' data-item-ref-id='2' data-volume-index='2' data-side='[10 22 20] [0 0 1]' data-direction='5 [10 22 20] [0 0 1] [] [] [0,0,1]' data-max-depth='16.377132' data-min-depth='7.1395281' class='volume-line' points='201.2767,126.56207 201.2767,24.5 6.8223305,136.76828 6.8223305,238.83035' style='fill:purple;' />\n<polygon vector-effect='non-scaling-stroke' data-item-ref-id='2' data-volume-index='3' data-side='[10 22 30] [1 0 0]' data-direction='6 [10 22 30] [1 0 0] [] [] [1,0,0]' data-max-depth='19.263884' data-min-depth='10.026279' class='volume-line' points='289.66504,75.531036 201.2767,24.5 6.8223305,136.76828 95.210678,187.79932' style='fill:purple;' />\n<polygon vector-effect='non-scaling-stroke' data-item-ref-id='2' data-volume-index='3' data-side='[10 22 30] [0 1 0]' data-direction='7 [10 22 30] [0 1 0] [] [] [0,1,0]' data-max-depth='19.263884' data-min-depth='13.490381' class='volume-line' points='95.210678,289.86139 95.210678,187.79932 6.8223305,136.76828 6.8223305,238.83035' style='fill:purple;' />\n<polygon vector-effect='non-scaling-stroke' data-item-ref-id='2' data-volume-index='3' data-side='[10 22 30] [0 0 1]' data-direction='8 [10 22 30] [0 0 1] [] [] [0,0,1]' data-max-depth='19.263884' data-min-depth='10.026279' class='volume-line' points='289.66504,177.59311 289.66504,75.531036 95.210678,187.79932 95.210678,289.86139' style='fill:purple;' />\n<polygon vector-effect='non-scaling-stroke' data-item-ref-id='2' data-volume-index='4' data-side='[10 22 40] [1 0 0]' data-direction='9 [10 22 40] [1 0 0] [] [] [1,0,0]' data-max-depth='22.150635' data-min-depth='12.913031' class='volume-line' points='378.05339,126.56207 289.66504,75.531036 95.210678,187.79932 183.59903,238.83035' style='fill:purple;' />\n<polygon vector-effect='non-scaling-stroke' data-item-ref-id='2' data-volume-index='4' data-side='[10 22 40] [0 1 0]' data-direction='10 [10 22 40] [0 1 0] [] [] [0,1,0]' data-max-depth='22.150635' data-min-depth='16.377132' class='volume-line' points='183.59903,340.89243 183.59903,238.83035 95.210678,187.79932 95.210678,289.86139' style='fill:purple;' />\n<polygon vector-effect='non-scaling-stroke' data-item-ref-id='2' data-volume-index='4' data-side='[10 22 40] [0 0 1]' data-direction='11 [10 22 40] [0 0 1] [] [] [0,0,1]' data-max-depth='22.150635' data-min-depth='12.913031' class='volume-line' points='378.05339,228.62415 378.05339,126.56207 183.59903,238.83035 183.59903,340.89243' style='fill:purple;' />\n<polygon vector-effect='non-scaling-stroke' data-item-ref-id='2' data-volume-index='5' data-side='[10 22 50] [1 0 0]' data-direction='12 [10 22 50] [1 0 0] [] [] [1,0,0]' data-max-depth='25.037386' data-min-depth='15.799782' class='volume-line' points='466.44174,177.59311 378.05339,126.56207 183.59903,238.83035 271.98737,289.86139' style='fill:purple;' />\n<polygon vector-effect='non-scaling-stroke' data-item-ref-id='2' data-volume-index='5' data-side='[10 22 50] [0 1 0]' data-direction='13 [10 22 50] [0 1 0] [] [] [0,1,0]' data-max-depth='25.037386' data-min-depth='19.263884' class='volume-line' points='271.98737,391.92346 271.98737,289.86139 183.59903,238.83035 183.59903,340.89243' style='fill:purple;' />\n<polygon vector-effect='non-scaling-stroke' data-item-ref-id='2' data-volume-index='5' data-side='[10 22 50] [0 0 1]' data-direction='14 [10 22 50] [0 0 1] [] [] [0,0,1]' data-max-depth='25.037386' data-min-depth='15.799782' class='volume-line' points='466.44174,279.65518 466.44174,177.59311 271.98737,289.86139 271.98737,391.92346' style='fill:purple;' />\n<polygon vector-effect='non-scaling-stroke' data-item-ref-id='4' data-volume-index='6' data-side='[20 10 10] [1 0 0]' data-direction='15 [20 10 10] [1 0 0] [] [] [1,0,0]' data-max-depth='12.913031' data-min-depth='7.1395281' class='volume-line' points='24.5,-77.562073 112.88835,-128.59311 24.5,-179.62415 -63.888348,-128.59311' style='fill:limegreen;' />\n<polygon vector-effect='non-scaling-stroke' data-item-ref-id='4' data-volume-index='6' data-side='[20 10 10] [0 1 0]' data-direction='16 [20 10 10] [0 1 0] [] [] [0,1,0]' data-max-depth='12.913031' data-min-depth='7.1395281' class='volume-line' points='24.5,24.5 24.5,-77.562073 -63.888348,-128.59311 -63.888348,-26.531036' style='fill:limegreen;' />\n<polygon vector-effect='non-scaling-stroke' data-item-ref-id='4' data-volume-index='6' data-side='[20 10 10] [0 0 1]' data-direction='17 [20 10 10] [0 0 1] [] [] [0,0,1]' data-max-depth='12.913031' data-min-depth='7.1395281' class='volume-line' points='112.88835,-26.531036 112.88835,-128.59311 24.5,-77.562073 24.5,24.5' style='fill:limegreen;' />\n<polygon vector-effect='non-scaling-stroke' data-item-ref-id='4' data-volume-index='7' data-side='[20 10 20] [1 0 0]' data-direction='18 [20 10 20] [1 0 0] [] [] [1,0,0]' data-max-depth='15.799782' data-min-depth='10.026279' class='volume-line' points='112.88835,-26.531036 201.2767,-77.562073 112.88835,-128.59311 24.5,-77.562073' style='fill:limegreen;' />\n<polygon vector-effect='non-scaling-stroke' data-item-ref-id='4' data-volume-index='7' data-side='[20 10 20] [0 1 0]' data-direction='19 [20 10 20] [0 1 0] [] [] [0,1,0]' data-max-depth='15.799782' data-min-depth='10.026279' class='volume-line' points='112.88835,75.531036 112.88835,-26.531036 24.5,-77.562073 24.5,24.5' style='fill:limegreen;' />\n<polygon vector-effect='non-scaling-stroke' data-item-ref-id='4' data-volume-index='7' data-side='[20 10 20] [0 0 1]' data-direction='20 [20 10 20] [0 0 1] [] [] [0,0,1]' data-max-depth='15.799782' data-min-depth='10.026279' class='volume-line' points='201.2767,24.5 201.2767,-77.562073 112.88835,-26.531036 112.88835,75.531036' style='fill:limegreen;' />\n<polygon vector-effect='non-scaling-stroke' data-item-ref-id='4' data-volume-index='8' data-side='[20 10 30] [1 0 0]' data-direction='21 [20 10 30] [1 0 0] [] [] [1,0,0]' data-max-depth='18.686533' data-min-depth='12.913031' class='volume-line' points='201.2767,24.5 289.66504,-26.531036 201.2767,-77.562073 112.88835,-26.531036' style='fill:limegreen;' />\n<polygon vector-effect='non-scaling-stroke' data-item-ref-id='4' data-volume-index='8' data-side='[20 10 30] [0 1 0]' data-direction='22 [20 10 30] [0 1 0] [] [] [0,1,0]' data-max-depth='18.686533' data-min-depth='12.913031' class='volume-line' points='201.2767,126.56207 201.2767,24.5 112.88835,-26.531036 112.88835,75.531036' style='fill:limegreen;' />\n<polygon vector-effect='non-scaling-stroke' data-item-ref-id='4' data-volume-index='8' data-side='[20 10 30] [0 0 1]' data-direction='23 [20 10 30] [0 0 1] [] [] [0,0,1]' data-max-depth='18.686533' data-min-depth='12.913031' class='volume-line' points='289.66504,75.531036 289.66504,-26.531036 201.2767,24.5 201.2767,126.56207' style='fill:limegreen;' />\n<polygon vector-effect='non-scaling-stroke' data-item-ref-id='4' data-volume-index='9' data-side='[20 10 40] [1 0 0]' data-direction='24 [20 10 40] [1 0 0] [] [] [1,0,0]' data-max-depth='21.573285' data-min-depth='15.799782' class='volume-line' points='289.66504,75.531036 378.05339,24.5 289.66504,-26.531036 201.2767,24.5' style='fill:limegreen;' />\n<polygon vector-effect='non-scaling-stroke' data-item-ref-id='4' data-volume-index='9' data-side='[20 10 40] [0 1 0]' data-direction='25 [20 10 40] [0 1 0] [] [] [0,1,0]' data-max-depth='21.573285' data-min-depth='15.799782' class='volume-line' points='289.66504,177.59311 289.66504,75.531036 201.2767,24.5 201.2767,126.56207' style='fill:limegreen;' />\n<polygon vector-effect='non-scaling-stroke' data-item-ref-id='4' data-volume-index='9' data-side='[20 10 40] [0 0 1]' data-direction='26 [20 10 40] [0 0 1] [] [] [0,0,1]' data-max-depth='21.573285' data-min-depth='15.799782' class='volume-line' points='378.05339,126.56207 378.05339,24.5 289.66504,75.531036 289.66504,177.59311' style='fill:limegreen;' />\n<polygon vector-effect='non-scaling-stroke' data-item-ref-id='4' data-volume-index='10' data-side='[20 10 50] [1 0 0]' data-direction='27 [20 10 50] [1 0 0] [] [] [1,0,0]' data-max-depth='24.460036' data-min-depth='18.686533' class='volume-line' points='378.05339,126.56207 466.44174,75.531036 378.05339,24.5 289.66504,75.531036' style='fill:limegreen;' />\n<polygon vector-effect='non-scaling-stroke' data-item-ref-id='4' data-volume-index='10' data-side='[20 10 50] [0 1 0]' data-direction='28 [20 10 50] [0 1 0] [] [] [0,1,0]' data-max-depth='24.460036' data-min-depth='18.686533' class='volume-line' points='378.05339,228.62415 378.05339,126.56207 289.66504,75.531036 289.66504,177.59311' style='fill:limegreen;' />\n<polygon vector-effect='non-scaling-stroke' data-item-ref-id='4' data-volume-index='10' data-side='[20 10 50] [0 0 1]' data-direction='29 [20 10 50] [0 0 1] [] [] [0,0,1]' data-max-depth='24.460036' data-min-depth='18.686533' class='volume-line' points='466.44174,177.59311 466.44174,75.531036 378.05339,126.56207 378.05339,228.62415' style='fill:limegreen;' />\n<polygon vector-effect='non-scaling-stroke' data-item-ref-id='0' data-volume-index='11' data-side='[12 16 38] [1 0 0]' data-direction='30 [12 16 38] [1 0 0] [] [] [1,0,0]' data-max-depth='20.418584' data-min-depth='7.7168784' class='volume-line' points='218.95436,177.59311 271.98737,146.97449 -63.888348,-46.943451 -116.92136,-16.324829' style='fill:tomato;' />\n<polygon vector-effect='non-scaling-stroke' data-item-ref-id='0' data-volume-index='11' data-side='[12 16 38] [0 1 0]' data-direction='31 [12 16 38] [0 1 0] [] [] [0,1,0]' data-max-depth='20.418584' data-min-depth='8.8715789' class='volume-line' points='218.95436,198.00552 218.95436,177.59311 -116.92136,-16.324829 -116.92136,4.0875855' style='fill:tomato;' />\n<polygon vector-effect='non-scaling-stroke' data-item-ref-id='0' data-volume-index='11' data-side='[12 16 38] [0 0 1]' data-direction='32 [12 16 38] [0 0 1] [] [] [0,0,1]' data-max-depth='20.418584' data-min-depth='18.109183' class='volume-line' points='271.98737,167.3869 271.98737,146.97449 218.95436,177.59311 218.95436,198.00552' style='fill:tomato;' />\n<polygon vector-effect='non-scaling-stroke' data-item-ref-id='0' data-volume-index='12' data-side='[12 22 38] [1 0 0]' data-direction='33 [12 22 38] [1 0 0] [] [] [1,0,0]' data-max-depth='22.150635' data-min-depth='9.4489292' class='volume-line' points='165.92136,208.21173 218.95436,177.59311 -116.92136,-16.324829 -169.95436,14.293793' style='fill:tomato;' />\n<polygon vector-effect='non-scaling-stroke' data-item-ref-id='0' data-volume-index='12' data-side='[12 22 38] [0 1 0]' data-direction='34 [12 22 38] [0 1 0] [] [] [0,1,0]' data-max-depth='22.150635' data-min-depth='10.60363' class='volume-line' points='165.92136,228.62415 165.92136,208.21173 -169.95436,14.293793 -169.95436,34.706207' style='fill:tomato;' />\n<polygon vector-effect='non-scaling-stroke' data-item-ref-id='0' data-volume-index='12' data-side='[12 22 38] [0 0 1]' data-direction='35 [12 22 38] [0 0 1] [] [] [0,0,1]' data-max-depth='22.150635' data-min-depth='19.841234' class='volume-line' points='218.95436,198.00552 218.95436,177.59311 165.92136,208.21173 165.92136,228.62415' style='fill:tomato;' />\n<polygon vector-effect='non-scaling-stroke' data-item-ref-id='0' data-volume-index='13' data-side='[14 16 38] [1 0 0]' data-direction='36 [14 16 38] [1 0 0] [] [] [1,0,0]' data-max-depth='20.995935' data-min-depth='8.2942286' class='volume-line' points='218.95436,157.18069 271.98737,126.56207 -63.888348,-67.355865 -116.92136,-36.737244' style='fill:tomato;' />\n<polygon vector-effect='non-scaling-stroke' data-item-ref-id='0' data-volume-index='13' data-side='[14 16 38] [0 1 0]' data-direction='37 [14 16 38] [0 1 0] [] [] [0,1,0]' data-max-depth='20.995935' data-min-depth='9.4489292' class='volume-line' points='218.95436,177.59311 218.95436,157.18069 -116.92136,-36.737244 -116.92136,-16.324829' style='fill:tomato;' />\n<polygon vector-effect='non-scaling-stroke' data-item-ref-id='0' data-volume-index='13' data-side='[14 16 38] [0 0 1]' data-direction='38 [14 16 38] [0 0 1] [] [] [0,0,1]' data-max-depth='20.995935' data-min-depth='18.686533' class='volume-line' points='271.98737,146.97449 271.98737,126.56207 218.95436,157.18069 218.95436,177.59311' style='fill:tomato;' />\n<polygon vector-effect='non-scaling-stroke' data-item-ref-id='0' data-volume-index='14' data-side='[14 22 38] [1 0 0]' data-direction='39 [14 22 38] [1 0 0] [] [] [1,0,0]' data-max-depth='22.727985' data-min-depth='10.026279' class='volume-line' points='165.92136,187.79932 218.95436,157.18069 -116.92136,-36.737244 -169.95436,-6.1186218' style='fill:tomato;' />\n<polygon vector-effect='non-scaling-stroke' data-item-ref-id='0' data-volume-index='14' data-side='[14 22 38] [0 1 0]' data-direction='40 [14 22 38] [0 1 0] [] [] [0,1,0]' data-max-depth='22.727985' data-min-depth='11.18098' class='volume-line' points='165.92136,208.21173 165.92136,187.79932 -169.95436,-6.1186218 -169.95436,14.293793' style='fill:tomato;' />\n<polygon vector-effect='non-scaling-stroke' data-item-ref-id='0' data-volume-index='14' data-side='[14 22 38] [0 0 1]' data-direction='41 [14 22 38] [0 0 1] [] [] [0,0,1]' data-max-depth='22.727985' data-min-depth='20.418584' class='volume-line' points='218.95436,177.59311 218.95436,157.18069 165.92136,187.79932 165.92136,208.21173' style='fill:tomato;' />\n<polygon vector-effect='non-scaling-stroke' data-item-ref-id='0' data-volume-index='15' data-side='[16 16 38] [1 0 0]' data-direction='42 [16 16 38] [1 0 0] [] [] [1,0,0]' data-max-depth='21.573285' data-min-depth='8.8715789' class='volume-line' points='218.95436,136.76828 271.98737,106.14966 -63.888348,-87.76828 -116.92136,-57.149658' style='fill:tomato;' />\n<polygon vector-effect='non-scaling-stroke' data-item-ref-id='0' data-volume-index='15' data-side='[16 16 38] [0 1 0]' data-direction='43 [16 16 38] [0 1 0] [] [] [0,1,0]' data-max-depth='21.573285' data-min-depth='10.026279' class='volume-line' points='218.95436,157.18069 218.95436,136.76828 -116.92136,-57.149658 -116.92136,-36.737244' style='fill:tomato;' />\n<polygon vector-effect='non-scaling-stroke' data-item-ref-id='0' data-volume-index='15' data-side='[16 16 38] [0 0 1]' data-direction='44 [16 16 38] [0 0 1] [] [] [0,0,1]' data-max-depth='21.573285' data-min-depth='19.263884' class='volume-line' points='271.98737,126.56207 271.98737,106.14966 218.95436,136.76828 218.95436,157.18069' style='fill:tomato;' />\n<polygon vector-effect='non-scaling-stroke' data-item-ref-id='0' data-volume-index='16' data-side='[16 22 38] [1 0 0]' data-direction='45 [16 22 38] [1 0 0] [] [] [1,0,0]' data-max-depth='23.305336' data-min-depth='10.60363' class='volume-line' points='165.92136,167.3869 218.95436,136.76828 -116.92136,-57.149658 -169.95436,-26.531036' style='fill:tomato;' />\n<polygon vector-effect='non-scaling-stroke' data-item-ref-id='0' data-volume-index='16' data-side='[16 22 38] [0 1 0]' data-direction='46 [16 22 38] [0 1 0] [] [] [0,1,0]' data-max-depth='23.305336' data-min-depth='11.75833' class='volume-line' points='165.92136,187.79932 165.92136,167.3869 -169.95436,-26.531036 -169.95436,-6.1186218' style='fill:tomato;' />\n<polygon vector-effect='non-scaling-stroke' data-item-ref-id='0' data-volume-index='16' data-side='[16 22 38] [0 0 1]' data-direction='47 [16 22 38] [0 0 1] [] [] [0,0,1]' data-max-depth='23.305336' data-min-depth='20.995935' class='volume-line' points='218.95436,157.18069 218.95436,136.76828 165.92136,167.3869 165.92136,187.79932' style='fill:tomato;' />\n<polygon vector-effect='non-scaling-stroke' data-item-ref-id='0' data-volume-index='17' data-side='[18 16 38] [1 0 0]' data-direction='48 [18 16 38] [1 0 0] [] [] [1,0,0]' data-max-depth='22.150635' data-min-depth='9.4489292' class='volume-line' points='218.95436,116.35587 271.98737,85.737244 -63.888348,-108.18069 -116.92136,-77.562073' style='fill:tomato;' />\n<polygon vector-effect='non-scaling-stroke' data-item-ref-id='0' data-volume-index='17' data-side='[18 16 38] [0 1 0]' data-direction='49 [18 16 38] [0 1 0] [] [] [0,1,0]' data-max-depth='22.150635' data-min-depth='10.60363' class='volume-line' points='218.95436,136.76828 218.95436,116.35587 -116.92136,-77.562073 -116.92136,-57.149658' style='fill:tomato;' />\n<polygon vector-effect='non-scaling-stroke' data-item-ref-id='0' data-volume-index='17' data-side='[18 16 38] [0 0 1]' data-direction='50 [18 16 38] [0 0 1] [] [] [0,0,1]' data-max-depth='22.150635' data-min-depth='19.841234' class='volume-line' points='271.98737,106.14966 271.98737,85.737244 218.95436,116.35587 218.95436,136.76828' style='fill:tomato;' />\n<polygon vector-effect='non-scaling-stroke' data-item-ref-id='0' data-volume-index='18' data-side='[18 22 38] [1 0 0]' data-direction='51 [18 22 38] [1 0 0] [] [] [1,0,0]' data-max-depth='23.882686' data-min-depth='11.18098' class='volume-line' points='165.92136,146.97449 218.95436,116.35587 -116.92136,-77.562073 -169.95436,-46.943451' style='fill:tomato;' />\n<polygon vector-effect='non-scaling-stroke' data-item-ref-id='0' data-volume-index='18' data-side='[18 22 38] [0 1 0]' data-direction='52 [18 22 38] [0 1 0] [] [] [0,1,0]' data-max-depth='23.882686' data-min-depth='12.335681' class='volume-line' points='165.92136,167.3869 165.92136,146.97449 -169.95436,-46.943451 -169.95436,-26.531036' style='fill:tomato;' />\n<polygon vector-effect='non-scaling-stroke' data-item-ref-id='0' data-volume-index='18' data-side='[18 22 38] [0 0 1]' data-direction='53 [18 22 38] [0 0 1] [] [] [0,0,1]' data-max-depth='23.882686' data-min-depth='21.573285' class='volume-line' points='218.95436,136.76828 218.95436,116.35587 165.92136,146.97449 165.92136,167.3869' style='fill:tomato;' />\n<polygon vector-effect='non-scaling-stroke' data-item-ref-id='0' data-volume-index='19' data-side='[20 16 38] [1 0 0]' data-direction='54 [20 16 38] [1 0 0] [] [] [1,0,0]' data-max-depth='22.727985' data-min-depth='10.026279' class='volume-line' points='218.95436,95.943451 271.98737,65.324829 -63.888348,-128.59311 -116.92136,-97.974487' style='fill:tomato;' />\n<polygon vector-effect='non-scaling-stroke' data-item-ref-id='0' data-volume-index='19' data-side='[20 16 38] [0 1 0]' data-direction='55 [20 16 38] [0 1 0] [] [] [0,1,0]' data-max-depth='22.727985' data-min-depth='11.18098' class='volume-line' points='218.95436,116.35587 218.95436,95.943451 -116.92136,-97.974487 -116.92136,-77.562073' style='fill:tomato;' />\n<polygon vector-effect='non-scaling-stroke' data-item-ref-id='0' data-volume-index='19' data-side='[20 16 38] [0 0 1]' data-direction='56 [20 16 38] [0 0 1] [] [] [0,0,1]' data-max-depth='22.727985' data-min-depth='20.418584' class='volume-line' points='271.98737,85.737244 271.98737,65.324829 218.95436,95.943451 218.95436,116.35587' style='fill:tomato;' />\n<polygon vector-effect='non-scaling-stroke' data-item-ref-id='1' data-volume-index='20' data-side='[10 10 54] [1 0 0]' data-direction='57 [10 10 54] [1 0 0] [] [] [1,0,0]' data-max-depth='22.727985' data-min-depth='18.686533' class='volume-line' points='501.79708,198.00552 466.44174,177.59311 378.05339,228.62415 413.40873,249.03656' style='fill:cornflowerblue;' />\n<polygon vector-effect='non-scaling-stroke' data-item-ref-id='1' data-volume-index='20' data-side='[10 10 54] [0 1 0]' data-direction='58 [10 10 54] [0 1 0] [] [] [0,1,0]' data-max-depth='22.727985' data-min-depth='18.686533' class='volume-line' points='413.40873,351.09863 413.40873,249.03656 378.05339,228.62415 378.05339,330.68622' style='fill:cornflowerblue;' />\n<polygon vector-effect='non-scaling-stroke' data-item-ref-id='1' data-volume-index='20' data-side='[10 10 54] [0 0 1]' data-direction='59 [10 10 54] [0 0 1] [] [] [0,0,1]' data-max-depth='22.727985' data-min-depth='16.954483' class='volume-line' points='501.79708,300.0676 501.79708,198.00552 413.40873,249.03656 413.40873,351.09863' style='fill:cornflowerblue;' />\n<polygon vector-effect='non-scaling-stroke' data-item-ref-id='1' data-volume-index='21' data-side='[10 10 58] [1 0 0]' data-direction='60 [10 10 58] [1 0 0] [] [] [1,0,0]' data-max-depth='23.882686' data-min-depth='19.841234' class='volume-line' points='537.15242,218.41794 501.79708,198.00552 413.40873,249.03656 448.76407,269.44897' style='fill:cornflowerblue;' />\n<polygon vector-effect='non-scaling-stroke' data-item-ref-id='1' data-volume-index='21' data-side='[10 10 58] [0 1 0]' data-direction='61 [10 10 58] [0 1 0] [] [] [0,1,0]' data-max-depth='23.882686' data-min-depth='19.841234' class='volume-line' points='448.76407,371.51105 448.76407,269.44897 413.40873,249.03656 413.40873,351.09863' style='fill:cornflowerblue;' />\n<polygon vector-effect='non-scaling-stroke' data-item-ref-id='1' data-volume-index='21' data-side='[10 10 58] [0 0 1]' data-direction='62 [10 10 58] [0 0 1] [] [] [0,0,1]' data-max-depth='23.882686' data-min-depth='18.109183' class='volume-line' points='537.15242,320.48001 537.15242,218.41794 448.76407,269.44897 448.76407,371.51105' style='fill:cornflowerblue;' />\n<polygon vector-effect='non-scaling-stroke' data-item-ref-id='1' data-volume-index='22' data-side='[10 20 54] [1 0 0]' data-direction='63 [10 20 54] [1 0 0] [] [] [1,0,0]' data-max-depth='25.614737' data-min-depth='21.573285' class='volume-line' points='413.40873,249.03656 378.05339,228.62415 289.66504,279.65518 325.02038,300.0676' style='fill:cornflowerblue;' />\n<polygon vector-effect='non-scaling-stroke' data-item-ref-id='1' data-volume-index='22' data-side='[10 20 54] [0 1 0]' data-direction='64 [10 20 54] [0 1 0] [] [] [0,1,0]' data-max-depth='25.614737' data-min-depth='21.573285' class='volume-line' points='325.02038,402.12967 325.02038,300.0676 289.66504,279.65518 289.66504,381.71725' style='fill:cornflowerblue;' />\n<polygon vector-effect='non-scaling-stroke' data-item-ref-id='1' data-volume-index='22' data-side='[10 20 54] [0 0 1]' data-direction='65 [10 20 54] [0 0 1] [] [] [0,0,1]' data-max-depth='25.614737' data-min-depth='19.841234' class='volume-line' points='413.40873,351.09863 413.40873,249.03656 325.02038,300.0676 325.02038,402.12967' style='fill:cornflowerblue;' />\n<polygon vector-effect='non-scaling-stroke' data-item-ref-id='1' data-volume-index='23' data-side='[10 20 58] [1 0 0]' data-direction='66 [10 20 58] [1 0 0] [] [] [1,0,0]' data-max-depth='26.769437' data-min-depth='22.727985' class='volume-line' points='448.76407,269.44897 413.40873,249.03656 325.02038,300.0676 360.37572,320.48001' style='fill:cornflowerblue;' />\n<polygon vector-effect='non-scaling-stroke' data-item-ref-id='1' data-volume-index='23' data-side='[10 20 58] [0 1 0]' data-direction='67 [10 20 58] [0 1 0] [] [] [0,1,0]' data-max-depth='26.769437' data-min-depth='22.727985' class='volume-line' points='360.37572,422.54208 360.37572,320.48001 325.02038,300.0676 325.02038,402.12967' style='fill:cornflowerblue;' />\n<polygon vector-effect='non-scaling-stroke' data-item-ref-id='1' data-volume-index='23' data-side='[10 20 58] [0 0 1]' data-direction='68 [10 20 58] [0 0 1] [] [] [0,0,1]' data-max-depth='26.769437' data-min-depth='20.995935' class='volume-line' points='448.76407,371.51105 448.76407,269.44897 360.37572,320.48001 360.37572,422.54208' style='fill:cornflowerblue;' />\n<polygon vector-effect='non-scaling-stroke' data-item-ref-id='1' data-volume-index='24' data-side='[20 10 54] [1 0 0]' data-direction='69 [20 10 54] [1 0 0] [] [] [1,0,0]' data-max-depth='25.614737' data-min-depth='21.573285' class='volume-line' points='501.79708,95.943451 466.44174,75.531036 378.05339,126.56207 413.40873,146.97449' style='fill:cornflowerblue;' />\n<polygon vector-effect='non-scaling-stroke' data-item-ref-id='1' data-volume-index='24' data-side='[20 10 54] [0 1 0]' data-direction='70 [20 10 54] [0 1 0] [] [] [0,1,0]' data-max-depth='25.614737' data-min-depth='21.573285' class='volume-line' points='413.40873,249.03656 413.40873,146.97449 378.05339,126.56207 378.05339,228.62415' style='fill:cornflowerblue;' />\n<polygon vector-effect='non-scaling-stroke' data-item-ref-id='1' data-volume-index='24' data-side='[20 10 54] [0 0 1]' data-direction='71 [20 10 54] [0 0 1] [] [] [0,0,1]' data-max-depth='25.614737' data-min-depth='19.841234' class='volume-line' points='501.79708,198.00552 501.79708,95.943451 413.40873,146.97449 413.40873,249.03656' style='fill:cornflowerblue;' />\n<polygon vector-effect='non-scaling-stroke' data-item-ref-id='1' data-volume-index='25' data-side='[20 10 58] [1 0 0]' data-direction='72 [20 10 58] [1 0 0] [] [] [1,0,0]' data-max-depth='26.769437' data-min-depth='22.727985' class='volume-line' points='537.15242,116.35587 501.79708,95.943451 413.40873,146.97449 448.76407,167.3869' style='fill:cornflowerblue;' />\n<polygon vector-effect='non-scaling-stroke' data-item-ref-id='1' data-volume-index='25' data-side='[20 10 58] [0 1 0]' data-direction='73 [20 10 58] [0 1 0] [] [] [0,1,0]' data-max-depth='26.769437' data-min-depth='22.727985' class='volume-line' points='448.76407,269.44897 448.76407,167.3869 413.40873,146.97449 413.40873,249.03656' style='fill:cornflowerblue;' />\n<polygon vector-effect='non-scaling-stroke' data-item-ref-id='1' data-volume-index='25' data-side='[20 10 58] [0 0 1]' data-direction='74 [20 10 58] [0 0 1] [] [] [0,0,1]' data-max-depth='26.769437' data-min-depth='20.995935' class='volume-line' points='537.15242,218.41794 537.15242,116.35587 448.76407,167.3869 448.76407,269.44897' style='fill:cornflowerblue;' />\n<polygon vector-effect='non-scaling-stroke' data-item-ref-id='3' data-volume-index='28' data-side='[11 16 50] [1 0 0]' data-direction='75 [11 16 50] [1 0 0] [] [] [1,0,0]' data-max-depth='23.594011' data-min-depth='18.397858' class='volume-line' points='325.02038,249.03656 378.05339,218.41794 271.98737,157.18069 218.95436,187.79932' style='fill:darkorange;' />\n<polygon vector-effect='non-scaling-stroke' data-item-ref-id='3' data-volume-index='30' data-side='[12 16 50] [1 0 0]' data-direction='76 [12 16 50] [1 0 0] [] [] [1,0,0]' data-max-depth='23.882686' data-min-depth='18.686533' class='volume-line' points='325.02038,238.83035 378.05339,208.21173 271.98737,146.97449 218.95436,177.59311' style='fill:darkorange;' />\n<polygon vector-effect='non-scaling-stroke' data-item-ref-id='3' data-volume-index='32' data-side='[13 16 50] [1 0 0]' data-direction='77 [13 16 50] [1 0 0] [] [] [1,0,0]' data-max-depth='24.171361' data-min-depth='18.975209' class='volume-line' points='325.02038,228.62415 378.05339,198.00552 271.98737,136.76828 218.95436,167.3869' style='fill:darkorange;' />\n<polygon vector-effect='non-scaling-stroke' data-item-ref-id='3' data-volume-index='34' data-side='[14 16 50] [1 0 0]' data-direction='78 [14 16 50] [1 0 0] [] [] [1,0,0]' data-max-depth='24.460036' data-min-depth='19.263884' class='volume-line' points='325.02038,218.41794 378.05339,187.79932 271.98737,126.56207 218.95436,157.18069' style='fill:darkorange;' />\n<polygon vector-effect='non-scaling-stroke' data-item-ref-id='3' data-volume-index='36' data-side='[15 16 50] [1 0 0]' data-direction='79 [15 16 50] [1 0 0] [] [] [1,0,0]' data-max-depth='24.748711' data-min-depth='19.552559' class='volume-line' points='325.02038,208.21173 378.05339,177.59311 271.98737,116.35587 218.95436,146.97449' style='fill:darkorange;' />\n<polygon vector-effect='non-scaling-stroke' data-item-ref-id='3' data-volume-index='38' data-side='[16 16 50] [1 0 0]' data-direction='80 [16 16 50] [1 0 0] [] [] [1,0,0]' data-max-depth='25.037386' data-min-depth='19.841234' class='volume-line' points='325.02038,198.00552 378.05339,167.3869 271.98737,106.14966 218.95436,136.76828' style='fill:darkorange;' />\n<polygon vector-effect='non-scaling-stroke' data-item-ref-id='3' data-volume-index='38' data-side='[16 16 50] [0 1 0]' data-direction='81 [16 16 50] [0 1 0] [] [] [0,1,0]' data-max-depth='25.037386' data-min-depth='21.28461' class='volume-line' points='325.02038,208.21173 325.02038,198.00552 218.95436,136.76828 218.95436,146.97449' style='fill:darkorange;' />\n<polygon vector-effect='non-scaling-stroke' data-item-ref-id='3' data-volume-index='38' data-side='[16 16 50] [0 0 1]' data-direction='82 [16 16 50] [0 0 1] [] [] [0,0,1]' data-max-depth='25.037386' data-min-depth='23.01666' class='volume-line' points='378.05339,177.59311 378.05339,167.3869 325.02038,198.00552 325.02038,208.21173' style='fill:darkorange;' />\n<polygon vector-effect='non-scaling-stroke' data-item-ref-id='3' data-volume-index='28' data-side='[11 16 50] [0 1 0]' data-direction='83 [11 16 50] [0 1 0] [] [] [0,1,0]' data-max-depth='23.594011' data-min-depth='19.841234' class='volume-line' points='325.02038,259.24277 325.02038,249.03656 218.95436,187.79932 218.95436,198.00552' style='fill:darkorange;' />\n<polygon vector-effect='non-scaling-stroke' data-item-ref-id='3' data-volume-index='29' data-side='[11 22 50] [1 0 0]' data-direction='84 [11 22 50] [1 0 0] [] [] [1,0,0]' data-max-depth='25.326062' data-min-depth='20.129909' class='volume-line' points='271.98737,279.65518 325.02038,249.03656 218.95436,187.79932 165.92136,218.41794' style='fill:darkorange;' />\n<polygon vector-effect='non-scaling-stroke' data-item-ref-id='3' data-volume-index='30' data-side='[12 16 50] [0 1 0]' data-direction='85 [12 16 50] [0 1 0] [] [] [0,1,0]' data-max-depth='23.882686' data-min-depth='20.129909' class='volume-line' points='325.02038,249.03656 325.02038,238.83035 218.95436,177.59311 218.95436,187.79932' style='fill:darkorange;' />\n<polygon vector-effect='non-scaling-stroke' data-item-ref-id='3' data-volume-index='31' data-side='[12 22 50] [1 0 0]' data-direction='86 [12 22 50] [1 0 0] [] [] [1,0,0]' data-max-depth='25.614737' data-min-depth='20.418584' class='volume-line' points='271.98737,269.44897 325.02038,238.83035 218.95436,177.59311 165.92136,208.21173' style='fill:darkorange;' />\n<polygon vector-effect='non-scaling-stroke' data-item-ref-id='3' data-volume-index='32' data-side='[13 16 50] [0 1 0]' data-direction='87 [13 16 50] [0 1 0] [] [] [0,1,0]' data-max-depth='24.171361' data-min-depth='20.418584' class='volume-line' points='325.02038,238.83035 325.02038,228.62415 218.95436,167.3869 218.95436,177.59311' style='fill:darkorange;' />\n<polygon vector-effect='non-scaling-stroke' data-item-ref-id='3' data-volume-index='33' data-side='[13 22 50] [1 0 0]' data-direction='88 [13 22 50] [1 0 0] [] [] [1,0,0]' data-max-depth='25.903412' data-min-depth='20.707259' class='volume-line' points='271.98737,259.24277 325.02038,228.62415 218.95436,167.3869 165.92136,198.00552' style='fill:darkorange;' />\n<polygon vector-effect='non-scaling-stroke' data-item-ref-id='3' data-volume-index='34' data-side='[14 16 50] [0 1 0]' data-direction='89 [14 16 50] [0 1 0] [] [] [0,1,0]' data-max-depth='24.460036' data-min-depth='20.707259' class='volume-line' points='325.02038,228.62415 325.02038,218.41794 218.95436,157.18069 218.95436,167.3869' style='fill:darkorange;' />\n<polygon vector-effect='non-scaling-stroke' data-item-ref-id='3' data-volume-index='35' data-side='[14 22 50] [1 0 0]' data-direction='90 [14 22 50] [1 0 0] [] [] [1,0,0]' data-max-depth='26.192087' data-min-depth='20.995935' class='volume-line' points='271.98737,249.03656 325.02038,218.41794 218.95436,157.18069 165.92136,187.79932' style='fill:darkorange;' />\n<polygon vector-effect='non-scaling-stroke' data-item-ref-id='3' data-volume-index='36' data-side='[15 16 50] [0 1 0]' data-direction='91 [15 16 50] [0 1 0] [] [] [0,1,0]' data-max-depth='24.748711' data-min-depth='20.995935' class='volume-line' points='325.02038,218.41794 325.02038,208.21173 218.95436,146.97449 218.95436,157.18069' style='fill:darkorange;' />\n<polygon vector-effect='non-scaling-stroke' data-item-ref-id='3' data-volume-index='37' data-side='[15 22 50] [1 0 0]' data-direction='92 [15 22 50] [1 0 0] [] [] [1,0,0]' data-max-depth='26.480762' data-min-depth='21.28461' class='volume-line' points='271.98737,238.83035 325.02038,208.21173 218.95436,146.97449 165.92136,177.59311' style='fill:darkorange;' />\n<polygon vector-effect='non-scaling-stroke' data-item-ref-id='3' data-volume-index='39' data-side='[16 22 50] [1 0 0]' data-direction='93 [16 22 50] [1 0 0] [] [] [1,0,0]' data-max-depth='26.769437' data-min-depth='21.573285' class='volume-line' points='271.98737,228.62415 325.02038,198.00552 218.95436,136.76828 165.92136,167.3869' style='fill:darkorange;' />\n<polygon vector-effect='non-scaling-stroke' data-item-ref-id='3' data-volume-index='40' data-side='[17 16 50] [1 0 0]' data-direction='94 [17 16 50] [1 0 0] [] [] [1,0,0]' data-max-depth='25.326062' data-min-depth='20.129909' class='volume-line' points='325.02038,187.79932 378.05339,157.18069 271.98737,95.943451 218.95436,126.56207' style='fill:darkorange;' />\n<polygon vector-effect='non-scaling-stroke' data-item-ref-id='3' data-volume-index='40' data-side='[17 16 50] [0 1 0]' data-direction='95 [17 16 50] [0 1 0] [] [] [0,1,0]' data-max-depth='25.326062' data-min-depth='21.573285' class='volume-line' points='325.02038,198.00552 325.02038,187.79932 218.95436,126.56207 218.95436,136.76828' style='fill:darkorange;' />\n<polygon vector-effect='non-scaling-stroke' data-item-ref-id='3' data-volume-index='40' data-side='[17 16 50] [0 0 1]' data-direction='96 [17 16 50] [0 0 1] [] [] [0,0,1]' data-max-depth='25.326062' data-min-depth='23.305336' class='volume-line' points='378.05339,167.3869 378.05339,157.18069 325.02038,187.79932 325.02038,198.00552' style='fill:darkorange;' />\n<polygon vector-effect='non-scaling-stroke' data-item-ref-id='3' data-volume-index='41' data-side='[17 22 50] [1 0 0]' data-direction='97 [17 22 50] [1 0 0] [] [] [1,0,0]' data-max-depth='27.058112' data-min-depth='21.86196' class='volume-line' points='271.98737,218.41794 325.02038,187.79932 218.95436,126.56207 165.92136,157.18069' style='fill:darkorange;' />\n<polygon vector-effect='non-scaling-stroke' data-item-ref-id='3' data-volume-index='41' data-side='[17 22 50] [0 0 1]' data-direction='98 [17 22 50] [0 0 1] [] [] [0,0,1]' data-max-depth='27.058112' data-min-depth='25.037386' class='volume-line' points='325.02038,198.00552 325.02038,187.79932 271.98737,218.41794 271.98737,228.62415' style='fill:darkorange;' />\n<polygon vector-effect='non-scaling-stroke' data-item-ref-id='3' data-volume-index='42' data-side='[18 16 50] [1 0 0]' data-direction='99 [18 16 50] [1 0 0] [] [] [1,0,0]' data-max-depth='25.614737' data-min-depth='20.418584' class='volume-line' points='325.02038,177.59311 378.05339,146.97449 271.98737,85.737244 218.95436,116.35587' style='fill:darkorange;' />\n<polygon vector-effect='non-scaling-stroke' data-item-ref-id='3' data-volume-index='42' data-side='[18 16 50] [0 1 0]' data-direction='100 [18 16 50] [0 1 0] [] [] [0,1,0]' data-max-depth='25.614737' data-min-depth='21.86196' class='volume-line' points='325.02038,187.79932 325.02038,177.59311 218.95436,116.35587 218.95436,126.56207' style='fill:darkorange;' />\n<polygon vector-effect='non-scaling-stroke' data-item-ref-id='3' data-volume-index='42' data-side='[18 16 50] [0 0 1]' data-direction='101 [18 16 50] [0 0 1] [] [] [0,0,1]' data-max-depth='25.614737' data-min-depth='23.594011' class='volume-line' points='378.05339,157.18069 378.05339,146.97449 325.02038,177.59311 325.02038,187.79932' style='fill:darkorange;' />\n<polygon vector-effect='non-scaling-stroke' data-item-ref-id='3' data-volume-index='43' data-side='[18 22 50] [1 0 0]' data-direction='102 [18 22 50] [1 0 0] [] [] [1,0,0]' data-max-depth='27.346788' data-min-depth='22.150635' class='volume-line' points='271.98737,208.21173 325.02038,177.59311 218.95436,116.35587 165.92136,146.97449' style='fill:darkorange;' />\n<polygon vector-effect='non-scaling-stroke' data-item-ref-id='3' data-volume-index='43' data-side='[18 22 50] [0 0 1]' data-direction='103 [18 22 50] [0 0 1] [] [] [0,0,1]' data-max-depth='27.346788' data-min-depth='25.326062' class='volume-line' points='325.02038,187.79932 325.02038,177.59311 271.98737,208.21173 271.98737,218.41794' style='fill:darkorange;' />\n<polygon vector-effect='non-scaling-stroke' data-item-ref-id='1' data-volume-index='26' data-side='[20 20 54] [1 0 0]' data-direction='104 [20 20 54] [1 0 0] [] [] [1,0,0]' data-max-depth='28.501488' data-min-depth='24.460036' class='volume-line' points='413.40873,146.97449 378.05339,126.56207 289.66504,177.59311 325.02038,198.00552' style='fill:cornflowerblue;' />\n<polygon vector-effect='non-scaling-stroke' data-item-ref-id='3' data-volume-index='29' data-side='[11 22 50] [0 0 1]' data-direction='105 [11 22 50] [0 0 1] [] [] [0,0,1]' data-max-depth='25.326062' data-min-depth='23.305336' class='volume-line' points='325.02038,259.24277 325.02038,249.03656 271.98737,279.65518 271.98737,289.86139' style='fill:darkorange;' />\n<polygon vector-effect='non-scaling-stroke' data-item-ref-id='3' data-volume-index='31' data-side='[12 22 50] [0 0 1]' data-direction='106 [12 22 50] [0 0 1] [] [] [0,0,1]' data-max-depth='25.614737' data-min-depth='23.594011' class='volume-line' points='325.02038,249.03656 325.02038,238.83035 271.98737,269.44897 271.98737,279.65518' style='fill:darkorange;' />\n<polygon vector-effect='non-scaling-stroke' data-item-ref-id='3' data-volume-index='33' data-side='[13 22 50] [0 0 1]' data-direction='107 [13 22 50] [0 0 1] [] [] [0,0,1]' data-max-depth='25.903412' data-min-depth='23.882686' class='volume-line' points='325.02038,238.83035 325.02038,228.62415 271.98737,259.24277 271.98737,269.44897' style='fill:darkorange;' />\n<polygon vector-effect='non-scaling-stroke' data-item-ref-id='3' data-volume-index='35' data-side='[14 22 50] [0 0 1]' data-direction='108 [14 22 50] [0 0 1] [] [] [0,0,1]' data-max-depth='26.192087' data-min-depth='24.171361' class='volume-line' points='325.02038,228.62415 325.02038,218.41794 271.98737,249.03656 271.98737,259.24277' style='fill:darkorange;' />\n<polygon vector-effect='non-scaling-stroke' data-item-ref-id='3' data-volume-index='37' data-side='[15 22 50] [0 0 1]' data-direction='109 [15 22 50] [0 0 1] [] [] [0,0,1]' data-max-depth='26.480762' data-min-depth='24.460036' class='volume-line' points='325.02038,218.41794 325.02038,208.21173 271.98737,238.83035 271.98737,249.03656' style='fill:darkorange;' />\n<polygon vector-effect='non-scaling-stroke' data-item-ref-id='3' data-volume-index='39' data-side='[16 22 50] [0 0 1]' data-direction='110 [16 22 50] [0 0 1] [] [] [0,0,1]' data-max-depth='26.769437' data-min-depth='24.748711' class='volume-line' points='325.02038,208.21173 325.02038,198.00552 271.98737,228.62415 271.98737,238.83035' style='fill:darkorange;' />\n<polygon vector-effect='non-scaling-stroke' data-item-ref-id='1' data-volume-index='26' data-side='[20 20 54] [0 1 0]' data-direction='111 [20 20 54] [0 1 0] [] [] [0,1,0]' data-max-depth='28.501488' data-min-depth='24.460036' class='volume-line' points='325.02038,300.0676 325.02038,198.00552 289.66504,177.59311 289.66504,279.65518' style='fill:cornflowerblue;' />\n<polygon vector-effect='non-scaling-stroke' data-item-ref-id='3' data-volume-index='28' data-side='[11 16 50] [0 0 1]' data-direction='112 [11 16 50] [0 0 1] [] [] [0,0,1]' data-max-depth='23.594011' data-min-depth='21.573285' class='volume-line' points='378.05339,228.62415 378.05339,218.41794 325.02038,249.03656 325.02038,259.24277' style='fill:darkorange;' />\n<polygon vector-effect='non-scaling-stroke' data-item-ref-id='3' data-volume-index='30' data-side='[12 16 50] [0 0 1]' data-direction='113 [12 16 50] [0 0 1] [] [] [0,0,1]' data-max-depth='23.882686' data-min-depth='21.86196' class='volume-line' points='378.05339,218.41794 378.05339,208.21173 325.02038,238.83035 325.02038,249.03656' style='fill:darkorange;' />\n<polygon vector-effect='non-scaling-stroke' data-item-ref-id='3' data-volume-index='32' data-side='[13 16 50] [0 0 1]' data-direction='114 [13 16 50] [0 0 1] [] [] [0,0,1]' data-max-depth='24.171361' data-min-depth='22.150635' class='volume-line' points='378.05339,208.21173 378.05339,198.00552 325.02038,228.62415 325.02038,238.83035' style='fill:darkorange;' />\n<polygon vector-effect='non-scaling-stroke' data-item-ref-id='3' data-volume-index='34' data-side='[14 16 50] [0 0 1]' data-direction='115 [14 16 50] [0 0 1] [] [] [0,0,1]' data-max-depth='24.460036' data-min-depth='22.43931' class='volume-line' points='378.05339,198.00552 378.05339,187.79932 325.02038,218.41794 325.02038,228.62415' style='fill:darkorange;' />\n<polygon vector-effect='non-scaling-stroke' data-item-ref-id='3' data-volume-index='36' data-side='[15 16 50] [0 0 1]' data-direction='116 [15 16 50] [0 0 1] [] [] [0,0,1]' data-max-depth='24.748711' data-min-depth='22.727985' class='volume-line' points='378.05339,187.79932 378.05339,177.59311 325.02038,208.21173 325.02038,218.41794' style='fill:darkorange;' />\n<polygon vector-effect='non-scaling-stroke' data-item-ref-id='1' data-volume-index='26' data-side='[20 20 54] [0 0 1]' data-direction='117 [20 20 54] [0 0 1] [] [] [0,0,1]' data-max-depth='28.501488' data-min-depth='22.727985' class='volume-line' points='413.40873,249.03656 413.40873,146.97449 325.02038,198.00552 325.02038,300.0676' style='fill:cornflowerblue;' />\n<polygon vector-effect='non-scaling-stroke' data-item-ref-id='1' data-volume-index='27' data-side='[20 20 58] [1 0 0]' data-direction='118 [20 20 58] [1 0 0] [] [] [1,0,0]' data-max-depth='29.656189' data-min-depth='25.614737' class='volume-line' points='448.76407,167.3869 413.40873,146.97449 325.02038,198.00552 360.37572,218.41794' style='fill:cornflowerblue;' />\n<polygon vector-effect='non-scaling-stroke' data-item-ref-id='1' data-volume-index='27' data-side='[20 20 58] [0 1 0]' data-direction='119 [20 20 58] [0 1 0] [] [] [0,1,0]' data-max-depth='29.656189' data-min-depth='25.614737' class='volume-line' points='360.37572,320.48001 360.37572,218.41794 325.02038,198.00552 325.02038,300.0676' style='fill:cornflowerblue;' />\n<polygon vector-effect='non-scaling-stroke' data-item-ref-id='1' data-volume-index='27' data-side='[20 20 58] [0 0 1]' data-direction='120 [20 20 58] [0 0 1] [] [] [0,0,1]' data-max-depth='29.656189' data-min-depth='23.882686' class='volume-line' points='448.76407,269.44897 448.76407,167.3869 360.37572,218.41794 360.37572,320.48001' style='fill:cornflowerblue;' />\n<polygon vector-effect='non-scaling-stroke' data-item-ref-id='3' data-volume-index='29' data-side='[11 22 50] [0 1 0]' data-direction='121 [11 22 50] [0 1 0] [] [] [0,1,0]' data-max-depth='25.326062' data-min-depth='21.573285' class='volume-line' points='271.98737,289.86139 271.98737,279.65518 165.92136,218.41794 165.92136,228.62415' style='fill:darkorange;' />\n<polygon vector-effect='non-scaling-stroke' data-item-ref-id='3' data-volume-index='31' data-side='[12 22 50] [0 1 0]' data-direction='122 [12 22 50] [0 1 0] [] [] [0,1,0]' data-max-depth='25.614737' data-min-depth='21.86196' class='volume-line' points='271.98737,279.65518 271.98737,269.44897 165.92136,208.21173 165.92136,218.41794' style='fill:darkorange;' />\n<polygon vector-effect='non-scaling-stroke' data-item-ref-id='3' data-volume-index='33' data-side='[13 22 50] [0 1 0]' data-direction='123 [13 22 50] [0 1 0] [] [] [0,1,0]' data-max-depth='25.903412' data-min-depth='22.150635' class='volume-line' points='271.98737,269.44897 271.98737,259.24277 165.92136,198.00552 165.92136,208.21173' style='fill:darkorange;' />\n<polygon vector-effect='non-scaling-stroke' data-item-ref-id='3' data-volume-index='35' data-side='[14 22 50] [0 1 0]' data-direction='124 [14 22 50] [0 1 0] [] [] [0,1,0]' data-max-depth='26.192087' data-min-depth='22.43931' class='volume-line' points='271.98737,259.24277 271.98737,249.03656 165.92136,187.79932 165.92136,198.00552' style='fill:darkorange;' />\n<polygon vector-effect='non-scaling-stroke' data-item-ref-id='3' data-volume-index='37' data-side='[15 22 50] [0 1 0]' data-direction='125 [15 22 50] [0 1 0] [] [] [0,1,0]' data-max-depth='26.480762' data-min-depth='22.727985' class='volume-line' points='271.98737,249.03656 271.98737,238.83035 165.92136,177.59311 165.92136,187.79932' style='fill:darkorange;' />\n<polygon vector-effect='non-scaling-stroke' data-item-ref-id='3' data-volume-index='39' data-side='[16 22 50] [0 1 0]' data-direction='126 [16 22 50] [0 1 0] [] [] [0,1,0]' data-max-depth='26.769437' data-min-depth='23.01666' class='volume-line' points='271.98737,238.83035 271.98737,228.62415 165.92136,167.3869 165.92136,177.59311' style='fill:darkorange;' />\n<polygon vector-effect='non-scaling-stroke' data-item-ref-id='3' data-volume-index='41' data-side='[17 22 50] [0 1 0]' data-direction='127 [17 22 50] [0 1 0] [] [] [0,1,0]' data-max-depth='27.058112' data-min-depth='23.305336' class='volume-line' points='271.98737,228.62415 271.98737,218.41794 165.92136,157.18069 165.92136,167.3869' style='fill:darkorange;' />\n<polygon vector-effect='non-scaling-stroke' data-item-ref-id='3' data-volume-index='43' data-side='[18 22 50] [0 1 0]' data-direction='128 [18 22 50] [0 1 0] [] [] [0,1,0]' data-max-depth='27.346788' data-min-depth='23.594011' class='volume-line' points='271.98737,218.41794 271.98737,208.21173 165.92136,146.97449 165.92136,157.18069' style='fill:darkorange;' />\n [<line data-volume-index='0' class='volume-line' x1='545.10737' y1='325.0728' x2='333.85922' y2='447.03698'/>\n <line data-volume-index='0' class='volume-line' x1='545.10737' y1='325.0728' x2='545.10737' y2='85.226933'/>\n <line data-volume-index='0' class='volume-line' x1='333.85922' y1='447.03698' x2='-186.74815' y2='146.46418'/>\n <line data-volume-index='0' class='volume-line' x1='333.85922' y1='447.03698' x2='333.85922' y2='207.19111'/>\n <line data-volume-index='0' class='volume-line' x1='-186.74815' y1='146.46418' x2='-186.74815' y2='-93.381694'/>\n <line data-volume-index='0' class='volume-line' x1='-186.74815' y1='-93.381694' x2='24.5' y2='-215.34587'/>\n <line data-volume-index='0' class='volume-line' x1='-186.74815' y1='-93.381694' x2='333.85922' y2='207.19111'/>\n <line data-volume-index='0' class='volume-line' x1='24.5' y1='-215.34587' x2='545.10737' y2='85.226933'/>\n <line data-volume-index='0' class='volume-line' x1='545.10737' y1='85.226933' x2='333.85922' y2='207.19111'/>\n]</svg><figcaption><b>ISO 20' (decimeter - pound)</b><br>\n                          packed: 43<br>\n                          weight: \n  32800.00 <br>\n                          price:33081</figcaption></figure>"
+  ],
+  "title": "Default",
+  "totalCost": 33081,
+  "totalTime": 0.041741068,
+  "totalVolume": 33081.185,
+  "totalVolumeNet": 24456,
+  "totalVolumeUsed": 24456,
+  "totalVolumeUtilization": 0.73927219,
+  "totalWeight": 32800,
+  "usedKeyStem": "REEFkYZGoR",
+  "version": "1.9.2",
+  "warnings": [
+    "Include orderId and/or requestId in your request for enhanced diagnostics."
+  ]
+}

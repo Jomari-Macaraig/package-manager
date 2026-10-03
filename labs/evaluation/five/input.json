@@ -1,0 +1,83 @@
+{
+  "interlock": false,
+  "corners": true,
+  "itemSets": [
+    {
+      "refId": 0,
+      "color": "tomato",
+      "weight": 500,
+      "dimensions": {
+        "x": 2,
+        "y": 6,
+        "z": 38
+      },
+      "quantity": 9
+    },
+    {
+      "refId": 1,
+      "color": "cornflowerblue",
+      "weight": 1000,
+      "dimensions": {
+        "x": 10,
+        "y": 10,
+        "z": 4
+      },
+      "quantity": 8
+    },
+    {
+      "refId": 2,
+      "color": "purple",
+      "weight": 1600,
+      "dimensions": {
+        "x": 10,
+        "y": 22,
+        "z": 10
+      },
+      "quantity": 5
+    },
+    {
+      "refId": 3,
+      "color": "darkorange",
+      "weight": 300,
+      "dimensions": {
+        "x": 1,
+        "y": 6,
+        "z": 12
+      },
+      "quantity": 16
+    },
+    {
+      "refId": 4,
+      "color": "limegreen",
+      "weight": 500,
+      "dimensions": {
+        "x": 10,
+        "y": 10,
+        "z": 10
+      },
+      "quantity": 5
+    }
+  ],
+  "boxTypes": [
+    {
+      "name": "ISO 20' (decimeter - pound)",
+      "dimensions": {
+        "x": 23.5,
+        "y": 23.9,
+        "z": 58.9
+      },
+      "weightMax": 55000,
+      "weightTare": 5000
+    }
+  ],
+  "coordOrder": [
+    0,
+    1,
+    2
+  ],
+  "cohortPacking": true,
+  "cohortMax": 2,
+  "allowableOverhang": 1,
+  "placementStyle": "default",
+  "rules": []
+}

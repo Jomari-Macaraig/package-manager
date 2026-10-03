@@ -1,0 +1,775 @@
+{
+  "itemSets": [
+    {
+      "orderId": "9172381",
+      "refId": 7187701,
+      "quantity": 7,
+      "weight": 1.57,
+      "dimensions": {
+        "z": 7.6,
+        "y": 5.4,
+        "x": 1.9
+      },
+      "name": "Practice",
+      "color": "",
+      "sequence": "",
+      "centerOfMass": {
+        "z": null,
+        "y": null,
+        "x": null
+      }
+    },
+    {
+      "orderId": "9172381",
+      "refId": 7175201,
+      "quantity": 9,
+      "weight": 1.53,
+      "dimensions": {
+        "z": 7.6,
+        "y": 5.4,
+        "x": 1.9
+      },
+      "name": "Tour Response",
+      "color": "",
+      "sequence": "",
+      "centerOfMass": {
+        "z": null,
+        "y": null,
+        "x": null
+      }
+    },
+    {
+      "orderId": "9172381",
+      "refId": 7154901,
+      "quantity": 8,
+      "weight": 1.54,
+      "dimensions": {
+        "z": 7.6,
+        "y": 5.4,
+        "x": 1.9
+      },
+      "name": "Junior",
+      "color": "",
+      "sequence": "",
+      "centerOfMass": {
+        "z": null,
+        "y": null,
+        "x": null
+      }
+    }
+  ],
+  "boxTypes": [
+    {
+      "name": "name",
+      "dimensions": {
+        "z": 0,
+        "y": 0,
+        "x": 0
+      },
+      "weightMax": 0,
+      "rateTable": {
+        "carrier": "FedEx",
+        "service": "Ground",
+        "zone": "3"
+      },
+      "weightTare": 0,
+      "refId": 0,
+      "price": 0,
+      "centerOfMass": {
+        "z": 0,
+        "y": 0,
+        "x": 0
+      }
+    },
+    {
+      "name": "CASE",
+      "dimensions": {
+        "z": 18.8,
+        "y": 12,
+        "x": 11
+      },
+      "weightMax": 65,
+      "rateTable": {
+        "carrier": "FedEx",
+        "service": "Ground",
+        "zone": "3"
+      },
+      "weightTare": null,
+      "refId": null,
+      "price": null,
+      "centerOfMass": {
+        "z": null,
+        "y": null,
+        "x": null
+      }
+    },
+    {
+      "name": "SDZ",
+      "dimensions": {
+        "z": 7.75,
+        "y": 5.75,
+        "x": 2.25
+      },
+      "weightMax": 65,
+      "rateTable": {
+        "carrier": "FedEx",
+        "service": "Ground",
+        "zone": "3"
+      },
+      "weightTare": null,
+      "refId": null,
+      "price": null,
+      "centerOfMass": {
+        "z": null,
+        "y": null,
+        "x": null
+      }
+    },
+    {
+      "name": "DDZ",
+      "dimensions": {
+        "z": 8,
+        "y": 5.75,
+        "x": 4.25
+      },
+      "weightMax": 65,
+      "rateTable": {
+        "carrier": "FedEx",
+        "service": "Ground",
+        "zone": "3"
+      },
+      "weightTare": null,
+      "refId": null,
+      "price": null,
+      "centerOfMass": {
+        "z": null,
+        "y": null,
+        "x": null
+      }
+    },
+    {
+      "name": "DZ35",
+      "dimensions": {
+        "z": 11.5,
+        "y": 7.75,
+        "x": 5.75
+      },
+      "weightMax": 65,
+      "rateTable": {
+        "carrier": "FedEx",
+        "service": "Ground",
+        "zone": "3"
+      },
+      "weightTare": null,
+      "refId": null,
+      "price": null,
+      "centerOfMass": {
+        "z": null,
+        "y": null,
+        "x": null
+      }
+    },
+    {
+      "name": "6DZ",
+      "dimensions": {
+        "z": 11.5,
+        "y": 7.75,
+        "x": 5.75
+      },
+      "weightMax": 65,
+      "rateTable": {
+        "carrier": "FedEx",
+        "service": "Ground",
+        "zone": "3"
+      },
+      "weightTare": null,
+      "refId": null,
+      "price": null,
+      "centerOfMass": {
+        "z": null,
+        "y": null,
+        "x": null
+      }
+    },
+    {
+      "name": "2PBO",
+      "dimensions": {
+        "z": 14,
+        "y": 13.1,
+        "x": 8.6
+      },
+      "weightMax": 65,
+      "rateTable": {
+        "carrier": "FedEx",
+        "service": "Ground",
+        "zone": "3"
+      },
+      "weightTare": null,
+      "refId": null,
+      "price": null,
+      "centerOfMass": {
+        "z": null,
+        "y": null,
+        "x": null
+      }
+    },
+    {
+      "name": "3PBO",
+      "dimensions": {
+        "z": 21,
+        "y": 13.5,
+        "x": 8.75
+      },
+      "weightMax": 65,
+      "rateTable": {
+        "carrier": "FedEx",
+        "service": "Ground",
+        "zone": "3"
+      },
+      "weightTare": null,
+      "refId": null,
+      "price": null,
+      "centerOfMass": {
+        "z": null,
+        "y": null,
+        "x": null
+      }
+    },
+    {
+      "name": "4PBO",
+      "dimensions": {
+        "z": 17.25,
+        "y": 13.5,
+        "x": 13.75
+      },
+      "weightMax": 65,
+      "rateTable": {
+        "carrier": "FedEx",
+        "service": "Ground",
+        "zone": "3"
+      },
+      "weightTare": null,
+      "refId": null,
+      "price": null,
+      "centerOfMass": {
+        "z": null,
+        "y": null,
+        "x": null
+      }
+    },
+    {
+      "name": "BAGC",
+      "dimensions": {
+        "z": 37,
+        "y": 13,
+        "x": 7
+      },
+      "weightMax": 65,
+      "rateTable": {
+        "carrier": "FedEx",
+        "service": "Ground",
+        "zone": "3"
+      },
+      "weightTare": null,
+      "refId": null,
+      "price": null,
+      "centerOfMass": {
+        "z": null,
+        "y": null,
+        "x": null
+      }
+    },
+    {
+      "name": "IBOX",
+      "dimensions": {
+        "z": 46,
+        "y": 4.75,
+        "x": 4.3
+      },
+      "weightMax": 65,
+      "rateTable": {
+        "carrier": "FedEx",
+        "service": "Ground",
+        "zone": "3"
+      },
+      "weightTare": null,
+      "refId": null,
+      "price": null,
+      "centerOfMass": {
+        "z": null,
+        "y": null,
+        "x": null
+      }
+    },
+    {
+      "name": "ISET",
+      "dimensions": {
+        "z": 46,
+        "y": 4.75,
+        "x": 4.3
+      },
+      "weightMax": 65,
+      "rateTable": {
+        "carrier": "FedEx",
+        "service": "Ground",
+        "zone": "3"
+      },
+      "weightTare": null,
+      "refId": null,
+      "price": null,
+      "centerOfMass": {
+        "z": null,
+        "y": null,
+        "x": null
+      }
+    },
+    {
+      "name": "2KIT",
+      "dimensions": {
+        "z": 50,
+        "y": 5.5,
+        "x": 5.2
+      },
+      "weightMax": 65,
+      "rateTable": {
+        "carrier": "FedEx",
+        "service": "Ground",
+        "zone": "3"
+      },
+      "weightTare": null,
+      "refId": null,
+      "price": null,
+      "centerOfMass": {
+        "z": null,
+        "y": null,
+        "x": null
+      }
+    },
+    {
+      "name": "RBOX",
+      "dimensions": {
+        "z": 46.25,
+        "y": 5.5,
+        "x": 5.4
+      },
+      "weightMax": 65,
+      "rateTable": {
+        "carrier": "FedEx",
+        "service": "Ground",
+        "zone": "3"
+      },
+      "weightTare": null,
+      "refId": null,
+      "price": null,
+      "centerOfMass": {
+        "z": null,
+        "y": null,
+        "x": null
+      }
+    },
+    {
+      "name": "MBOX",
+      "dimensions": {
+        "z": 47.25,
+        "y": 7.5,
+        "x": 5.2
+      },
+      "weightMax": 65,
+      "rateTable": {
+        "carrier": "FedEx",
+        "service": "Ground",
+        "zone": "3"
+      },
+      "weightTare": null,
+      "refId": null,
+      "price": null,
+      "centerOfMass": {
+        "z": null,
+        "y": null,
+        "x": null
+      }
+    },
+    {
+      "name": "ABOX",
+      "dimensions": {
+        "z": 47.2,
+        "y": 9.5,
+        "x": 4.2
+      },
+      "weightMax": 65,
+      "rateTable": {
+        "carrier": "FedEx",
+        "service": "Ground",
+        "zone": "3"
+      },
+      "weightTare": null,
+      "refId": null,
+      "price": null,
+      "centerOfMass": {
+        "z": null,
+        "y": null,
+        "x": null
+      }
+    },
+    {
+      "name": "MUIR",
+      "dimensions": {
+        "z": 41.9,
+        "y": 10.2,
+        "x": 12
+      },
+      "weightMax": 65,
+      "rateTable": {
+        "carrier": "FedEx",
+        "service": "Ground",
+        "zone": "3"
+      },
+      "weightTare": null,
+      "refId": null,
+      "price": null,
+      "centerOfMass": {
+        "z": null,
+        "y": null,
+        "x": null
+      }
+    },
+    {
+      "name": "TBOX",
+      "dimensions": {
+        "z": 47.5,
+        "y": 14,
+        "x": 7.75
+      },
+      "weightMax": 65,
+      "rateTable": {
+        "carrier": "FedEx",
+        "service": "Ground",
+        "zone": "3"
+      },
+      "weightTare": null,
+      "refId": null,
+      "price": null,
+      "centerOfMass": {
+        "z": null,
+        "y": null,
+        "x": null
+      }
+    },
+    {
+      "name": "JBOX",
+      "dimensions": {
+        "z": 47.25,
+        "y": 14.75,
+        "x": 11.25
+      },
+      "weightMax": 65,
+      "rateTable": {
+        "carrier": "FedEx",
+        "service": "Ground",
+        "zone": "3"
+      },
+      "weightTare": null,
+      "refId": null,
+      "price": null,
+      "centerOfMass": {
+        "z": null,
+        "y": null,
+        "x": null
+      }
+    },
+    {
+      "name": "UMBX",
+      "dimensions": {
+        "z": 42,
+        "y": 4.4,
+        "x": 8
+      },
+      "weightMax": 65,
+      "rateTable": {
+        "carrier": "FedEx",
+        "service": "Ground",
+        "zone": "3"
+      },
+      "weightTare": null,
+      "refId": null,
+      "price": null,
+      "centerOfMass": {
+        "z": null,
+        "y": null,
+        "x": null
+      }
+    },
+    {
+      "name": "WM4P",
+      "dimensions": {
+        "z": 9.88,
+        "y": 7.19,
+        "x": 6.63
+      },
+      "weightMax": 65,
+      "rateTable": {
+        "carrier": "FedEx",
+        "service": "Ground",
+        "zone": "3"
+      },
+      "weightTare": null,
+      "refId": null,
+      "price": null,
+      "centerOfMass": {
+        "z": null,
+        "y": null,
+        "x": null
+      }
+    },
+    {
+      "name": "2PKG",
+      "dimensions": {
+        "z": 11.5,
+        "y": 7.75,
+        "x": 4.75
+      },
+      "weightMax": 65,
+      "rateTable": {
+        "carrier": "FedEx",
+        "service": "Ground",
+        "zone": "3"
+      },
+      "weightTare": null,
+      "refId": null,
+      "price": null,
+      "centerOfMass": {
+        "z": null,
+        "y": null,
+        "x": null
+      }
+    },
+    {
+      "name": "X1",
+      "dimensions": {
+        "z": 9.25,
+        "y": 11.75,
+        "x": 6.5
+      },
+      "weightMax": 65,
+      "rateTable": {
+        "carrier": "FedEx",
+        "service": "Ground",
+        "zone": "3"
+      },
+      "weightTare": null,
+      "refId": null,
+      "price": null,
+      "centerOfMass": {
+        "z": null,
+        "y": null,
+        "x": null
+      }
+    },
+    {
+      "name": "B4",
+      "dimensions": {
+        "z": 15.25,
+        "y": 11.5,
+        "x": 6.75
+      },
+      "weightMax": 65,
+      "rateTable": {
+        "carrier": "FedEx",
+        "service": "Ground",
+        "zone": "3"
+      },
+      "weightTare": null,
+      "refId": null,
+      "price": null,
+      "centerOfMass": {
+        "z": null,
+        "y": null,
+        "x": null
+      }
+    },
+    {
+      "name": "X2",
+      "dimensions": {
+        "z": 23,
+        "y": 9.75,
+        "x": 6.75
+      },
+      "weightMax": 65,
+      "rateTable": {
+        "carrier": "FedEx",
+        "service": "Ground",
+        "zone": "3"
+      },
+      "weightTare": null,
+      "refId": null,
+      "price": null,
+      "centerOfMass": {
+        "z": null,
+        "y": null,
+        "x": null
+      }
+    },
+    {
+      "name": "X3",
+      "dimensions": {
+        "z": 21.25,
+        "y": 16,
+        "x": 6.75
+      },
+      "weightMax": 65,
+      "rateTable": {
+        "carrier": "FedEx",
+        "service": "Ground",
+        "zone": "3"
+      },
+      "weightTare": null,
+      "refId": null,
+      "price": null,
+      "centerOfMass": {
+        "z": null,
+        "y": null,
+        "x": null
+      }
+    },
+    {
+      "name": "X4",
+      "dimensions": {
+        "z": 21.75,
+        "y": 16,
+        "x": 13.25
+      },
+      "weightMax": 65,
+      "rateTable": {
+        "carrier": "FedEx",
+        "service": "Ground",
+        "zone": "3"
+      },
+      "weightTare": null,
+      "refId": null,
+      "price": null,
+      "centerOfMass": {
+        "z": null,
+        "y": null,
+        "x": null
+      }
+    },
+    {
+      "name": "DDZ",
+      "dimensions": {
+        "z": 8,
+        "y": 5.75,
+        "x": 4.25
+      },
+      "weightMax": 65,
+      "rateTable": {
+        "carrier": "FedEx",
+        "service": "Ground",
+        "zone": "3"
+      },
+      "weightTare": null,
+      "refId": null,
+      "price": null,
+      "centerOfMass": {
+        "z": null,
+        "y": null,
+        "x": null
+      }
+    },
+    {
+      "name": "DZ35",
+      "dimensions": {
+        "z": 11.5,
+        "y": 7.75,
+        "x": 5.75
+      },
+      "weightMax": 65,
+      "rateTable": {
+        "carrier": "FedEx",
+        "service": "Ground",
+        "zone": "3"
+      },
+      "weightTare": null,
+      "refId": null,
+      "price": null,
+      "centerOfMass": {
+        "z": null,
+        "y": null,
+        "x": null
+      }
+    },
+    {
+      "name": "6DDZ",
+      "dimensions": {
+        "z": 11.75,
+        "y": 11.5,
+        "x": 8.25
+      },
+      "weightMax": 65,
+      "rateTable": {
+        "carrier": "FedEx",
+        "service": "Ground",
+        "zone": "3"
+      },
+      "weightTare": null,
+      "refId": null,
+      "price": null,
+      "centerOfMass": {
+        "z": null,
+        "y": null,
+        "x": null
+      }
+    }
+  ],
+  "orderId": "9172381",
+  "boxTypeChoiceGoal": "lowest-cost",
+  "rules": [
+    {
+      "itemRefId": 7329009,
+      "operation": "compact-pattern",
+      "options": {
+        "alternating": true,
+        "compactibleAxes": [
+          0,
+          1
+        ],
+        "compactProperties": [
+          {
+            "targetRefId": null,
+            "compactibleAxisDimensionChange": [
+              {
+                "x": -2.3
+              },
+              {
+                "y": -0.7
+              }
+            ]
+          }
+        ]
+      }
+    },
+    {
+      "itemRefId": 7760001,
+      "operation": "compact-pattern",
+      "options": {
+        "alternating": true,
+        "compactibleAxes": [
+          2
+        ],
+        "compactProperties": [
+          {
+            "targetRefId": null,
+            "compactibleAxisDimensionChange": [
+              {
+                "z": -6
+              }
+            ]
+          }
+        ]
+      }
+    },
+    {
+      "itemRefId": 7760001,
+      "operation": "lock-orientation"
+    }
+  ]
+}

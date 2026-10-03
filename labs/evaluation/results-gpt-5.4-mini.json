@@ -1,0 +1,89 @@
+[
+  {
+    "case": "one",
+    "reference": {
+      "boxes": 3,
+      "types": {
+        "generated-12-24-16 8.5\u00d714.5\u00d713": 1,
+        "generated-12-24-16 10.8\u00d722.5\u00d714": 1,
+        "generated-12-24-16 10.8\u00d723\u00d715.5": 1
+      },
+      "volume": 8854.45,
+      "leftover_units": 0
+    },
+    "ours": {
+      "boxes": 5,
+      "types": {
+        "generated-12-24-16 10.8\u00d723\u00d715.5": 3,
+        "generated-12-24-16 10.8\u00d722.5\u00d714": 2
+      },
+      "volume": 18354.6,
+      "leftover_units": 0
+    },
+    "valid": true,
+    "verdict": "worse"
+  },
+  {
+    "case": "three",
+    "reference": {
+      "boxes": 1,
+      "types": {
+        "3PBO": 1
+      },
+      "volume": 2480.62,
+      "leftover_units": 0
+    },
+    "ours": {
+      "boxes": 2,
+      "types": {
+        "X3": 2
+      },
+      "volume": 4590.0,
+      "leftover_units": 0
+    },
+    "valid": true,
+    "verdict": "worse"
+  },
+  {
+    "case": "four",
+    "reference": {
+      "boxes": 1,
+      "types": {
+        "5x6x8": 1
+      },
+      "volume": 240,
+      "leftover_units": 0
+    },
+    "ours": {
+      "boxes": 1,
+      "types": {
+        "5x6x8": 1
+      },
+      "volume": 240,
+      "leftover_units": 0
+    },
+    "valid": true,
+    "verdict": "same"
+  },
+  {
+    "case": "five",
+    "reference": {
+      "boxes": 1,
+      "types": {
+        "ISO 20' (decimeter - pound)": 1
+      },
+      "volume": 33081.18,
+      "leftover_units": 0
+    },
+    "ours": {
+      "boxes": 1,
+      "types": {
+        "ISO 20' (decimeter - pound)": 1
+      },
+      "volume": 33081.18,
+      "leftover_units": 27
+    },
+    "valid": true,
+    "verdict": "worse"
+  }
+]

@@ -1,0 +1,126 @@
+{
+  "seed": true,
+  "itemSets": [
+    {
+      "refId": 1,
+      "quantity": 3,
+      "dimensions": {
+        "x": 10.75,
+        "y": 11.25,
+        "z": 10.25
+      },
+      "weight": 4,
+      "name": "Handcrafted Soft Sausages",
+      "color": "#7a1632"
+    },
+    {
+      "refId": 2,
+      "quantity": 5,
+      "dimensions": {
+        "x": 3,
+        "y": 4,
+        "z": 4
+      },
+      "weight": 2,
+      "name": "Generic Wooden Bacon",
+      "color": "#7c3c74"
+    },
+    {
+      "refId": 3,
+      "quantity": 3,
+      "dimensions": {
+        "x": 13,
+        "y": 7.25,
+        "z": 8.5
+      },
+      "weight": 3,
+      "name": "Awesome Metal Tuna",
+      "color": "#31724d"
+    },
+    {
+      "refId": 4,
+      "quantity": 9,
+      "dimensions": {
+        "x": 9.75,
+        "y": 4.5,
+        "z": 3.75
+      },
+      "weight": 2,
+      "name": "Rustic Soft Bike",
+      "color": "#382675"
+    }
+  ],
+  "boxTypes": [
+    {
+      "refId": 0,
+      "weightMax": 150,
+      "name": "Example Box 1",
+      "dimensions": {
+        "x": 4,
+        "y": 6,
+        "z": 8
+      }
+    },
+    {
+      "refId": 0,
+      "weightMax": 150,
+      "name": "Example Box 1",
+      "dimensions": {
+        "x": 4,
+        "y": 6,
+        "z": 8
+      }
+    }
+  ],
+  "generatedBoxTypesMax": 64,
+  "boxTypeChoiceGoal": "most-items",
+  "boxTypeGenerators": [
+    {
+      "boxTypeDefaults": {
+        "name": "generated-12-24-16",
+        "refId": 100,
+        "weightMax": 50,
+        "weightTare": 0
+      },
+      "operation": "cartesian",
+      "options": {
+        "xRange": {
+          "min": 3,
+          "max": 12
+        },
+        "yRange": {
+          "min": 3,
+          "max": 24
+        },
+        "zRange": {
+          "min": 3,
+          "max": 16
+        },
+        "limits": [
+          {
+            "metric": "longest-dimension",
+            "min": 3,
+            "max": 24
+          }
+        ],
+        "priceComponents": [
+          {
+            "key": "size-change",
+            "metric": "length-plus-girth",
+            "thresholds": [
+              3,
+              40,
+              60
+            ],
+            "prices": [
+              1,
+              2,
+              5
+            ]
+          }
+        ]
+      }
+    }
+  ],
+  "rules": []
+}

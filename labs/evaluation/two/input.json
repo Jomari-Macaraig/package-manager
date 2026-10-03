@@ -1,0 +1,74 @@
+{
+  "itemSets": [
+    {
+      "orderId": "9119547",
+      "refId": 7329009,
+      "quantity": 11,
+      "weight": 1.33,
+      "dimensions": {
+        "z": 47.5,
+        "y": 5,
+        "x": 4.5
+      },
+      "name": "DRIVER IRON",
+      "color": "",
+      "sequence": "",
+      "centerOfMass": {
+        "z": null,
+        "y": null,
+        "x": null
+      }
+    }
+  ],
+  "boxTypes": [
+    {
+      "name": "DRIVER BOX",
+      "dimensions": {
+        "z": 47.5,
+        "y": 14,
+        "x": 7.75
+      },
+      "weightMax": 65,
+      "rateTable": {
+        "carrier": "FedEx",
+        "service": "Ground",
+        "zone": "3"
+      },
+      "weightTare": null,
+      "refId": null,
+      "price": null,
+      "centerOfMass": {
+        "z": null,
+        "y": null,
+        "x": null
+      }
+    }
+  ],
+  "boxTypeChoiceGoal": "lowest-cost",
+  "rules": [
+    {
+      "itemRefId": 7329009,
+      "operation": "compact-pattern",
+      "options": {
+        "alternating": true,
+        "compactibleAxes": [
+          0,
+          1
+        ],
+        "compactProperties": [
+          {
+            "targetRefId": null,
+            "compactibleAxisDimensionChange": [
+              {
+                "x": -2.3
+              },
+              {
+                "y": -0.7
+              }
+            ]
+          }
+        ]
+      }
+    }
+  ]
+}
