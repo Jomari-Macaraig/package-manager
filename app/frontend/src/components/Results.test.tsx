@@ -172,3 +172,21 @@ describe('RunView', () => {
     expect(screen.getByText('defaults')).toBeInTheDocument()
   })
 })
+
+describe('settings and notes', () => {
+  it('lists soft instructions separately from changed settings; notes are an ordered list', () => {
+    const run = makeRun()
+    run.settings = { ...run.settings!, padding: 0.5, soft_instructions: ['Ship it fast'] }
+    run.final!.plan.notes = ['first note', 'second note']
+    render(<RunView run={run} />)
+    const soft = screen.getByRole('heading', { name: 'Soft instructions' })
+    expect(soft.parentElement).toHaveTextContent('Ship it fast')
+    const padding = screen.getByText('padding').closest('li')
+    expect(padding).toHaveTextContent('padding: 0.5')
+    expect(padding).not.toHaveTextContent('Ship it fast')
+    const notes = screen
+      .getAllByRole('listitem')
+      .filter((li) => li.parentElement?.tagName === 'OL')
+    expect(notes.map((li) => li.textContent)).toEqual(['first note', 'second note'])
+  })
+})

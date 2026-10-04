@@ -406,3 +406,32 @@ def test_trace_id_metadata_and_spans(recorder):
     customs = {s["span_data"]["name"] for s in recorder.spans
                if s["span_data"]["type"] == "custom"}
     assert customs == {"extract", "prepare", "packer", "plan", "finalize"}
+
+
+@pytest.mark.parametrize("clearance", [2, 2.5])
+def test_zero_or_negative_prepared_box_dims_rejected(clearance):
+    # Box 4 x 4 x 4: wall_clearance 2 -> 0 in y/z, 2.5 -> negative.
+    req = sample_request("A", "clearance")
+    req.boxes = req.boxes[:1]
+    req.boxes[0].y = req.boxes[0].z = 4
+    client = FakeClient(create_script=[settings_json(wall_clearance=clearance)])
+    with pytest.raises(PipelineError, match="Wall clearance leaves no room"):
+        run(req, client)
+
+
+@pytest.mark.parametrize("make", [
+    lambda: openai.RateLimitError(
+        "slow down", response=httpx.Response(
+            429, request=httpx.Request("POST", "http://x")), body=None),
+    lambda: openai.APITimeoutError(request=httpx.Request("POST", "http://x")),
+    lambda: openai.InternalServerError(
+        "oops", response=httpx.Response(
+            500, request=httpx.Request("POST", "http://x")), body=None),
+])
+def test_transient_errors_give_no_model_plan(make):
+    exc = make()
+    result, _, _, _ = run(sample_request("A"), FakeClient(script=[exc] * 3))
+    assert result["model"]["ok"] is False and result["model"]["plan"] is None
+    assert result["model"]["errors"][0].startswith(
+        f"model call failed: {type(exc).__name__}")
+    assert result["final"]["source"] == "packer"
