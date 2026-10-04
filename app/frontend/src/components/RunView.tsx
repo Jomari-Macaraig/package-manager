@@ -1,7 +1,9 @@
-import type { CallStats, Run, RunStatus } from '../api/types'
+import type { CallStats, PlanStart, Run, RunStatus } from '../api/types'
+import { MetricsTable } from './MetricsTable'
 import { NotesLeftovers } from './NotesLeftovers'
 import { PlansSideBySide } from './PlansSideBySide'
 import { PreparedItemsTable } from './PreparedItemsTable'
+import { PromptsPanel } from './PromptsPanel'
 import { SettingsPanel } from './SettingsPanel'
 
 const badge: Record<RunStatus, string> = {
@@ -10,6 +12,12 @@ const badge: Record<RunStatus, string> = {
   failed: 'bg-red-100 text-red-900',
   cancelled: 'bg-amber-100 text-amber-900',
   interrupted: 'bg-amber-100 text-amber-900',
+}
+
+const START_LABEL: Record<PlanStart, string> = {
+  improve: "improve the packer's plan",
+  scratch: 'from scratch',
+  guide: 'model picks, code places',
 }
 
 const money = (n: number) => `$${n.toFixed(4)}`
@@ -64,6 +72,10 @@ export function RunView({ run }: { run: Run }) {
             Copy run id
           </button>
         </p>
+        <p className="text-sm">
+          Planning start:{' '}
+          {START_LABEL[run.request.planning.start]}
+        </p>
         <p className="text-sm text-slate-600">
           Created {new Date(run.created_at).toLocaleString()}
           {run.finished_at ? ` · finished ${new Date(run.finished_at).toLocaleString()}` : ''}
@@ -111,7 +123,9 @@ export function RunView({ run }: { run: Run }) {
       <SettingsPanel settings={run.settings} />
       <PreparedItemsTable items={run.prepared_items} />
       <PlansSideBySide run={run} />
+      <MetricsTable rows={run.comparison} />
       <NotesLeftovers plan={run.final?.plan ?? null} />
+      <PromptsPanel key={`${run.run_id}:${run.status}`} runId={run.run_id} />
     </div>
   )
 }

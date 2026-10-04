@@ -19,8 +19,12 @@ export type RunRequest = {
   boxes: InputBox[];     // 1..10 rows
   instructions: string;  // ≤ 2000 chars, no control chars except \n \t
   extraction: { model: string };                       // must be in config
-  planning: { model: string; reasoning_effort: "low" | "medium" | "high" };
+  planning: { model: string; reasoning_effort: "low" | "medium" | "high";
+              start: PlanStart };  // default "improve" when omitted
 };
+// improve: the model edits the code packer's plan; scratch: it plans alone;
+// guide: it picks box types, item order and rotations, code places the units
+export type PlanStart = "improve" | "scratch" | "guide";
 
 export type Dimensions = { x: number; y: number; z: number };
 export type Item = { id: number; color: string; name: string; weight: number;
@@ -115,6 +119,7 @@ export type Run = {
            total_tokens: number; total_cost: number;
            timings: { extract_s: number | null; packer_s: number | null;
                       plan_s: number | null; total_s: number | null } } | null;
+  comparison?: MetricRow[] | null;  // model vs packer; null = no plans
   events: RunEvent[];   // persisted as they happen; complete after end
 };
 
@@ -133,5 +138,24 @@ export type Config = {
   caps: { max_item_rows: 20; max_box_rows: 10; max_units: 150;
           max_instruction_chars: 2000 };
 };
-export type Sample = { key: "A" | "B" | "C"; title: string; description: string;
+export type Sample = { key: "A" | "B" | "C" | "D" | "E"; title: string; description: string;
                 items: InputItem[]; boxes: InputBox[]; instructions: string };
+
+/** GET /runs/{id}/history: the chat messages sent to and received from the
+ *  model, per stage. Empty until the stage finishes. */
+export interface ChatMessage {
+  role: string
+  content: unknown
+}
+export interface RunHistory {
+  extraction: ChatMessage[]
+  planning: ChatMessage[]
+}
+
+/** packing.metrics.compare row; verdict is for the model vs the packer. */
+export type MetricRow = {
+  metric: string; label: string; unit: string;
+  direction: "lower" | "higher" | "info";
+  model: number | null; packer: number | null; delta: number | null;
+  verdict: "better" | "worse" | "same" | null;
+};

@@ -1,4 +1,4 @@
-import type { Config } from '../api/types'
+import type { Config, PlanStart } from '../api/types'
 import type { ModelChoice } from '../lib/editor'
 
 type Props = {
@@ -76,6 +76,19 @@ export function ModelSettings({ config, value, onChange, disabled }: Props) {
             </select>
           </label>
         )}
+        <label className="text-sm">
+          Planning start{' '}
+          <select
+            className={select}
+            value={value.start}
+            disabled={disabled}
+            onChange={(e) => onChange({ ...value, start: e.target.value as PlanStart })}
+          >
+            <option value="improve">improve the packer's plan</option>
+            <option value="scratch">from scratch</option>
+            <option value="guide">model picks, code places</option>
+          </select>
+        </label>
       </div>
       <p className="text-xs text-slate-500">
         max rounds {config.loop.max_rounds} · improve rounds {config.loop.improve_rounds}

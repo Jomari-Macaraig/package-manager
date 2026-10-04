@@ -129,6 +129,14 @@ describe('editor', () => {
     expect(screen.getByText('max rounds 3 · improve rounds 1')).toBeInTheDocument()
   })
 
+  it('sends the planning start choice', async () => {
+    m.createRun.mockResolvedValue({ run_id: 'r1' })
+    const user = await ready()
+    await user.selectOptions(screen.getByLabelText(/Planning start/), 'guide')
+    await user.click(screen.getByRole('button', { name: 'Pack' }))
+    expect(m.createRun.mock.calls[0][0].planning.start).toBe('guide')
+  })
+
   it('shows a retry banner when the config cannot load', async () => {
     m.getConfig.mockRejectedValueOnce(new client.ApiError(500, ['boom']))
     const user = userEvent.setup()
@@ -169,7 +177,11 @@ describe('request body', () => {
     expect(body.boxes[1].stock).toBe(3)
     expect(body.instructions).toBe('be careful')
     expect(body.extraction).toEqual({ model: 'gpt-4.1-nano' })
-    expect(body.planning).toEqual({ model: 'gpt-5.4-nano', reasoning_effort: 'low' })
+    expect(body.planning).toEqual({
+      model: 'gpt-5.4-nano',
+      reasoning_effort: 'low',
+      start: 'improve',
+    })
     expect(JSON.stringify(body)).not.toMatch(/"id"/)
     expect(sampleB.items).toHaveLength(6)
   })

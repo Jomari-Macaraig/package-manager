@@ -186,7 +186,7 @@ export function makeRun(over: Partial<Run> = {}): Run {
       boxes: sampleA.boxes,
       instructions: '',
       extraction: { model: 'gpt-4.1-nano' },
-      planning: { model: 'gpt-5.4-nano', reasoning_effort: 'low' },
+      planning: { model: 'gpt-5.4-nano', reasoning_effort: 'low', start: 'improve' },
     },
     loop: { max_rounds: 3, improve_rounds: 1 },
     settings: {

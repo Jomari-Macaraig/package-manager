@@ -1,6 +1,8 @@
 # app — Packing Playground
 
-Local web app: edit items/boxes (Samples A, B, C preloaded), write packing
+Local web app: edit items/boxes (Samples A–E preloaded; D is the original
+dispenser order from the notebook; E is a two-box order where the packer
+ships 23% more than a one-layer Medium + Large plan), write packing
 instructions, pick models, run the LLM packing pipeline, watch live progress,
 compare the model's plan with the code packer's plan, browse past runs.
 
@@ -24,13 +26,24 @@ Backend (`app/backend`, uv project; run from that directory):
 - `app/pipeline.py` stages + trace; `app/store.py` SQLite; `app/tracing.py`
 - `app/schemas.py` request/response models; `app/config.py`; `app/samples.py`
 - `app/fake_llm.py` `FakeClient` (`gate`, `create_script`, `script`)
-- `packing/` one-time fork of 10 `labs/` modules with relative imports; no
-  sync with `labs/` afterwards. Does not import `agents` or FastAPI.
+- `packing/` the packing pipeline — single source of truth, also imported by
+  the labs notebook (editable path dependency of the root project). See
+  [backend/packing/CLAUDE.md](backend/packing/CLAUDE.md). `app/__init__.py`
+  sets matplotlib's Agg backend for the server.
 
 Frontend (`app/frontend`, Vite + React + TS + Tailwind):
 - `src/api/types.ts` contract types (from the plan), `src/api/client.ts`
   every network call + SSE `subscribe`
 - `src/hooks/useRunFlow.ts` run/attach/cancel flow; `src/components/` UI
+- `src/components/MetricsTable.tsx` "Metrics" section of every run: model
+  vs code packer per metric (value, delta, better/worse/same) and a tally,
+  from `run.comparison` (`packing.metrics.compare`, computed in
+  `routes._comparison` on read, so older runs show it too).
+- `src/components/PromptsPanel.tsx` "Prompts" section of a run: on "Show
+  prompts" it loads `GET /runs/{id}/history` and lists each message (System
+  prompt, User prompt incl. the Starting plan, Model reply N, Feedback N)
+  collapsed, with a copy button. History is saved when a stage finishes,
+  so a running run shows nothing until then.
 
 ## Contract summary
 
@@ -42,6 +55,13 @@ Normative spec: `docs/plans/2026-10-04-packing-playground.md`. Prefix `/api`:
 JSON content type). SSE frames: `id: n`, `event: <type>`, `data: <RunEvent
 JSON with id>`; resume via `Last-Event-ID` or `?from=`; a terminal run always
 ends with `end`. Errors are `{"detail": ...}`.
+Added after the plan: `planning.start` in the run request, `"improve"`
+(default; the model edits the packer's plan), `"scratch"`, or `"guide"`
+(the model picks box types, item order and rotations; code places, with
+`GUIDE_SYSTEM_PROMPT`); the UI has a "Planning start" select and the run
+view shows it. The prompt is built after the packer so it can include
+`box_estimates` (`pipeline._messages`). Runs stored before the
+field existed read back as `"scratch"` (`routes._request`).
 
 ## Env vars
 
@@ -64,9 +84,17 @@ ends with `end`. Errors are `{"detail": ...}`.
   caps (150 units, 10 box types); accepted.
 - Cancel is cooperative: checked before extraction, each planning call, the
   packer and finalize.
+- Giving up is an error: a model plan that leaves over units the packer
+  placed fails validation (see `backend/packing/CLAUDE.md`).
 - Run with ONE worker and `--timeout-graceful-shutdown 5` (open SSE
   connections otherwise delay shutdown). `--reload` abandons an active run;
   it is marked `interrupted` on the next start.
+- Planning output limit follows reasoning effort
+  (`config.MAX_COMPLETION_TOKENS["planning"]`: low 16k, medium 32k, high
+  48k; reasoning tokens count against it) and the OpenAI timeout is 300 s.
+  A call that hits the limit (`LengthFinishReasonError`) ends the planning
+  loop with no retry (`PlanResult.cut_off`); the packer's plan is used.
+  Before: gpt-5.4-mini medium spent 3 × 16k tokens, $0.23, for nothing.
 - `client_ip` is always 127.0.0.1 behind the Vite proxy.
 - Only Origins http://localhost:5173 / http://127.0.0.1:5173 and hosts
   localhost / 127.0.0.1 are accepted; the Vite dev port is strict.

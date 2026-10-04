@@ -2,6 +2,7 @@ import type {
   Config,
   Run,
   RunEvent,
+  RunHistory,
   RunRequest,
   RunStatus,
   RunSummary,
@@ -80,6 +81,8 @@ export const createRun = (req: RunRequest) =>
 export const listRuns = () => request<RunSummary[]>('/runs')
 export const getActiveRun = () => request<{ run_id: string | null }>('/runs/active')
 export const getRun = (id: string) => request<Run>(`/runs/${enc(id)}`)
+export const getHistory = (id: string) =>
+  request<RunHistory>(`/runs/${enc(id)}/history`)
 export const cancelRun = async (id: string): Promise<void> => {
   await send(`/runs/${enc(id)}/cancel`, jsonPost({}))
 }

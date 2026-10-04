@@ -45,7 +45,7 @@ describe('requests', () => {
       boxes: [],
       instructions: '',
       extraction: { model: 'm' },
-      planning: { model: 'p', reasoning_effort: 'low' as const },
+      planning: { model: 'p', reasoning_effort: 'low' as const, start: 'improve' as const },
     }
     await expect(createRun(req)).resolves.toEqual({ run_id: 'r1' })
     const [url, init] = fetchMock.mock.calls[0]

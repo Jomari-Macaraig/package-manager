@@ -1,4 +1,4 @@
-import type { Config, InputBox, InputItem, RunRequest } from '../api/types'
+import type { Config, InputBox, InputItem, PlanStart, RunRequest } from '../api/types'
 
 /** Editable rows keep every cell as a string so blank/partial input is representable. */
 export type ItemRow = {
@@ -182,6 +182,7 @@ export type ModelChoice = {
   extractionModel: string
   planningModel: string
   effort: 'low' | 'medium' | 'high'
+  start: PlanStart
 }
 
 /** Build the POST body. No ids are sent; blank stock becomes null. */
@@ -211,6 +212,10 @@ export function toRequest(
     })),
     instructions,
     extraction: { model: models.extractionModel },
-    planning: { model: models.planningModel, reasoning_effort: models.effort },
+    planning: {
+      model: models.planningModel,
+      reasoning_effort: models.effort,
+      start: models.start,
+    },
   }
 }

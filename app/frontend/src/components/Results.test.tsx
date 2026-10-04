@@ -1,8 +1,9 @@
 import { fireEvent, render, screen } from '@testing-library/react'
 import userEvent from '@testing-library/user-event'
 import { describe, expect, it } from 'vitest'
-import type { Run } from '../api/types'
+import type { MetricRow, Run } from '../api/types'
 import { makePlan, makeRun, okSide } from '../test/fixtures'
+import { MetricsTable } from './MetricsTable'
 import { PlanPanel } from './PlanPanel'
 import { RunView } from './RunView'
 
@@ -188,5 +189,40 @@ describe('settings and notes', () => {
       .getAllByRole('listitem')
       .filter((li) => li.parentElement?.tagName === 'OL')
     expect(notes.map((li) => li.textContent)).toEqual(['first note', 'second note'])
+  })
+})
+
+describe('MetricsTable', () => {
+  const row = (over: Partial<MetricRow>): MetricRow => ({
+    metric: 'boxes', label: 'Boxes', unit: '', direction: 'lower',
+    model: 1, packer: 1, delta: 0, verdict: 'same', ...over,
+  })
+
+  it('shows both sides, the delta and a verdict tally', () => {
+    render(
+      <MetricsTable
+        rows={[
+          row({}),
+          row({ metric: 'shipped_volume', label: 'Shipped volume', unit: 'in³',
+                model: 1500, packer: 1764, delta: -264, verdict: 'better' }),
+          row({ metric: 'units_packed', label: 'Units packed', direction: 'info',
+                model: 14, packer: 14, delta: 0, verdict: null }),
+        ]}
+      />,
+    )
+    expect(screen.getByText('Model vs packer: 1 better · 0 worse · 1 same')).toBeInTheDocument()
+    expect(screen.getByText('-264 in³')).toBeInTheDocument()
+    expect(screen.getByText('better')).toHaveClass('text-green-800')
+  })
+
+  it('says nothing is compared when the model has no plan', () => {
+    render(<MetricsTable rows={[row({ model: null, delta: null, verdict: null })]} />)
+    expect(screen.getByText(/nothing to compare/)).toBeInTheDocument()
+    expect(screen.getByText('—')).toBeInTheDocument()
+  })
+
+  it('renders nothing without rows', () => {
+    const { container } = render(<MetricsTable rows={null} />)
+    expect(container).toBeEmptyDOMElement()
   })
 })

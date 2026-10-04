@@ -87,6 +87,7 @@ export default function App() {
         extractionModel: c.defaults.extraction_model,
         planningModel: c.defaults.planning_model,
         effort: c.defaults.reasoning_effort,
+        start: 'improve',
       })
       if (!dirty.current && s.length) loadSample(s[0])
     } catch (e) {
