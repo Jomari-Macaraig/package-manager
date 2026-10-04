@@ -12,10 +12,10 @@ even while rotating. Hover shows each unit's name, step, position and size.
 import plotly.graph_objects as go
 from plotly.subplots import make_subplots
 
-from render_common import (
+from packing.render_common import (
     Cuboid, box_cuboids, box_size, box_title, footer_lines, item_colors,
 )
-from schemas import Response
+from packing.schemas import Response
 
 # Cube corners as (u, v, w) offsets and the 12 triangles of its 6 faces.
 _CORNERS = [(0, 0, 0), (1, 0, 0), (1, 1, 0), (0, 1, 0),

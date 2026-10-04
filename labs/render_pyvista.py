@@ -10,11 +10,11 @@ import numpy as np
 import pyvista as pv
 from PIL import Image
 
-from render_common import (
+from packing.render_common import (
     add_footer, box_cuboids, box_size, box_title, footer_lines, item_colors,
     mirror_depth,
 )
-from schemas import Response
+from packing.schemas import Response
 
 PANEL = (700, 650)  # px per box
 _INSET = 0.02  # small gap so neighbouring units show their edges

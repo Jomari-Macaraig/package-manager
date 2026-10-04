@@ -12,10 +12,10 @@ needs internet. Boxes sit side by side in one scene.
 import json
 from html import escape
 
-from render_common import (
+from packing.render_common import (
     box_cuboids, box_size, box_title, footer_lines, item_colors,
 )
-from schemas import Response
+from packing.schemas import Response
 
 THREE_VERSION = "0.170.0"
 GAP = 4.0  # scene units between boxes

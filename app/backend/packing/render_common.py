@@ -9,14 +9,10 @@ import textwrap
 from dataclasses import dataclass
 from itertools import cycle
 
-import matplotlib
+from matplotlib.colors import is_color_like, to_hex
+from matplotlib.pyplot import get_cmap
 
-matplotlib.use("Agg")
-
-from matplotlib.colors import is_color_like, to_hex  # noqa: E402
-from matplotlib.pyplot import get_cmap  # noqa: E402
-
-from .schemas import Boxes, Response  # noqa: E402
+from .schemas import Boxes, Response
 
 Vec = tuple[float, float, float]
 

@@ -12,8 +12,8 @@ from matplotlib.patches import Patch
 from mpl_toolkits.mplot3d import proj3d
 from mpl_toolkits.mplot3d.art3d import Poly3DCollection
 
-from render_common import footer_lines, item_colors, paint_order
-from schemas import Boxes, Response
+from packing.render_common import footer_lines, item_colors, paint_order
+from packing.schemas import Boxes, Response
 
 
 _SHADE = (0.8, 0.62, 1.0)  # face brightness by plot axis: Z span, Y depth, up
