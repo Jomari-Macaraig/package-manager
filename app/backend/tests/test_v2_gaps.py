@@ -753,3 +753,54 @@ def test_config_error_on_strategy_call_two_keeps_call_one_usage():
     assert "AuthenticationError" in s.error or "401" in s.error
     assert [(jobs[n].status, jobs[n].error) for n in ("check", "notes")] == [
         ("skipped", "not run")] * 2
+
+
+# --- fix loop 2: es plurals, back-references, odd names, error cap -------------------
+
+def test_notes_es_plurals_match_and_count():
+    c = notes_named(["Load 2 × Shoe Boxes"], [(1, "Shoe Box")] * 2)
+    assert c["mentions_items"].passed and c["counts_match"].passed
+    c = notes_named(["Load 2 Glasses"], [(1, "Glass")] * 2)
+    assert c["mentions_items"].passed and c["counts_match"].passed
+
+
+def test_notes_back_reference_is_not_summed():
+    units = KETTLES + [(2, "Jar")] * 2
+    c = notes_named(["Load 3 × Kettle",
+                     "Load 2 × Jar on top of the 3 kettles"], units)
+    assert c["mentions_items"].passed and c["counts_match"].passed
+    # split steps are still summed, a wrong sum still fails
+    assert notes_named(["Load 2 × Kettle on the floor",
+                        "Load 1 × Kettle on top"], KETTLES)[
+        "counts_match"].passed
+    assert not notes_named(["Load 2 × Kettle"], KETTLES)[
+        "counts_match"].passed
+    assert not notes_named(["Load 2 × Kettle", "Load 2 × Kettle"], KETTLES)[
+        "counts_match"].passed
+
+
+def test_notes_jar_vs_jar_lid_with_per_step_counting():
+    units = [(1, "Jar"), (2, "Jar Lid"), (2, "Jar Lid")]
+    ok = notes_named(["Load 1 × Jar", "Load 2 × Jar Lid on the jar"], units)
+    assert ok["mentions_items"].passed and ok["counts_match"].passed
+    bad = notes_named(["Load 2 × Jar", "Load 1 × Jar Lid"], units)
+    assert not bad["counts_match"].passed
+
+
+def test_notes_names_with_non_word_edges_match():
+    c = notes_named(["Load 2 × #10 Envelope"], [(1, "#10 Envelope")] * 2)
+    assert c["mentions_items"].passed and c["counts_match"].passed
+
+
+def test_strategy_config_error_text_is_capped():
+    class Boom(openai.AuthenticationError):
+        def __str__(self):
+            return "x" * 1000
+
+    client = FakeClient()
+    client.script = [None, http_error(Boom, 401)]
+    with pytest.raises(ConfigErrorV2) as caught:
+        run_hooked("G", client)
+    s = {j.job: j for j in caught.value.jobs}["strategy"]
+    assert s.status == "fallback" and s.output is None
+    assert len(s.error) <= len("Boom: ") + 300

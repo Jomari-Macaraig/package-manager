@@ -500,7 +500,9 @@ output, with an error), `skipped` (never called; `calls` 0).
   no_extra_leftovers, no_extra_boxes, volume_within_margin (1.15 x the packer's
   shipped volume), preferences_honoured. A strategy with a valid plan is `ok`
   even if quality checks fail. With no valid plan it is `fallback` and its
-  output is `strategy_answer_from_plan(packer)`.
+  output is `strategy_answer_from_plan(packer)`. A config error after the
+  strategy job made calls records it as `fallback` with its usage, the error
+  text, and output None, and it counts toward strategy's fallback rate.
 - `check`: one verdict per soft instruction (honoured / not_honoured /
   cannot_tell) from the model plan plus exact code facts. Checks: parsed,
   covers_all. Skipped with no soft instructions or no valid model plan;
