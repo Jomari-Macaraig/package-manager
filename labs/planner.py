@@ -23,7 +23,7 @@ from openai import OpenAI
 from pydantic import ValidationError
 
 from schemas import FlatResponse
-from validation import plan_score, quality_hints, validate_plan
+from validation import fill_heights, plan_score, quality_hints, validate_plan
 
 MAX_ERRORS_SHOWN = 20
 
@@ -35,13 +35,19 @@ class PlanResult:
     rounds: int  # model calls made, including improvement calls
     hints: list[str] = field(default_factory=list)  # left on returned plan
     improved: bool = False  # an improvement call beat the first valid plan
-    completion_tokens: int = 0
+    source: str = "model"  # "model" or "packer" (code plan was better)
+    prompt_tokens: int = 0  # input, summed over all calls
+    completion_tokens: int = 0  # output, includes reasoning tokens
     reasoning_tokens: int = 0
     history: list[dict[str, Any]] = field(default_factory=list)
 
     @property
     def ok(self) -> bool:
         return self.flat is not None and not self.errors
+
+    @property
+    def total_tokens(self) -> int:
+        return self.prompt_tokens + self.completion_tokens
 
 
 def _bullets(lines: list[str]) -> str:
@@ -82,6 +88,7 @@ def _ask(client, model, history, result, create_kwargs) -> FlatResponse | None:
 
     usage = response.usage
     if usage:
+        result.prompt_tokens += usage.prompt_tokens or 0
         result.completion_tokens += usage.completion_tokens
         details = usage.completion_tokens_details
         if details and details.reasoning_tokens:
@@ -94,6 +101,33 @@ def _ask(client, model, history, result, create_kwargs) -> FlatResponse | None:
     return message.parsed
 
 
+def _rank(flat: FlatResponse, boxes) -> tuple:
+    """Lower is better: leftover units, then plan_score (boxes, volume,
+    summed fill height)."""
+    return (sum(r.quantity for r in flat.leftovers),
+            *plan_score(flat, boxes))
+
+
+def _baseline_hint(flat, baseline, boxes) -> list[str]:
+    """Point the model at the code packer's result when it beat this plan."""
+    if baseline is None or _rank(baseline, boxes) >= _rank(flat, boxes):
+        return []
+
+    def describe(plan):
+        names = {b["id"]: b["name"] for b in boxes}
+        fills = fill_heights(plan)
+        parts = [f"{names[b.id]} filled to {fills.get(b.box, 0):g} in"
+                 for b in plan.boxes]
+        left = sum(r.quantity for r in plan.leftovers)
+        return (f"{len(plan.boxes)} box(es) ({'; '.join(parts)})"
+                + (f", {left} units left over" if left else ""))
+
+    return [f"a valid plan exists with {describe(baseline)}; yours uses "
+            f"{describe(flat)}. Lower your stacks: try other listed "
+            f"rotations so more units stand side by side on the floor, and "
+            f"use the strips left beside each grid."]
+
+
 def plan_with_validation(
     client: OpenAI,
     model: str,
@@ -103,6 +137,8 @@ def plan_with_validation(
     *,
     max_rounds: int = 3,
     improve_rounds: int = 1,
+    settings=None,
+    baseline: FlatResponse | None = None,
     **create_kwargs: Any,
 ) -> PlanResult:
     """Run plan → validate → fix rounds, then optional improvement rounds.
@@ -110,7 +146,12 @@ def plan_with_validation(
     max_rounds:     calls allowed to reach a first valid plan.
     improve_rounds: extra calls spent on quality hints once a plan is valid
                     (0 disables). Total calls <= max_rounds + improve_rounds.
-    messages should use build_system_prompt(..., with_validator=True).
+    messages should use prompt_builder.SYSTEM_PROMPT.
+    settings:       PackingSettings; its box/order/carrier rules are
+                    validated too (item rules ride on the prepared items).
+    baseline:       a valid plan from packer.pack. It is the target in the
+                    hints, and it is returned instead (source="packer") when
+                    it beats the model's plan or the model has none.
     create_kwargs pass through to chat.completions.parse
     (e.g. reasoning_effort="low").
     """
@@ -121,28 +162,50 @@ def plan_with_validation(
         flat = _ask(client, model, history, result, create_kwargs)
         if flat is not None:
             result.flat = flat
-            result.errors = validate_plan(flat, items, boxes)
+            result.errors = validate_plan(flat, items, boxes, settings)
             if not result.errors:
                 break
         history.append({"role": "user",
                         "content": _error_feedback(result.errors)})
     else:
-        return result
+        return _prefer_baseline(result, baseline, boxes)
 
-    result.hints = quality_hints(result.flat, items, boxes)
+    result.hints = (_baseline_hint(result.flat, baseline, boxes)
+                    + quality_hints(result.flat, items, boxes, settings))
     for _ in range(improve_rounds):
         if not result.hints:
             break
         history.append({"role": "user",
                         "content": _hint_feedback(result.hints)})
         candidate = _ask(client, model, history, result, create_kwargs)
-        if (candidate is None or validate_plan(candidate, items, boxes)
-                or plan_score(candidate, boxes)
-                >= plan_score(result.flat, boxes)):
+        if (candidate is None or validate_plan(candidate, items, boxes, settings)
+                or _rank(candidate, boxes) >= _rank(result.flat, boxes)):
             result.errors = []  # failed improvement; keep the valid plan
             break
         result.flat = candidate
         result.improved = True
-        result.hints = quality_hints(candidate, items, boxes)
+        result.hints = (_baseline_hint(candidate, baseline, boxes)
+                        + quality_hints(candidate, items, boxes, settings))
 
+    return _prefer_baseline(result, baseline, boxes)
+
+
+def _prefer_baseline(result: PlanResult, baseline, boxes) -> PlanResult:
+    """Return the packer's plan when the model has no valid plan or a worse
+    one. Its notes say the model's plan (and any soft instructions) wasn't
+    used."""
+    if baseline is None:
+        return result
+    if result.ok and _rank(result.flat, boxes) <= _rank(baseline, boxes):
+        return result
+    why = ("the model's plan was invalid" if not result.ok
+           else "it beat the model's plan")
+    result.flat = baseline.model_copy(update={"notes": [
+        *baseline.notes,
+        f"Code packer's plan used because {why}; Additional instructions "
+        f"were not applied.",
+    ]})
+    result.errors = []
+    result.hints = []
+    result.source = "packer"
     return result

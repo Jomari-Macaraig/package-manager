@@ -4,7 +4,7 @@
 `FlatResponse` is what the model returns: flat rows that carry only what the
 model decides (box choice, placement, rotation). `unflatten` rebuilds a
 `Response`, joining name/color/weight/box limits back from the input records
-by ref_id.
+by id.
 """
 
 from collections import defaultdict
@@ -59,7 +59,7 @@ class CoordinateSystem(BaseModel):
 
 
 class Item(BaseModel):
-    ref_id: int = Field(description="Source item type ID; shared by identical units")
+    id: int = Field(description="Item type id; shared by identical units")
     color: str = Field(description="Color used in the packing visualization")
     name: str = Field(description="Item name")
     weight: float = Field(
@@ -98,7 +98,7 @@ class Boxes(BaseModel):
     dimensions: Dimensions = Field(
         description="Usable INTERNAL box dimensions, in length_unit",
     )
-    ref_id: int = Field(description="Source box type ID")
+    id: int = Field(description="Box type id")
     name: str = Field(description="Box name")
     max_contents_weight: float | None = Field(
         gt=0,
@@ -125,6 +125,9 @@ class Response(BaseModel):
     coordinate_system: CoordinateSystem
     boxes: list[Boxes]
     leftover_items: list[LeftoverItems]
+    notes: list[str] = Field(
+        description="Short instructions for the person packing: how to load, where to cut the box down, and how any additional instructions were applied",
+    )
 
 
 # --- Flat plan (model output) ---------------------------------------------
@@ -132,29 +135,30 @@ class Response(BaseModel):
 
 class BoxRow(BaseModel):
     box: int = Field(ge=1, description="Physical box number, unique per box used")
-    ref_id: int = Field(description="Box type refId")
+    id: int = Field(description="Box type id")
 
 
 class PlacementRow(BaseModel):
     box: int = Field(description="Physical box number from boxes")
     seq: int = Field(ge=1, description="Loading order within the box")
-    ref_id: int = Field(description="Item type refId")
+    id: int = Field(description="Item type id")
     pos: Position = Field(description="Min corner [x, y, z]")
     dims: Extent = Field(description="Rotated extents [x, y, z]")
 
 
 class LeftoverRow(BaseModel):
-    ref_id: int = Field(description="Item type refId")
+    id: int = Field(description="Item type id")
     quantity: int = Field(ge=1, description="Units not packed")
     reason: str = Field(description="Specific constraint; verified or search failed")
 
 
 class FlatResponse(BaseModel):
-    length_unit: LengthUnit | None
-    weight_unit: WeightUnit | None
     boxes: list[BoxRow]
     placements: list[PlacementRow] = Field(description="One row per unit")
     leftovers: list[LeftoverRow]
+    notes: list[str] = Field(
+        description="Short instructions for the person packing: how to load, where to cut the box down, and how any additional instructions were applied",
+    )
 
 
 COORDINATE_SYSTEM = CoordinateSystem(
@@ -166,22 +170,22 @@ COORDINATE_SYSTEM = CoordinateSystem(
 )
 
 
-def _by_ref_id(records: Sequence[Mapping[str, Any]], kind: str) -> dict:
-    lookup = {record["refId"]: record for record in records}
+def _by_id(records: Sequence[Mapping[str, Any]], kind: str) -> dict:
+    lookup = {record["id"]: record for record in records}
     if len(lookup) != len(records):
-        raise ValueError(f"duplicate refId in input {kind}")
+        raise ValueError(f"duplicate id in input {kind}")
     return lookup
 
 
-def _lookup(table: dict, ref_id: int, kind: str) -> Mapping[str, Any]:
-    if ref_id not in table:
-        raise ValueError(f"model referenced unknown {kind} refId {ref_id}")
-    return table[ref_id]
+def _lookup(table: dict, type_id: int, kind: str) -> Mapping[str, Any]:
+    if type_id not in table:
+        raise ValueError(f"model referenced unknown {kind} id {type_id}")
+    return table[type_id]
 
 
 def _item(source: Mapping[str, Any], **overrides: Any) -> dict[str, Any]:
     return {
-        "ref_id": source["refId"],
+        "id": source["id"],
         "color": source["color"],
         "name": source["name"],
         "weight": source["weight"],
@@ -196,8 +200,8 @@ def unflatten(
     boxes: Sequence[Mapping[str, Any]],
 ) -> Response:
     """Rebuild the nested Response from flat rows plus the input records."""
-    item_types = _by_ref_id(items, "items")
-    box_types = _by_ref_id(boxes, "boxes")
+    item_types = _by_id(items, "items")
+    box_types = _by_id(boxes, "boxes")
 
     placements_by_box: dict[int, list[PlacementRow]] = defaultdict(list)
     for row in flat.placements:
@@ -209,10 +213,10 @@ def unflatten(
 
     nested_boxes = []
     for box_row in sorted(flat.boxes, key=lambda b: b.box):
-        box_type = _lookup(box_types, box_row.ref_id, "box")
+        box_type = _lookup(box_types, box_row.id, "box")
         packed = [
             _item(
-                _lookup(item_types, row.ref_id, "item"),
+                _lookup(item_types, row.id, "item"),
                 quantity=1,
                 dimensions=dict(zip("xyz", row.dims)),
                 packed_index=row.seq,
@@ -222,7 +226,7 @@ def unflatten(
         ]
         nested_boxes.append({
             "dimensions": box_type["dimensions"],
-            "ref_id": box_type["refId"],
+            "id": box_type["id"],
             "name": box_type["name"],
             "max_contents_weight": box_type.get("weightMax"),
             "items": packed,
@@ -230,18 +234,20 @@ def unflatten(
 
     leftovers_by_reason: dict[str, list[dict]] = defaultdict(list)
     for row in flat.leftovers:
-        source = _lookup(item_types, row.ref_id, "item")
+        source = _lookup(item_types, row.id, "item")
         leftovers_by_reason[row.reason].append(
             _item(source, quantity=row.quantity)
         )
 
     return Response.model_validate({
-        "length_unit": flat.length_unit,
-        "weight_unit": flat.weight_unit,
+        # units are fixed: inches and pounds
+        "length_unit": "in",
+        "weight_unit": "lb",
         "coordinate_system": COORDINATE_SYSTEM,
         "boxes": nested_boxes,
         "leftover_items": [
             {"items": grouped, "reason": reason}
             for reason, grouped in leftovers_by_reason.items()
         ],
+        "notes": flat.notes,
     })
