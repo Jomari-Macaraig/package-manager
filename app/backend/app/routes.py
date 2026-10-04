@@ -58,8 +58,8 @@ def get_samples() -> JSONResponse:
                          for s in SAMPLES])
 
 
-@router.post("/runs", status_code=202)
-async def create_run(req: RunRequest, request: Request) -> dict[str, str]:
+@router.post("/runs", status_code=202, response_model=None)
+async def create_run(req: RunRequest, request: Request):
     meta = {
         "client_ip": request.client.host if request.client else "unknown",
         "user_agent": request.headers.get("user-agent", "")[:200],
@@ -67,9 +67,9 @@ async def create_run(req: RunRequest, request: Request) -> dict[str, str]:
     }
     try:
         run_id = request.app.state.runs.start(req, meta)
-    except RunBusy:
-        raise HTTPException(status_code=409,
-                            detail="A run is already in progress")
+    except RunBusy as busy:
+        return JSONResponse({"detail": "A run is already in progress",
+                             "kind": busy.kind}, status_code=409)
     return {"run_id": str(run_id)}
 
 
