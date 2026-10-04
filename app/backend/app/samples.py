@@ -115,3 +115,60 @@ SAMPLES: list[dict[str, Any]] = [
         "instructions": "",
     },
 ]
+
+
+# Instruction samples for v2 (F-H). Each has a soft instruction that the
+# packer ignores, and a guided placement with the matching preferences that
+# honours it within 1.15 x the packer's shipped volume (tests/test_v2_api.py).
+SAMPLES_V2: list[dict[str, Any]] = [
+    {
+        "key": "F",
+        "title": "F: Heavy at the back",
+        "description": ("One Medium box. The packer puts the pans at the "
+                        "back but both bowls end up in the back half too; "
+                        "preferences can put the bowls in front."),
+        "items": [
+            _item("Cast Iron Pan", "dimgray", 4.5, 3, 10, 10, 3),
+            _item("Glass Bowl", "lightcyan", 1.2, 4, 7, 6, 2),
+        ],
+        "boxes": [
+            _box("Medium", 50, 10, 12, 16),
+            _box("Large", 60, 12, 16, 20),
+        ],
+        "instructions": ("Put the cast iron pans at the back and the glass "
+                         "bowls at the front."),
+    },
+    {
+        "key": "G",
+        "title": "G: Jars left, kettles right",
+        "description": ("Sample E's items in Wide + Medium boxes. The packer "
+                        "honours kettles 4/5 and jars 2/3; a guided plan "
+                        "honours all of them at the same shipped volume."),
+        "items": [
+            _item("Kettle", "silver", 2.2, 8, 7, 7, 5),
+            _item("Shoe Box", "black", 2.5, 5, 7, 12, 2),
+            _item("Jar", "goldenrod", 1.5, 6, 4, 4, 3),
+        ],
+        "boxes": [
+            _box("Wide", 60, 10, 16, 26),
+            _box("Medium", 50, 10, 12, 16),
+        ],
+        "instructions": ("Keep the jars on the left side and the kettles on "
+                         "the right."),
+    },
+    {
+        "key": "H",
+        "title": "H: Fragile on top",
+        "description": ("The packer puts the tray on the four vases; the "
+                        "vases need to go on top of the tray instead."),
+        "items": [
+            _item("Vase", "orchid", 2, 4, 4, 5, 4),
+            _item("Tray", "tan", 3, 1, 8, 10, 1),
+        ],
+        "boxes": [
+            _box("Small", 40, 8, 8, 12),
+            _box("Large", 60, 14, 14, 18),
+        ],
+        "instructions": "The vases are fragile: put them on top of everything.",
+    },
+]

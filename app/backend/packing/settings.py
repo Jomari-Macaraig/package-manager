@@ -369,6 +369,35 @@ def _check_ids(items, settings: PackingSettings) -> None:
         raise ValueError(f"settings refer to unknown item ids {unknown}")
 
 
+DUPLICATE_BLOCKS = "duplicate block rules for the same item"
+
+
+def settings_problems(settings: PackingSettings,
+                      bounds: Mapping[str, float]) -> list[str]:
+    """Out-of-range values (non-raising; empty list = in bounds), then the
+    duplicate-block-rule problem. bounds: padding, wall_clearance,
+    cut_step_min, block_size, max_boxes (the app passes its own)."""
+    b = bounds
+    problems = []
+    if settings.padding > b["padding"]:
+        problems.append(f"padding {settings.padding:g} in")
+    if any(r.padding > b["padding"] for r in settings.padding_by_item):
+        problems.append("per-item padding")
+    if settings.wall_clearance > b["wall_clearance"]:
+        problems.append(f"wall clearance {settings.wall_clearance:g} in")
+    if (settings.cut_step is not None
+            and settings.cut_step < b["cut_step_min"]):
+        problems.append(f"cut step {settings.cut_step:g} in")
+    if any(r.size > b["block_size"] for r in settings.blocks):
+        problems.append("block size")
+    if settings.max_boxes is not None and settings.max_boxes > b["max_boxes"]:
+        problems.append(f"max boxes {settings.max_boxes}")
+    ids = [r.item_id for r in settings.blocks]
+    if len(ids) != len(set(ids)):
+        problems.append(DUPLICATE_BLOCKS)
+    return problems
+
+
 def prepare_items(items, boxes, settings: PackingSettings) -> list[dict]:
     """Items as planned and validated.
 
