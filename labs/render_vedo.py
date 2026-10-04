@@ -6,14 +6,12 @@ interactive window.
     img = render_vedo(plan)             # PIL.Image
 """
 
-import textwrap
-
 import numpy as np
 import vedo
 from PIL import Image
 
 from render_common import (
-    box_cuboids, box_size, box_title, item_colors, leftover_lines,
+    add_footer, box_cuboids, box_size, box_title, footer_lines, item_colors,
     mirror_depth,
 )
 from schemas import Response
@@ -65,13 +63,6 @@ def render_vedo(
             for i, (name, color) in enumerate(colors.items()):
                 actors.append(vedo.Text2D(name, pos=(0.8, 0.95 - 0.045 * i),
                                           s=0.9, c=color))
-        lines = leftover_lines(plan)
-        if lines and n == 0:
-            actors.append(vedo.Text2D(
-                "\n".join(textwrap.wrap("Not packed — " + "; ".join(lines),
-                                        90)),
-                pos="bottom-left", s=0.6, c="black",
-            ))
 
         # front-right-top view; after mirror_depth the front is at low v
         center = [s / 2 for s in size]
@@ -92,4 +83,6 @@ def render_vedo(
         return None
     image = plotter.screenshot(asarray=True)
     plotter.close()
-    return Image.fromarray(image)
+    # footer goes in a band below the render so it never covers the boxes
+    return add_footer(Image.fromarray(image),
+                      footer_lines(plan, width=95 * panels))

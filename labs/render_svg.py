@@ -12,13 +12,12 @@ image API.
 """
 
 import math
-import textwrap
 from html import escape
 
 from matplotlib.colors import to_rgb
 
 from render_common import (
-    box_cuboids, box_size, box_title, item_colors, leftover_lines, paint_order,
+    box_cuboids, box_size, box_title, footer_lines, item_colors, paint_order,
 )
 from schemas import Response
 
@@ -154,9 +153,7 @@ def render_svg(plan: Response, upto: int | None = None) -> str:
         body.append(f'<text x="{width - LEGEND + 30}" y="{y + 11}" '
                     f'font-size="13">{escape(name)}</text>')
 
-    footer = leftover_lines(plan)
-    lines = textwrap.wrap("Not packed — " + "; ".join(footer),
-                          int(width / 6.5)) if footer else []
+    lines = footer_lines(plan, width=int(width / 6.5))
     height = PANEL + 40 + 16 * len(lines)
     for n, line in enumerate(lines):
         body.append(f'<text x="10" y="{PANEL + 40 + n * 16}" font-size="12">'

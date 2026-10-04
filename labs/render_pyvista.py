@@ -6,14 +6,12 @@ servers. Pass off_screen=False to open an interactive window instead.
     img = render_pyvista(plan)          # PIL.Image; img.save(buf, "PNG")
 """
 
-import textwrap
-
 import numpy as np
 import pyvista as pv
 from PIL import Image
 
 from render_common import (
-    box_cuboids, box_size, box_title, item_colors, leftover_lines,
+    add_footer, box_cuboids, box_size, box_title, footer_lines, item_colors,
     mirror_depth,
 )
 from schemas import Response
@@ -70,13 +68,6 @@ def render_pyvista(
                     name, position=(PANEL[0] - 140, PANEL[1] - 70 - 24 * i),
                     font_size=11, color=color,
                 )
-        lines = leftover_lines(plan)
-        if lines and n == 0:
-            plotter.add_text(
-                "\n".join(textwrap.wrap("Not packed — " + "; ".join(lines),
-                                        90)),
-                position="lower_left", font_size=8, color="black",
-            )
         # front-right-top view; after mirror_depth the front is at low v
         center = [s / 2 for s in size]
         reach = max(size) * 2.6
@@ -92,4 +83,6 @@ def render_pyvista(
         return None
     image = plotter.screenshot(return_img=True)
     plotter.close()
-    return Image.fromarray(image)
+    # footer goes in a band below the render so it never covers the boxes
+    return add_footer(Image.fromarray(image),
+                      footer_lines(plan, width=95 * panels))

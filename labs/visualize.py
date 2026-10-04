@@ -12,7 +12,7 @@ from matplotlib.patches import Patch
 from mpl_toolkits.mplot3d import proj3d
 from mpl_toolkits.mplot3d.art3d import Poly3DCollection
 
-from render_common import item_colors, paint_order
+from render_common import footer_lines, item_colors, paint_order
 from schemas import Boxes, Response
 
 
@@ -143,14 +143,10 @@ def render_plan(
         handles=[Patch(color=c, label=name) for name, c in colors.items()],
         loc="upper right",
     )
-    leftovers = [
-        f"{item.name} ×{item.quantity}: {group.reason}"
-        for group in plan.leftover_items
-        for item in group.items
-    ]
-    if leftovers:
-        fig.text(0.01, 0.01, "Not packed — " + "; ".join(leftovers),
-                 fontsize=8, wrap=True)
+    footer = footer_lines(plan, width=110 * len(plan.boxes or [1]))
+    if footer:
+        # below the axes; bbox_inches="tight" grows the figure to fit it
+        fig.text(0.01, 0.0, "\n".join(footer), fontsize=8, va="top")
 
     if path:
         fig.savefig(path, bbox_inches="tight")

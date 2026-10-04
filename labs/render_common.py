@@ -5,6 +5,7 @@ X height), so height is "up" like most 3D libraries expect. Plan axes are
 X = height, Y = depth (back to front), Z = span (left to right).
 """
 
+import textwrap
 from dataclasses import dataclass
 from itertools import cycle
 
@@ -79,6 +80,41 @@ def leftover_lines(plan: Response) -> list[str]:
         for group in plan.leftover_items
         for item in group.items
     ]
+
+
+def footer_lines(plan: Response, width: int = 100) -> list[str]:
+    """Wrapped footer text: what wasn't packed, then the packing notes."""
+    lines: list[str] = []
+    leftovers = leftover_lines(plan)
+    if leftovers:
+        lines += textwrap.wrap("Not packed — " + "; ".join(leftovers), width)
+    if plan.notes:
+        lines.append("Packing notes:")
+        for n, note in enumerate(plan.notes, start=1):
+            lines += textwrap.wrap(f"{n}. {note}", width,
+                                   subsequent_indent="   ")
+    return lines
+
+
+def add_footer(image, lines: list[str], font_size: int = 14):
+    """Return a PIL image with the footer lines drawn in a band below it."""
+    from matplotlib import font_manager
+    from PIL import Image, ImageDraw, ImageFont
+
+    if not lines:
+        return image
+    # PIL's built-in font lacks "—" and "×"; matplotlib ships DejaVu Sans
+    font = ImageFont.truetype(font_manager.findfont("DejaVu Sans"), font_size)
+    line_height = font_size + 6
+    band = Image.new("RGB", (image.width, line_height * len(lines) + 16),
+                     "white")
+    draw = ImageDraw.Draw(band)
+    for n, line in enumerate(lines):
+        draw.text((10, 8 + n * line_height), line, fill="black", font=font)
+    out = Image.new("RGB", (image.width, image.height + band.height), "white")
+    out.paste(image.convert("RGB"), (0, 0))
+    out.paste(band, (0, image.height))
+    return out
 
 
 def paint_order(

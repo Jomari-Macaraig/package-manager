@@ -13,7 +13,7 @@ import json
 from html import escape
 
 from render_common import (
-    box_cuboids, box_size, box_title, item_colors, leftover_lines,
+    box_cuboids, box_size, box_title, footer_lines, item_colors,
 )
 from schemas import Response
 
@@ -184,8 +184,7 @@ def render_threejs(plan: Response, upto: int | None = None) -> str:
         f'<div><span style="background:{color}"></span>{escape(name)}</div>'
         for name, color in colors.items()
     )
-    lines = leftover_lines(plan)
-    footer = escape("Not packed — " + "; ".join(lines)) if lines else ""
+    footer = "<br>".join(escape(line) for line in footer_lines(plan, 140))
     # "</" inside a <script> would end it early
     data = json.dumps({"boxes": boxes}).replace("</", "<\\/")
     start = max_seq if upto is None else min(upto, max_seq)

@@ -9,13 +9,11 @@ even while rotating. Hover shows each unit's name, step, position and size.
     fig.to_image(format="svg")         # static bytes; needs kaleido + Chrome
 """
 
-import textwrap
-
 import plotly.graph_objects as go
 from plotly.subplots import make_subplots
 
 from render_common import (
-    Cuboid, box_cuboids, box_size, box_title, item_colors, leftover_lines,
+    Cuboid, box_cuboids, box_size, box_title, footer_lines, item_colors,
 )
 from schemas import Response
 
@@ -119,18 +117,17 @@ def render_plotly(plan: Response, upto: int | None = None) -> go.Figure:
             "camera": {"eye": {"x": 0.9, "y": -1.9, "z": 1.0}},
         }})
 
-    lines = leftover_lines(plan)
+    lines = footer_lines(plan, width=90 * panels)
+    footer_px = 18 * len(lines) + 20 if lines else 0
     fig.update_layout(
-        height=600, width=600 * panels,
-        margin={"l": 0, "r": 0, "t": 40, "b": 50 if lines else 0},
+        height=600 + footer_px, width=600 * panels,
+        margin={"l": 0, "r": 0, "t": 40, "b": footer_px},
         legend={"x": 1, "xanchor": "right", "y": 1},
     )
     if lines:
         fig.add_annotation(
-            text="<br>".join(textwrap.wrap(
-                "Not packed — " + "; ".join(lines), 90 * panels)),
-            showarrow=False,
-            xref="paper", yref="paper", x=0, y=-0.05, xanchor="left",
-            font={"size": 11},
+            text="<br>".join(lines), showarrow=False, align="left",
+            xref="paper", yref="paper", x=0, y=0, xanchor="left",
+            yanchor="top", yshift=-10, font={"size": 11},
         )
     return fig
