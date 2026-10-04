@@ -1434,3 +1434,33 @@ confirmation.
   - `app/pipeline.py` (`_check_settings` `:163`, context `:313`)
   - `app/runs.py:47`, `app/sse.py:47`, `app/main.py:46,55`, `app/schemas.py:108-130`
   - `app/frontend/src/api/client.ts:124-216`, `hooks/useRunFlow.ts`, `components/PlanPanel.tsx`
+
+---
+
+## Execution Log
+
+**Executed**: 2026-10-05
+**Team**: plan-pipeline-v2 (named background agents in git worktrees; no TeamCreate in this session)
+**Base branch**: plan/pipeline-v2
+**Waves completed**: 6 (implementation 1–3, review 4, meta-review 5, fix loops 6)
+**Teammates spawned**: 9 (backend, frontend, integration, test, bug / quality / a11y reviewers, meta-reviewer, fix-1, fix-2)
+**Review verdict**: GO (after fix loop 2)
+**Blockers fixed**: 3 (notes counts_match false-fail on split steps; "es" plurals; numbered back-references)
+**Fix loops**: 2
+
+- Wave 1 (backend + frontend, parallel): both agents were cut off once by an API session limit and resumed. Backend 260 tests; frontend 121.
+- Between waves 1 and 2, `.env` was removed from all history at the user's request (filter-branch on all refs, refs/original deleted, reflog expired, gc; no object contains an `OPENAI_API_KEY=sk…` value). The remote had no refs, so nothing had been pushed. All commit hashes changed; hashes quoted earlier in this plan predate the rewrite.
+- Wave 2 (integration): fixture sync, v2 default, smoke script, docs; three contract mismatches fixed (rank type, default pipeline, fixture-dependent assertions). Backend 261, frontend 122, smoke OK.
+- Wave 3 (tests): +68 backend, +15 frontend gap tests; no bugs found.
+- Wave 4 reviews: bug (no blockers; ~480 fuzzed fake runs, all final plans valid), code quality (3 duplication warnings, deferred), accessibility (no issues).
+- Fix loop 1: notes counts summed per box, word-boundary names, strategy keeps call-1 usage on a later config error, unused imports. The re-review found two regressions in the new matching.
+- Fix loop 2: "es" plurals, only each step's leading quantity counted, lookaround name edges, 300-char error cap. Final: backend 339, frontend 137, smoke OK.
+
+**Deferred (from review, not done)**:
+- Run header and route-helper duplication between v1 and v2.
+- A shared helper for the "floor / on seq N" support text.
+- Saving finished job rows on unexpected exceptions.
+- Aligning the `wrong_verdict_rate` doc wording and adding its test.
+- Notes prompt line "Write each step as 'Load N × <item name>' using the listed names" (bump to `notes-v2` if shipped). It covers leading back-references, same-item second quantities and irregular plurals such as Mouse/Mice; prefer it over more regex.
+
+**Manual verification**: pending (Phase 4 manual steps with real models).
