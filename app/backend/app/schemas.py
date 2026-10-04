@@ -115,7 +115,9 @@ class Planning(BaseModel):
         return self
 
 
-class RunRequest(BaseModel):
+class OrderInput(BaseModel):
+    """The order itself: shared by the v1 and v2 run requests. Unknown keys
+    are accepted (v1 always did)."""
     model_config = _STRICT
 
     items: list[InputItem] = Field(min_length=1,
@@ -124,8 +126,6 @@ class RunRequest(BaseModel):
                                   max_length=config.CAPS["max_box_rows"])
     instructions: str = Field(
         max_length=config.CAPS["max_instruction_chars"])
-    extraction: Extraction
-    planning: Planning
 
     @field_validator("instructions")
     @classmethod
@@ -133,7 +133,7 @@ class RunRequest(BaseModel):
         return _no_control_chars(v, allowed="\n\t")
 
     @model_validator(mode="after")
-    def _caps(self) -> "RunRequest":
+    def _caps(self) -> "OrderInput":
         units = sum(i.quantity for i in self.items)
         if units > config.CAPS["max_units"]:
             raise ValueError(
@@ -149,8 +149,13 @@ class RunRequest(BaseModel):
         return self
 
 
+class RunRequest(OrderInput):
+    extraction: Extraction
+    planning: Planning
+
+
 def to_pipeline_inputs(
-    req: RunRequest,
+    req: OrderInput,
 ) -> tuple[list[dict[str, Any]], list[dict[str, Any]]]:
     """Notebook-shaped dicts with ids 1..n by row order. Color None -> ""
     (tab10 is used); stock only when not null."""
@@ -407,7 +412,7 @@ class Config(BaseModel):
 
 
 class Sample(BaseModel):
-    key: Literal["A", "B", "C", "D", "E"]
+    key: Literal["A", "B", "C", "D", "E", "F", "G", "H"]
     title: str
     description: str
     items: list[InputItem]
