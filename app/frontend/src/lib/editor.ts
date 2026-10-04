@@ -1,4 +1,5 @@
 import type { Config, InputBox, InputItem, PlanStart, RunRequest } from '../api/types'
+import { JOB_NAMES, type ConfigV2, type JobChoices, type RunRequestV2 } from '../api/typesV2'
 
 /** Editable rows keep every cell as a string so blank/partial input is representable. */
 export type ItemRow = {
@@ -183,6 +184,31 @@ export type ModelChoice = {
   planningModel: string
   effort: 'low' | 'medium' | 'high'
   start: PlanStart
+}
+
+/** The v2 job choices a fresh page starts with: every job's default. */
+export function defaultJobChoices(config: ConfigV2): JobChoices {
+  const out = {} as JobChoices
+  for (const j of JOB_NAMES) out[j] = { ...config.jobs[j].default }
+  return out
+}
+
+/** Build the v2 POST body; all four jobs are sent. */
+export function toRequestV2(
+  items: ItemRow[],
+  boxes: BoxRow[],
+  instructions: string,
+  jobs: JobChoices,
+): RunRequestV2 {
+  const base = toRequest(items, boxes, instructions, {
+    extractionModel: '',
+    planningModel: '',
+    effort: 'low',
+    start: 'improve',
+  })
+  const choices = {} as JobChoices
+  for (const j of JOB_NAMES) choices[j] = { ...jobs[j] }
+  return { items: base.items, boxes: base.boxes, instructions, jobs: choices }
 }
 
 /** Build the POST body. No ids are sent; blank stock becomes null. */

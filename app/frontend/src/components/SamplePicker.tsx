@@ -1,15 +1,22 @@
 import { useState } from 'react'
 import type { Sample } from '../api/types'
 
-type Props = {
-  samples: Sample[]
+type PickerSample = { key: string; title: string; description: string }
+
+type Props<S extends PickerSample> = {
+  samples: S[]
   /** true when the user changed the tables/instructions since the last load */
   edited: boolean
-  onLoad: (s: Sample) => void
+  onLoad: (s: S) => void
   disabled?: boolean
 }
 
-export function SamplePicker({ samples, edited, onLoad, disabled }: Props) {
+export function SamplePicker<S extends PickerSample = Sample>({
+  samples,
+  edited,
+  onLoad,
+  disabled,
+}: Props<S>) {
   const [key, setKey] = useState('')
   const selected = samples.find((s) => s.key === key)
 

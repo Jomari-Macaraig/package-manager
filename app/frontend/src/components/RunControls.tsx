@@ -1,18 +1,33 @@
 import type { RunEvent } from '../api/types'
 import { formatEvent } from '../lib/events'
 
-type Props = {
+type ControlEvent = { id: number; t: number; type: string }
+
+type Props<E extends ControlEvent> = {
   canPack: boolean
   running: boolean
   cancelling: boolean
   onPack: () => void
   onCancel: () => void
-  events: RunEvent[]
+  events: E[]
+  /** one line per event; default: v1's */
+  format?: (e: E) => string
+  /** v1 only: the "code packer running" wait hint */
+  packerHint?: boolean
 }
 
-export function RunControls({ canPack, running, cancelling, onPack, onCancel, events }: Props) {
+export function RunControls<E extends ControlEvent = RunEvent>({
+  canPack,
+  running,
+  cancelling,
+  onPack,
+  onCancel,
+  events,
+  format = formatEvent as unknown as (e: E) => string,
+  packerHint = true,
+}: Props<E>) {
   const last = events[events.length - 1]
-  const waitingOnPacker = running && last?.type === 'prepared'
+  const waitingOnPacker = packerHint && running && last?.type === 'prepared'
 
   return (
     <section aria-labelledby="run-heading" className="space-y-2">
@@ -50,7 +65,7 @@ export function RunControls({ canPack, running, cancelling, onPack, onCancel, ev
             {events.map((e) => (
               <li key={e.id}>
                 <span className="mr-2 text-xs text-slate-500">{e.t.toFixed(1)}s</span>
-                {formatEvent(e)}
+                {format(e)}
               </li>
             ))}
             {waitingOnPacker && (

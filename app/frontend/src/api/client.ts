@@ -9,17 +9,20 @@ import type {
   Sample,
 } from './types'
 
-const BASE = '/api'
+export const BASE = '/api'
 
 /** Error from a non-2xx response. `messages` is the normalized `detail`. */
 export class ApiError extends Error {
   status: number
   messages: string[]
-  constructor(status: number, messages: string[]) {
+  /** 409 only: which pipeline holds the run slot ("v1" / "v2"), when the body says */
+  kind: string | null
+  constructor(status: number, messages: string[], kind: string | null = null) {
     super(messages.join('; '))
     this.name = 'ApiError'
     this.status = status
     this.messages = messages
+    this.kind = kind
   }
 }
 
@@ -41,16 +44,18 @@ export function normalizeDetail(detail: unknown): string[] {
 async function toApiError(res: Response): Promise<ApiError> {
   const fallback = `${res.status} ${res.statusText}`.trim()
   let messages: string[] = []
+  let kind: string | null = null
   try {
     const body = await res.json()
     messages = normalizeDetail(body?.detail)
+    if (typeof body?.kind === 'string') kind = body.kind
   } catch {
     messages = []
   }
-  return new ApiError(res.status, messages.length ? messages : [fallback])
+  return new ApiError(res.status, messages.length ? messages : [fallback], kind)
 }
 
-async function send(path: string, init?: RequestInit): Promise<Response> {
+export async function send(path: string, init?: RequestInit): Promise<Response> {
   let res: Response
   try {
     res = await fetch(BASE + path, init)
@@ -61,18 +66,24 @@ async function send(path: string, init?: RequestInit): Promise<Response> {
   return res
 }
 
-async function request<T>(path: string, init?: RequestInit): Promise<T> {
+export async function request<T>(path: string, init?: RequestInit): Promise<T> {
   const res = await send(path, init)
   return (await res.json()) as T
 }
 
-const jsonPost = (body: unknown): RequestInit => ({
+export const jsonPost = (body: unknown): RequestInit => ({
   method: 'POST',
   headers: { 'Content-Type': 'application/json' },
   body: JSON.stringify(body),
 })
 
-const enc = encodeURIComponent
+export const jsonPut = (body: unknown): RequestInit => ({
+  method: 'PUT',
+  headers: { 'Content-Type': 'application/json' },
+  body: JSON.stringify(body),
+})
+
+export const enc = encodeURIComponent
 
 export const getConfig = () => request<Config>('/config')
 export const getSamples = () => request<Sample[]>('/samples')
@@ -115,19 +126,35 @@ export const EVENT_TYPES: RunEvent['type'][] = [
 
 const ERROR_REFETCH_MS = 2000
 
+export type SubscribeOptions<R> = {
+  /** API prefix; default "/api" */
+  base?: string
+  /** used for the end refetch and the error polling; default v1's getRun */
+  getRun?: (id: string) => Promise<R>
+  /** SSE event names to listen for; default v1's EVENT_TYPES */
+  types?: string[]
+}
+
 /**
  * Subscribe to a run's SSE stream. Returns an unsubscribe function (does not
  * call onClosed). `onClosed` fires exactly once, after `end` or after the
  * error fallback found a terminal run; its argument is the refetched run
- * (null if that refetch failed).
+ * (null if that refetch failed). The defaults are v1's; v2 passes `opts`.
  */
-export function subscribe(
+export function subscribe<
+  R extends { status: RunStatus; events: { id: number; type: string }[] } = Run,
+  E extends { id: number; type: string } = RunEvent,
+>(
   runId: string,
-  onEvent: (e: RunEvent) => void,
-  onClosed: (run: Run | null) => void,
+  onEvent: (e: E) => void,
+  onClosed: (run: R | null) => void,
   fromId?: number,
+  opts?: SubscribeOptions<R>,
 ): () => void {
-  const url = `${BASE}/runs/${enc(runId)}/events` + (fromId != null ? `?from=${fromId}` : '')
+  const base = opts?.base ?? BASE
+  const fetchRun = opts?.getRun ?? ((id: string) => getRun(id) as unknown as Promise<R>)
+  const types: string[] = opts?.types ?? EVENT_TYPES
+  const url = `${base}/runs/${enc(runId)}/events` + (fromId != null ? `?from=${fromId}` : '')
   const es = new EventSource(url)
   const seen = new Set<number>()
   let closed = false
@@ -144,30 +171,30 @@ export function subscribe(
     stopRetry()
     es.close()
   }
-  const deliver = (e: RunEvent) => {
+  const deliver = (e: E) => {
     if (seen.has(e.id)) return
     seen.add(e.id)
     onEvent(e)
   }
-  const finish = (run: Run | null) => {
+  const finish = (run: R | null) => {
     if (finished) return
     finished = true
     onClosed(run)
   }
 
-  for (const type of EVENT_TYPES) {
+  for (const type of types) {
     es.addEventListener(type, (msg) => {
       if (closed) return
-      let ev: RunEvent
+      let ev: E
       try {
-        ev = JSON.parse((msg as MessageEvent).data) as RunEvent
+        ev = JSON.parse((msg as MessageEvent).data) as E
       } catch {
         return
       }
       deliver(ev)
       if (type === 'end') {
         close()
-        getRun(runId).then(finish, () => finish(null))
+        fetchRun(runId).then(finish, () => finish(null))
       }
     })
   }
@@ -175,11 +202,11 @@ export function subscribe(
   const startRetry = () => {
     if (retryTimer != null) return
     retryTimer = setInterval(() => {
-      getRun(runId).then(
+      fetchRun(runId).then(
         (run) => {
           if (closed || finished || !isTerminal(run.status)) return
           close()
-          for (const e of run.events) deliver(e)
+          for (const e of run.events as E[]) deliver(e)
           finish(run)
         },
         () => {
@@ -195,11 +222,11 @@ export function subscribe(
     const now = Date.now()
     if (now - lastErrorFetch < ERROR_REFETCH_MS) return
     lastErrorFetch = now
-    getRun(runId).then(
+    fetchRun(runId).then(
       (run) => {
         if (closed || !isTerminal(run.status)) return
         close()
-        for (const e of run.events) deliver(e)
+        for (const e of run.events as E[]) deliver(e)
         finish(run)
       },
       () => {
