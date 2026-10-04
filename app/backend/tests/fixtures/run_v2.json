@@ -1,0 +1,1416 @@
+{
+  "run_id": "00000000-0000-4000-8000-000000000001",
+  "status": "succeeded",
+  "error": null,
+  "created_at": "2026-01-01T00:00:00.000Z",
+  "finished_at": "2026-01-01T00:00:00.000Z",
+  "fake": true,
+  "request": {
+    "items": [
+      {
+        "name": "Kettle",
+        "color": "silver",
+        "weight": 2.2,
+        "x": 8.0,
+        "y": 7.0,
+        "z": 7.0,
+        "quantity": 5
+      },
+      {
+        "name": "Shoe Box",
+        "color": "black",
+        "weight": 2.5,
+        "x": 5.0,
+        "y": 7.0,
+        "z": 12.0,
+        "quantity": 2
+      },
+      {
+        "name": "Jar",
+        "color": "goldenrod",
+        "weight": 1.5,
+        "x": 6.0,
+        "y": 4.0,
+        "z": 4.0,
+        "quantity": 3
+      }
+    ],
+    "boxes": [
+      {
+        "name": "Wide",
+        "weightMax": 60.0,
+        "x": 10.0,
+        "y": 16.0,
+        "z": 26.0,
+        "stock": null
+      },
+      {
+        "name": "Medium",
+        "weightMax": 50.0,
+        "x": 10.0,
+        "y": 12.0,
+        "z": 16.0,
+        "stock": null
+      }
+    ],
+    "instructions": "Keep the jars on the left side and the kettles on the right.",
+    "jobs": {}
+  },
+  "events": [
+    {
+      "id": 0,
+      "t": 0.0,
+      "type": "started"
+    },
+    {
+      "id": 1,
+      "t": 1.0,
+      "type": "job",
+      "job": "extract",
+      "status": "ok",
+      "passed": 5,
+      "total": 5
+    },
+    {
+      "id": 2,
+      "t": 2.0,
+      "type": "packer",
+      "ok": true,
+      "boxes": 2
+    },
+    {
+      "id": 3,
+      "t": 3.0,
+      "type": "job",
+      "job": "strategy",
+      "status": "ok",
+      "passed": 7,
+      "total": 7
+    },
+    {
+      "id": 4,
+      "t": 4.0,
+      "type": "job",
+      "job": "check",
+      "status": "ok",
+      "passed": 2,
+      "total": 2
+    },
+    {
+      "id": 5,
+      "t": 5.0,
+      "type": "chosen",
+      "source": "model",
+      "reason": "better metrics"
+    },
+    {
+      "id": 6,
+      "t": 6.0,
+      "type": "job",
+      "job": "notes",
+      "status": "ok",
+      "passed": 5,
+      "total": 5
+    },
+    {
+      "id": 7,
+      "t": 7.0,
+      "type": "end",
+      "status": "succeeded",
+      "error": null
+    }
+  ],
+  "settings": {
+    "padding": 0.0,
+    "padding_by_item": [],
+    "blocks": [],
+    "upright": [],
+    "fixed_orientation": [],
+    "no_stack_on": [],
+    "max_load_on_top": [],
+    "floor_only_over_weight": null,
+    "wall_clearance": 0.0,
+    "cut_step": null,
+    "min_cut_height": null,
+    "carrier_max_weight": null,
+    "carrier_max_length": null,
+    "carrier_max_girth": null,
+    "min_fill": null,
+    "max_boxes": null,
+    "keep_together": [],
+    "keep_apart": [],
+    "balance_boxes": false,
+    "soft_instructions": [
+      "Keep the jars on the left side and the kettles on the right."
+    ]
+  },
+  "prepared_items": [
+    {
+      "id": 1,
+      "source_id": 1,
+      "name": "Kettle",
+      "color": "silver",
+      "weight": 2.2,
+      "dimensions": {
+        "x": 8.0,
+        "y": 7.0,
+        "z": 7.0
+      },
+      "quantity": 5
+    },
+    {
+      "id": 2,
+      "source_id": 2,
+      "name": "Shoe Box",
+      "color": "black",
+      "weight": 2.5,
+      "dimensions": {
+        "x": 5.0,
+        "y": 7.0,
+        "z": 12.0
+      },
+      "quantity": 2
+    },
+    {
+      "id": 3,
+      "source_id": 3,
+      "name": "Jar",
+      "color": "goldenrod",
+      "weight": 1.5,
+      "dimensions": {
+        "x": 6.0,
+        "y": 4.0,
+        "z": 4.0
+      },
+      "quantity": 3
+    }
+  ],
+  "prepared_boxes": [
+    {
+      "id": 1,
+      "name": "Wide",
+      "weightMax": 60.0,
+      "dimensions": {
+        "x": 10.0,
+        "y": 16.0,
+        "z": 26.0
+      }
+    },
+    {
+      "id": 2,
+      "name": "Medium",
+      "weightMax": 50.0,
+      "dimensions": {
+        "x": 10.0,
+        "y": 12.0,
+        "z": 16.0
+      }
+    }
+  ],
+  "jobs": [
+    {
+      "job": "extract",
+      "status": "ok",
+      "model": "gpt-4.1-nano",
+      "reasoning_effort": null,
+      "prompt_version": "extract-v1",
+      "calls": 1,
+      "checks": [
+        {
+          "name": "parsed",
+          "passed": true,
+          "detail": ""
+        },
+        {
+          "name": "known_ids",
+          "passed": true,
+          "detail": ""
+        },
+        {
+          "name": "in_bounds",
+          "passed": true,
+          "detail": ""
+        },
+        {
+          "name": "applies",
+          "passed": true,
+          "detail": ""
+        },
+        {
+          "name": "not_empty",
+          "passed": true,
+          "detail": ""
+        }
+      ],
+      "output": {
+        "padding": 0.0,
+        "padding_by_item": [],
+        "blocks": [],
+        "upright": [],
+        "fixed_orientation": [],
+        "no_stack_on": [],
+        "max_load_on_top": [],
+        "floor_only_over_weight": null,
+        "wall_clearance": 0.0,
+        "cut_step": null,
+        "min_cut_height": null,
+        "carrier_max_weight": null,
+        "carrier_max_length": null,
+        "carrier_max_girth": null,
+        "min_fill": null,
+        "max_boxes": null,
+        "keep_together": [],
+        "keep_apart": [],
+        "balance_boxes": false,
+        "soft_instructions": [
+          "Keep the jars on the left side and the kettles on the right."
+        ]
+      },
+      "answer": {
+        "padding": 0.0,
+        "padding_by_item": [],
+        "blocks": [],
+        "upright": [],
+        "fixed_orientation": [],
+        "no_stack_on": [],
+        "max_load_on_top": [],
+        "floor_only_over_weight": null,
+        "wall_clearance": 0.0,
+        "cut_step": null,
+        "min_cut_height": null,
+        "carrier_max_weight": null,
+        "carrier_max_length": null,
+        "carrier_max_girth": null,
+        "min_fill": null,
+        "max_boxes": null,
+        "keep_together": [],
+        "keep_apart": [],
+        "balance_boxes": false,
+        "soft_instructions": [
+          "Keep the jars on the left side and the kettles on the right."
+        ]
+      },
+      "error": null,
+      "cost": 0.00018,
+      "latency_s": 1.0,
+      "tokens": {
+        "prompt": 1000,
+        "completion": 200,
+        "reasoning": 0
+      },
+      "feedback": null
+    },
+    {
+      "job": "strategy",
+      "status": "ok",
+      "model": "gpt-5.4-nano",
+      "reasoning_effort": "low",
+      "prompt_version": "strategy-v1",
+      "calls": 1,
+      "checks": [
+        {
+          "name": "parsed",
+          "passed": true,
+          "detail": ""
+        },
+        {
+          "name": "choices_valid",
+          "passed": true,
+          "detail": ""
+        },
+        {
+          "name": "plan_valid",
+          "passed": true,
+          "detail": ""
+        },
+        {
+          "name": "no_extra_leftovers",
+          "passed": true,
+          "detail": ""
+        },
+        {
+          "name": "no_extra_boxes",
+          "passed": true,
+          "detail": "2 boxes, the packer 2"
+        },
+        {
+          "name": "volume_within_margin",
+          "passed": true,
+          "detail": "4256 in\u00b3, the packer 4256 in\u00b3 (margin 1.15)"
+        },
+        {
+          "name": "preferences_honoured",
+          "passed": true,
+          "detail": "none"
+        }
+      ],
+      "output": {
+        "boxes": [
+          1,
+          2
+        ],
+        "order": [
+          2,
+          1,
+          3
+        ],
+        "rotations": [
+          {
+            "id": 2,
+            "dims": [
+              7.0,
+              12.0,
+              5.0
+            ]
+          },
+          {
+            "id": 1,
+            "dims": [
+              7.0,
+              8.0,
+              7.0
+            ]
+          },
+          {
+            "id": 3,
+            "dims": [
+              6.0,
+              4.0,
+              4.0
+            ]
+          }
+        ],
+        "preferences": [],
+        "reason": "fake"
+      },
+      "answer": {
+        "boxes": [
+          1,
+          2
+        ],
+        "order": [
+          2,
+          1,
+          3
+        ],
+        "rotations": [
+          {
+            "id": 2,
+            "dims": [
+              7.0,
+              12.0,
+              5.0
+            ]
+          },
+          {
+            "id": 1,
+            "dims": [
+              7.0,
+              8.0,
+              7.0
+            ]
+          },
+          {
+            "id": 3,
+            "dims": [
+              6.0,
+              4.0,
+              4.0
+            ]
+          }
+        ],
+        "preferences": [],
+        "reason": "fake"
+      },
+      "error": null,
+      "cost": 0.00045,
+      "latency_s": 1.0,
+      "tokens": {
+        "prompt": 1000,
+        "completion": 200,
+        "reasoning": 0
+      },
+      "feedback": null
+    },
+    {
+      "job": "check",
+      "status": "ok",
+      "model": "gpt-4.1-mini",
+      "reasoning_effort": null,
+      "prompt_version": "check-v1",
+      "calls": 1,
+      "checks": [
+        {
+          "name": "parsed",
+          "passed": true,
+          "detail": ""
+        },
+        {
+          "name": "covers_all",
+          "passed": true,
+          "detail": ""
+        }
+      ],
+      "output": [
+        {
+          "index": 0,
+          "verdict": "honoured",
+          "reason": "fake"
+        }
+      ],
+      "answer": [
+        {
+          "index": 0,
+          "verdict": "honoured",
+          "reason": "fake"
+        }
+      ],
+      "error": null,
+      "cost": 0.00072,
+      "latency_s": 1.0,
+      "tokens": {
+        "prompt": 1000,
+        "completion": 200,
+        "reasoning": 0
+      },
+      "feedback": null
+    },
+    {
+      "job": "notes",
+      "status": "ok",
+      "model": "gpt-4.1-nano",
+      "reasoning_effort": null,
+      "prompt_version": "notes-v1",
+      "calls": 1,
+      "checks": [
+        {
+          "name": "parsed",
+          "passed": true,
+          "detail": ""
+        },
+        {
+          "name": "one_entry_per_box",
+          "passed": true,
+          "detail": ""
+        },
+        {
+          "name": "step_count",
+          "passed": true,
+          "detail": ""
+        },
+        {
+          "name": "mentions_items",
+          "passed": true,
+          "detail": ""
+        },
+        {
+          "name": "counts_match",
+          "passed": true,
+          "detail": ""
+        }
+      ],
+      "output": [
+        {
+          "box": 1,
+          "steps": [
+            "Load 2 \u00d7 Shoe Box",
+            "Load 4 \u00d7 Kettle",
+            "Load 2 \u00d7 Jar"
+          ]
+        },
+        {
+          "box": 2,
+          "steps": [
+            "Load 1 \u00d7 Kettle",
+            "Load 1 \u00d7 Jar"
+          ]
+        }
+      ],
+      "answer": [
+        {
+          "box": 1,
+          "steps": [
+            "Load 2 \u00d7 Shoe Box",
+            "Load 4 \u00d7 Kettle",
+            "Load 2 \u00d7 Jar"
+          ]
+        },
+        {
+          "box": 2,
+          "steps": [
+            "Load 1 \u00d7 Kettle",
+            "Load 1 \u00d7 Jar"
+          ]
+        }
+      ],
+      "error": null,
+      "cost": 0.00018,
+      "latency_s": 1.0,
+      "tokens": {
+        "prompt": 1000,
+        "completion": 200,
+        "reasoning": 0
+      },
+      "feedback": null
+    }
+  ],
+  "packer": {
+    "ok": true,
+    "plan": {
+      "length_unit": "in",
+      "weight_unit": "lb",
+      "coordinate_system": {
+        "origin": "inside_back_left_bottom",
+        "x_direction": "bottom_to_top",
+        "y_direction": "back_to_front",
+        "z_direction": "left_to_right",
+        "position_reference": "minimum_coordinate_corner"
+      },
+      "boxes": [
+        {
+          "dimensions": {
+            "x": 10.0,
+            "y": 16.0,
+            "z": 26.0
+          },
+          "id": 1,
+          "name": "Wide",
+          "max_contents_weight": 60.0,
+          "items": [
+            {
+              "id": 2,
+              "color": "black",
+              "name": "Shoe Box",
+              "weight": 2.5,
+              "dimensions": {
+                "x": 7.0,
+                "y": 12.0,
+                "z": 5.0
+              },
+              "quantity": 1,
+              "packed_index": 1,
+              "placement_position": {
+                "x": 0.0,
+                "y": 0.0,
+                "z": 0.0
+              }
+            },
+            {
+              "id": 2,
+              "color": "black",
+              "name": "Shoe Box",
+              "weight": 2.5,
+              "dimensions": {
+                "x": 7.0,
+                "y": 12.0,
+                "z": 5.0
+              },
+              "quantity": 1,
+              "packed_index": 2,
+              "placement_position": {
+                "x": 0.0,
+                "y": 0.0,
+                "z": 5.0
+              }
+            },
+            {
+              "id": 1,
+              "color": "silver",
+              "name": "Kettle",
+              "weight": 2.2,
+              "dimensions": {
+                "x": 7.0,
+                "y": 8.0,
+                "z": 7.0
+              },
+              "quantity": 1,
+              "packed_index": 3,
+              "placement_position": {
+                "x": 0.0,
+                "y": 0.0,
+                "z": 10.0
+              }
+            },
+            {
+              "id": 1,
+              "color": "silver",
+              "name": "Kettle",
+              "weight": 2.2,
+              "dimensions": {
+                "x": 7.0,
+                "y": 8.0,
+                "z": 7.0
+              },
+              "quantity": 1,
+              "packed_index": 4,
+              "placement_position": {
+                "x": 0.0,
+                "y": 0.0,
+                "z": 17.0
+              }
+            },
+            {
+              "id": 1,
+              "color": "silver",
+              "name": "Kettle",
+              "weight": 2.2,
+              "dimensions": {
+                "x": 7.0,
+                "y": 8.0,
+                "z": 7.0
+              },
+              "quantity": 1,
+              "packed_index": 5,
+              "placement_position": {
+                "x": 0.0,
+                "y": 8.0,
+                "z": 10.0
+              }
+            },
+            {
+              "id": 1,
+              "color": "silver",
+              "name": "Kettle",
+              "weight": 2.2,
+              "dimensions": {
+                "x": 7.0,
+                "y": 8.0,
+                "z": 7.0
+              },
+              "quantity": 1,
+              "packed_index": 6,
+              "placement_position": {
+                "x": 0.0,
+                "y": 8.0,
+                "z": 17.0
+              }
+            },
+            {
+              "id": 3,
+              "color": "goldenrod",
+              "name": "Jar",
+              "weight": 1.5,
+              "dimensions": {
+                "x": 6.0,
+                "y": 4.0,
+                "z": 4.0
+              },
+              "quantity": 1,
+              "packed_index": 7,
+              "placement_position": {
+                "x": 0.0,
+                "y": 12.0,
+                "z": 0.0
+              }
+            },
+            {
+              "id": 3,
+              "color": "goldenrod",
+              "name": "Jar",
+              "weight": 1.5,
+              "dimensions": {
+                "x": 6.0,
+                "y": 4.0,
+                "z": 4.0
+              },
+              "quantity": 1,
+              "packed_index": 8,
+              "placement_position": {
+                "x": 0.0,
+                "y": 12.0,
+                "z": 4.0
+              }
+            }
+          ]
+        },
+        {
+          "dimensions": {
+            "x": 10.0,
+            "y": 12.0,
+            "z": 16.0
+          },
+          "id": 2,
+          "name": "Medium",
+          "max_contents_weight": 50.0,
+          "items": [
+            {
+              "id": 1,
+              "color": "silver",
+              "name": "Kettle",
+              "weight": 2.2,
+              "dimensions": {
+                "x": 7.0,
+                "y": 8.0,
+                "z": 7.0
+              },
+              "quantity": 1,
+              "packed_index": 1,
+              "placement_position": {
+                "x": 0.0,
+                "y": 0.0,
+                "z": 0.0
+              }
+            },
+            {
+              "id": 3,
+              "color": "goldenrod",
+              "name": "Jar",
+              "weight": 1.5,
+              "dimensions": {
+                "x": 4.0,
+                "y": 6.0,
+                "z": 4.0
+              },
+              "quantity": 1,
+              "packed_index": 2,
+              "placement_position": {
+                "x": 0.0,
+                "y": 0.0,
+                "z": 7.0
+              }
+            }
+          ]
+        }
+      ],
+      "leftover_items": [],
+      "notes": [
+        "Cut box 1 down to 7 in high, removing 3 in (contents reach 7 in).",
+        "Cut box 2 down to 7 in high, removing 3 in (contents reach 7 in).",
+        "Placed by the code packer: load units in seq order, bottom layer first."
+      ]
+    },
+    "box_count": 2,
+    "rank": [
+      0.0,
+      2.0,
+      4256.0,
+      14.0
+    ],
+    "errors": [],
+    "hints": []
+  },
+  "model": {
+    "ok": true,
+    "plan": {
+      "length_unit": "in",
+      "weight_unit": "lb",
+      "coordinate_system": {
+        "origin": "inside_back_left_bottom",
+        "x_direction": "bottom_to_top",
+        "y_direction": "back_to_front",
+        "z_direction": "left_to_right",
+        "position_reference": "minimum_coordinate_corner"
+      },
+      "boxes": [
+        {
+          "dimensions": {
+            "x": 10.0,
+            "y": 16.0,
+            "z": 26.0
+          },
+          "id": 1,
+          "name": "Wide",
+          "max_contents_weight": 60.0,
+          "items": [
+            {
+              "id": 2,
+              "color": "black",
+              "name": "Shoe Box",
+              "weight": 2.5,
+              "dimensions": {
+                "x": 7.0,
+                "y": 12.0,
+                "z": 5.0
+              },
+              "quantity": 1,
+              "packed_index": 1,
+              "placement_position": {
+                "x": 0.0,
+                "y": 0.0,
+                "z": 0.0
+              }
+            },
+            {
+              "id": 2,
+              "color": "black",
+              "name": "Shoe Box",
+              "weight": 2.5,
+              "dimensions": {
+                "x": 7.0,
+                "y": 12.0,
+                "z": 5.0
+              },
+              "quantity": 1,
+              "packed_index": 2,
+              "placement_position": {
+                "x": 0.0,
+                "y": 0.0,
+                "z": 5.0
+              }
+            },
+            {
+              "id": 1,
+              "color": "silver",
+              "name": "Kettle",
+              "weight": 2.2,
+              "dimensions": {
+                "x": 7.0,
+                "y": 8.0,
+                "z": 7.0
+              },
+              "quantity": 1,
+              "packed_index": 3,
+              "placement_position": {
+                "x": 0.0,
+                "y": 0.0,
+                "z": 10.0
+              }
+            },
+            {
+              "id": 1,
+              "color": "silver",
+              "name": "Kettle",
+              "weight": 2.2,
+              "dimensions": {
+                "x": 7.0,
+                "y": 8.0,
+                "z": 7.0
+              },
+              "quantity": 1,
+              "packed_index": 4,
+              "placement_position": {
+                "x": 0.0,
+                "y": 0.0,
+                "z": 17.0
+              }
+            },
+            {
+              "id": 1,
+              "color": "silver",
+              "name": "Kettle",
+              "weight": 2.2,
+              "dimensions": {
+                "x": 7.0,
+                "y": 8.0,
+                "z": 7.0
+              },
+              "quantity": 1,
+              "packed_index": 5,
+              "placement_position": {
+                "x": 0.0,
+                "y": 8.0,
+                "z": 10.0
+              }
+            },
+            {
+              "id": 1,
+              "color": "silver",
+              "name": "Kettle",
+              "weight": 2.2,
+              "dimensions": {
+                "x": 7.0,
+                "y": 8.0,
+                "z": 7.0
+              },
+              "quantity": 1,
+              "packed_index": 6,
+              "placement_position": {
+                "x": 0.0,
+                "y": 8.0,
+                "z": 17.0
+              }
+            },
+            {
+              "id": 3,
+              "color": "goldenrod",
+              "name": "Jar",
+              "weight": 1.5,
+              "dimensions": {
+                "x": 6.0,
+                "y": 4.0,
+                "z": 4.0
+              },
+              "quantity": 1,
+              "packed_index": 7,
+              "placement_position": {
+                "x": 0.0,
+                "y": 12.0,
+                "z": 0.0
+              }
+            },
+            {
+              "id": 3,
+              "color": "goldenrod",
+              "name": "Jar",
+              "weight": 1.5,
+              "dimensions": {
+                "x": 6.0,
+                "y": 4.0,
+                "z": 4.0
+              },
+              "quantity": 1,
+              "packed_index": 8,
+              "placement_position": {
+                "x": 0.0,
+                "y": 12.0,
+                "z": 4.0
+              }
+            }
+          ]
+        },
+        {
+          "dimensions": {
+            "x": 10.0,
+            "y": 12.0,
+            "z": 16.0
+          },
+          "id": 2,
+          "name": "Medium",
+          "max_contents_weight": 50.0,
+          "items": [
+            {
+              "id": 1,
+              "color": "silver",
+              "name": "Kettle",
+              "weight": 2.2,
+              "dimensions": {
+                "x": 7.0,
+                "y": 8.0,
+                "z": 7.0
+              },
+              "quantity": 1,
+              "packed_index": 1,
+              "placement_position": {
+                "x": 0.0,
+                "y": 0.0,
+                "z": 0.0
+              }
+            },
+            {
+              "id": 3,
+              "color": "goldenrod",
+              "name": "Jar",
+              "weight": 1.5,
+              "dimensions": {
+                "x": 6.0,
+                "y": 4.0,
+                "z": 4.0
+              },
+              "quantity": 1,
+              "packed_index": 2,
+              "placement_position": {
+                "x": 0.0,
+                "y": 0.0,
+                "z": 7.0
+              }
+            }
+          ]
+        }
+      ],
+      "leftover_items": [],
+      "notes": [
+        "Cut box 1 down to 7 in high, removing 3 in (contents reach 7 in).",
+        "Cut box 2 down to 7 in high, removing 3 in (contents reach 7 in)."
+      ]
+    },
+    "box_count": 2,
+    "rank": [
+      0.0,
+      2.0,
+      4256.0,
+      14.0
+    ],
+    "errors": [],
+    "hints": []
+  },
+  "source": "model",
+  "reason": "better metrics",
+  "final": {
+    "source": "model",
+    "reason": "better metrics",
+    "plan": {
+      "length_unit": "in",
+      "weight_unit": "lb",
+      "coordinate_system": {
+        "origin": "inside_back_left_bottom",
+        "x_direction": "bottom_to_top",
+        "y_direction": "back_to_front",
+        "z_direction": "left_to_right",
+        "position_reference": "minimum_coordinate_corner"
+      },
+      "boxes": [
+        {
+          "dimensions": {
+            "x": 10.0,
+            "y": 16.0,
+            "z": 26.0
+          },
+          "id": 1,
+          "name": "Wide",
+          "max_contents_weight": 60.0,
+          "items": [
+            {
+              "id": 2,
+              "color": "black",
+              "name": "Shoe Box",
+              "weight": 2.5,
+              "dimensions": {
+                "x": 7.0,
+                "y": 12.0,
+                "z": 5.0
+              },
+              "quantity": 1,
+              "packed_index": 1,
+              "placement_position": {
+                "x": 0.0,
+                "y": 0.0,
+                "z": 0.0
+              }
+            },
+            {
+              "id": 2,
+              "color": "black",
+              "name": "Shoe Box",
+              "weight": 2.5,
+              "dimensions": {
+                "x": 7.0,
+                "y": 12.0,
+                "z": 5.0
+              },
+              "quantity": 1,
+              "packed_index": 2,
+              "placement_position": {
+                "x": 0.0,
+                "y": 0.0,
+                "z": 5.0
+              }
+            },
+            {
+              "id": 1,
+              "color": "silver",
+              "name": "Kettle",
+              "weight": 2.2,
+              "dimensions": {
+                "x": 7.0,
+                "y": 8.0,
+                "z": 7.0
+              },
+              "quantity": 1,
+              "packed_index": 3,
+              "placement_position": {
+                "x": 0.0,
+                "y": 0.0,
+                "z": 10.0
+              }
+            },
+            {
+              "id": 1,
+              "color": "silver",
+              "name": "Kettle",
+              "weight": 2.2,
+              "dimensions": {
+                "x": 7.0,
+                "y": 8.0,
+                "z": 7.0
+              },
+              "quantity": 1,
+              "packed_index": 4,
+              "placement_position": {
+                "x": 0.0,
+                "y": 0.0,
+                "z": 17.0
+              }
+            },
+            {
+              "id": 1,
+              "color": "silver",
+              "name": "Kettle",
+              "weight": 2.2,
+              "dimensions": {
+                "x": 7.0,
+                "y": 8.0,
+                "z": 7.0
+              },
+              "quantity": 1,
+              "packed_index": 5,
+              "placement_position": {
+                "x": 0.0,
+                "y": 8.0,
+                "z": 10.0
+              }
+            },
+            {
+              "id": 1,
+              "color": "silver",
+              "name": "Kettle",
+              "weight": 2.2,
+              "dimensions": {
+                "x": 7.0,
+                "y": 8.0,
+                "z": 7.0
+              },
+              "quantity": 1,
+              "packed_index": 6,
+              "placement_position": {
+                "x": 0.0,
+                "y": 8.0,
+                "z": 17.0
+              }
+            },
+            {
+              "id": 3,
+              "color": "goldenrod",
+              "name": "Jar",
+              "weight": 1.5,
+              "dimensions": {
+                "x": 6.0,
+                "y": 4.0,
+                "z": 4.0
+              },
+              "quantity": 1,
+              "packed_index": 7,
+              "placement_position": {
+                "x": 0.0,
+                "y": 12.0,
+                "z": 0.0
+              }
+            },
+            {
+              "id": 3,
+              "color": "goldenrod",
+              "name": "Jar",
+              "weight": 1.5,
+              "dimensions": {
+                "x": 6.0,
+                "y": 4.0,
+                "z": 4.0
+              },
+              "quantity": 1,
+              "packed_index": 8,
+              "placement_position": {
+                "x": 0.0,
+                "y": 12.0,
+                "z": 4.0
+              }
+            }
+          ]
+        },
+        {
+          "dimensions": {
+            "x": 10.0,
+            "y": 12.0,
+            "z": 16.0
+          },
+          "id": 2,
+          "name": "Medium",
+          "max_contents_weight": 50.0,
+          "items": [
+            {
+              "id": 1,
+              "color": "silver",
+              "name": "Kettle",
+              "weight": 2.2,
+              "dimensions": {
+                "x": 7.0,
+                "y": 8.0,
+                "z": 7.0
+              },
+              "quantity": 1,
+              "packed_index": 1,
+              "placement_position": {
+                "x": 0.0,
+                "y": 0.0,
+                "z": 0.0
+              }
+            },
+            {
+              "id": 3,
+              "color": "goldenrod",
+              "name": "Jar",
+              "weight": 1.5,
+              "dimensions": {
+                "x": 6.0,
+                "y": 4.0,
+                "z": 4.0
+              },
+              "quantity": 1,
+              "packed_index": 2,
+              "placement_position": {
+                "x": 0.0,
+                "y": 0.0,
+                "z": 7.0
+              }
+            }
+          ]
+        }
+      ],
+      "leftover_items": [],
+      "notes": [
+        "Cut box 1 down to 7 in high, removing 3 in (contents reach 7 in).",
+        "Cut box 2 down to 7 in high, removing 3 in (contents reach 7 in)."
+      ]
+    },
+    "notes": [
+      {
+        "box": 1,
+        "steps": [
+          "Load 2 \u00d7 Shoe Box",
+          "Load 4 \u00d7 Kettle",
+          "Load 2 \u00d7 Jar"
+        ]
+      },
+      {
+        "box": 2,
+        "steps": [
+          "Load 1 \u00d7 Kettle",
+          "Load 1 \u00d7 Jar"
+        ]
+      }
+    ],
+    "cut_notes": [
+      "Cut box 1 down to 7 in high, removing 3 in (contents reach 7 in).",
+      "Cut box 2 down to 7 in high, removing 3 in (contents reach 7 in)."
+    ]
+  },
+  "preferences_model": [],
+  "preferences_packer": [],
+  "verdicts": [
+    {
+      "index": 0,
+      "instruction": "Keep the jars on the left side and the kettles on the right.",
+      "verdict": "honoured",
+      "reason": "fake"
+    }
+  ],
+  "comparison": [
+    {
+      "metric": "leftover_units",
+      "label": "Leftover units",
+      "unit": "",
+      "direction": "lower",
+      "model": 0.0,
+      "packer": 0.0,
+      "delta": 0.0,
+      "verdict": "same"
+    },
+    {
+      "metric": "boxes",
+      "label": "Boxes",
+      "unit": "",
+      "direction": "lower",
+      "model": 2.0,
+      "packer": 2.0,
+      "delta": 0.0,
+      "verdict": "same"
+    },
+    {
+      "metric": "shipped_volume",
+      "label": "Shipped volume (cut down)",
+      "unit": "in\u00b3",
+      "direction": "lower",
+      "model": 4256.0,
+      "packer": 4256.0,
+      "delta": 0.0,
+      "verdict": "same"
+    },
+    {
+      "metric": "box_volume",
+      "label": "Box volume (uncut)",
+      "unit": "in\u00b3",
+      "direction": "lower",
+      "model": 6080.0,
+      "packer": 6080.0,
+      "delta": 0.0,
+      "verdict": "same"
+    },
+    {
+      "metric": "fill_rate",
+      "label": "Fill rate (units / shipped)",
+      "unit": "%",
+      "direction": "higher",
+      "model": 72.56,
+      "packer": 72.56,
+      "delta": 0.0,
+      "verdict": "same"
+    },
+    {
+      "metric": "max_fill_height",
+      "label": "Tallest fill height",
+      "unit": "in",
+      "direction": "lower",
+      "model": 7.0,
+      "packer": 7.0,
+      "delta": 0.0,
+      "verdict": "same"
+    },
+    {
+      "metric": "units_on_floor",
+      "label": "Units on the floor",
+      "unit": "%",
+      "direction": "higher",
+      "model": 100.0,
+      "packer": 100.0,
+      "delta": 0.0,
+      "verdict": "same"
+    },
+    {
+      "metric": "cog_offset",
+      "label": "CoG off center (worst box)",
+      "unit": "%",
+      "direction": "lower",
+      "model": 36.13,
+      "packer": 33.08,
+      "delta": 3.05,
+      "verdict": "worse"
+    },
+    {
+      "metric": "cog_height",
+      "label": "CoG height (worst box)",
+      "unit": "%",
+      "direction": "lower",
+      "model": 48.72,
+      "packer": 48.72,
+      "delta": 0.0,
+      "verdict": "same"
+    },
+    {
+      "metric": "weight_spread",
+      "label": "Weight spread across boxes",
+      "unit": "lb",
+      "direction": "lower",
+      "model": 13.1,
+      "packer": 13.1,
+      "delta": 0.0,
+      "verdict": "same"
+    },
+    {
+      "metric": "total_weight",
+      "label": "Packed weight",
+      "unit": "lb",
+      "direction": "info",
+      "model": 20.5,
+      "packer": 20.5,
+      "delta": 0.0,
+      "verdict": null
+    },
+    {
+      "metric": "units_packed",
+      "label": "Units packed",
+      "unit": "",
+      "direction": "info",
+      "model": 10.0,
+      "packer": 10.0,
+      "delta": 0.0,
+      "verdict": null
+    }
+  ],
+  "totals": {
+    "cost": 0.00153,
+    "seconds": 4.0,
+    "over_budget": false,
+    "budget": {
+      "usd": 0.02,
+      "seconds": 30.0
+    }
+  }
+}
