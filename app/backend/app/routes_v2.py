@@ -12,7 +12,7 @@ from packing.render_svg import render_svg
 from packing.schemas import Response as Plan
 
 from . import store_v2
-from .routes import (SSE_HEADERS, SVG_HEADERS, _comparison, _load_row,
+from .routes import (SSE_HEADERS, SVG_HEADERS, _comparison,
                      _not_found)
 from .runs import NotActive, RunBusy
 from .samples import SAMPLES, SAMPLES_V2

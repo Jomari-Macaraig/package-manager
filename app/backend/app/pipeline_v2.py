@@ -20,7 +20,7 @@ from packing.v2 import (JOB_ORDER, ConfigErrorV2, RunCancelledV2, V2Result,
 
 from . import config, store_v2
 from .fake_llm import FakeClient
-from .pipeline import PipelineError, _cost, _openai_error, _side
+from .pipeline import _cost, _openai_error, _side
 from .schemas import to_pipeline_inputs
 from .schemas_v2 import RunRequestV2
 

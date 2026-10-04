@@ -111,16 +111,30 @@ def checks(parsed: NotesAnswer | None, flat: FlatResponse,
         if not MIN_STEPS <= len(entry.steps) <= MAX_STEPS:
             bad_steps.append(f"box {entry.box}: {len(entry.steps)} steps")
         text = _normalise(" ".join(entry.steps))
+        # one expected total per normalised name (the text can't tell two
+        # items with the same name apart)
+        expected: Counter = Counter()
+        shown: dict[str, str] = {}
         for name, n in counts.get(entry.box, {}).items():
-            norm = _normalise(name)
-            if norm not in text:
+            expected[_normalise(name)] += n
+            shown.setdefault(_normalise(name), name)
+        # longest names first; blank each match so "Jar" skips "Jar Lid"
+        for norm in sorted(expected, key=len, reverse=True):
+            pattern = (r"(?:(?<![\d.])(\d+)\s*(?:[×x]\s*)?)?\b"
+                       + re.escape(norm) + r"s?\b")
+            matches = list(re.finditer(pattern, text))
+            text = re.sub(pattern, " ", text)
+            name = shown[norm]
+            if not matches:
                 missing.append(f"box {entry.box}: {name}")
                 continue
-            pattern = (r"(?<![\d.])(\d+)\s*(?:[×x]\s*)?" + re.escape(norm))
-            for found in re.findall(pattern, text):
-                if int(found) != n:
-                    wrong.append(f"box {entry.box}: {found} × {name}, "
-                                 f"expected {n}")
+            given = [int(m.group(1)) for m in matches if m.group(1)]
+            if given and sum(given) != expected[norm]:
+                said = " + ".join(map(str, given))
+                wrong.append(
+                    f"box {entry.box}: {name}: steps say "
+                    f"{said}{' = ' + str(sum(given)) if len(given) > 1 else ''}"
+                    f", box has {expected[norm]}")
     out.append(Check("step_count", not bad_steps, "; ".join(bad_steps)))
     out.append(Check("mentions_items", not missing, "; ".join(missing)))
     out.append(Check("counts_match", not wrong, "; ".join(wrong)))
