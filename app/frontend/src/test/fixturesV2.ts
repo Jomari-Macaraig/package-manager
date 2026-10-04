@@ -1,6 +1,6 @@
-// Hand-written v2 fixtures, declared `satisfies` the contract types so that
-// drift fails typecheck. Phase 4 replaces `runV2` with the backend fixture
-// (app/backend/tests/fixtures/run_v2.json).
+// v2 fixtures. `runV2` is the backend's deterministic fixture (src/test/run_v2.json,
+// kept identical to app/backend/tests/fixtures/run_v2.json by a backend test); the
+// rest are hand-written and declared `satisfies` the contract types.
 import type {
   ConfigV2,
   EvalGroup,
@@ -10,12 +10,11 @@ import type {
   RunV2,
   SampleV2,
 } from '../api/typesV2'
-import { makePlan, okSide, sampleA } from './fixtures'
+import runV2Json from './run_v2.json'
+import { sampleA } from './fixtures'
 
 export const RUN_V2_ID = '00000000-0000-4000-8000-000000000001'
 
-const plan = makePlan()
-const finalPlan = { ...plan, notes: ['Cut box 2 to 6 in.'] }
 
 const tokens = { prompt: 100, completion: 50, reasoning: 0 }
 
@@ -104,129 +103,9 @@ export const eventsV2 = [
   { id: 5, t: 5, type: 'end', status: 'succeeded', error: null },
 ] satisfies RunEventV2[]
 
-export const runV2 = {
-  run_id: RUN_V2_ID,
-  status: 'succeeded',
-  error: null,
-  created_at: '2026-01-01T00:00:00.000Z',
-  finished_at: '2026-01-01T00:00:05.000Z',
-  fake: false,
-  request: {
-    items: sampleA.items,
-    boxes: sampleA.boxes,
-    instructions: 'Keep the jars on the left side and the kettles on the right.',
-    jobs: {
-      extract: { model: 'gpt-4.1-nano', reasoning_effort: null },
-      strategy: { model: 'gpt-5.4-nano', reasoning_effort: 'low' },
-      check: { model: 'gpt-4.1-mini', reasoning_effort: null },
-      notes: { model: 'gpt-4.1-nano', reasoning_effort: null },
-    },
-  },
-  events: eventsV2,
-  settings: {
-    padding: 0.125,
-    padding_by_item: [],
-    blocks: [],
-    upright: [],
-    fixed_orientation: [],
-    no_stack_on: [],
-    max_load_on_top: [],
-    floor_only_over_weight: null,
-    wall_clearance: 0,
-    cut_step: null,
-    min_cut_height: null,
-    carrier_max_weight: null,
-    carrier_max_length: null,
-    carrier_max_girth: null,
-    min_fill: null,
-    max_boxes: null,
-    keep_together: [],
-    keep_apart: [],
-    balance_boxes: false,
-    soft_instructions: ['Keep the jars on the left side and the kettles on the right.'],
-  },
-  prepared_items: [
-    {
-      id: 1,
-      source_id: 1,
-      name: 'Mug',
-      color: 'teal',
-      weight: 0.9,
-      dimensions: { x: 4.75, y: 4, z: 4 },
-      quantity: 4,
-    },
-  ],
-  prepared_boxes: [{ id: 1, name: 'M-12', weightMax: 50, dimensions: { x: 8, y: 12, z: 12 } }],
-  jobs: jobsV2,
-  packer: okSide(plan),
-  model: okSide(plan, [0, 2, 900, 20]),
-  source: 'model',
-  reason: 'honours the instructions',
-  final: {
-    source: 'model',
-    reason: 'honours the instructions',
-    plan: finalPlan,
-    notes: [
-      { box: 1, steps: ['Load 3 × Mug', 'Close the lid'] },
-      { box: 2, steps: ['Load 2 × Mug'] },
-    ],
-    cut_notes: ['Cut box 2 to 6 in.'],
-  },
-  preferences_model: [
-    {
-      id: 1,
-      name: 'Mug',
-      side: 'left',
-      level: 'any',
-      honoured: 3,
-      total: 3,
-      detail: '3/3 on the left half',
-    },
-  ],
-  preferences_packer: [
-    {
-      id: 1,
-      name: 'Mug',
-      side: 'left',
-      level: 'any',
-      honoured: 1,
-      total: 3,
-      detail: '1/3 on the left half',
-    },
-  ],
-  verdicts: [
-    {
-      index: 0,
-      instruction: 'Keep the jars on the left side',
-      verdict: 'honoured',
-      reason: 'All jars are on the left',
-    },
-    {
-      index: 1,
-      instruction: 'kettles on the right',
-      verdict: 'cannot_tell',
-      reason: 'No kettle placement given',
-    },
-  ],
-  comparison: [
-    {
-      metric: 'boxes',
-      label: 'Boxes used',
-      unit: '',
-      direction: 'lower',
-      model: 2,
-      packer: 2,
-      delta: 0,
-      verdict: 'same',
-    },
-  ],
-  totals: {
-    cost: 0.0027,
-    seconds: 5,
-    over_budget: false,
-    budget: { usd: 0.02, seconds: 30 },
-  },
-} satisfies RunV2
+/** The backend's deterministic fake Sample G run (tests/fixtures/run_v2.json). The
+ *  cast is needed because JSON imports widen string literals. */
+export const runV2 = runV2Json as unknown as RunV2
 
 export function makeRunV2(over: Partial<RunV2> = {}): RunV2 {
   return { ...runV2, ...over }
@@ -361,3 +240,26 @@ export const evalGroups: EvalGroup[] = [
     last_seen: '2026-01-02T00:00:00.000Z',
   },
 ]
+
+// The backend's fake run has no preferences and one verdict; these give tests the
+// richer cases (a packer that misses the instruction, a cannot_tell verdict).
+export const preferencesModelRich = [
+  { id: 1, name: 'Jar', side: 'left', level: 'any', honoured: 3, total: 3, detail: '3/3 on the left half' },
+] satisfies RunV2['preferences_model']
+export const preferencesPackerRich = [
+  { id: 1, name: 'Jar', side: 'left', level: 'any', honoured: 1, total: 3, detail: '1/3 on the left half' },
+] satisfies RunV2['preferences_packer']
+export const verdictsRich = [
+  {
+    index: 0,
+    instruction: 'Keep the jars on the left side',
+    verdict: 'honoured',
+    reason: 'All jars are on the left',
+  },
+  {
+    index: 1,
+    instruction: 'kettles on the right',
+    verdict: 'cannot_tell',
+    reason: 'No kettle placement given',
+  },
+] satisfies RunV2['verdicts']

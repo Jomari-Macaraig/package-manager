@@ -65,7 +65,7 @@ field existed read back as `"scratch"` (`routes._request`).
 
 ## Env vars
 
-- `OPENAI_API_KEY` from the repo-root `.env` (tracked in git, left as-is)
+- `OPENAI_API_KEY` from the repo-root `.env` (gitignored, not tracked)
 - `PLAYGROUND_FAKE_LLM=1` use `FakeClient` (never calls OpenAI; tracing off)
 - `PLAYGROUND_DB` SQLite path (default `app/backend/data/runs.db`)
 - `OPENAI_AGENTS_DISABLE_TRACING=1` disable trace export
@@ -100,6 +100,63 @@ field existed read back as `"scratch"` (`routes._request`).
   localhost / 127.0.0.1 are accepted; the Vite dev port is strict.
 - Planned follow-up: port extract/plan to the OpenAI Agents SDK
   (`Agent`/`Runner`); not part of this app yet.
+
+## Pipeline v2 (default) and the Evaluation page
+
+Plan: `docs/plans/2026-10-05-pipeline-v2-narrow-llm-jobs-with-evals.md`. The
+pipeline itself is in [backend/packing/CLAUDE.md](backend/packing/CLAUDE.md)
+("Pipeline v2"). v2 is the default in the UI; the header toggle switches to v1
+(saved in `localStorage["packing-playground.pipeline"]`, a saved `"v1"` is
+kept). v1 is unchanged.
+
+Backend (`app/backend/app`):
+- `routes_v2.py` (prefix `/api/v2`): `GET config | samples (A-H) | runs |
+  runs/active | runs/{id} | runs/{id}/events (SSE) | runs/{id}/render?plan=
+  final|model|packer&box&upto | runs/{id}/svg?plan= |
+  runs/{id}/jobs/{job}/messages | eval/summary?job&since&include_fake`;
+  `POST runs` (202; 409 `{"detail": "A run is already in progress", "kind":
+  "v1"|"v2"}`), `POST runs/{id}/cancel`, `PUT runs/{id}/feedback/{job}`
+  (`FeedbackIn`: rating up/down/null, comment <= 2000, `wrong_verdicts` for
+  the check job only; 404 unknown run/job row, 409 run not finished, 422 a
+  skipped job or a bad index).
+- `schemas_v2.py` is the contract (`RunV2`, `JobView`, `EvalGroup`, ...);
+  `src/api/typesV2.ts` mirrors it 1:1 (`output`/`answer` are `unknown`;
+  `PlanSideV2.rank` is `number[] | null`, the same 4 numbers as v1's `Rank`).
+- `pipeline_v2.py` `V2_ADAPTER` + `run_pipeline_v2`: builds `JobConfig`s from
+  the request and `config.JOBS`, costs per job (`config.PRICES`), totals vs
+  `config.BUDGET` ($0.02 / 30 s, shown as "over budget", not enforced),
+  `PlanSideV2`s, final plan, SVGs.
+- `runs.py`: `RunManager(adapter, slot, kind)` is generic; v1 and v2 managers
+  share one `Slot`, so only one run of either kind at a time. `/runs/active`
+  only reports a run of its own kind. v2 `outcome` is always `succeeded` when
+  the pipeline returns (a missing plan is `source: "none"`).
+- `store_v2.py` (same SQLite file): `runs_v2` (request, result, svgs, events),
+  `job_calls` (one row per run and job, written in the same transaction as the
+  guarded `finish`, so interrupted runs and the `set_status` fallback have
+  none), `feedback` (per run and job). `finish(..., jobs)` also takes `svgs`;
+  `set_fake` marks a run. `eval_rows` + Python grouping by (job,
+  prompt_version, model, effort) give `EvalGroup`s: rates exclude skipped
+  rows and fake runs unless `include_fake=true`; `model_won_rate` is run-level
+  (strategy only); `wrong_verdict_rate` is check only.
+- Fake runs: `PLAYGROUND_FAKE_LLM=1` -> `FakeClient`; v2 runs are flagged
+  `fake` and hidden from the Evaluation page by default.
+
+Frontend (`app/frontend/src`): `api/v2.ts` (calls, `subscribeV2`, `v2Api` for
+`hooks/useRunFlow.ts`), `components/RunViewV2.tsx` (run, final plan with
+per-box notes, Jobs, Plans side by side, Metrics, Preferences and verdicts
+with "Mark wrong", extracted settings), `JobsPanel`/`JobCard` (checks, 4
+cards, thumbs + comment feedback, messages), `JobSettings` (model/effort per
+job), `EvaluationPage` (tab; one table per job; "Include fake runs" checkbox).
+
+Fixture sync: `app/backend/tests/fixtures/run_v2.json` (deterministic fake
+Sample G run) is copied to `app/frontend/src/test/run_v2.json`, used as
+`runV2` in `src/test/fixturesV2.ts`; a backend test fails when the copies
+differ. Regenerate with `UPDATE_FIXTURES=1 uv run pytest
+tests/test_v2_api.py -k shared_fixture`, then copy the file.
+
+Smoke test (fake LLM, temp DB, no OpenAI): `cd app/backend && uv run python
+scripts/smoke_v2.py` posts A-H to v2 and A-E to v1 and checks status, 4 job
+rows with `fake`, SVG renders, feedback and the eval summary.
 
 ## Wave 1 deviations from the plan
 

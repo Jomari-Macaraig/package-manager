@@ -35,12 +35,23 @@ async function ready() {
 
 const pressed = (name: string) => screen.getByRole('button', { name })
 
+// Most tests start from v1 and switch; the default itself is tested below.
 beforeEach(() => {
+  localStorage.setItem(PIPELINE_KEY, 'v1')
   setup()
 })
 
 describe('pipeline switch', () => {
-  it('v1 is the default, pressed state is exposed, and v2 is not loaded yet', async () => {
+  it('v2 is the default when nothing is saved', async () => {
+    localStorage.removeItem(PIPELINE_KEY)
+    await ready()
+    expect(pressed('v2')).toHaveAttribute('aria-pressed', 'true')
+    expect(pressed('v1')).toHaveAttribute('aria-pressed', 'false')
+    expect(await screen.findByLabelText('Strategy model')).toBeInTheDocument()
+    expect(screen.queryByLabelText(/Planning model/)).not.toBeInTheDocument()
+  })
+
+  it('a saved v1 choice is kept, pressed state is exposed, and v2 is not loaded yet', async () => {
     await ready()
     expect(pressed('v1')).toHaveAttribute('aria-pressed', 'true')
     expect(pressed('v2')).toHaveAttribute('aria-pressed', 'false')
@@ -94,10 +105,11 @@ describe('pipeline switch', () => {
     }
     vi.stubGlobal('localStorage', broken)
     const user = await ready()
-    expect(pressed('v1')).toHaveAttribute('aria-pressed', 'true')
-    await user.click(pressed('v2'))
     expect(pressed('v2')).toHaveAttribute('aria-pressed', 'true')
     expect(await screen.findByLabelText('Strategy model')).toBeInTheDocument()
+    await user.click(pressed('v1'))
+    expect(pressed('v1')).toHaveAttribute('aria-pressed', 'true')
+    expect(screen.getByLabelText(/Planning model/)).toBeInTheDocument()
   })
 
   it('a v2 run is posted with all four jobs and attached on /api/v2', async () => {
@@ -228,8 +240,8 @@ describe('active-run check on load', () => {
       expect(FakeEventSource.last?.url).toBe(`/api/v2/runs/${live.run_id}/events?from=3`),
     )
     expect(pressed('v2')).toHaveAttribute('aria-pressed', 'true')
-    // not persisted: the user did not choose it
-    expect(localStorage.getItem(PIPELINE_KEY)).toBeNull()
+    // not persisted: the user did not choose it (the saved choice stays v1)
+    expect(localStorage.getItem(PIPELINE_KEY)).toBe('v1')
   })
 
   it('the v2 check is skipped when v1 has an active run', async () => {

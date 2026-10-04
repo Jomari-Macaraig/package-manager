@@ -33,6 +33,7 @@ type Sub = {
 let subs: Sub[]
 
 beforeEach(() => {
+  localStorage.setItem('packing-playground.pipeline', 'v1')
   vi.resetAllMocks()
   subs = []
   m.getConfig.mockResolvedValue(config)

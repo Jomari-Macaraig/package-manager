@@ -12,6 +12,9 @@ import {
   makeNoPlanRunV2,
   makeRunV2,
   runV2,
+  preferencesModelRich,
+  preferencesPackerRich,
+  verdictsRich,
   RUN_V2_ID,
 } from '../test/fixturesV2'
 import { jsonResponse, mockFetch, requests } from '../test/mockFetch'
@@ -147,7 +150,15 @@ describe('JobSettings', () => {
 
 describe('RunViewV2', () => {
   it('renders every section of the fixture', () => {
-    render(<RunViewV2 run={runV2} />)
+    render(
+      <RunViewV2
+        run={makeRunV2({
+          preferences_model: preferencesModelRich,
+          preferences_packer: preferencesPackerRich,
+          verdicts: verdictsRich,
+        })}
+      />,
+    )
     for (const h of [
       'Run',
       'Final plan',
@@ -159,17 +170,17 @@ describe('RunViewV2', () => {
     ])
       expect(screen.getByRole('heading', { level: 2, name: h })).toBeInTheDocument()
     expect(screen.getByText('Status: succeeded')).toBeInTheDocument()
-    expect(screen.getByText('Winner: model — honours the instructions')).toBeInTheDocument()
-    expect(screen.getByText(/Cost \$0\.0027 of \$0\.0200 · 5\.0 s of 30 s/)).toBeInTheDocument()
+    expect(screen.getByText('Winner: model — better metrics')).toBeInTheDocument()
+    expect(screen.getByText(/Cost \$0\.0015 of \$0\.0200 · 4\.0 s of 30 s/)).toBeInTheDocument()
     expect(screen.queryByText('Over budget')).not.toBeInTheDocument()
     // final plan uses the v2 final render URL, with notes as numbered steps per box
     const final = screen.getByRole('region', { name: 'Plan to pack' })
     expect(within(final).getByRole('img')).toHaveAttribute(
       'src',
-      `/api/v2/runs/${RUN_V2_ID}/render?plan=final&box=1&upto=3`,
+      `/api/v2/runs/${RUN_V2_ID}/render?plan=final&box=1&upto=8`,
     )
-    expect(screen.getByText('Load 3 × Mug')).toBeInTheDocument()
-    expect(screen.getByText('Cut box 2 to 6 in.')).toBeInTheDocument()
+    expect(screen.getByText('Load 4 × Kettle')).toBeInTheDocument()
+    expect(screen.getByText(runV2.final!.cut_notes[1])).toBeInTheDocument()
     // plans
     expect(screen.getByRole('region', { name: 'Model' })).toHaveTextContent('Chosen')
     expect(screen.getByRole('region', { name: 'Code packer' })).not.toHaveTextContent('Chosen')
@@ -179,7 +190,7 @@ describe('RunViewV2', () => {
     expect(screen.getByText('3/3 on the left half')).toBeInTheDocument()
     expect(screen.getByText('1/3 on the left half')).toBeInTheDocument()
     expect(screen.getByText('Honoured', { selector: 'span' })).toBeInTheDocument()
-    expect(screen.getByText('Boxes used', { exact: false })).toBeInTheDocument()
+    expect(screen.getByRole('rowheader', { name: /^Boxes/ })).toBeInTheDocument()
     expect(screen.getByText('Soft instructions')).toBeInTheDocument()
   })
 
@@ -196,7 +207,7 @@ describe('RunViewV2', () => {
     const run = makeRunV2({
       fake: true,
       error: 'boom',
-      totals: { ...runV2.totals, over_budget: true },
+      totals: { ...runV2.totals!, over_budget: true },
     })
     render(<RunViewV2 run={run} />)
     expect(screen.getByText('Over budget')).toBeInTheDocument()
@@ -223,7 +234,7 @@ describe('RunViewV2', () => {
     })
     render(<RunViewV2 run={run} events={runV2.events.slice(0, 2)} />)
     expect(screen.getByLabelText('Job progress')).toHaveTextContent(
-      'Job extract: ok (checks 2/2 passed)',
+      'Job extract: ok (checks 5/5 passed)',
     )
     expect(screen.queryByText('No job data')).not.toBeInTheDocument()
     expect(screen.queryByRole('img')).not.toBeInTheDocument()
@@ -253,7 +264,7 @@ describe('RunViewV2', () => {
     const f = mockFetch({
       [`PUT /api/v2/runs/${RUN_V2_ID}/feedback/check`]: fb({ wrong_verdicts: [1] }),
     })
-    render(<RunViewV2 run={runV2} />)
+    render(<RunViewV2 run={makeRunV2({ verdicts: verdictsRich })} />)
     await user.click(screen.getByRole('button', { name: 'Mark wrong: kettles on the right' }))
     const check = screen.getByRole('article', { name: 'Check' })
     await user.click(within(check).getByRole('button', { name: 'Save feedback (check)' }))
@@ -429,13 +440,13 @@ describe('VerdictsList', () => {
     const user = userEvent.setup()
     const onToggle = vi.fn()
     const { rerender } = render(
-      <VerdictsList verdicts={runV2.verdicts} wrong={[]} onToggle={onToggle} />,
+      <VerdictsList verdicts={verdictsRich} wrong={[]} onToggle={onToggle} />,
     )
     const a = screen.getByRole('button', { name: 'Mark wrong: Keep the jars on the left side' })
     expect(a).toHaveAttribute('aria-pressed', 'false')
     await user.click(a)
     expect(onToggle).toHaveBeenCalledWith(0)
-    rerender(<VerdictsList verdicts={runV2.verdicts} wrong={[0]} onToggle={onToggle} />)
+    rerender(<VerdictsList verdicts={verdictsRich} wrong={[0]} onToggle={onToggle} />)
     expect(
       screen.getByRole('button', { name: 'Mark wrong: Keep the jars on the left side' }),
     ).toHaveAttribute('aria-pressed', 'true')
@@ -443,7 +454,7 @@ describe('VerdictsList', () => {
   })
 
   it('verdict words are text; empty list explains the skip', () => {
-    const { rerender } = render(<VerdictsList verdicts={runV2.verdicts} wrong={[]} onToggle={() => {}} />)
+    const { rerender } = render(<VerdictsList verdicts={verdictsRich} wrong={[]} onToggle={() => {}} />)
     expect(screen.getByText('Honoured')).toBeInTheDocument()
     expect(screen.getByText('Cannot tell')).toBeInTheDocument()
     rerender(<VerdictsList verdicts={[]} wrong={[]} onToggle={() => {}} />)

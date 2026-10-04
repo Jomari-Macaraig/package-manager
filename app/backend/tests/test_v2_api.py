@@ -725,3 +725,13 @@ def test_contract_and_shared_fixture(client):
     assert committed["run_id"] == "00000000-0000-4000-8000-000000000001"
     assert committed["fake"] is True and committed["status"] == "succeeded"
     assert len(committed["jobs"]) == 4 and committed["final"]["notes"]
+
+
+FRONTEND_FIXTURE = (Path(__file__).resolve().parents[2]
+                    / "frontend" / "src" / "test" / "run_v2.json")
+
+
+def test_frontend_fixture_copy_is_in_sync():
+    """The frontend's copy must equal the committed backend fixture (JSON compare).
+    If this fails: cp tests/fixtures/run_v2.json ../frontend/src/test/run_v2.json"""
+    assert json.loads(FRONTEND_FIXTURE.read_text()) == json.loads(FIXTURE.read_text())

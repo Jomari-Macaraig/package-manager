@@ -55,12 +55,12 @@ type Pipeline = 'v1' | 'v2'
 type Tab = 'playground' | 'evaluation'
 
 const PIPELINE_KEY = 'packing-playground.pipeline'
-// v1 stays the default until Phase 4
+// v2 is the default; a saved "v1" choice is kept
 const readPipeline = (): Pipeline => {
   try {
-    return localStorage.getItem(PIPELINE_KEY) === 'v2' ? 'v2' : 'v1'
+    return localStorage.getItem(PIPELINE_KEY) === 'v1' ? 'v1' : 'v2'
   } catch {
-    return 'v1'
+    return 'v2'
   }
 }
 const savePipeline = (p: Pipeline) => {
