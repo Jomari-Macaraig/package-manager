@@ -13,3 +13,6 @@ wheels/
 app/backend/data/
 app/frontend/node_modules/
 app/frontend/dist/
+
+# Secrets
+.env
