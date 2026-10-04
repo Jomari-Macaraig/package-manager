@@ -1,20 +1,41 @@
 import { useState } from 'react'
 import { renderUrl, svgDownloadUrl } from '../api/client'
 import type { ModelSide, PlanSide } from '../api/types'
+import type { PlanSideV2 } from '../api/typesV2'
 
 type Props = {
   title: string
-  planKey: 'model' | 'packer'
-  side: PlanSide | ModelSide | null
+  planKey: 'model' | 'packer' | 'final'
+  side: PlanSide | ModelSide | PlanSideV2 | null
   runId: string
   /** images and downloads are only offered once the run is terminal */
   terminal: boolean
   chosen: boolean
+  /** image URL for a box and loading step; default: the v1 render URL */
+  renderSrc?: (box: number, upto?: number) => string
+  /** SVG download link; default: the v1 SVG URL */
+  downloadHref?: string
+  /** used in control names and the image alt; default: from planKey */
+  label?: string
 }
 
-const planLabel = (k: 'model' | 'packer') => (k === 'model' ? 'model plan' : 'code packer plan')
+const planLabel = (k: 'model' | 'packer' | 'final') =>
+  k === 'model' ? 'model plan' : k === 'final' ? 'final plan' : 'code packer plan'
 
-export function PlanPanel({ title, planKey, side, runId, terminal, chosen }: Props) {
+export function PlanPanel({
+  title,
+  planKey,
+  side,
+  runId,
+  terminal,
+  chosen,
+  renderSrc,
+  downloadHref,
+  label,
+}: Props) {
+  const name = label ?? planLabel(planKey)
+  // v1 only has the model and packer plans; a final plan always passes its own URLs
+  const v1Key = planKey === 'final' ? 'model' : planKey
   const [boxSel, setBoxSel] = useState(1)
   const [stepSel, setStepSel] = useState<number | null>(null) // null = follow max
   const [failedSrc, setFailedSrc] = useState<string | null>(null)
@@ -63,7 +84,7 @@ export function PlanPanel({ title, planKey, side, runId, terminal, chosen }: Pro
   const box = Math.min(Math.max(boxSel, 1), Math.max(boxCount, 1))
   const maxStep = boxCount ? plan.boxes[box - 1].items.length : 0
   const step = stepSel == null ? maxStep : Math.min(Math.max(stepSel, 1), maxStep)
-  const src = boxCount && maxStep ? renderUrl(runId, planKey, box, step) : null
+  const src = boxCount && maxStep ? (renderSrc ?? ((b, u) => renderUrl(runId, v1Key, b, u)))(box, step) : null
 
   return (
     <section className={frame} aria-label={title}>
@@ -94,7 +115,7 @@ export function PlanPanel({ title, planKey, side, runId, terminal, chosen }: Pro
               Box{' '}
               <select
                 className="rounded border border-slate-300 px-1 py-0.5"
-                aria-label={`Box (${planLabel(planKey)})`}
+                aria-label={`Box (${name})`}
                 value={box}
                 onChange={(e) => setBoxSel(Number(e.target.value))}
               >
@@ -114,7 +135,7 @@ export function PlanPanel({ title, planKey, side, runId, terminal, chosen }: Pro
                   max={maxStep}
                   step={1}
                   value={step}
-                  aria-label={`Loading step (${planLabel(planKey)})`}
+                  aria-label={`Loading step (${name})`}
                   aria-valuetext={`Step ${step} of ${maxStep}`}
                   onChange={(e) => setStepSel(Number(e.target.value))}
                 />
@@ -130,7 +151,7 @@ export function PlanPanel({ title, planKey, side, runId, terminal, chosen }: Pro
             ) : (
               <img
                 src={src}
-                alt={`Box ${box} of the ${planLabel(planKey)}, steps 1–${step}`}
+                alt={`Box ${box} of the ${name}, steps 1–${step}`}
                 className="w-full rounded border border-slate-200 bg-white"
                 onError={() => setFailedSrc(src)}
               />
@@ -141,7 +162,7 @@ export function PlanPanel({ title, planKey, side, runId, terminal, chosen }: Pro
           {terminal && (
             <a
               className="inline-block text-sm text-blue-800 underline"
-              href={svgDownloadUrl(runId, planKey)}
+              href={downloadHref ?? svgDownloadUrl(runId, v1Key)}
               download
             >
               Download SVG

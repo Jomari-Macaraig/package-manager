@@ -12,6 +12,11 @@ install()
 beforeEach(install)
 afterEach(() => {
   cleanup()
+  try {
+    localStorage.clear()
+  } catch {
+    /* storage unavailable */
+  }
   vi.unstubAllGlobals()
   install()
 })

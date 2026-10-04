@@ -1,15 +1,42 @@
+import type { ReactNode } from 'react'
 import type { RunSummary } from '../api/types'
 
-type Props = {
-  runs: RunSummary[]
+type HistoryRun = { run_id: string; created_at: string; title: string; status: string }
+
+type Props<T extends HistoryRun> = {
+  runs: T[]
   loading: boolean
   error: string | null
   selectedId: string | null
   onOpen: (runId: string) => void
   onRefresh: () => void
+  /** replaces the model and status lines; default: v1's */
+  renderMeta?: (run: T) => ReactNode
 }
 
-export function HistoryList({ runs, loading, error, selectedId, onOpen, onRefresh }: Props) {
+function v1Meta(run: RunSummary) {
+  return (
+    <>
+      <div className="text-xs text-slate-600">
+        {run.extraction_model} → {run.planning_model}
+      </div>
+      <div className="text-xs">
+        {run.status} · {run.source ? `chosen: ${run.source}` : 'no plan chosen'} ·{' '}
+        {run.total_cost == null ? 'cost —' : `$${run.total_cost.toFixed(4)}`}
+      </div>
+    </>
+  )
+}
+
+export function HistoryList<T extends HistoryRun = RunSummary>({
+  runs,
+  loading,
+  error,
+  selectedId,
+  onOpen,
+  onRefresh,
+  renderMeta,
+}: Props<T>) {
   return (
     <section aria-labelledby="history-heading" className="space-y-2">
       <div className="flex items-center justify-between">
@@ -49,13 +76,7 @@ export function HistoryList({ runs, loading, error, selectedId, onOpen, onRefres
               <div className="text-xs text-slate-600">
                 {new Date(r.created_at).toLocaleString()}
               </div>
-              <div className="text-xs text-slate-600">
-                {r.extraction_model} → {r.planning_model}
-              </div>
-              <div className="text-xs">
-                {r.status} · {r.source ? `chosen: ${r.source}` : 'no plan chosen'} ·{' '}
-                {r.total_cost == null ? 'cost —' : `$${r.total_cost.toFixed(4)}`}
-              </div>
+              {renderMeta ? renderMeta(r) : v1Meta(r as unknown as RunSummary)}
             </button>
           </li>
         ))}
