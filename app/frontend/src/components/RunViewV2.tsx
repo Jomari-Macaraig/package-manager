@@ -125,7 +125,7 @@ export function RunViewV2({ run, events }: Props) {
           <>
             <PlanPanel
               key={`${run.run_id}-final`}
-              title="Final plan"
+              title="Plan to pack"
               planKey="final"
               side={{
                 ok: true,

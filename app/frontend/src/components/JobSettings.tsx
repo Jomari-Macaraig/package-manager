@@ -43,7 +43,7 @@ export function JobSettings({ config, value, onChange, disabled }: Props) {
   return (
     <section aria-labelledby="jobs-settings-heading" className="space-y-2">
       <h2 id="jobs-settings-heading" className="text-base font-semibold">
-        Jobs
+        Job models
       </h2>
       <ul className="space-y-0.5 text-sm">
         {JOB_NAMES.map((job) => {
