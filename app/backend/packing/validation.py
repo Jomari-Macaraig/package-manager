@@ -103,6 +103,10 @@ def validate_plan(
             continue
         by_box[row.box].append(row)
 
+    for box_no in sorted(set(declared) - set(by_box)):
+        errors.append(f"box {box_no} is declared but holds no units; remove "
+                      f"it from boxes")
+
     for box_no, rows in sorted(by_box.items()):
         box = declared[box_no]
         size = (box["dimensions"]["x"], box["dimensions"]["y"],

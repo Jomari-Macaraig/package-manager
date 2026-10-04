@@ -9,8 +9,9 @@ Units are always inches and pounds, so the model never outputs them.
 from collections.abc import Mapping, Sequence
 from typing import Any
 
-from .precompute import precompute, precompute_tables
+from .precompute import item_rotations, precompute, precompute_tables
 from .tabular import to_table
+from .validation import fill_heights
 
 # Rule flags on prepared items are stated in the "Packing rules" text,
 # so they're kept out of the items table.
@@ -24,52 +25,102 @@ DIMENSION_HEADERS = {
 }
 
 SYSTEM_PROMPT = """\
-You are a 3D packing planner. Return a packing plan as JSON matching the schema. It drives a packing diagram, so all values must be exact.
+You are a 3D packing planner. Return a packing plan as JSON matching the schema; it drives a packing diagram, so every value must be exact.
+
+Priorities, in order:
+1. Pack every unit (if impossible, as many as possible).
+2. Fewest boxes.
+3. Least shipped volume: each box is cut down to its contents, so what ships is fill height × floor area.
+4. Low fill: use the floor before stacking; heavy units low; weight centered left to right and front to back.
+5. Simple to pack.
+
+Coordinates: origin at the box's inside back-left-bottom corner; X = height (up), Y = depth (back to front), Z = span (left to right). A unit at pos [x, y, z] with dims [dx, dy, dz] occupies [x, x+dx] × [y, y+dy] × [z, z+dz]. Box dimensions are inside dimensions. Inches and pounds.
+
+Input (tables: a header row, then one row per record):
+- Packing rules (if any): hard rules, checked in code.
+- Additional instructions (if any): preferences; follow them unless they conflict with a rule.
+- items and boxes: weightMax is a box's contents limit; stock is how many boxes of that type exist (blank = unlimited).
+- rotations: for each item, the [x, y, z] rotations that fit at least one box. Use only these.
+- unpackable: items that fit no box; put them in leftovers with that reason.
+- box_estimates: what a code packer reached with one box of each type on the whole order (fits_all, units placed, fill_height, shipped_volume). A fits_all box has a known valid arrangement at that fill height.
+- Starting plan (if given): a valid plan from that packer. Improve it, or return it unchanged.
+
+Rules (checked in code):
+- One placement row per unit; its dims are one of its rotations.
+- Every unit is inside its box and overlaps no other unit.
+- No floating units: a unit stands on the floor (x = 0) or its whole Y–Z footprint rests on the tops of units ending exactly at its bottom x. Units of different heights side by side are not a flat surface.
+- Top loading: seq is the loading order 1..n per box; each unit is lowered straight down, so it loads after the units under it.
+- A box's contents weigh at most its weightMax.
+
+How to plan:
+1. Box: the fits_all box with the lowest shipped_volume in box_estimates; aim for its fill_height or lower. If none fits all, use the fewest boxes, largest first.
+2. Large and heavy items first, on the floor. Build columns of equal height (standing a flat item on its edge can help) and put smaller units on flat tops.
+3. As you place, track each column's top height, and check every new unit for overlap and full support against all earlier units.
+
+Output:
+- leftovers: one row per item and reason; say whether impossibility was verified or the search failed.
+- notes: short loading instructions, and how you applied any Additional instructions. No cut-down heights (code computes them). Empty list if nothing to add.
+- Names, colors and weights are joined from the input by id; don't repeat them.
+
+If validate_plan rejects the plan, you get the errors with code-computed help (free spots, the tops under a unit): change only the units named and copy every other placement unchanged. A plan that passes is final."""
+
+
+GUIDE_SYSTEM_PROMPT = """\
+You are a 3D packing planner. You choose; code places. Return your choices as JSON matching the schema:
+- boxes: the box type id for each physical box, in the order code opens them.
+- order: item type ids in loading order (bottom first).
+- rotations: one rotation [x, y, z] per item type, copied from the rotations table.
+- notes: short instructions for the person packing, and how you applied any Additional instructions. Empty list if nothing to add.
+
+How code places: it opens your boxes in order. For each item type in your order it places every unit, in your rotation, at the lowest, then back-most, then left-most free spot where the unit fits inside the box, overlaps nothing, rests fully on the floor or on unit tops at one height, and keeps every Packing rule. Units that fit in no box are left over. The result is checked by validate_plan and compared with a code packer's own plan.
 
 Priorities, in order:
 1. Pack every unit. If impossible, maximize units packed.
 2. Fewest boxes.
-3. Least shipped volume: each box is cut down to its contents, so what ships is the cut-down height × the floor area. A larger box filled low can ship smaller than a small box filled to the top.
-4. Maximize floor use: spread units across the whole Y–Z footprint (left to right and front to back) before stacking, so the fill height is as low as possible and all free space is on top, where the box can be cut down. Lay items flat (smallest side up) whenever possible: flat items are stable and keep the stack low; stand an item on its edge only to make it fit.
-5. Centered center of gravity: weight evenly spread left to right and front to back, near the middle of the footprint, and low in X (heaviest units at the bottom). Never at the cost of support: only the top layer may be shifted to center it, never a unit that others stand on.
-6. Simple to pack.
+3. Least shipped volume: each box is cut down to its contents, so what ships is the cut-down height × the floor area.
+4. Low, even fill: free space on top, weight low and centered.
+5. Simple to pack.
 
-Coordinates: origin at the box's inside back-left-bottom corner. X = height (up), Y = depth (back to front), Z = span (left to right). Dimensions are X × Y × Z. With pos [x, y, z] and dims [dx, dy, dz], a unit occupies [x, x+dx] × [y, y+dy] × [z, z+dz].
+Coordinates: X = height (up), Y = depth (back to front), Z = span (left to right). Dimensions and rotations are [x, y, z]; box dimensions are INTERNAL.
 
-Input tables have a header row, then one row per record. x|y|z are dimensions; box dimensions are INTERNAL; weightMax is the box's contents weight limit. Box stock, when given, is how many boxes of that type are available (blank = unlimited). The input may start with "Packing rules": hard rules checked in code, as binding as the Rules below. It may then have "Additional instructions" (policies or preferences): follow them unless they conflict with the Rules or Packing rules, which always win.
+Input (tables: a header row, then one row per record):
+- Packing rules (if any): hard rules, checked in code. Additional instructions (if any): preferences; follow them through your choices unless they conflict with a rule.
+- items and boxes (weightMax = contents limit; stock = boxes available, blank = unlimited).
+- rotations: for each item, the [x, y, z] rotations that fit at least one box.
+- unpackable: items that fit no box (code leaves them over).
+- box_estimates: what the code packer reached with one box of each type on the whole order: fits_all, units placed, fill_height, shipped_volume. Start from the fits_all box with the lowest shipped_volume.
 
-Precomputed facts (exact; use them, do not recompute):
-- fits: for each item × box pair that fits, max_by_weight is how many units the box weight limit allows, and each rotation is listed as dx×dy×dz=P/layer×L → N layers, h H, floor F%: P units fit side by side on the floor, L layers stack; this item type's quantity needs N layers, reaching height H; one full layer covers F% of the box floor. Rotations are listed lowest H first. Only listed rotations fit.
-- unpackable: item types that fit no box in any allowed rotation.
-- single_box_candidates: box types whose volume and weight limit could hold every packable unit. Necessary, not sufficient: you must still find an arrangement. A flagged candidate has an item type that outnumbers its best single-rotation grid in that box; it can only work by mixing rotations.
-- ideal_fill_height: for each candidate box, the height a perfect packing would reach (packable volume / floor area). Aim for a fill height close to it.
+How to choose:
+1. Box: the fits_all box type with the lowest shipped_volume, unless you can see a lower arrangement elsewhere. Several boxes only if no type fits all.
+2. Order: item types with large, flat footprints first (they form the base), then items that make columns of equal height, small items last to fill gaps and tops.
+3. Rotations: lay items flat (smallest side up) when they get floor of their own; stand flat items on edge when the floor runs short, so columns reach the same height.
 
-Procedure:
-1. Put every unpackable item type in leftovers with its reason. Do not try to place it.
-2. Choose boxes: among the unflagged single_box_candidates, prefer the one where the items lie flat in the fewest layers (lowest ideal_fill_height and h), even if it is a bigger box: shipped volume counts, not box size. Try a flagged one only if no unflagged candidate exists. If no single box can hold everything, use the fewest boxes, filling the largest box type first.
-3. Place item types from largest unit_volume to smallest; heaviest at the bottom.
-4. For each item type, pick one listed rotation for that box: prefer the lowest h, and between similar h the higher floor %. Place its units in a grid from the lowest free position: fill along Z, then Y, then start the next layer in X.
-5. Finish each layer across the whole Y–Z footprint before starting the next, so every unit above the floor rests fully on unit tops. Before placing a unit above the floor, check that every part of its footprint lies on the top of a unit ending exactly at its bottom x; if not, put it on the floor or on another full support.
-6. If the top layer is only partly filled, spread its units evenly left to right and front to back (centered on the footprint) instead of crowding one corner, keeping each unit fully supported.
-7. Number seq in placement order, 1..n per box.
+If your choices fail, you get the placement result and errors; change box types, order or rotations and return new choices."""
 
-Rules:
-- Units are rigid axis-aligned boxes, one placement row per unit.
-- dims must be a 90-degree rotation (permutation) of the item's [x, y, z].
-- Every unit stays inside the box and never overlaps another unit.
-- No floating units: every unit stands on the floor (x = 0) or its whole Y–Z footprint rests on the tops of units ending exactly at its bottom x. A unit that only partly overlaps the units below it is floating and makes the plan invalid.
-- Boxes load only from the top: each unit is lowered straight down along X in its final orientation without passing through a wall or an earlier unit, and nothing moves afterwards. seq is that loading order.
-- A box's contents weigh at most its weightMax.
-- Invent nothing: no measurements, box types, or limits not in the input.
 
-Output JSON only:
-- boxes: one row per physical box used: box (1, 2, ...) and the box type's id.
-- placements: one row per packed unit: box, seq, item id, pos as the min corner [x, y, z], dims as the rotated extents [x, y, z].
-- leftovers: one row per unpacked item type and reason: id, quantity, and the specific reason, stating whether impossibility was verified or the search failed.
-- notes: short instructions for the person packing, one per line: how to load the box and how you applied any Additional instructions. Do not state cut-down heights; they are calculated in code. Empty list if there is nothing to add.
-Do not repeat names, colors, or weights; they are joined from the input by id.
+def starting_plan_text(baseline, boxes: Sequence[Mapping[str, Any]]) -> str:
+    """The code packer's valid plan as a draft for the model to improve.
 
-Your plan is checked in code by validate_plan: containment, overlaps, rotations, support, top-loading order, weight limits, and unit counts. If it fails, you will get the exact errors; fix exactly those and return the full corrected plan. A plan that passes is final."""
+    Plan JSON in the output format (without the packer's notes) so the model
+    edits it, or returns it unchanged, instead of searching from scratch.
+    """
+    names = {b["id"]: b["name"] for b in boxes}
+    fills = fill_heights(baseline)
+    used = "; ".join(f"box {b.box} = {names[b.id]} filled to "
+                     f"{fills.get(b.box, 0):g} in" for b in baseline.boxes)
+    left = sum(r.quantity for r in baseline.leftovers)
+    plan = baseline.model_dump_json(exclude={"notes"})
+    return (
+        "Starting plan (from a code packer; it passed validate_plan): "
+        f"{used or 'no boxes'}"
+        + (f", {left} units left over" if left else "") + ".\n"
+        f"{plan}\n"
+        "Improve it by the Priorities: fewer boxes, a lower fill height "
+        "(less shipped volume), better floor use, a more centered center of "
+        "gravity, or closer to any Additional instructions. Edit it rather "
+        "than starting over, and keep every Rule. If you cannot improve it, "
+        "return it unchanged with your notes."
+    )
 
 
 def build_user_prompt(
@@ -77,23 +128,64 @@ def build_user_prompt(
     boxes: Sequence[Mapping[str, Any]],
     instructions: str | None = None,
     rules: Sequence[str] = (),
+    estimates: Sequence[Mapping[str, Any]] | None = None,
+    verbose_facts: bool = False,
 ) -> str:
     """Input tables plus precomputed facts.
 
     rules:        code-generated hard rules (settings.rules_text), first.
     instructions: optional free text (policies, rules, preferences), after
                   the rules and before the data. Not checked by validate_plan.
+    estimates:    packer.pack(..., estimates=[]) rows, last (box_estimates).
+    verbose_facts: the pre-2026-10-05 facts (fits per item × box with layer
+                  counts, item/box stats, totals, candidates,
+                  ideal_fill_height, item colors) for comparing with
+                  PACKAGE_MANAGER_SYSTEM_PROMPT_V7. Default: compact facts
+                  (rotations, unpackable).
     """
     sections = []
     if rules:
         sections.append("Packing rules:\n" + "\n".join(f"- {r}" for r in rules))
     if instructions and instructions.strip():
         sections.append(f"Additional instructions:\n{instructions.strip()}")
-    rows = [{k: v for k, v in i.items() if k not in HIDDEN_ITEM_KEYS}
-            for i in items]
+    hidden = HIDDEN_ITEM_KEYS if verbose_facts else HIDDEN_ITEM_KEYS | {"color"}
+    rows = [{k: v for k, v in i.items() if k not in hidden} for i in items]
+    pre = precompute(items, boxes)
     sections += [
         to_table("items", rows, rename=DIMENSION_HEADERS),
         to_table("boxes", boxes, rename=DIMENSION_HEADERS),
-        precompute_tables(precompute(items, boxes)),
+        precompute_tables(pre) if verbose_facts else compact_facts(pre, items),
     ]
+    if estimates:
+        sections.append(estimates_table(estimates, boxes))
     return "\n\n".join(sections)
+
+
+def compact_facts(pre, items) -> str:
+    """rotations (per item, those that fit at least one usable box by size
+    and weight) and unpackable (with reasons)."""
+    fitting: dict[int, set] = {}
+    for fit in pre.fits:
+        fitting.setdefault(fit.item_ref, set()).update(
+            r.dims for r in fit.rotations)
+    rows = [{"id": i["id"], "rotations": "; ".join(
+                "×".join(f"{v:g}" for v in dims)
+                for dims in item_rotations(i) if dims in fitting[i["id"]])}
+            for i in items if i["id"] in fitting]
+    sections = [to_table("rotations", rows)]
+    if pre.unpackable:
+        sections.append(to_table("unpackable", [
+            {"id": ref, "reason": reason}
+            for ref, reason in pre.unpackable.items()]))
+    return "\n\n".join(sections)
+
+
+def estimates_table(estimates, boxes) -> str:
+    """box_estimates: one box of each type, code packer, whole order."""
+    names = {b["id"]: b["name"] for b in boxes}
+    rows = [{"id": e["id"], "name": names.get(e["id"], ""),
+             "fits_all": e["fits_all"], "units": e["units"],
+             "fill_height": e["fill_height"],
+             "shipped_volume": e["shipped_volume"] if e["fits_all"] else None}
+            for e in estimates]
+    return to_table("box_estimates", rows)

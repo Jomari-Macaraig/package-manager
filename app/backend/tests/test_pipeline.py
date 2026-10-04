@@ -11,11 +11,11 @@ from agents.tracing import TracingProcessor
 from app.fake_llm import FakeClient
 from app.pipeline import (PipelineError, RunCancelled, new_partial,
                           renumber_boxes, run_pipeline)
-from app.schemas import to_pipeline_inputs
+from app.schemas import RunRequest, to_pipeline_inputs
 from packing.packer import pack
 from packing.planner import RunCancelled as PlannerRunCancelled
 from packing.render_svg import render_svg
-from packing.schemas import (FlatResponse, LeftoverRow, Response,
+from packing.schemas import (FlatResponse, Response,
                              BoxRow, PlacementRow)
 from packing.settings import PackingSettings, prepare_boxes, prepare_items
 
@@ -47,14 +47,6 @@ def prepared(key="A"):
     settings = PackingSettings()
     return (prepare_items(items, boxes, settings),
             prepare_boxes(boxes, settings), settings)
-
-
-def leftovers_only(key="A") -> FlatResponse:
-    items_p, _, _ = prepared(key)
-    return FlatResponse(
-        boxes=[], placements=[], notes=[],
-        leftovers=[LeftoverRow(id=i["id"], quantity=i["quantity"],
-                               reason="scripted") for i in items_p])
 
 
 def http_error(cls, status):
@@ -216,21 +208,33 @@ def test_extraction_auth_error():
         run(sample_request("A", "pad it"), client)
 
 
-def test_length_error_counts_tokens_no_model_plan():
+def test_length_error_counts_tokens_and_stops_without_retry():
     completion = SimpleNamespace(usage=SimpleNamespace(
         prompt_tokens=500, completion_tokens=100,
         completion_tokens_details=SimpleNamespace(reasoning_tokens=40)))
     err = openai.LengthFinishReasonError(completion=completion)
-    result, _, _, _ = run(sample_request("A"),
-                          FakeClient(script=[err, err, err]))
+    client = FakeClient(script=[err, err, err])
+    result, _, _, _ = run(sample_request("A"), client)
+    assert len(client.parse_calls) == 1  # no retry after a cut-off
     assert result["model"]["ok"] is False
     assert result["model"]["errors"][0].startswith(
-        "model call failed: LengthFinishReasonError")
+        "model call failed: LengthFinishReasonError: the model used all 100 "
+        "output tokens (40 on reasoning)")
     planning = result["stats"]["planning"]
-    assert planning["prompt_tokens"] == 1500
-    assert planning["completion_tokens"] == 300
-    assert planning["reasoning_tokens"] == 120
+    assert planning["prompt_tokens"] == 500
+    assert planning["completion_tokens"] == 100
+    assert planning["reasoning_tokens"] == 40
     assert result["final"]["source"] == "packer"
+
+
+@pytest.mark.parametrize("effort, cap", [("low", 16000), ("medium", 32000),
+                                         ("high", 48000)])
+def test_planning_token_cap_follows_effort(effort, cap):
+    body = sample_request("A").model_dump()
+    body["planning"]["reasoning_effort"] = effort
+    client = FakeClient()
+    run(RunRequest.model_validate(body), client)
+    assert client.parse_calls[0]["max_completion_tokens"] == cap
 
 
 @pytest.mark.parametrize("reply", ["not json {", None, '{"padding": -1}'])
@@ -295,14 +299,19 @@ def test_settings_applied_and_extraction_stats():
 
 
 def test_model_side_kept_when_packer_wins():
-    worse = leftovers_only("A")
+    items_p, boxes_p, settings = prepared("A")
+    baseline, _ = pack(items_p, boxes_p, settings)
+    xl = boxes_p[-1]["id"]  # XL-18: same placements fit, more volume ships
+    worse = baseline.model_copy(update={"boxes": [
+        b.model_copy(update={"id": xl}) for b in baseline.boxes]})
     client = FakeClient(script=[worse, worse])  # fix round, improve round
     result, _, _, _ = run(sample_request("A"), client)
     assert result["final"]["source"] == "packer"
     model = result["model"]
     assert model["ok"] is True
-    assert model["plan"]["boxes"] == []
-    assert model["rank"][0] > result["packer"]["rank"][0]
+    assert model["plan"]["boxes"][0]["name"] == "XL-18"
+    assert model["rank"][0] == result["packer"]["rank"][0] == 0
+    assert model["rank"] > result["packer"]["rank"]
     assert model["hints"]  # the model's own hints, not cleared by the packer
     assert model["errors"] == []
     assert "Code packer's plan used" in " ".join(result["final"]["plan"][

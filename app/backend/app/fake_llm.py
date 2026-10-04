@@ -12,7 +12,8 @@ import threading
 from types import SimpleNamespace
 from typing import Any
 
-from packing.schemas import FlatResponse
+from packing.planner import guidance_from_plan
+from packing.schemas import FlatResponse, Guidance
 from packing.settings import PackingSettings
 
 
@@ -61,6 +62,9 @@ class FakeClient:
             entry = self.context[3] if self.context else None
         if isinstance(entry, Exception):
             raise entry
+        if (kwargs.get("response_format") is Guidance
+                and isinstance(entry, FlatResponse)):
+            entry = guidance_from_plan(entry)
         if entry is None:
             message = SimpleNamespace(parsed=None, content=None,
                                       refusal="no plan")

@@ -1,4 +1,6 @@
-"""Sample orders A, B, C from labs/manager.ipynb cells 5-7."""
+"""Sample orders A, B, C from labs/manager.ipynb cells 5-7, D, the
+original dispenser order from cell 2, and E (cell 8), a two-box order
+where the code packer leaves room for the model to do better."""
 
 from typing import Any
 
@@ -72,6 +74,43 @@ SAMPLES: list[dict[str, Any]] = [
             _box("M-12", 50, 8, 12, 12),
             _box("L-18", 60, 12, 14, 18),
             _box("XL-24", 70, 16, 18, 24),
+        ],
+        "instructions": "",
+    },
+    {
+        "key": "D",
+        "title": "D: Dispenser and tapes (original)",
+        "description": ("The first notebook order. The dispenser and 20 "
+                        "tapes fit one box; the 28 in stands fit no box and "
+                        "are left over."),
+        "items": [
+            _item("Dispenser", "green", 4, 9.5, 3.25, 4.5, 1),
+            _item("Tape", "blue", 0.3, 4.75, 4.75, 1, 20),
+            _item("Stand", "red", 17, 28, 4.38, 23.38, 3),
+        ],
+        "boxes": [
+            _box("Small", 65, 12, 6, 6.75),
+            _box("Medium", 80, 14.5, 6.75, 12.75),
+            _box("Wide Low", 70, 12, 12, 4.25),
+        ],
+        "instructions": "",
+    },
+    {
+        "key": "E",
+        "title": "E: Two boxes, room to beat the packer",
+        "description": ("Needs two boxes. The packer fills Large to the top "
+                        "and puts one kettle alone in Small (4,680 in³ "
+                        "shipped); Medium + Large with everything on the "
+                        "floor ships 3,584 in³."),
+        "items": [
+            _item("Kettle", "silver", 2.2, 8, 7, 7, 5),
+            _item("Shoe Box", "black", 2.5, 5, 7, 12, 2),
+            _item("Jar", "goldenrod", 1.5, 6, 4, 4, 3),
+        ],
+        "boxes": [
+            _box("Small", 40, 8, 10, 12),
+            _box("Medium", 50, 10, 12, 16),
+            _box("Large", 60, 12, 16, 20),
         ],
         "instructions": "",
     },

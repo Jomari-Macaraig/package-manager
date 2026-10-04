@@ -46,9 +46,15 @@ LOOP = {"max_rounds": 3, "improve_rounds": 1}
 CAPS = {"max_item_rows": 20, "max_box_rows": 10, "max_units": 150,
         "max_instruction_chars": 2000}
 
-MAX_COMPLETION_TOKENS = {"extraction": 2000, "planning": 16000}
+# Planning by reasoning effort: reasoning tokens count against the limit,
+# and medium/high reasoning on a mixed order spent all of 16k (2026-10-05).
+MAX_COMPLETION_TOKENS = {
+    "extraction": 2000,
+    "planning": {"low": 16000, "medium": 32000, "high": 48000},
+}
 
-OPENAI_TIMEOUT_S = 120
+# ~250 output tokens/s seen on gpt-5.4-mini: 48k tokens ≈ 3+ minutes
+OPENAI_TIMEOUT_S = 300
 OPENAI_MAX_RETRIES = 1
 
 # Bounds on settings returned by the extraction model

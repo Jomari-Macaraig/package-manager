@@ -7,6 +7,7 @@ from typing import Annotated, Any, Literal
 from fastapi import APIRouter, HTTPException, Query, Request
 from fastapi.responses import JSONResponse, Response, StreamingResponse
 
+from packing.metrics import compare, plan_metrics
 from packing.render_svg import render_svg
 from packing.schemas import Response as Plan
 
@@ -85,6 +86,27 @@ def active_run(request: Request) -> dict[str, str | None]:
     return {"run_id": str(run_id) if run_id else None}
 
 
+def _request(request_json: str) -> dict[str, Any]:
+    """Stored request; runs saved before planning.start existed planned
+    from scratch."""
+    request = json.loads(request_json)
+    request["planning"].setdefault("start", "scratch")
+    return request
+
+
+def _comparison(result: dict[str, Any]) -> list[dict[str, Any]] | None:
+    """Metrics of both stored plans, model vs packer (computed on read, so
+    older runs get them too). None when neither side has a plan."""
+    def metrics(side):
+        plan = (side or {}).get("plan")
+        return plan_metrics(Plan.model_validate(plan)) if plan else None
+
+    model, packer = metrics(result.get("model")), metrics(result.get("packer"))
+    if model is None and packer is None:
+        return None
+    return compare(model, packer)
+
+
 @router.get("/runs/{run_id}")
 def get_run(run_id: uuid.UUID, request: Request) -> JSONResponse:
     row = _load_row(run_id)
@@ -101,11 +123,12 @@ def get_run(run_id: uuid.UUID, request: Request) -> JSONResponse:
         "error": row["error"], "created_at": row["created_at"],
         "finished_at": row["finished_at"], "client_ip": row["client_ip"],
         "user_agent": row["user_agent"],
-        "request": json.loads(row["request_json"]),
+        "request": _request(row["request_json"]),
         "loop": config.LOOP,
         **{key: result.get(key) for key in (
             "settings", "prepared_items", "prepared_boxes", "final",
             "model", "packer", "stats")},
+        "comparison": _comparison(result),
         "events": events,
     }
     return JSONResponse(Run.model_validate(body).model_dump(mode="json"))

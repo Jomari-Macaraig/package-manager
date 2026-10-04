@@ -161,6 +161,22 @@ class FlatResponse(BaseModel):
     )
 
 
+
+class RotationChoice(BaseModel):
+    id: int = Field(description="Item type id")
+    dims: Extent = Field(description="Chosen rotation [x, y, z]: one of the listed rotations")
+
+
+class Guidance(BaseModel):
+    """Guided mode: the model chooses, code places (packer.pack_guided)."""
+    boxes: list[int] = Field(description="Box type id for each physical box, in opening order")
+    order: list[int] = Field(description="Item type ids in loading order (bottom first)")
+    rotations: list[RotationChoice] = Field(description="One rotation per item type")
+    notes: list[str] = Field(
+        description="Short instructions for the person packing and how any additional instructions were applied",
+    )
+
+
 COORDINATE_SYSTEM = CoordinateSystem(
     origin="inside_back_left_bottom",
     x_direction="bottom_to_top",

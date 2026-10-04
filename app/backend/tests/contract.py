@@ -91,7 +91,8 @@ RUN_REQUEST = {
     "items": lst(INPUT_ITEM), "boxes": lst(INPUT_BOX), "instructions": str,
     "extraction": {"model": str},
     "planning": {"model": str,
-                 "reasoning_effort": enum("low", "medium", "high")},
+                 "reasoning_effort": enum("low", "medium", "high"),
+                 "start": enum("improve", "scratch", "guide")},
 }
 RUN = {
     "run_id": str, "trace_id": str, "request_id": str, "status": STATUS,
@@ -108,6 +109,11 @@ RUN = {
         "total_tokens": int, "total_cost": NUM,
         "timings": {"extract_s": null(NUM), "packer_s": null(NUM),
                     "plan_s": null(NUM), "total_s": null(NUM)}}),
+    "comparison": null(lst({
+        "metric": str, "label": str, "unit": str,
+        "direction": enum("lower", "higher", "info"),
+        "model": null(NUM), "packer": null(NUM), "delta": null(NUM),
+        "verdict": null(enum("better", "worse", "same"))})),
     "events": ("events",),
 }
 RUN_SUMMARY = {
@@ -127,7 +133,7 @@ CONFIG = {
     "caps": {"max_item_rows": enum(20), "max_box_rows": enum(10),
              "max_units": enum(150), "max_instruction_chars": enum(2000)},
 }
-SAMPLE = {"key": enum("A", "B", "C"), "title": str, "description": str,
+SAMPLE = {"key": enum("A", "B", "C", "D", "E"), "title": str, "description": str,
           "items": lst(INPUT_ITEM), "boxes": lst(INPUT_BOX),
           "instructions": str}
 

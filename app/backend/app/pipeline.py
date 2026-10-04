@@ -19,8 +19,9 @@ from pydantic import ValidationError
 
 from packing.packer import pack
 from packing.planner import (PlanResult, RunCancelled, _rank,
-                             plan_with_validation)
-from packing.prompt_builder import SYSTEM_PROMPT, build_user_prompt
+                             plan_with_guidance, plan_with_validation)
+from packing.prompt_builder import (GUIDE_SYSTEM_PROMPT, SYSTEM_PROMPT,
+                                    build_user_prompt)
 from packing.render_svg import render_svg
 from packing.schemas import BoxRow, FlatResponse
 from packing.settings import (PackingSettings, extract_settings, final_plan,
@@ -264,17 +265,25 @@ def _prepare(items, boxes, settings, partial, emit: Emit):
             raise PipelineError(
                 f"Order has {units} units after preparation; the cap is "
                 f"{config.CAPS['max_units']}")
-        rules = rules_text(items_p, boxes_p, settings)
-        prompt = build_user_prompt(
-            items_p, boxes_p, "\n".join(settings.soft_instructions), rules)
-        messages = [{"role": "system", "content": SYSTEM_PROMPT},
-                    {"role": "user", "content": prompt}]
         data.update(item_types=len(items_p), units=units)
     partial["prepared_items"] = [
         {**i, "source_id": i.get("source_id", i["id"])} for i in items_p]
     partial["prepared_boxes"] = [dict(b) for b in boxes_p]
     emit({"type": "prepared", "item_types": len(items_p), "units": units})
-    return items_p, boxes_p, messages
+    return items_p, boxes_p
+
+
+def _messages(req: RunRequest, items_p, boxes_p, settings,
+              estimates) -> list[dict[str, Any]]:
+    """System + user prompt; built after the packer so box_estimates can
+    go in. Guide mode uses its own system prompt."""
+    prompt = build_user_prompt(
+        items_p, boxes_p, "\n".join(settings.soft_instructions),
+        rules_text(items_p, boxes_p, settings), estimates)
+    system = (GUIDE_SYSTEM_PROMPT if req.planning.start == "guide"
+              else SYSTEM_PROMPT)
+    return [{"role": "system", "content": system},
+            {"role": "user", "content": prompt}]
 
 
 def _side(flat: FlatResponse | None, errors: list[str], hints: list[str],
@@ -297,7 +306,8 @@ def _packer(items_p, boxes_p, settings, client, should_stop, partial,
         raise RunCancelled()
     with _stage("packer") as data:
         start = time.monotonic()
-        baseline, errors = pack(items_p, boxes_p, settings)
+        estimates: list[dict[str, Any]] = []
+        baseline, errors = pack(items_p, boxes_p, settings, estimates)
         partial["timings"]["packer_s"] = round(time.monotonic() - start, 3)
         valid = not errors
         if hasattr(client, "context"):  # FakeClient
@@ -311,7 +321,7 @@ def _packer(items_p, boxes_p, settings, client, should_stop, partial,
         partial["svgs"]["packer"] = render_svg(plan)
     emit({"type": "packer", "ok": valid, "boxes": side["box_count"],
           "errors_count": len(errors)})
-    return (baseline if valid else None), errors
+    return (baseline if valid else None), errors, estimates
 
 
 def _plan(req: RunRequest, client, messages, items_p, boxes_p, settings,
@@ -332,16 +342,21 @@ def _plan(req: RunRequest, client, messages, items_p, boxes_p, settings,
     with _stage("plan") as data:
         data.update(model=model, reasoning_effort=effort)
         try:
-            result = plan_with_validation(
+            if req.planning.start == "guide":
+                planner, mode = plan_with_guidance, {}
+            else:
+                planner = plan_with_validation
+                mode = {"seed": req.planning.start == "improve",
+                        "improve_rounds": config.LOOP["improve_rounds"]}
+            result = planner(
                 client, model, messages, items_p, boxes_p,
-                settings=settings, baseline=baseline,
+                settings=settings, baseline=baseline, **mode,
                 max_rounds=config.LOOP["max_rounds"],
-                improve_rounds=config.LOOP["improve_rounds"],
                 on_event=emit, should_stop=should_stop,
                 on_call=tracing.on_call_hook(count),
                 reasoning_effort=effort,
                 max_completion_tokens=config.MAX_COMPLETION_TOKENS[
-                    "planning"])
+                    "planning"][effort])
         except RunCancelled as exc:
             partial["timings"]["plan_s"] = round(time.monotonic() - start, 3)
             if exc.result is not None:
@@ -414,10 +429,12 @@ def run_pipeline(req: RunRequest, client, *, run_id: uuid.UUID,
             items, boxes = to_pipeline_inputs(req)
             settings = _extract(req, client, items, should_stop, partial,
                                 emit)
-            items_p, boxes_p, messages = _prepare(items, boxes, settings,
-                                                  partial, emit)
-            baseline, _errors = _packer(items_p, boxes_p, settings, client,
-                                        should_stop, partial, emit)
+            items_p, boxes_p = _prepare(items, boxes, settings, partial,
+                                        emit)
+            baseline, _errors, estimates = _packer(
+                items_p, boxes_p, settings, client, should_stop, partial,
+                emit)
+            messages = _messages(req, items_p, boxes_p, settings, estimates)
             result = _plan(req, client, messages, items_p, boxes_p, settings,
                            baseline, should_stop, partial, emit)
             outcome = _finalize(result, items_p, boxes_p, settings, partial,

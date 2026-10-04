@@ -26,10 +26,24 @@ def setup(key="A"):
     return items_p, boxes_p, settings, baseline, messages
 
 
-def worse(items_p):
+def gave_up(items_p):
+    """Every unit in leftovers: passes validate_plan, but the packer
+    placed them all."""
     return FlatResponse(boxes=[], placements=[], notes=[], leftovers=[
         LeftoverRow(id=i["id"], quantity=i["quantity"], reason="x")
         for i in items_p])
+
+
+def worse(baseline, boxes_p):
+    """Valid and complete but worse: the packer's placements in the largest
+    box type, so the shipped volume is higher."""
+    used = {b["id"]: b for b in boxes_p}[baseline.boxes[0].id]
+    largest = max(boxes_p, key=lambda b: b["dimensions"]["y"]
+                  * b["dimensions"]["z"])
+    assert all(largest["dimensions"][a] >= used["dimensions"][a]
+               for a in "xyz") and largest["id"] != used["id"]
+    return baseline.model_copy(update={"boxes": [
+        b.model_copy(update={"id": largest["id"]}) for b in baseline.boxes]})
 
 
 def plan(client, **kwargs):
@@ -42,9 +56,10 @@ def plan(client, **kwargs):
 
 
 def test_on_event_for_fix_and_improve_calls():
-    items_p = setup()[0]
+    _, boxes_p, _, baseline, _ = setup()
+    w = worse(baseline, boxes_p)
     events = []
-    _, result = plan(FakeClient(script=[worse(items_p), worse(items_p)]),
+    _, result = plan(FakeClient(script=[w, w]),
                      on_event=events.append)
     assert [(e["kind"], e["n"], e["valid"]) for e in events] == [
         ("fix", 1, True), ("improve", 2, True)]
@@ -55,23 +70,82 @@ def test_on_event_for_fix_and_improve_calls():
 
 
 def test_failed_improvement_call_event_and_model_kept():
-    items_p = setup()[0]
+    _, boxes_p, _, baseline, _ = setup()
+    w = worse(baseline, boxes_p)
     events = []
-    _, result = plan(FakeClient(script=[worse(items_p), None]),
+    _, result = plan(FakeClient(script=[w, None]),
                      on_event=events.append)
     assert events[1] == {"type": "round", "n": 2, "kind": "improve",
                          "valid": False, "errors_count": 1}
     assert result.model_errors == []  # failed improvement keeps valid plan
-    assert result.model_flat.leftovers
+    assert result.model_flat == w
 
 
 def test_improvement_wins_when_better():
-    items_p = setup()[0]
+    _, boxes_p, _, baseline, _ = setup()
     events = []
-    _, result = plan(FakeClient(script=[worse(items_p)]),  # then baseline
+    _, result = plan(FakeClient(script=[worse(baseline, boxes_p)]),  # then baseline
                      on_event=events.append)
     assert result.improved is True and result.source == "model"
     assert events[1]["kind"] == "improve" and events[1]["valid"] is True
+
+
+def test_giving_up_on_packable_units_is_a_fix_round():
+    items_p = setup()[0]
+    events = []
+    client = FakeClient(script=[gave_up(items_p)])  # then the packer's plan
+    _, result = plan(client, on_event=events.append)
+    assert [(e["kind"], e["valid"]) for e in events] == [
+        ("fix", False), ("fix", True)]
+    assert result.ok and result.source == "model"
+    feedback = result.history[3]["content"]
+    assert "validate_plan: INVALID" in feedback
+    assert "item 2: 4 unit(s) in leftovers fit" in feedback
+    assert "L-14" in feedback
+
+
+def test_baseline_is_sent_as_starting_plan():
+    items_p, boxes_p, settings, baseline, messages = setup()
+    _, result = plan(FakeClient(script=[gave_up(items_p)]))
+    sent = result.history[1]["content"]
+    assert sent.startswith(messages[1]["content"])  # caller's list untouched
+    assert "Starting plan (from a code packer" in sent
+    assert "L-14 filled to" in sent
+    assert baseline.model_dump_json(exclude={"notes"}) in sent
+    assert "return the Starting plan unchanged" in result.history[3]["content"]
+
+
+def test_scratch_mode_keeps_baseline_as_fallback_only():
+    items_p = setup()[0]
+    _, result = plan(FakeClient(script=[gave_up(items_p)]), seed=False)
+    assert "Starting plan" not in result.history[1]["content"]
+    assert "Starting plan" not in result.history[3]["content"]
+    assert "item 2: 4 unit(s) in leftovers fit" in result.history[3]["content"]
+
+
+def test_no_starting_plan_without_baseline():
+    items_p = setup()[0]
+    _, result = plan(FakeClient(script=[gave_up(items_p)]), baseline=None)
+    assert "Starting plan" not in result.history[1]["content"]
+
+
+def test_giving_up_every_round_leaves_no_model_plan():
+    items_p = setup()[0]
+    g = gave_up(items_p)
+    _, result = plan(FakeClient(script=[g, g, g]))
+    assert result.rounds == 3 and result.source == "packer"
+    assert result.model_errors and all(
+        "in leftovers fit" in e for e in result.model_errors)
+
+
+def test_leftovers_the_packer_also_leaves_are_fine():
+    items_p, boxes_p, settings, baseline, messages = setup("C")
+    assert not baseline.placements  # nothing fits in Sample C
+    client = FakeClient(script=[gave_up(items_p)])
+    client.context = (items_p, boxes_p, settings, baseline)
+    result = plan_with_validation(client, "m", messages, items_p, boxes_p,
+                                  settings=settings, baseline=baseline)
+    assert result.ok and result.rounds == 1
 
 
 def test_exhausted_loop_keeps_model_errors():

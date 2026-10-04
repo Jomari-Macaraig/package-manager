@@ -14,13 +14,16 @@ the most.
 
 The result is a FlatResponse checked with validation.validate_plan, used by
 planner.plan_with_validation as a target ("too high" hint) and a fallback.
+pack(..., estimates=[]) also reports how one box of each type did on the
+whole order (box_estimates in the prompt). pack_guided places units from
+the model's choices (box types, item order, one rotation per item type).
 """
 
 from collections.abc import Mapping, Sequence
 from itertools import product
 from typing import Any
 
-from .precompute import EPS, item_rotations
+from .precompute import EPS, item_rotations, precompute
 from .schemas import FlatResponse, PlacementRow
 from .validation import _covered, _overlap, cut_height, validate_plan
 
@@ -189,11 +192,17 @@ def pack(
     items: Sequence[Mapping[str, Any]],
     boxes: Sequence[Mapping[str, Any]],
     settings=None,
+    estimates: list[dict[str, Any]] | None = None,
 ) -> tuple[FlatResponse, list[str]]:
     """Plan with code only. items/boxes are the prepared ones.
 
     Returns (plan, validation errors). Errors can remain for rules the
     greedy packer doesn't steer by (e.g. keep_together).
+    estimates: if a list is given, one row per usable box type is appended:
+    how a single box of that type does on the whole order (fits_all = every
+    packable unit placed, units placed, fill height, cut-down shipped
+    volume). Free: the first box choice computes it anyway. Items that fit
+    no box (precompute's unpackable) don't count against fits_all.
     """
     apart = [set(g) for g in getattr(settings, "keep_apart", []) or []]
     max_boxes = getattr(settings, "max_boxes", None)
@@ -201,6 +210,8 @@ def pack(
     by_id = {i["id"]: i for i in items}
     stock = {b["id"]: b.get("stock") for b in boxes}
 
+    unpackable = (set(precompute(items, boxes).unpackable)
+                  if estimates is not None else set())
     box_rows, placements = [], []
     while remaining and (max_boxes is None or len(box_rows) < max_boxes):
         groups = [(by_id[i], n) for i, n in remaining.items()]
@@ -220,6 +231,12 @@ def pack(
             key = ((0, round(shipped, 6), _standing(placed)) if not unplaced
                    else (1, -packed_volume, 0))
             options.append((key, box, placed))
+            if estimates is not None and not box_rows:
+                estimates.append({
+                    "id": box["id"],
+                    "fits_all": not set(unplaced) - unpackable,
+                    "units": len(placed), "fill_height": round(fill, 3),
+                    "shipped_volume": round(shipped, 3)})
         if not options:
             break
         _, box, placed = min(options, key=lambda o: o[0])
@@ -243,4 +260,77 @@ def pack(
         "notes": ["Placed by the code packer: load units in seq order, "
                   "bottom layer first."],
     })
+    return flat, validate_plan(flat, items, boxes, settings)
+
+
+def pack_guided(
+    items: Sequence[Mapping[str, Any]],
+    boxes: Sequence[Mapping[str, Any]],
+    settings,
+    box_ids: Sequence[int],
+    order: Sequence[int],
+    rotations: Mapping[int, Sequence[float]],
+) -> tuple[FlatResponse | None, list[str]]:
+    """Place units from the model's choices with the packer's greedy fill.
+
+    Boxes of the listed types are opened in turn; each takes the remaining
+    units in `order` (item ids; unlisted ones go last) with one rotation per
+    item type; every unit goes to the lowest, back-most, left-most free
+    spot. Returns (plan, errors): errors for invalid choices (no plan) or
+    from validate_plan; units that fit nowhere are leftovers.
+    """
+    by_id = {i["id"]: i for i in items}
+    box_by_id = {b["id"]: b for b in boxes}
+    errors = [f"unknown box type id {b}" for b in box_ids
+              if b not in box_by_id]
+    errors += [f"unknown item id {i} in order" for i in order
+               if i not in by_id]
+    rotation = {}
+    for item in items:
+        dims = rotations.get(item["id"])
+        allowed = item_rotations(item)
+        if dims is None:
+            rotation[item["id"]] = allowed[0]
+            continue
+        match = next((r for r in allowed
+                      if all(abs(a - b) <= EPS for a, b in zip(r, dims))),
+                     None)
+        if match is None:
+            errors.append(
+                f"item {item['id']}: rotation {list(dims)} is not allowed; "
+                f"allowed: {', '.join(str(list(r)) for r in allowed)}")
+        rotation[item["id"]] = match or allowed[0]
+    if errors:
+        return None, errors
+
+    apart = [set(g) for g in getattr(settings, "keep_apart", []) or []]
+    seen = list(dict.fromkeys(order))
+    sequence = seen + [i["id"] for i in items if i["id"] not in seen]
+    remaining = {i: by_id[i]["quantity"] for i in sequence
+                 if by_id[i]["quantity"] > 0}
+    box_rows, placements = [], []
+    for type_id in box_ids:
+        if not remaining:
+            break
+        groups = [(by_id[i], n) for i, n in remaining.items()]
+        placed, _unplaced = _fill_box(box_by_id[type_id], groups, rotation,
+                                      apart)
+        if not placed:
+            continue
+        number = len(box_rows) + 1
+        box_rows.append({"box": number, "id": type_id})
+        for seq, u in enumerate(placed, start=1):
+            row = u["row"]
+            placements.append({"box": number, "seq": seq, "id": row.id,
+                               "pos": row.pos, "dims": row.dims})
+            remaining[row.id] -= 1
+        remaining = {i: n for i, n in remaining.items() if n > 0}
+
+    leftovers = [{"id": i, "quantity": n,
+                  "reason": "no room left in the chosen boxes (code placement "
+                            "from the model's choices; search failed)"}
+                 for i, n in remaining.items()]
+    flat = FlatResponse.model_validate({
+        "boxes": box_rows, "placements": placements, "leftovers": leftovers,
+        "notes": []})
     return flat, validate_plan(flat, items, boxes, settings)

@@ -1,4 +1,5 @@
 import json
+from contextlib import closing
 import threading
 import time
 
@@ -59,9 +60,9 @@ def test_health_config_samples(client):
     contract.check(cfg.json(), contract.CONFIG)
     assert cfg.json()["defaults"]["extraction_model"] == "gpt-4.1-nano"
     samples = client.get("/api/samples").json()
-    assert [s["key"] for s in samples] == ["A", "B", "C"]
+    assert [s["key"] for s in samples] == ["A", "B", "C", "D", "E"]
     assert [(len(s["items"]), len(s["boxes"])) for s in samples] == [
-        (5, 5), (6, 5), (4, 4)]
+        (5, 5), (6, 5), (4, 4), (3, 3), (3, 3)]
     for s in samples:
         contract.check(s, contract.SAMPLE)
         assert all("id" not in i for i in s["items"] + s["boxes"])
@@ -92,7 +93,7 @@ def test_run_sample_a_end_to_end_and_contract(client):
     contract.check(client.get("/api/runs").json()[0], contract.RUN_SUMMARY)
 
 
-@pytest.mark.parametrize("key", ["B", "C"])
+@pytest.mark.parametrize("key", ["B", "C", "D", "E"])
 def test_other_samples_validate_against_contract(client, key):
     run = wait_terminal(client, start_run(client, sample_body(key)))
     assert run["status"] == "succeeded"
@@ -422,6 +423,57 @@ def test_history_endpoint(client):
     assert h["planning"][-1]["role"] == "assistant"
 
 
+@pytest.mark.parametrize("start", ["improve", "scratch", "guide"])
+def test_planning_start_mode(client, start):
+    body = sample_body("A")
+    body["planning"]["start"] = start
+    run_id = start_run(client, body)
+    run = wait_terminal(client, run_id)
+    assert run["status"] == "succeeded"
+    assert run["request"]["planning"]["start"] == start
+    system, prompt = client.get(
+        f"/api/runs/{run_id}/history").json()["planning"][:2]
+    assert ("Starting plan" in prompt["content"]) == (start == "improve")
+    assert "box_estimates (5 rows)" in prompt["content"]
+    assert ("You choose; code places" in system["content"]) == (
+        start == "guide")
+    if start == "guide":
+        assert run["model"]["ok"] and run["final"]["source"] == "model"
+
+
+def test_planning_start_defaults_and_rejects_unknown(client):
+    run = wait_terminal(client, start_run(client))
+    assert run["request"]["planning"]["start"] == "improve"
+    body = sample_body("A")
+    body["planning"]["start"] = "both"
+    assert client.post("/api/runs", json=body).status_code == 422
+
+
+def test_runs_saved_before_start_existed_read_as_scratch(client):
+    run_id = start_run(client)
+    wait_terminal(client, run_id)
+    with closing(store._connect()) as conn, conn:
+        req = json.loads(conn.execute(
+            "select request_json from runs where run_id = ?",
+            (run_id,)).fetchone()[0])
+        del req["planning"]["start"]
+        conn.execute("update runs set request_json = ? where run_id = ?",
+                     (json.dumps(req), run_id))
+    run = client.get(f"/api/runs/{run_id}").json()
+    assert run["request"]["planning"]["start"] == "scratch"
+
+
+def test_run_has_metrics_comparison(client):
+    run = wait_terminal(client, start_run(client))
+    rows = {r["metric"]: r for r in run["comparison"]}
+    assert rows["boxes"]["packer"] == 1
+    assert rows["shipped_volume"]["packer"] == 9 * 14 * 14
+    if run["model"]["ok"]:
+        assert rows["boxes"]["verdict"] in ("better", "worse", "same")
+    else:
+        assert rows["boxes"]["model"] is None
+
+
 def test_run_list_newest_first_and_summary(client):
     first = start_run(client)
     wait_terminal(client, first)
@@ -463,3 +515,12 @@ def test_every_response_has_request_id(client, gated):
     responses.append(client.get(f"/api/runs/{run_id}/svg?plan=packer"))
     for r in responses:
         assert r.headers.get("x-request-id"), (r.request.url, r.status_code)
+
+
+def test_sample_d_original_dispenser_order(client):
+    run = wait_terminal(client, start_run(client, sample_body("D")))
+    packer = run["packer"]["plan"]
+    assert run["packer"]["box_count"] == 1
+    assert sum(len(b["items"]) for b in packer["boxes"]) == 21
+    left = [i for g in packer["leftover_items"] for i in g["items"]]
+    assert [(i["name"], i["quantity"]) for i in left] == [("Stand", 3)]

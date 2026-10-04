@@ -16,6 +16,10 @@ from packing.settings import PackingSettings
 from . import config
 
 Effort = Literal["low", "medium", "high"]
+# improve: the model edits the code packer's plan (Starting plan);
+# scratch: it plans from the input alone; guide: it picks box types, item
+# order and rotations, and code places the units
+Start = Literal["improve", "scratch", "guide"]
 RunStatus = Literal["running", "succeeded", "failed", "cancelled",
                     "interrupted"]
 TERMINAL_STATUSES = ("succeeded", "failed", "cancelled", "interrupted")
@@ -97,6 +101,7 @@ class Extraction(BaseModel):
 class Planning(BaseModel):
     model: str
     reasoning_effort: Effort
+    start: Start = "improve"
 
     @model_validator(mode="after")
     def _known(self) -> "Planning":
@@ -317,6 +322,18 @@ class Loop(BaseModel):
     improve_rounds: Literal[1]
 
 
+class MetricRow(BaseModel):
+    """packing.metrics.compare row: model vs packer for one metric."""
+    metric: str
+    label: str
+    unit: str
+    direction: Literal["lower", "higher", "info"]
+    model: float | None
+    packer: float | None
+    delta: float | None
+    verdict: Literal["better", "worse", "same"] | None
+
+
 class Run(BaseModel):
     run_id: str
     trace_id: str
@@ -336,6 +353,7 @@ class Run(BaseModel):
     model: ModelSide | None
     packer: PlanSide | None
     stats: Stats | None
+    comparison: list[MetricRow] | None = None
     events: list[RunEvent]
 
 
@@ -389,7 +407,7 @@ class Config(BaseModel):
 
 
 class Sample(BaseModel):
-    key: Literal["A", "B", "C"]
+    key: Literal["A", "B", "C", "D", "E"]
     title: str
     description: str
     items: list[InputItem]
