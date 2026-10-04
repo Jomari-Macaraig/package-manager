@@ -8,7 +8,6 @@ import type {
   Plan,
   PreparedBox,
   PreparedItem,
-  Rank,
   RunStatus,
   Sample,
 } from './types'
@@ -68,8 +67,8 @@ export type PlanSideV2 = {
   ok: boolean
   plan: Plan | null
   box_count: number
-  // The contract says list[float]; it is always the 4-tuple of v1's Rank.
-  rank: Rank | null
+  // list[float] in the contract: the same 4 numbers as v1's Rank tuple
+  rank: number[] | null
   errors: string[]
   hints: string[] // always [] in v2
 }
