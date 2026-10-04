@@ -681,3 +681,75 @@ def test_eval_since_and_job_filters_combine(client, db):
     assert [g["job"] for g in group(client, since="2026-03-02T00:00:00Z")] == [
         "extract", "strategy", "check", "notes"]
     assert group(client, job="notes", since="2026-03-03T00:00:00Z") == []
+
+
+# --- notes: split steps, word boundaries, plurals -------------------------------------
+
+def name_flat(units):
+    """One box holding units = [(item id, name)...]; returns (flat, items)."""
+    from packing.schemas import FlatResponse
+    rows = [{"box": 1, "seq": i + 1, "id": uid, "pos": [0, 0, 0],
+             "dims": [1, 1, 1]} for i, (uid, _) in enumerate(units)]
+    flat = FlatResponse(boxes=[{"box": 1, "id": 1}], placements=rows,
+                        leftovers=[], notes=[])
+    items = [{"id": uid, "name": n} for uid, n in dict(units).items()]
+    return flat, items
+
+
+def notes_named(steps, units):
+    flat, items = name_flat(units)
+    parsed = NotesAnswer(boxes=[BoxNotes(box=1, steps=steps)])
+    return {c.name: c for c in notes_job.checks(parsed, flat, items)}
+
+
+KETTLES = [(1, "Kettle")] * 3
+
+
+def test_notes_counts_match_sums_split_steps():
+    c = notes_named(["Load 2 × Kettle on the floor",
+                     "Load 1 × Kettle on top"], KETTLES)
+    assert c["counts_match"].passed and c["mentions_items"].passed
+
+
+def test_notes_counts_match_fails_when_split_steps_sum_wrong():
+    c = notes_named(["Load 2 × Kettle", "Load 2 × Kettle"], KETTLES)
+    assert not c["counts_match"].passed
+    assert c["counts_match"].detail == (
+        "box 1: Kettle: steps say 2 + 2 = 4, box has 3")
+    assert not notes_named(["Load 2 × Kettle"], KETTLES)[
+        "counts_match"].passed
+
+
+def test_notes_names_match_on_word_boundaries_longest_first():
+    units = [(1, "Jar"), (2, "Jar Lid"), (2, "Jar Lid")]
+    ok = notes_named(["Load 1 × Jar", "Load 2 × Jar Lid"], units)
+    assert ok["mentions_items"].passed and ok["counts_match"].passed
+    # "Jar" only appears inside "Jar Lid": it is missing, not found
+    lid_only = notes_named(["Load 2 × Jar Lid"], units)
+    assert lid_only["mentions_items"].detail == "box 1: Jar"
+    # "2 × Jar Lid" must not be read as 2 Jars
+    swapped = notes_named(["Load 2 × Jar", "Load 1 × Jar Lid"], units)
+    assert not swapped["counts_match"].passed
+
+
+def test_notes_plurals_still_match():
+    c = notes_named(["Load 3 × Kettles"], KETTLES)
+    assert c["mentions_items"].passed and c["counts_match"].passed
+    assert not notes_named(["Load 2 Kettles"], KETTLES)["counts_match"].passed
+
+
+# --- strategy: a config error on a later call keeps the first call's usage -------------
+
+def test_config_error_on_strategy_call_two_keeps_call_one_usage():
+    auth = http_error(openai.AuthenticationError, 401)
+    client = FakeClient()
+    # an unusable first reply (so there is a second call), then the error
+    client.script = [None, auth]
+    with pytest.raises(ConfigErrorV2) as caught:
+        run_hooked("G", client)
+    jobs = {j.job: j for j in caught.value.jobs}
+    s = jobs["strategy"]
+    assert s.calls == 1 and s.status == "fallback"
+    assert "AuthenticationError" in s.error or "401" in s.error
+    assert [(jobs[n].status, jobs[n].error) for n in ("check", "notes")] == [
+        ("skipped", "not run")] * 2

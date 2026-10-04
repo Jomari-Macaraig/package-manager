@@ -14,8 +14,7 @@ from .jobs import check as check_job
 from .jobs import extract as extract_job
 from .jobs import notes as notes_job
 from .jobs import strategy as strategy_job
-from .jobs.base import (VOLUME_MARGIN, JobConfig, JobResult,  # noqa: F401
-                        skipped_result)
+from .jobs.base import VOLUME_MARGIN, JobConfig, JobResult, skipped_result
 from .packer import pack, preference_report
 from .planner import _CONFIG_ERRORS, RunCancelled, _rank
 from .schemas import FlatResponse
@@ -143,6 +142,11 @@ def run_v2(client, items, boxes, instructions: str,
         try:
             return call()
         except _CONFIG_ERRORS as exc:
+            partial = getattr(exc, "job_result", None)
+            if partial is not None:  # earlier calls were made and paid for
+                partial.status = "fallback"
+                partial.error = f"{type(exc).__name__}: {exc}"
+                done[partial.job] = partial
             raise ConfigErrorV2(exc, all_jobs("not run")) from exc
 
     # 1. extract

@@ -8,14 +8,13 @@ back). With no valid plan after at most two calls, the packer's plan is used
 (status "fallback").
 """
 
-from collections.abc import Mapping, Sequence
 from dataclasses import dataclass, field
 from typing import Any, Literal
 
 from pydantic import BaseModel, Field
 
 from ..packer import pack_guided, preference_report
-from ..planner import _coverage_errors, _guidance_feedback
+from ..planner import _CONFIG_ERRORS, _coverage_errors, _guidance_feedback
 from ..prompt_builder import build_user_prompt
 from ..schemas import FlatResponse, RotationChoice
 from ..settings import PackingSettings, rules_text
@@ -172,7 +171,13 @@ def run_strategy(client, cfg: JobConfig, items_p, boxes_p,
                        prompt_version=PROMPT_VERSION, messages=list(messages))
     run = StrategyRun(result=result, flat=None, errors=[])
     for _ in range(MAX_CALLS):
-        outcome = call_parsed(client, cfg, result.messages, StrategyAnswer)
+        try:
+            outcome = call_parsed(client, cfg, result.messages,
+                                  StrategyAnswer)
+        except _CONFIG_ERRORS as exc:
+            if result.calls:  # keep the earlier calls' usage for the run
+                exc.job_result = result
+            raise
         result.add(outcome)
         answer: StrategyAnswer | None = outcome.parsed
         if answer is None:
