@@ -7,7 +7,9 @@ box types. Kept deliberately simple: this is a simple packaging manager.
 - `evaluate.py` — `python evaluate.py` parses cases and prints the reference;
   `--model gpt-5.4-mini [--effort low] [cases...]` also runs our planner
   (`planner.plan_with_validation`) and writes `results-<model>.json` plus
-  `results-<model>.md`. Both modes print a Markdown comparison table: reference
+  `results-<model>.md` (`/` in model ids becomes `_`). Add `--openrouter` to
+  use OpenRouter (`OPENROUTER_API_KEY`), e.g.
+  `--openrouter --model qwen/qwen3.8-27b:free` (free tier, rate-limited). Both modes print a Markdown comparison table: reference
   vs ours per case (boxes, box types, leftovers, same types?, verdict).
 
 Parsing: engine X is height like ours (schema: "the 'up' direction is X"), so

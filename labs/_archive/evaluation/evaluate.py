@@ -6,6 +6,7 @@ then fewer boxes, then less total box volume.
 
     python evaluate.py                       # parse cases, show references
     python evaluate.py --model gpt-5.4-mini  # also run ours (costs tokens)
+    python evaluate.py --openrouter --model qwen/qwen3.8-27b:free
 
 Axes match ours: the engine's X is height (its schema: "the 'up' direction
 is X"). Its weightMax is gross (items + weightTare), so our contents limit is
@@ -41,7 +42,7 @@ def load_case(folder: Path) -> dict:
 
     items = [
         {
-            "refId": s["refId"],
+            "id": s["refId"],
             "name": s.get("name") or f"item {s['refId']}",
             "color": s.get("color") or "",
             "weight": s.get("weight") or 0,
@@ -88,7 +89,7 @@ def load_case(folder: Path) -> dict:
         seen.add(key)
         gross = b.get("weightMax")
         boxes.append({
-            "refId": len(boxes),
+            "id": len(boxes),
             "name": b["name"],
             "dimensions": _dims(b["dimensions"]),
             "weightMax": None if gross is None
@@ -121,8 +122,8 @@ def reference_summary(response: dict) -> dict:
 
 
 def our_summary(flat, boxes: list[dict]) -> dict:
-    by_ref = {b["refId"]: b for b in boxes}
-    used = [by_ref[b.ref_id] for b in flat.boxes]
+    by_id = {b["id"]: b for b in boxes}
+    used = [by_id[b.id] for b in flat.boxes]
     return {
         "boxes": len(used),
         "types": dict(Counter(b["name"] for b in used)),
@@ -171,11 +172,10 @@ def comparison_table(rows: list[dict]) -> str:
 
 def run_ours(case: dict, client, model: str, **kwargs):
     from planner import plan_with_validation
-    from prompt_builder import build_system_prompt, build_user_prompt
+    from prompt_builder import SYSTEM_PROMPT, build_user_prompt
 
     messages = [
-        {"role": "system",
-         "content": build_system_prompt(case["items"], with_validator=True)},
+        {"role": "system", "content": SYSTEM_PROMPT},
         {"role": "user",
          "content": build_user_prompt(case["items"], case["boxes"])},
     ]
@@ -187,6 +187,8 @@ def main() -> None:
     parser = argparse.ArgumentParser()
     parser.add_argument("--model", help="run our planner with this model")
     parser.add_argument("--effort", default="low")
+    parser.add_argument("--openrouter", action="store_true",
+                        help="use OpenRouter (OPENROUTER_API_KEY in .env)")
     parser.add_argument("cases", nargs="*", help="case folders (default all)")
     args = parser.parse_args()
 
@@ -198,7 +200,17 @@ def main() -> None:
         from dotenv import load_dotenv
         from openai import OpenAI
         load_dotenv(HERE.parent.parent / ".env")
-        client = OpenAI(api_key=os.getenv("OPENAI_API_KEY"))
+        if args.openrouter:
+            client = OpenAI(base_url="https://openrouter.ai/api/v1",
+                            api_key=os.getenv("OPENROUTER_API_KEY"))
+            # OpenRouter takes effort under `reasoning`; require_parameters
+            # routes only to providers that support structured outputs
+            call_kwargs = {"extra_body": {
+                "reasoning": {"effort": args.effort},
+                "provider": {"require_parameters": True}}}
+        else:
+            client = OpenAI(api_key=os.getenv("OPENAI_API_KEY"))
+            call_kwargs = {"reasoning_effort": args.effort}
 
     seen_inputs: dict[str, str] = {}
     results = []
@@ -224,8 +236,7 @@ def main() -> None:
             results.append(dict(row, verdict="skipped"))
             continue
         if client:
-            result = run_ours(case, client, args.model,
-                              reasoning_effort=args.effort)
+            result = run_ours(case, client, args.model, **call_kwargs)
             if result.flat is None:
                 print(f"   ours: no plan ({result.errors[:1]})")
                 row["verdict"] = "failed"
@@ -242,9 +253,10 @@ def main() -> None:
     table = comparison_table(results)
     print("\n" + table)
     if client:
-        out = HERE / f"results-{args.model}.json"
+        slug = args.model.replace("/", "_")  # OpenRouter ids have a slash
+        out = HERE / f"results-{slug}.json"
         out.write_text(json.dumps(results, indent=2))
-        (HERE / f"results-{args.model}.md").write_text(table + "\n")
+        (HERE / f"results-{slug}.md").write_text(table + "\n")
         print(f"\nsaved {out.name} and {out.stem}.md: "
               f"{dict(Counter(r['verdict'] for r in results))}")
 
