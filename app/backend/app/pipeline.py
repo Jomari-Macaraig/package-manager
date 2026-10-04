@@ -24,8 +24,9 @@ from packing.prompt_builder import (GUIDE_SYSTEM_PROMPT, SYSTEM_PROMPT,
                                     build_user_prompt)
 from packing.render_svg import render_svg
 from packing.schemas import BoxRow, FlatResponse
-from packing.settings import (PackingSettings, extract_settings, final_plan,
-                              prepare_boxes, prepare_items, rules_text)
+from packing.settings import (DUPLICATE_BLOCKS, PackingSettings,
+                              extract_settings, final_plan, prepare_boxes,
+                              prepare_items, rules_text, settings_problems)
 
 from . import config, tracing
 from .schemas import RunRequest, to_pipeline_inputs
@@ -161,25 +162,11 @@ def _usage_counts(usage) -> tuple[int, int, int]:
 
 
 def _check_settings(settings: PackingSettings) -> None:
-    b = config.SETTINGS_BOUNDS
-    problems = []
-    if settings.padding > b["padding"]:
-        problems.append(f"padding {settings.padding:g} in")
-    if any(r.padding > b["padding"] for r in settings.padding_by_item):
-        problems.append("per-item padding")
-    if settings.wall_clearance > b["wall_clearance"]:
-        problems.append(f"wall clearance {settings.wall_clearance:g} in")
-    if (settings.cut_step is not None
-            and settings.cut_step < b["cut_step_min"]):
-        problems.append(f"cut step {settings.cut_step:g} in")
-    if any(r.size > b["block_size"] for r in settings.blocks):
-        problems.append("block size")
-    if settings.max_boxes is not None and settings.max_boxes > b["max_boxes"]:
-        problems.append(f"max boxes {settings.max_boxes}")
-    if problems:
-        raise PipelineError("Settings out of range: " + ", ".join(problems))
-    ids = [r.item_id for r in settings.blocks]
-    if len(ids) != len(set(ids)):
+    problems = settings_problems(settings, config.SETTINGS_BOUNDS)
+    ranges = [p for p in problems if p != DUPLICATE_BLOCKS]
+    if ranges:
+        raise PipelineError("Settings out of range: " + ", ".join(ranges))
+    if DUPLICATE_BLOCKS in problems:
         raise PipelineError(
             "Settings contain duplicate block rules for the same item")
 

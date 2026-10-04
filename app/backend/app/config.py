@@ -57,6 +57,25 @@ MAX_COMPLETION_TOKENS = {
 OPENAI_TIMEOUT_S = 300
 OPENAI_MAX_RETRIES = 1
 
+# Pipeline v2: per job, the allowed models, the default and the output limit
+# (strategy: by reasoning effort, from MAX_COMPLETION_TOKENS["planning"]).
+JOBS = {
+    "extract": {"models": [m["id"] for m in EXTRACTION_MODELS],
+                "default": {"model": "gpt-4.1-nano",
+                            "reasoning_effort": None},
+                "max_tokens": 2000},
+    "strategy": {"models": [m["id"] for m in PLANNING_MODELS],
+                 "default": {"model": "gpt-5.4-nano",
+                             "reasoning_effort": "low"}},
+    "check": {"models": [m["id"] for m in EXTRACTION_MODELS],
+              "default": {"model": "gpt-4.1-mini", "reasoning_effort": None},
+              "max_tokens": 1500},
+    "notes": {"models": [m["id"] for m in EXTRACTION_MODELS],
+              "default": {"model": "gpt-4.1-nano", "reasoning_effort": None},
+              "max_tokens": 1500},
+}
+BUDGET = {"usd": 0.02, "seconds": 30}
+
 # Bounds on settings returned by the extraction model
 SETTINGS_BOUNDS = {
     "padding": 12.0,

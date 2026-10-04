@@ -138,6 +138,9 @@ SAMPLE = {"key": enum("A", "B", "C", "D", "E"), "title": str, "description": str
           "instructions": str}
 
 
+SAMPLE_V2 = {**SAMPLE, "key": enum(*"ABCDEFGH")}
+
+
 def check(value, spec, path="$") -> None:
     """Raises AssertionError naming the path of the first mismatch."""
     if isinstance(spec, dict):
