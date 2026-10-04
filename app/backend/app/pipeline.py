@@ -222,6 +222,7 @@ def _extract(req: RunRequest, client, items, should_stop, partial,
                           "reasoning_tokens"), _usage_counts(usage))))
         _save_extraction(partial, model, effort, usage, messages, start)
         data["tokens"] = sum(_usage_counts(usage)[:2])
+        partial["settings"] = settings.model_dump(mode="json")
         _check_settings(settings)
     partial["settings"] = settings.model_dump(mode="json")
     emit({"type": "extracted", "tokens": sum(_usage_counts(usage)[:2]),
