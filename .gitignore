@@ -8,3 +8,8 @@ wheels/
 
 # Virtual environments
 .venv
+
+# Packing playground
+app/backend/data/
+app/frontend/node_modules/
+app/frontend/dist/
