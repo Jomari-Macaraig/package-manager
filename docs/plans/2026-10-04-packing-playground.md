@@ -1167,3 +1167,21 @@ New code only. `labs/` untouched. SQLite file created on startup.
 - Planner: `labs/planner.py:104`, `:131-211`; settings
   `labs/settings.py:182`, `:515`; schemas `labs/schemas.py:63`, `:189`
 - Agents SDK tracing: https://openai.github.io/openai-agents-python/tracing/
+
+## Execution Log
+
+**Executed**: 2026-10-04
+**Team**: plan-packing-playground (named background agents in git worktrees; no TeamCreate in this session)
+**Base branch**: plan/packing-playground
+**Waves completed**: 6 (backend + frontend, integration, tests, reviews, meta-review, fix loop)
+**Teammates spawned**: 10 (backend-engineer, frontend-engineer, integration-engineer, test-engineer, bug-reviewer, security-reviewer, a11y-reviewer, meta-reviewer, fix-1; plus re-reviews by bug-reviewer and meta-reviewer)
+**Review verdict**: GO
+**Blockers fixed**: 1 (B1: UI stuck on "running" when the progress stream closes for good; polling fallback in `app/frontend/src/api/client.ts`) plus bundled B4 (failed runs keep extracted settings)
+**Fix loops**: 1
+**Final checks**: backend `uv run pytest` 95 passed; frontend typecheck + build clean, `npm test` 54 passed; fake-LLM end-to-end through the Vite proxy: Samples A/B/C succeeded.
+
+Deviations recorded in `app/CLAUDE.md` (custom 422 handler, `store.events()`, synthetic failed `end`, `RunManager.client_factory`, FakeClient `gate`/`create_script`, `API_TARGET` proxy env var, frontend history view and `onClosed(null)` on lost connection).
+
+Open suggestions (not blocking): `_finish` fallback status (runs.py:201-211); planning-reply ValidationError token accounting (planner.py:133); slider resets on box change (PlanPanel.tsx:99); cleaner OpenAI error text (pipeline.py:120); reopen the stream after a transient close; duplicate settings assignment (pipeline.py:227); a11y polish (focus rings, aria-describedby for cell errors, drawer focus, "auto" contrast).
+
+Pending manual verification: Phase 1 real run in OpenAI traces; Phase 2 `curl -N` on a real run; Phase 3/4 keyboard editing and Sample B stepping in a browser; Phase 5 real runs per sample, `reasoning_effort="none"` acceptance for gpt-5.4-nano, cost vs tokens, traces visible; manual steps 1–7 in Testing Strategy. Port 8000 on the dev machine is held by another process — run the backend on another port with `API_TARGET` for Vite.
