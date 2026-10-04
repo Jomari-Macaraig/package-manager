@@ -145,7 +145,7 @@ def run_v2(client, items, boxes, instructions: str,
             partial = getattr(exc, "job_result", None)
             if partial is not None:  # earlier calls were made and paid for
                 partial.status = "fallback"
-                partial.error = f"{type(exc).__name__}: {exc}"
+                partial.error = f"{type(exc).__name__}: {str(exc)[:300]}"
                 done[partial.job] = partial
             raise ConfigErrorV2(exc, all_jobs("not run")) from exc
 
