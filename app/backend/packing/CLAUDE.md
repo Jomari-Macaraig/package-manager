@@ -473,3 +473,67 @@ per-item-alone layer counts and floor %) was 2,525. Now:
 
 `precompute_tables`, `single_box_candidates`, `ideal_fill_height` etc. still
 exist in `precompute.py` for the verbose facts.
+
+## Pipeline v2 (`v2.py`, `jobs/`)
+
+Added 2026-10-05 (plan `docs/plans/2026-10-05-pipeline-v2-narrow-llm-jobs-with-evals.md`).
+Four narrow model jobs, everything else in code; each job is evaluated on its
+own. `run_v2(client, items, boxes, instructions, jobs, bounds=...)` runs
+extract -> prepare -> packer -> strategy (+ place and validate) -> check ->
+choose -> notes and returns `V2Result` (4 `JobResult`s in `JOB_ORDER`). Pure
+code plus hooks (`on_event`, `should_stop`, `on_context`); no app imports.
+v1 (the `planner.py` loop) is untouched.
+
+**Jobs** (`jobs/<name>.py`). Each has a `PROMPT_VERSION` and a
+`USER_TEMPLATE_VERSION`, pinned by `tests/test_prompt_versions.py`, so a prompt
+edit must bump the version. `JobStatus`: `ok`, `fallback` (used the fallback
+output, with an error), `skipped` (never called; `calls` 0).
+- `extract`: free text -> `PackingSettings`. Checks: parsed, known_ids,
+  in_bounds, applies, not_empty. Skipped with empty instructions. Fallback =
+  default settings with the whole text as one soft instruction (so "pad
+  everything 50 inches" fails `in_bounds`, falls back, and the run still
+  succeeds).
+- `strategy`: the model picks box types, item order, rotations and placement
+  preferences (side left/right/back/front, level bottom/top); code places with
+  `pack_guided`. One retry only for unparseable or invalid choices, an invalid
+  plan or extra leftovers. Checks: parsed, choices_valid, plan_valid,
+  no_extra_leftovers, no_extra_boxes, volume_within_margin (1.15 x the packer's
+  shipped volume), preferences_honoured. A strategy with a valid plan is `ok`
+  even if quality checks fail. With no valid plan it is `fallback` and its
+  output is `strategy_answer_from_plan(packer)`.
+- `check`: one verdict per soft instruction (honoured / not_honoured /
+  cannot_tell) from the model plan plus exact code facts. Checks: parsed,
+  covers_all. Skipped with no soft instructions or no valid model plan;
+  fallback = `cannot_tell` for each.
+- `notes`: per-box loading steps for the final plan. Checks: parsed,
+  one_entry_per_box, step_count, mentions_items, counts_match. Skipped with no
+  final plan; fallback = `template_notes` (code). Sample C's final plan is
+  empty but valid (source model, reason "same as packer"), so notes run.
+
+**Preferences.** `pack_guided(..., preferences)` steers the point order per
+item id and never breaks a rule (the plan is still validated).
+`preference_report(plan, items, boxes, prefs)` returns rows `{id, name, side,
+level, honoured, total, detail}`. It is computed for the model's plan and for
+the packer's plan (against the model's preferences), so the UI can show the
+packer missing the instruction. Samples F/G/H (`app/samples.py`) are tuned so
+the packer fails and the guided plan honours everything within the margin.
+
+**Choose rule** (`choose`, first match wins):
+1. no valid plan on either side -> `none`, "no valid plan"
+2. only one side valid -> that side, "only valid plan"
+3. model, "honours the instructions": soft instructions exist, every verdict
+   is honoured, every model preference is fully honoured, the packer misses at
+   least one, and the model has <= leftovers, <= boxes and <= 1.15 x the
+   packer's shipped volume
+4. equal `_rank` and an empty model plan -> model, "same as packer"; `_rank`
+   model <= packer -> model, "better metrics"; else packer, "packer has better
+   metrics"
+
+The packer's plan is always computed, so a run succeeds whenever the pipeline
+returns (the adapter's `outcome` is always `succeeded`).
+
+**Replay.** Each job keeps its chat `messages`; with the run's stored settings,
+prepared items/boxes and packer plan, strategy, check and notes can be
+replayed offline. Keep the stored result shape stable.
+
+App side (routes, storage, Evaluation page): [app/CLAUDE.md](../../CLAUDE.md).
