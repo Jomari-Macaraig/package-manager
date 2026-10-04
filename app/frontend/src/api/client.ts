@@ -130,9 +130,15 @@ export function subscribe(
   let closed = false
   let finished = false
   let lastErrorFetch = -Infinity
+  let retryTimer: ReturnType<typeof setInterval> | null = null
 
+  const stopRetry = () => {
+    if (retryTimer != null) clearInterval(retryTimer)
+    retryTimer = null
+  }
   const close = () => {
     closed = true
+    stopRetry()
     es.close()
   }
   const deliver = (e: RunEvent) => {
@@ -163,8 +169,26 @@ export function subscribe(
     })
   }
 
+  const startRetry = () => {
+    if (retryTimer != null) return
+    retryTimer = setInterval(() => {
+      getRun(runId).then(
+        (run) => {
+          if (closed || finished || !isTerminal(run.status)) return
+          close()
+          for (const e of run.events) deliver(e)
+          finish(run)
+        },
+        () => {
+          /* backend still down; keep polling */
+        },
+      )
+    }, ERROR_REFETCH_MS)
+  }
+
   es.addEventListener('error', () => {
     if (closed) return
+    if (es.readyState === EventSource.CLOSED && !finished) startRetry()
     const now = Date.now()
     if (now - lastErrorFetch < ERROR_REFETCH_MS) return
     lastErrorFetch = now
@@ -183,6 +207,7 @@ export function subscribe(
 
   return () => {
     closed = true
+    stopRetry()
     es.close()
   }
 }

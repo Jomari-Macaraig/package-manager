@@ -256,6 +256,13 @@ def test_duplicate_block_rules_rejected():
         run(sample_request("A", "blocks"), client)
 
 
+def test_out_of_range_settings_stored_on_failed_run():
+    client = FakeClient(create_script=[settings_json(padding=20)])
+    with pytest.raises(PipelineError, match="out of range") as info:
+        run(sample_request("A", "pad"), client)
+    assert info.value.partial["settings"]["padding"] == 20
+
+
 def test_huge_padding_rejected():
     client = FakeClient(create_script=[settings_json(padding=1e9)])
     with pytest.raises(PipelineError, match="out of range"):

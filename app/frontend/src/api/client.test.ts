@@ -204,4 +204,52 @@ describe('subscribe', () => {
     expect(FakeEventSource.last.readyState).toBe(FakeEventSource.CLOSED)
     expect(onClosed).not.toHaveBeenCalled()
   })
+
+  describe('closed-source polling', () => {
+    const failClosed = (es: FakeEventSource) => {
+      es.readyState = FakeEventSource.CLOSED
+      for (const l of es.listeners.get('error') ?? []) l(new Event('error') as MessageEvent)
+    }
+
+    it('polls after CLOSED error until a terminal run is found', async () => {
+      vi.useFakeTimers()
+      const run = makeRun({
+        status: 'interrupted',
+        events: [ev(0), ev(1, 'end')],
+      })
+      fetchMock
+        .mockRejectedValueOnce(new TypeError('down'))
+        .mockResolvedValue(json(run))
+      const onEvent = vi.fn()
+      const onClosed = vi.fn()
+      subscribe('r1', onEvent, onClosed)
+      const es = FakeEventSource.last
+      es.emit('started', ev(0), 0)
+      failClosed(es)
+      failClosed(es) // must not start a second timer
+      await vi.advanceTimersByTimeAsync(0) // immediate error-handler getRun rejects
+      expect(onClosed).not.toHaveBeenCalled()
+      await vi.advanceTimersByTimeAsync(2000) // timer getRun succeeds
+      expect(onClosed).toHaveBeenCalledTimes(1)
+      expect(onClosed.mock.calls[0][0]).toMatchObject({ status: 'interrupted' })
+      expect(onEvent.mock.calls.map((c) => c[0].id)).toEqual([0, 1])
+      const calls = fetchMock.mock.calls.length
+      expect(calls).toBe(2)
+      await vi.advanceTimersByTimeAsync(10000)
+      expect(fetchMock).toHaveBeenCalledTimes(calls)
+      expect(onClosed).toHaveBeenCalledTimes(1)
+    })
+
+    it('unsubscribe stops polling', async () => {
+      vi.useFakeTimers()
+      fetchMock.mockRejectedValue(new TypeError('down'))
+      const off = subscribe('r1', vi.fn(), vi.fn())
+      failClosed(FakeEventSource.last)
+      await vi.advanceTimersByTimeAsync(2000)
+      expect(fetchMock).toHaveBeenCalledTimes(2) // immediate + one timer tick
+      off()
+      await vi.advanceTimersByTimeAsync(10000)
+      expect(fetchMock).toHaveBeenCalledTimes(2)
+    })
+  })
 })
