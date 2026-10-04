@@ -299,3 +299,29 @@ describe('history', () => {
     expect(subs[0].from).toBe(2)
   })
 })
+
+describe('history (nullable runs)', () => {
+  it('opening a failed run with null fields renders without crashing', async () => {
+    m.getRun.mockResolvedValue(
+      makeRun({
+        status: 'failed',
+        error: 'Internal error',
+        settings: null,
+        prepared_items: null,
+        prepared_boxes: null,
+        final: null,
+        model: null,
+        packer: null,
+        stats: null,
+        finished_at: null,
+      }),
+    )
+    const user = await ready()
+    await user.click(screen.getByRole('button', { name: 'History' }))
+    await user.click(await screen.findByText('Mug, Dinner Plate, Candle Jar'))
+    expect(await screen.findByText('Viewing a past run (read-only)')).toBeInTheDocument()
+    expect(screen.getByText('Status: failed')).toBeInTheDocument()
+    expect(screen.getByRole('alert')).toHaveTextContent('Internal error')
+    expect(screen.queryByRole('img')).not.toBeInTheDocument()
+  })
+})

@@ -432,3 +432,34 @@ def test_run_list_newest_first_and_summary(client):
     assert rows[1]["title"] == "Mug, Dinner Plate, Candle Jar"
     assert rows[0]["source"] in ("model", "packer")
     assert rows[0]["total_cost"] > 0
+
+
+def test_every_response_has_request_id(client, gated):
+    run_id = start_run(client)
+    responses = [
+        client.get("/api/health"),
+        client.get("/api/config"),
+        client.get("/api/samples"),
+        client.get("/api/runs"),
+        client.get("/api/runs/active"),
+        client.get(f"/api/runs/{run_id}"),
+        client.get(f"/api/runs/{RID}"),                       # 404
+        client.get("/api/runs/not-a-uuid"),                   # 404
+        client.get(f"/api/runs/{run_id}/render?plan=foo&box=1"),  # 422
+        client.get(f"/api/runs/{run_id}/render?plan=model&box=1"),  # 409
+        client.post("/api/runs", json=sample_body("A")),      # 409 busy
+        client.post("/api/runs", json={}),                    # 422
+        client.post("/api/runs", content="x",
+                    headers={"content-type": "text/plain"}),  # 415
+        client.post("/api/runs", json=sample_body("A"),
+                    headers={"Origin": "http://evil.example"}),  # 403
+        client.post(f"/api/runs/{RID}/cancel", json={}),      # 404
+        client.get("/api/nope"),                              # 404 no route
+    ]
+    gated.set()
+    wait_terminal(client, run_id)
+    responses.append(client.get(f"/api/runs/{run_id}/events"))  # SSE
+    responses.append(client.get(f"/api/runs/{run_id}/render?plan=model&box=1"))
+    responses.append(client.get(f"/api/runs/{run_id}/svg?plan=packer"))
+    for r in responses:
+        assert r.headers.get("x-request-id"), (r.request.url, r.status_code)
