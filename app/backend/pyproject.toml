@@ -1,0 +1,24 @@
+[project]
+name = "packing-playground-backend"
+version = "0.1.0"
+description = "FastAPI backend for the packing playground"
+requires-python = ">=3.12"
+dependencies = [
+    "fastapi>=0.142.2",
+    "matplotlib>=3.11.2",
+    "openai>=3.24.0",
+    "openai-agents>=0.23.1",
+    "pydantic>=2.13.5",
+    "python-dotenv>=1.2.4",
+    "uvicorn[standard]>=0.54.0",
+]
+
+[tool.pytest.ini_options]
+pythonpath = ["."]
+testpaths = ["tests"]
+
+[dependency-groups]
+dev = [
+    "httpx>=0.28.1",
+    "pytest>=9.1.1",
+]
