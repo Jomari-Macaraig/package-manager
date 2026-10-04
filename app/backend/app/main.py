@@ -6,7 +6,6 @@ import logging
 from contextlib import asynccontextmanager
 
 from fastapi import FastAPI, Request
-from fastapi.exception_handlers import request_validation_exception_handler
 from fastapi.exceptions import RequestValidationError
 from fastapi.middleware.cors import CORSMiddleware
 from fastapi.responses import JSONResponse
@@ -35,7 +34,11 @@ async def _validation_handler(request: Request, exc: RequestValidationError):
     if any(err["loc"] and err["loc"][0] == "path" and err["loc"][-1] == "run_id"
            for err in exc.errors()):
         return JSONResponse({"detail": "Run not found"}, status_code=404)
-    return await request_validation_exception_handler(request, exc)
+    # FastAPI's default echoes `input`, which can be inf/NaN and then fails
+    # JSON encoding; the contract only promises loc, msg and type.
+    detail = [{"loc": list(err["loc"]), "msg": err["msg"],
+               "type": err["type"]} for err in exc.errors()]
+    return JSONResponse({"detail": detail}, status_code=422)
 
 
 def create_app() -> FastAPI:

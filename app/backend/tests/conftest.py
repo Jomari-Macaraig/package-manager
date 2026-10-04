@@ -6,6 +6,7 @@ import os
 os.environ["PLAYGROUND_FAKE_LLM"] = "1"
 os.environ["OPENAI_AGENTS_DISABLE_TRACING"] = "1"
 
+import copy  # noqa: E402
 import time  # noqa: E402
 
 import pytest  # noqa: E402
@@ -43,8 +44,8 @@ def client(app):
 def sample_body(key: str = "A", instructions: str = "", **overrides) -> dict:
     sample = next(s for s in SAMPLES if s["key"] == key)
     body = {
-        "items": sample["items"],
-        "boxes": sample["boxes"],
+        "items": copy.deepcopy(sample["items"]),
+        "boxes": copy.deepcopy(sample["boxes"]),
         "instructions": instructions,
         "extraction": {"model": "gpt-4.1-nano"},
         "planning": {"model": "gpt-5.4-nano", "reasoning_effort": "low"},

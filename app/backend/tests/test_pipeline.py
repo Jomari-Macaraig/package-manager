@@ -92,7 +92,6 @@ def test_sample_c_nothing_fits():
 
 
 def test_null_color_uses_tab10():
-    body_items = sample_request("A").items
     req = sample_request("A")
     req.items[0].color = None
     result, _, _, _ = run(req)
@@ -100,7 +99,6 @@ def test_null_color_uses_tab10():
     assert result["prepared_items"][0]["color"] == ""
     svg = result["svgs"]["model"]
     assert "#1f77b4" in svg  # tab10 first color
-    assert body_items  # sanity
 
 
 def test_empty_instructions_skip_extraction():
@@ -284,7 +282,7 @@ def test_settings_applied_and_extraction_stats():
     assert events[0]["skipped"] is False and events[0]["tokens"] == 1200
     # reasoning tokens are inside completion tokens: not added to the cost
     planning = result["stats"]["planning"]
-    assert result["stats"]["total_tokens"] == 2 * 1200 or planning
+    assert result["stats"]["total_tokens"] == 2 * 1200
     assert result["stats"]["total_cost"] == pytest.approx(
         ext["cost"] + planning["cost"])
 
@@ -371,7 +369,6 @@ class Recorder(TracingProcessor):
 
 @pytest.fixture
 def recorder():
-    from agents.tracing import get_trace_provider  # noqa: F401
     rec = Recorder()
     set_trace_processors([rec])  # replaces the exporters: no network
     set_tracing_disabled(False)

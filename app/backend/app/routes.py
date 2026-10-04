@@ -13,8 +13,7 @@ from packing.schemas import Response as Plan
 from . import config, store
 from .runs import NotActive, RunBusy
 from .samples import SAMPLES
-from .schemas import (TERMINAL_STATUSES, RunRequest, RunSummary, Sample, Run,
-                      build_config)
+from .schemas import Run, RunRequest, RunSummary, Sample, build_config
 from .sse import event_stream
 
 router = APIRouter()
